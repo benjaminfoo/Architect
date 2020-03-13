@@ -8,6 +8,9 @@ This modification aims to add base-building / sandboxing mechanics to the existi
 
 Constructions are also persistent across your save sates.
 
+## Installation
+Download the latest release, unzip the archive into your `KingdomComeDeliverance\mods`-folder 
+
 ### Usage / Keys
 Execute builder_help in the ingame console for additional help.
 
