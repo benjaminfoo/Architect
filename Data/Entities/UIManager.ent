@@ -1,0 +1,4 @@
+<Entity
+    Name="UIManager"
+    Script="Scripts/Entities/UIManager.lua"
+/>

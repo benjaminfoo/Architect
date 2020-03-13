@@ -1,0 +1,4 @@
+<Entity
+ Name="BasicBuildingEntity"
+ Script="Scripts/Entities/BasicBuildingEntity.lua"
+/>

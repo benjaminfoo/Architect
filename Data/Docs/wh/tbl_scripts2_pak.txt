@@ -1,0 +1,8 @@
+Archive:  Scripts_DLC2.pak
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+   500496  2019-10-08 08:46   Libs/AI/quests/q_gamblersDen.xml
+   412096  2019-10-08 08:46   Libs/AI/quests/q_loveLetter.xml
+   827694  2019-10-08 08:46   Libs/AI/quests/q_superstition.xml
+---------                     -------
+  1740286                     3 files
