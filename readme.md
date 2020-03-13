@@ -1,44 +1,64 @@
 <img src="/Data/Docs/architect.png">  
 
-# Kingdom Come Deliverance Modifcation - Architect
+# Architect
  
-A base-building / sandboxing modification for kingdom come deliverance.
+A base-building / sandboxing modification for Kingdom Come Deliverance by Warhorse Studios.
 
-This modification aims to add base-building / sandboxing mechanics to the existing game - no new save required.
+This modification adds simple base-building / sandboxing mechanics to the existing game.
 
-Constructions are also persistent across your save sates.
+Constructions are also saved across your savegames - there is no new save required.
+Its also safe to remove the mod at any time (however - if you've already created something within the game, without
+deleting it then, the entity stays in the game. Use **#deleteall()** within the ingame-console to clean up your scene.) 
 
 ## Installation
 Download the latest release, unzip the archive into your `KingdomComeDeliverance\mods`-folder 
 
 ## Usage / Keys
-Execute builder_help in the ingame console for additional help.
+These keys can be used to interact with the mod - they're also shown ingame.
 
-Choose the next construction (from 0 to 251)
+Choose the next construction (from 0 to 251)\
 Button: MouseWheel up
 
-Choose the previous construction (from 0 to 251)
+Choose the previous construction (from 0 to 251)\
 Button: MouseWheel down
 
-Create construction
+Create construction\
 Button: Middle mouse button
 
-Remove construction
+Remove construction\
 Button: Mouse 5 (the previous side-button on the mouse)
 
+
 ## Technical
+
 ### Console commands
-- 
+- architect_help - show the help menu
+- architect_clear - clear the ingame console
+- architect_gamble - win or loose 5 groschen!
+- architect_eval - eval some string of lua
+- architect_log, log - print some text to the ingame-console
+- architect_recompileAll - reload the source-code of the project
+
 
 ### Lua functions
-- #reloadall() - Reloads the source files of the modification
-- #deleteall() - Deletes ALL constructions youve build
-- #showall()   - Lists all constructions to the tale
-- #deleteAt(index)() - Delete the construction with the number "index" (use #showall())
+In order to execute a lua function, you have to prepend a '#'-character to execute it
+- reloadall() - Reloads the source files of the modification
+- deleteall() - Deletes ALL constructions youve build
+- showall()   - Lists all constructions to the tale
+- deleteAt(index)() - Delete the construction with the number "index" (use #showall())
+
 
 ### HowTo
-Change default key-bindings
-- The `keybinds.cfg` file contains all keybindings used in the project - change it to a key or a controller button as you like.
+##### Change default key-bindings
+The `keybinds.cfg` file contains all keybindings used in the project - change it to a key or a controller button as you like.
+
+##### Add new constructions to the selection, remove constructions
+Not every asset is referenced in the project, because some are not suitable (split into multiple parts which would be a 
+pain to position by hand, some are graphical effects, some are too large to be positioned by the player, etc.).
+
+However, one could add models / cgfs from the assets  on its own, the currently used constructions are 
+listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Scripts/Manager/BuildingsManager.lua
+
 
 ### Changelog
 v0.4b

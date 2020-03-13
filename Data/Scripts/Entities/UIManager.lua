@@ -79,6 +79,8 @@ end;
 
 function UIManager:OnAction(action, activation, value)
 
+    --[[
+    -- not used yet
     System.LogAlways("action: " .. action)
     System.LogAlways("activation: " .. activation)
     System.LogAlways("value: " .. value)
@@ -93,6 +95,7 @@ function UIManager:OnAction(action, activation, value)
         local content = { action= action };
         XGenAIModule.SendMessageToEntityData(player.this.id,'player:actionMapReaction', content )
     end
+    ]]
 
 
 end
