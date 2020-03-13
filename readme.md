@@ -1,4 +1,4 @@
-<img src="/Docs/architect.png">  
+<img src="/Data/Docs/architect.png">  
 
 # Kingdom Come Deliverance Modifcation - Architect
  
