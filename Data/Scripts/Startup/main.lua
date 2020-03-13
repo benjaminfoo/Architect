@@ -22,5 +22,9 @@ Script.ReloadScript("Scripts/Manager/EventManager.lua")
 -- load the core api of the project
 Script.ReloadScript("Scripts/Manager/BuildController.lua")
 
+-- load the core api of the project
+System.ExecuteCommand( 'exec Mods/architect/keybinds.cfg' )
+System.ExecuteCommand( 'exec Mods/architect_release/keybinds.cfg' )
+
 -- if this gets printed the mod should work :)
-System.LogAlways("kcd architect 0.3b - initialized!")
+System.LogAlways("kcd architect 0.4b - initialized!")

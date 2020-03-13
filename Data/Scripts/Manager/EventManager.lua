@@ -27,7 +27,7 @@ function architect_init:uiActionListener(actionName, eventName, argTable)
             uiManagerEntity = System.SpawnEntity(uiManagerParams)
 
             -- create tutorial and show
-            showMessage = "<font color='#333333' size='34'>Architect 0.3b</font> <font color='#333333' size='18'>\nA base-building / resource-management modification for kingdom come deliverance.</font>"
+            showMessage = "<font color='#333333' size='34'>Architect 0.4b</font> <font color='#333333' size='18'>\nA base-building / resource-management modification for kingdom come deliverance.</font>"
             showMessageT = "<font color='#333333' size='20'>\n\nUsage / Keys\n</font><font color='#333333' size='18'>Mousewheel up/down \nChoose building\n\nMouse 3 \nConstruct building \n\nMouse 5 \nRemove building </font> \n\n"
             showMessageTT = "<font color='#333333' size='18'>F9 \nRecompile mod at runtime \n\nContact\n"
 

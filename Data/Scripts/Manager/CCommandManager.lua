@@ -104,4 +104,4 @@ System.AddCCommand('architect_recompile', 'architect_recompile()', "Compile the 
 System.AddCCommand('architect_recompileAll', 'architect_recompileAll()', "Recompile everything during runtime")
 
 -- bindings
-System.ExecuteCommand("bind f9 architect_recompile ")
+-- System.ExecuteCommand("bind f9 architect_recompile ")

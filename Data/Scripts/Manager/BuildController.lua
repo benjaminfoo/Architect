@@ -156,7 +156,12 @@ function deleteRayCastEntityHit()
         result = hitData.entity;
 
         if(result ~= nil) then
+
+            -- if there is something to delete, log its name to the player first
             visRes = "Removing entity: " .. tostring(result:GetName()) .. "\n" .. "ID: " .. tostring(hitData.entity:GetRawId())
+            Game.SendInfoText(visRes, true, nil, 1)
+
+            -- remove the entity by its id
             System.RemoveEntity(hitData.entity.id)
         end
 
@@ -258,21 +263,21 @@ end
 
 -- Increment the current building index, mouse wheel up
 System.AddCCommand('bIndexInc', 'bIndexInc()', "bIndexInc!")
-System.ExecuteCommand("bind mwheel_up bIndexInc")
+--System.ExecuteCommand("bind mwheel_up bIndexInc")
 
 -- Decrement the current building index, mouse wheel down
 System.AddCCommand('bIndexDec', 'bIndexDec()', "bIndexDec!")
-System.ExecuteCommand("bind mwheel_down bIndexDec")
+--System.ExecuteCommand("bind mwheel_down bIndexDec")
 
 -- Spawn the currently selected building
 System.AddCCommand('architect_spawn', 'SpawnBuildingInstance()', "architect_spawn!")
-System.ExecuteCommand("bind mouse3 architect_spawn ")
+--System.ExecuteCommand("bind mouse3 architect_spawn ")
 
 -- Delete the current "seen" entity
 System.AddCCommand('deleteRayCastEntityHit', 'deleteRayCastEntityHit()', "deleteRayCastEntityHit!")
-System.ExecuteCommand("bind mouse4 deleteRayCastEntityHit ")
+--System.ExecuteCommand("bind mouse4 deleteRayCastEntityHit ")
 
 -- Detect / dump information about the current "seen" entity
 System.AddCCommand('detectEntity', 'detectEntity()', "detectEntity!")
-System.ExecuteCommand("bind mouse5 detectEntity ")
+--System.ExecuteCommand("bind mouse5 detectEntity ")
 
