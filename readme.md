@@ -20,16 +20,16 @@ Download the latest release, unzip the archive into your `KingdomComeDeliverance
 ## Usage / Keys
 These keys can be used to interact with the mod - they're also shown ingame.
 
-Choose the next construction (from 0 to 251)\
+Choose the next construction (from 0 to 251)
 Button: MouseWheel up
 
-Choose the previous construction (from 0 to 251)\
+Choose the previous construction (from 0 to 251)
 Button: MouseWheel down
 
-Create construction\
+Create construction
 Button: V
 
-Remove construction\
+Remove construction
 Button: G
 
 
@@ -48,7 +48,7 @@ Button: G
 In order to execute a lua function, you have to prepend a '#'-character to execute it
 - reloadall() - Reloads the source files of the modification
 - deleteall() - Deletes ALL constructions youve build
-- showall()   - Lists all constructions to the tale
+- showall()   - Lists all constructions to the ingame console
 - deleteAt(index)() - Delete the construction with the number "index" (use #showall())
 
 
