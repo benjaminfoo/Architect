@@ -1,12 +1,16 @@
 <img src="/Data/Docs/architect.png">  
 
-# Architect
+# Kingdom Come Deliverance Modification - Architect
  
-A base-building / sandboxing modification for Kingdom Come Deliverance by Warhorse Studios.
+A base-building modification for Kingdom Come Deliverance by Warhorse Studios.
 
-This modification adds simple base-building / sandboxing mechanics to the existing game.
+This modification adds base-building mechanics to the existing game by providing the ability to create constructions
+within the games world (its not possible to remove existing structures).
 
-Constructions are also saved across your savegames - there is no new save required.
+The player can spawn anything from simple props, flora & fauna, trees, sheds, houses, walls, towers, etc. (see how to add custom entities)
+
+Constructions are saved across your savegames - there is no new save required.
+
 Its also safe to remove the mod at any time (however - if you've already created something within the game, without
 deleting it then, the entity stays in the game. Use **#deleteall()** within the ingame-console to clean up your scene.) 
 
