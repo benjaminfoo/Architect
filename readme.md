@@ -27,10 +27,10 @@ Choose the previous construction (from 0 to 251)\
 Button: MouseWheel down
 
 Create construction\
-Button: Middle mouse button
+Button: V
 
 Remove construction\
-Button: Mouse 5 (the previous side-button on the mouse)
+Button: G
 
 
 ## Technical
