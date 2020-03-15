@@ -6,7 +6,7 @@
 ---
 --- For example: TODO :)
 ---
-Script.ReloadScript("scripts/Utils/EntityUtils.lua")
+-- Script.ReloadScript("scripts/Utils/EntityUtils.lua")
 
 GeneratorEntity = {
     Client = {},

@@ -29,16 +29,16 @@ Usage / Keys
 These keys can be used to interact with the mod - they're also shown ingame.
 
 Choose the next construction (from 0 to ~200)
-Button: MouseWheel up
+Button MouseWheel up
 
 Choose the previous construction (from 0 to ~200)
-Button: MouseWheel down
+Button MouseWheel down
 
 Create construction
-Button: V
+Key V
 
 Remove construction
-Button: G
+Key G
 
 
 Technical - Console commands
@@ -76,9 +76,10 @@ listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Sc
 
 Planned features
 This is a list of planned features for later development - this will take some time however:
-- resource / cost management
-- spawn dynamic entities like npcs, items,
 - useable objects like beds, chairs, etc.
+- spawn dynamic entities like npcs, item
+- define custom entities
+- resource / cost management
 
 
 ### Changelog
@@ -87,7 +88,8 @@ Your already created entities wont be affected.
 
 v0.5a
 - added useable entities (like chairs, benches, beds, etc.)
-- refactored project, upgraded entity-model, etc.
+- added custom actions and new entities (generator, cooking)
+- refactored project, upgraded entity-model, controller, utils, documentation etc.
 - removed invalid references from assets
 
 v0.4b

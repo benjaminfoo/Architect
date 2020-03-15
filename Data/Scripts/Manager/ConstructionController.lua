@@ -2,7 +2,7 @@
 --- Created by Benjamin Foo
 --- DateTime: 04.03.2020 23:09
 ---
---- The BuildController class defines basic and advanced operations
+--- The ConstructionController class defines basic and advanced operations
 ---
 
 builtEntities = {}
@@ -32,20 +32,8 @@ end
 ---- building / architecture / resources
 
 -- the current index of the building-selection
-bIndex = 1
-
 -- the id of the next construction, gets incremented
--- this could lead to misaligned indices
-current = System.GetCurrTime()
-math.randomseed(current)
-random = math.random
-
--- this function generates a unique ID
-function uuid()
-    local template ='xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
-    return string.gsub(template, '[xy]', function (c) v = (c == 'x') and random(0, 15) or random(8, 11) return string.format('%x', v) end)
-end
-
+bIndex = 1
 
 function rayCastHit()
     System.LogAlways("# rayCastHit start")
@@ -70,17 +58,35 @@ function rayCastHit()
 
 end
 
+-- remove an item by its class and by an amount
+-- class = example - bred, 86e4ff24-88db-4024-abe6-46545fa0fbd1
+-- deleteAmount = how often an item gets removed
+function removebread(findByClass, deleteAmount)
+    removed = 0
+    for i, userdata in pairs(player.inventory:GetInventoryTable()) do
+        local item = ItemManager.GetItem(userdata)
+        for i = 1, item.amount do
+            if (item.class == findByClass) then
+                if (removed < deleteAmount) then
+                    removed = removed + 1
+                    player.inventory:RemoveItem(item.id, 1)
+                end
+            end
+        end
+    end
+end
+
 -- spawn the currently selected entity with the current selection as modelpath
 function SpawnBuildingInstance(line)
     System.LogAlways("# SpawnBuildingInstance start")
 
     hitData = rayCastHit()
 
-    if(hitData ~= nil) then
+    if (hitData ~= nil) then
 
         local entity = hitData
 
-        System.LogAlways("Hit entity: " .. tostring(entity))
+        -- System.LogAlways("Hit entity: " .. tostring(entity))
 
         -- construct the entity and setup its parameters
         local spawnParams = {}
@@ -97,8 +103,8 @@ function SpawnBuildingInstance(line)
 
         -- setup naming and serialization
         spawnParams.properties = {}
-        spawnParams.properties.bSaved_by_game = 1 -- non-persistent
-        spawnParams.properties.bSerialize = 1 -- non-persistent
+        spawnParams.properties.bSaved_by_game = 1
+        spawnParams.properties.bSerialize = 1
 
         -- use the input of %line if provided, else use the current building index for the selection of the building
         --[[
@@ -109,10 +115,11 @@ function SpawnBuildingInstance(line)
         end
         ]]
 
+        -- get the path of the model for the construction
         construction = parameterizedConstructions[bIndex]
-
         spawnParams.properties.object_Model = construction.modelPath
 
+        -- generate a unique name for the entity
         spawnParams.name = construction.modelPath .. "_" .. uuid()
 
         if (construction.sitable) then
@@ -125,10 +132,14 @@ function SpawnBuildingInstance(line)
             spawnParams.class = "DynamicBuildingEntity"
         end
 
+        if (construction.cookable) then
+            spawnParams.class = "CookingSpotEntity"
+        end
+
         -- spawn the new entity
         local ent = System.SpawnEntity(spawnParams)
 
-        -- setup the spawned entity in the world
+        -- setup the entity within the world after it has been spawned
         if construction.sitable then
             ent.GetActions = function(user, firstFast)
                 output = {}
@@ -143,6 +154,75 @@ function SpawnBuildingInstance(line)
         if construction.sleepable then
 
         end
+
+        if (construction.cookable) then
+            ent.GetActions = function(user, firstFast)
+                output = {}
+                AddInteractorAction(output, firstFast, Action():hint("Bake bread"):action("use"):func(ent.OnUsed):interaction(inr_chair):enabled(1))
+                return output
+            end
+            ent.OnUsed = function(user)
+
+                -- TODO: This is all in todo state!
+                -- features: generate x from y - done
+                -- features: remove x from inventory - done
+                -- features: add y to inventory - done
+                -- refactoring needed
+                -- refactoring needed
+
+                --[[
+                for i,userdata in pairs(player.inventory:GetInventoryTable()) do
+                    local item = ItemManager.GetItem(userdata)
+                    for i=1,item.amount do
+                        if(item.class == "86e4ff24-88db-4024-abe6-46545fa0fbd1") then
+                            player.inventory:RemoveItem(item.id, 1)
+                        end
+                    end
+                end
+                ]]
+
+
+
+                -- refactoring needed
+
+                log("Ent has been used!")
+
+                -- 86e4ff24-88db-4024-abe6-46545fa0fbd1 : Bread
+                local breadUUID = "86e4ff24-88db-4024-abe6-46545fa0fbd1"
+                local tableName = "player_item"
+                Database.LoadTable(tableName)
+
+                bakedBread = ItemManager.CreateItem(breadUUID, 100, 1)
+                player.inventory:AddItem(bakedBread);
+                Game.SendInfoText("You baked a new bread", false, nil, 2)
+
+                -- removebread(breadUUID, 1)
+
+                --[[
+                local breadUUID = "86e4ff24-88db-4024-abe6-46545fa0fbd1"
+                local tableName = "player_item"
+                Database.LoadTable(tableName)
+                local tableInfo = Database.GetTableInfo(tableName)
+                local rows = tableInfo.LineCount - 1
+                for i=0,rows do
+                    local rowInfo = Database.GetTableLine(tableName, i)
+                    if string.upper(rowInfo.item_id) == string.upper(breadUUID) then
+                        if player.inventory:FindItem(rowInfo.item_id) == nil then
+                            log(rowInfo)
+                            log(rowInfo.item_id)
+                            bakedBread = ItemManager.CreateItem(rowInfo.item_id, 100, 1)
+                            player.inventory:AddItem(bakedBread);
+                            Game.SendInfoText("You baked a new bread",false,nil,2)
+                            return
+                        end
+                    end
+                end
+                ]]--
+
+                XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(ent)) .. "), mode ('use')")
+            end
+        end
+
 
         -- setup the rotation of the spawned entity align the y-axis
         local up = player:GetAngles()
@@ -159,13 +239,15 @@ function SpawnBuildingInstance(line)
     System.LogAlways("# SpawnBuildingInstance end")
 end
 
+
+
 -- dumps information about the current "seen" entity to the console
 function detectEntity()
     System.LogAlways("# detectEntity start")
 
     hitData = rayCastHit()
 
-    if(hitData ~= nil) then
+    if (hitData ~= nil) then
 
         result = hitData.entity;
 
@@ -173,7 +255,7 @@ function detectEntity()
 
         log(result.id)
         Game.SendInfoText(visRes, true, nil, 1)
-        builtEntities[#builtEntities-1] = nil
+        builtEntities[#builtEntities - 1] = nil
 
     end
 
@@ -186,11 +268,11 @@ function deleteRayCastEntityHit()
 
     hitData = rayCastHit()
 
-    if(hitData ~= nil) then
+    if (hitData ~= nil) then
 
         result = hitData.entity;
 
-        if(result ~= nil) then
+        if (result ~= nil) then
 
             -- if there is something to delete, log its name to the player first
             visRes = "Removing entity: " .. tostring(result:GetName()) .. "\n" .. "ID: " .. tostring(hitData.entity:GetRawId())
@@ -209,14 +291,14 @@ end
 -- lists all built constructions by the player to the console
 function showall()
     for i = 1, #builtEntities do
-        if(builtEntities[i] ~= nil and i ~= nil) then
+        if (builtEntities[i] ~= nil and i ~= nil) then
             log("Built (" .. tostring(i) .. ") = " .. tostring(builtEntities[i]))
         end
     end
 end
 
 function deleteAt(index)
-    if(index) then
+    if (index) then
         deletionEntity = builtEntities[index]
         System.RemoveEntity(deletionEntity.id)
         log("Deleting " .. tostring(deletionEntity))
@@ -277,8 +359,8 @@ end
 -- removes all entities of class "BasicBuildingEntity"
 function deleteall ()
     -- local ents =  System.GetEntitiesByClass("BasicBuildingEntity")
-    local ents =  System.GetEntitiesByClass("BasicBuildingEntity")
-    for i,e in pairs(ents) do
+    local ents = System.GetEntitiesByClass("BasicBuildingEntity")
+    for i, e in pairs(ents) do
         -- remove the entity from the game
         System.RemoveEntity(e.id)
     end
@@ -289,19 +371,31 @@ end
 function reloadall ()
     -- unload all controller first
     Script.UnloadScript("Scripts/Manager/UIController.lua")
-    Script.UnloadScript("Scripts/Manager/BuildController.lua")
+    Script.UnloadScript("Scripts/Manager/ConstructionController.lua")
     Script.UnloadScript("Scripts/Manager/BuildingsManager.lua")
     Script.UnloadScript("Scripts/Manager/CCommandManager.lua")
+    Script.UnloadScript("Scripts/Util/Constants.lua")
 
     -- unload entity related scripts (which MUST be inside pak structure at least once)
     Script.UnloadScript("Scripts/Entities/BasicBuildingEntity.lua")
     Script.UnloadScript("Scripts/Entities/DynamicBuildingEntity.lua")
+    Script.UnloadScript("Scripts/Entities/CookingSpotEntity.lua")
+    Script.UnloadScript("Scripts/Entities/GeneratorEntity.lua")
+
+    Script.ReloadEntityScript("Scripts/Entities/BasicBuildingEntity.lua")
+    Script.ReloadEntityScript("Scripts/Entities/DynamicBuildingEntity.lua")
+    Script.ReloadEntityScript("Scripts/Entities/CookingSpotEntity.lua")
+    Script.ReloadEntityScript("Scripts/Entities/GeneratorEntity.lua")
 
     -- reload everything
     Script.ReloadScripts()
 
+    Script.ReloadEntityScript("Scripts/Entities/BasicBuildingEntity.lua")
     Script.ReloadEntityScript("Scripts/Entities/DynamicBuildingEntity.lua")
-    Script.ReloadEntityScript("Scripts/Entities/DynamicBuildingEntity.lua")
+    Script.ReloadEntityScript("Scripts/Entities/CookingSpotEntity.lua")
+    Script.ReloadEntityScript("Scripts/Entities/GeneratorEntity.lua")
+
+    Script.ReloadScript("Scripts/Util/Constants.lua")
 
 end
 

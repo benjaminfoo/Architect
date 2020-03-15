@@ -1,8 +1,8 @@
 <img src="/Data/Docs/architect.png">  
 
-# Kingdom Come Deliverance Modification - Architect
+# KCD - Architect
  
-A base-building modification for Kingdom Come Deliverance by Warhorse Studios.
+A base-building modification for Kingdom Come Deliverance.
 
 This modification adds base-building mechanics to the existing game by providing the ability to create constructions
 within the games world (its not possible to remove existing structures).
@@ -77,11 +77,13 @@ However, one could add models / cgfs from the assets  on its own, the currently 
 listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Scripts/Manager/BuildingsManager.lua
 
 
-Planned features
+##### Planned features
 This is a list of planned features for later development - this will take some time however:
 - useable objects like beds, chairs, etc.
+- spawn dynamic entities like npcs, item
+- define custom entities
 - resource / cost management
-- spawn dynamic entities like npcs, items,
+
 
 
 
@@ -91,7 +93,8 @@ Your already created entities wont be affected.
 
 v0.5a
 - added useable entities (like chairs, benches, beds, etc.)
-- refactored project, upgraded entity-model, controller, utils, etc.
+- added custom actions and new entities (generator, cooking)
+- refactored project, upgraded entity-model, controller, utils, documentation etc.
 - removed invalid references from assets
 
 v0.4b
@@ -117,4 +120,10 @@ v0.1
 - basic functionality
 - construct and deconstruct buildings
 - mock-api 
+
+##### Thanks / Credits / Links 
+- [Warhorse Studios](https://warhorsestudios.cz) for making such a great game, engine & sdk
+- Modding community on [nexus](https://www.nexusmods.com/kingdomcomedeliverance) and discord
+- Huge thanks to the existing mods like [ogp](https://www.nexusmods.com/kingdomcomedeliverance/mods/121), [SimCamping](https://www.nexusmods.com/kingdomcomedeliverance/mods/881) & [cheat](https://www.nexusmods.com/kingdomcomedeliverance/mods/106?tab=posts)
+
 

@@ -339,6 +339,12 @@ parameterizedConstructions = {
 
     --     { modelPath = "", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
+    -- cooking spots, generators (use x to make y)
+    { modelPath = "objects/structures/bread_oven/bread_oven_01.cgf", sitable = false, useable = false, saveable = false, cookable = true, sleepable = false },
+    { modelPath = "objects/structures/bread_oven/bread_oven_02.cgf", sitable = false, useable = false, saveable = false, cookable = true, sleepable = false },
+    { modelPath = "objects/structures/bread_oven/bread_oven_indoor.cgf", sitable = false, useable = false, saveable = false, cookable = true, sleepable = false },
+
+    -- furniture - beds
     { modelPath = "objects/props/furniture/beds/bed_cottage_01.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = true },
     { modelPath = "objects/props/furniture/beds/bed_castle_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = true },
     { modelPath = "objects/props/furniture/beds/bed_castle_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = true },
@@ -346,7 +352,7 @@ parameterizedConstructions = {
     { modelPath = "objects/props/furniture/beds/bed_forest_1.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = true },
     { modelPath = "objects/props/furniture/beds/bed_infirmarium_01.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = true },
 
-
+    -- furniture - seats, chairs and benches
     { modelPath = "objects/props/furniture/chairs_benches/chair_fancy.cgf", sitable = true, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/furniture/chairs_benches/bench_10_chair.cgf", sitable = true, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/furniture/chairs_benches/bench_11_long.cgf", sitable = true, useable = false, saveable = false, cookable = false, sleepable = false },
@@ -358,34 +364,33 @@ parameterizedConstructions = {
     { modelPath = "objects/props/furniture/chairs_benches/village_bench140_02bright.cgf", sitable = true, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/furniture/chairs_benches/village_bench140_02dark.cgf", sitable = true, useable = false, saveable = false, cookable = false, sleepable = false },
 
-
+    -- furniture - tables
     { modelPath = "objects/props/furniture/tables/table_cottage/table_cottage160_01brigh.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/furniture/tables/table_cooking/table_cooking.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/furniture/tables/table_cooking/table_cooking_02.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
+
     --[[
+        -- spawned carpets are spawned too low initially, needs an offset
         { modelPath = "objects/props/carpet/carpet_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
         { modelPath = "objects/props/carpet/carpet_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
         { modelPath = "objects/props/carpet/carpet_c.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
         { modelPath = "objects/props/.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     ]]
 
-    { modelPath = "objects/buildings/refugee_camp/camp_wood.cgf", sitable = true, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/buildings/refugee_camp/fireplace_empty.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/structures/bread_oven/bread_oven_01.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/structures/bread_oven/bread_oven_02.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/structures/bread_oven/bread_oven_indoor.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-
-    { modelPath = "objects/buildings/bath_tent/rataje_bathhouse.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/structures/tent_bath_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/structures/tent_bath_round_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-
+    -- surfaces
     { modelPath = "objects/structures/pillory/pillory_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/structures/pillory/pillory_c.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
-    { modelPath = "objects/props/poi/watchtower.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/buildings/palisade_vranik/vranik_palisade_inner_tower.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
+    -- outside - camp
+    { modelPath = "objects/buildings/refugee_camp/camp_wood.cgf", sitable = true, useable = false, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/buildings/refugee_camp/fireplace_empty.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+
+    -- tents
+    { modelPath = "objects/buildings/bath_tent/rataje_bathhouse.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/structures/tent_bath_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/structures/tent_bath_round_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
     { modelPath = "objects/structures/tent_cuman/tent_cuman_small_v1.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = true },
     { modelPath = "objects/structures/tent_cuman/tent_cuman_small_v4.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = true },
@@ -396,8 +401,14 @@ parameterizedConstructions = {
     { modelPath = "objects/structures/tent_cuman/tent_cuman_v6_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = true },
 
 
+    -- security - towers
+    { modelPath = "objects/props/poi/watchtower.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/buildings/palisade_vranik/vranik_palisade_inner_tower.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+
+    -- gardening / vegetation
     { modelPath = "objects/buildings/sazava_monastery/sm_garden_bed_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
+    -- gardening / flowers
     { modelPath = "objects/vegetation/trees/fagus_sylvatica/fagus_sylvatica_01.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/vegetation/trees/fagus_sylvatica/fagus_sylvatica_02.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/vegetation/trees/fagus_sylvatica/fagus_sylvatica_03.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
@@ -440,6 +451,7 @@ parameterizedConstructions = {
     { modelPath = "objects/vegetation/grass/grass_groups/trifolium_white_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/vegetation/grass/grass_groups/trifolium_white_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
+    -- gardening - bushes
     { modelPath = "objects/vegetation/bushes/berries/blackberry_bush_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/vegetation/bushes/berries/blackberry_bush_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/vegetation/bushes/berries/blueberry_bush_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
@@ -454,26 +466,31 @@ parameterizedConstructions = {
     { modelPath = "objects/vegetation/bushes/sambucus_nigra/sambucus_nigra_b_flowers.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/vegetation/bushes/rosa/rosa_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
+    -- buildings / sheds
     { modelPath = "objects/buildings/houses/shed/shed_01.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/buildings/houses/shed/shed_02.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/buildings/houses/shed/shed_03.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/buildings/houses/shed/shed_04.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/buildings/houses/shed/shed_06.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
+    -- buildings / barns
     { modelPath = "objects/buildings/houses/city_barn_02/city_barn_02_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/buildings/houses/city_barn_02/city_barn_02_part.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/buildings/houses/city_barn_03/city_barn_03.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
-    { modelPath = "Objects/structures/bridges/dock_wood_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+    -- props / bridges
     { modelPath = "Objects/structures/bridges/bridge_wooden_05.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "Objects/structures/bridges/bridge_wooden_04.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "Objects/structures/bridges/bridge_wooden_01.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "Objects/structures/mining_structures/mining_tunnel_sidewalk.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "Objects/buildings/sazava_podklasteri/pk_riser_wood.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "Objects/structures/bridges/dock_wood_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
+    -- props / stairs
     { modelPath = "Objects/vehicles/cart/wooden_curb_stairs.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "Objects/structures/stairs/wooden_stairs_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
+    -- walls / wooden palisades
     { modelPath = "objects/structures/wall_wooden/wall_wooden_palisade_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/structures/wall_wooden/wall_wooden_palisade_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/structures/wall_wooden/wall_wooden_palisade_c.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
@@ -484,12 +501,14 @@ parameterizedConstructions = {
     { modelPath = "Objects/structures/wall_wooden/wall_wooden_palisade_gate.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "Objects/buildings/churches/church_pribyslawitz/pribyslawitz_beam.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
+    -- smithery
     { modelPath = "objects/buildings/houses/smithery/anvil_small.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/buildings/houses/smithery/shelf_smithery.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/buildings/houses/smithery/smithery.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/buildings/houses/smithery/smithery_forge.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/buildings/houses/smithery/smithery_forge_v2.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
+    -- stairs
     { modelPath = "Objects/structures/stairs/stairs_stone.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "Objects/structures/stairs/stone_stairs_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "Objects/structures/stairs/stone_stairs_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
@@ -513,6 +532,7 @@ parameterizedConstructions = {
     { modelPath = "objects/buildings/sazava_monastery/furnace_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/buildings/sazava_monastery/furnace_c.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
+    -- tools
     { modelPath = "objects/props/tools/axe.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/tools/axe_big.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/tools/broom_01.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
@@ -535,25 +555,19 @@ parameterizedConstructions = {
     { modelPath = "objects/props/tools/stick.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/tools/tongs.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
+    -- lamps & torches
     { modelPath = "objects/props/misc/lamp/lamp_01.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/misc/lamp/lamp_02.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-
     { modelPath = "objects/props/misc/torches/torch01_long.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/misc/torches/torch_02.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
+    -- props / misc.
     { modelPath = "objects/props/misc/street_props/street_props_01.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/misc/street_props/street_props_02.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/misc/street_props/street_props_03.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/misc/street_props/street_props_04.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/misc/street_props/street_props_05.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/misc/street_props/street_props_06.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-
-    { modelPath = "objects/props/groups_of_stuff/group_wood_wall_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/props/groups_of_stuff/group_wood_wall_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/props/groups_of_stuff/group_wood_wall_c.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/props/groups_of_stuff/group_wood_wall_d.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/props/groups_of_stuff/group_wood_wall_e.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/props/groups_of_stuff/group_wood_wall_f.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
     { modelPath = "objects/props/groups_of_stuff/group_woodshed_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/groups_of_stuff/group_woodshed_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },

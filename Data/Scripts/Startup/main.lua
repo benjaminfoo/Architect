@@ -23,7 +23,7 @@ Script.ReloadScript("Scripts/Manager/BuildingsManager.lua")
 Script.ReloadScript("Scripts/Manager/EventManager.lua")
 
 -- load the core api of the project
-Script.ReloadScript("Scripts/Manager/BuildController.lua")
+Script.ReloadScript("Scripts/Manager/ConstructionController.lua")
 
 -- load external key bindings
 System.ExecuteCommand( 'exec Mods/architect/keybinds.cfg' )

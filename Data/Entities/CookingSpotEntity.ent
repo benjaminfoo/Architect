@@ -1,0 +1,4 @@
+<Entity
+        Name="CookingSpotEntity"
+        Script="Scripts/Entities/CookingSpotEntity.lua"
+/>
