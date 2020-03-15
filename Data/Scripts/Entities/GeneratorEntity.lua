@@ -2,13 +2,13 @@
 --- Created by Benjamin Foo
 --- DateTime: 04.03.2020 23:09
 ---
---- The DynamicBuildingEntity is the common parent type for constructions which offer some kind of functionality.
+--- The GeneratorEntity is the common parent type for constructions which generate some kind of resource.
 ---
---- For example, a bed provides the ability to sleep, a chair provides the ability to sit, etc.
+--- For example: TODO :)
 ---
 Script.ReloadScript("scripts/Utils/EntityUtils.lua")
 
-DynamicBuildingEntity = {
+GeneratorEntity = {
     Client = {},
     Server = {},
     Properties = {
@@ -96,7 +96,7 @@ local Physics_DX9MP_Simple = {
     Mass = 0,
 
 }
-function DynamicBuildingEntity:OnSpawn()
+function GeneratorEntity:OnSpawn()
     if (self.Properties.MultiplayerOptions.bNetworked == 0) then
         self:SetFlags(ENTITY_FLAG_CLIENT_ONLY, 0);
     end
@@ -105,7 +105,7 @@ function DynamicBuildingEntity:OnSpawn()
 
     self:SetFromProperties();
 end
-function DynamicBuildingEntity:SetFromProperties()
+function GeneratorEntity:SetFromProperties()
     local Properties = self.Properties;
 
     if (Properties.object_Model == "") then
@@ -129,7 +129,7 @@ function DynamicBuildingEntity:SetFromProperties()
         self:SetFlags(ENTITY_FLAG_TRIGGER_AREAS, 2);
     end
 end
-function DynamicBuildingEntity:SetupModel()
+function GeneratorEntity:SetupModel()
 
     local Properties = self.Properties;
 
@@ -145,7 +145,7 @@ function DynamicBuildingEntity:SetupModel()
     self:SetViewDistUnlimited()
 end
 
-function DynamicBuildingEntity:OnLoad(table)
+function GeneratorEntity:OnLoad(table)
     self.health = table.health;
     self.dead = table.dead;
     self.object_Model = table.object_Model;
@@ -167,7 +167,7 @@ function DynamicBuildingEntity:OnLoad(table)
 
 end
 
-function DynamicBuildingEntity:OnSave(table)
+function GeneratorEntity:OnSave(table)
     table.health = self.health;
     table.dead = self.dead;
     table.object_Model = self.Properties.object_Model;
@@ -176,7 +176,7 @@ function DynamicBuildingEntity:OnSave(table)
     System.LogAlways("Persisting Entity.object_model: " .. table.object_Model)
 
 end
-function DynamicBuildingEntity:IsRigidBody()
+function GeneratorEntity:IsRigidBody()
     local Properties = self.Properties;
     local Mass = Properties.Mass;
     local Density = Properties.Density;
@@ -185,14 +185,14 @@ function DynamicBuildingEntity:IsRigidBody()
     end
     return true;
 end
-function DynamicBuildingEntity:PhysicalizeThis()
+function GeneratorEntity:PhysicalizeThis()
     local Physics = self.Properties.Physics;
     if (CryAction.IsImmersivenessEnabled() == 0) then
         Physics = Physics_DX9MP_Simple;
     end
     EntityCommon.PhysicalizeRigid(self, 0, Physics, self.bRigidBodyActive);
 end
-function DynamicBuildingEntity:OnPropertyChange()
+function GeneratorEntity:OnPropertyChange()
     if (self.__usable) then
         if (self.__origUsable ~= self.Properties.bUsable or self.__origPickable ~= self.Properties.bPickable) then
             self.__usable = nil;
@@ -200,7 +200,7 @@ function DynamicBuildingEntity:OnPropertyChange()
     end
     self:SetFromProperties();
 end
-function DynamicBuildingEntity:OnReset()
+function GeneratorEntity:OnReset()
     System.LogAlways("OnReset entity ...")
 
     self:ResetOnUsed();
@@ -212,14 +212,14 @@ function DynamicBuildingEntity:OnReset()
         self:AwakePhysics(0);
     end
 end
-function DynamicBuildingEntity:Event_Remove()
+function GeneratorEntity:Event_Remove()
     System.LogAlways("Removing entity ...")
 
     self:DrawSlot(0, 0);
     self:DestroyPhysics();
     self:ActivateOutput("Remove", true);
 end
-function DynamicBuildingEntity:Event_Hide()
+function GeneratorEntity:Event_Hide()
     System.LogAlways("Hiding entity ...")
     self:Hide(1);
     self:ActivateOutput("Hide", true);
@@ -227,7 +227,7 @@ function DynamicBuildingEntity:Event_Hide()
         Log("%.3f %s %s : Event_Hide", _time, CurrentCinematicName, self:GetName());
     end
 end
-function DynamicBuildingEntity:Event_UnHide()
+function GeneratorEntity:Event_UnHide()
     System.LogAlways("Unhiding entity ...")
     self:Hide(0);
     self:ActivateOutput("UnHide", true);
@@ -235,18 +235,18 @@ function DynamicBuildingEntity:Event_UnHide()
         Log("%.3f %s %s : Event_UnHide", _time, CurrentCinematicName, self:GetName());
     end
 end
-function DynamicBuildingEntity:Event_Ragdollize()
+function GeneratorEntity:Event_Ragdollize()
     self:RagDollize(0);
     self:ActivateOutput("Ragdollized", true);
     if (self.Event_RagdollizeDerived) then
         self:Event_RagdollizeDerived();
     end
 end
-function DynamicBuildingEntity.Client:OnPhysicsBreak(vPos, nPartId, nOtherPartId)
+function GeneratorEntity.Client:OnPhysicsBreak(vPos, nPartId, nOtherPartId)
     self:ActivateOutput("Break", nPartId + 1);
 end
 
-function DynamicBuildingEntity:IsUsable(user)
+function GeneratorEntity:IsUsable(user)
     local ret = nil
     if not self.__usable then
         self.__usable = self.Properties.bUsable
@@ -269,7 +269,7 @@ function DynamicBuildingEntity:IsUsable(user)
     return ret or 0
 end
 
-function DynamicBuildingEntity:IsUsableByPlayer(user)
+function GeneratorEntity:IsUsableByPlayer(user)
 
     local myDirection = g_Vectors.temp_v1;
     local vecToPlayer = g_Vectors.temp_v2;
@@ -289,7 +289,7 @@ function DynamicBuildingEntity:IsUsableByPlayer(user)
     return false;
 end
 
-function DynamicBuildingEntity:GetActions(user, firstFast)
+function GeneratorEntity:GetActions(user, firstFast)
     output = {}
     local sleepPrompt = EntityModule.WillSleepingOnThisBedSave(self.id) and "@ui_hud_sleep_and_save" or "@ui_hud_sleep";
     if (self:IsUsableByPlayer(user)) then
@@ -305,19 +305,19 @@ function DynamicBuildingEntity:GetActions(user, firstFast)
     return output
 end
 
-function DynamicBuildingEntity:OnUsed(user)
+function GeneratorEntity:OnUsed(user)
     if (self.Properties.Script.esBedTypes == 'normal' or self.Properties.Script.esBedTypes == 'bench' or (user.player and user.player.CanSleepAndReportProblem())) then
         XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(self)) .. "), mode ('use')")
     end
 end
 
-function DynamicBuildingEntity:OnUsedHold(user)
+function GeneratorEntity:OnUsedHold(user)
     if (user.player and user.player.CanSleepAndReportProblem()) then
         XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(self)) .. "), mode ('use'), behavior('player_use_sleep')")
     end
 end
 
-function DynamicBuildingEntity:GetReadingQuality()
+function GeneratorEntity:GetReadingQuality()
 
     local str = self.Properties.Bed.esReadingQuality;
 
@@ -338,7 +338,7 @@ function DynamicBuildingEntity:GetReadingQuality()
     end
 end
 
-function DynamicBuildingEntity:GetSleepQuality()
+function GeneratorEntity:GetSleepQuality()
 
     local str = self.Properties.Bed.esSleepQuality;
 
@@ -355,16 +355,16 @@ function DynamicBuildingEntity:GetSleepQuality()
     end
 end
 
-DynamicBuildingEntity.FlowEvents = {
+GeneratorEntity.FlowEvents = {
     Inputs = {
-        Used = { DynamicBuildingEntity.Event_Used, "bool" },
-        EnableUsable = { DynamicBuildingEntity.Event_EnableUsable, "bool" },
-        DisableUsable = { DynamicBuildingEntity.Event_DisableUsable, "bool" },
+        Used = { GeneratorEntity.Event_Used, "bool" },
+        EnableUsable = { GeneratorEntity.Event_EnableUsable, "bool" },
+        DisableUsable = { GeneratorEntity.Event_DisableUsable, "bool" },
 
-        Hide = { DynamicBuildingEntity.Event_Hide, "bool" },
-        UnHide = { DynamicBuildingEntity.Event_UnHide, "bool" },
-        Remove = { DynamicBuildingEntity.Event_Remove, "bool" },
-        Ragdollize = { DynamicBuildingEntity.Event_Ragdollize, "bool" },
+        Hide = { GeneratorEntity.Event_Hide, "bool" },
+        UnHide = { GeneratorEntity.Event_UnHide, "bool" },
+        Remove = { GeneratorEntity.Event_Remove, "bool" },
+        Ragdollize = { GeneratorEntity.Event_Ragdollize, "bool" },
     },
     Outputs = {
         Used = "bool",
@@ -379,11 +379,11 @@ DynamicBuildingEntity.FlowEvents = {
     },
 }
 
-MakeUsable(DynamicBuildingEntity);
-MakePickable(DynamicBuildingEntity);
-AddHeavyObjectProperty(DynamicBuildingEntity);
-AddInteractLargeObjectProperty(DynamicBuildingEntity);
-SetupCollisionFiltering(DynamicBuildingEntity);
+MakeUsable(GeneratorEntity);
+MakePickable(GeneratorEntity);
+AddHeavyObjectProperty(GeneratorEntity);
+AddInteractLargeObjectProperty(GeneratorEntity);
+SetupCollisionFiltering(GeneratorEntity);
 
 
 

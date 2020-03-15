@@ -1,39 +1,37 @@
-<img src="/Data/Docs/architect.png">  
+ Kingdom Come Deliverance Modification - Architect
 
-# Kingdom Come Deliverance Modification - Architect
- 
 A base-building modification for Kingdom Come Deliverance by Warhorse Studios.
 
-This modification adds base-building mechanics to the existing game by providing the ability to create constructions
-within the games world (its not possible to remove existing structures).
+This modification adds base-building mechanics to the game by providing the ability to create constructions
+within the games world (its not possible to remove already existing structures).
 
-The player can spawn anything from simple props, flora & fauna, trees, sheds, houses, walls, towers, etc. (see how to add custom entities)
+The player can spawn anything from simple props, flora & fauna, trees, sheds, houses, walls, towers, etc. (see how to add custom entities).
 
 Constructions are saved across your savegames - there is no new save required.
 
 Its also safe to remove the mod at any time (however - if you've already created something within the game, without
-deleting it then, the entity stays in the game. Use **#deleteall()** within the ingame-console to clean up your scene.) 
+deleting it then, the entity stays in the game. Use #deleteall() within the ingame-console to clean up your scene.).
 
-## Installation
+
+Installation
 Download the latest release, unzip the archive into your `KingdomComeDeliverance\mods`-folder.
 If the installation was succesful you'll see the instructions-message on how to use the mod when the game has been started (and a savegame loaded or a new game hast been created).
 
 You need to start the game with devmode enabled (the modification won't work otherwise apparently).
+You can do this by creating a shortcut of the KingdomCome.exe and append '-devmode' on it, you could also use steam:
+-> right click on kingdom come in your steam library -> Properties ->  General, set launch options -> and add "-devmode".
 
-You can do this by creating a shortcut of the KingdomCome.exe and append '_-devmode_' on it, you could also use steam:\
-_-> right click on kingdom come in your steam library -> Properties ->  General, set launch options -> and add "-devmode"_.
+In your OS:
+C:\dev\Steam\steamapps\common\KingdomComeDeliverance\Bin\Win64\KingdomCome.exe -devmode
 
-**In your OS / explorer / shell:**\
-`C:\dev\Steam\steamapps\common\KingdomComeDeliverance\Bin\Win64\KingdomCome.exe -devmode
-`
 
-## Usage / Keys
+Usage / Keys
 These keys can be used to interact with the mod - they're also shown ingame.
 
-Choose the next construction (from 0 to 251)
+Choose the next construction (from 0 to ~200)
 Button: MouseWheel up
 
-Choose the previous construction (from 0 to 251)
+Choose the previous construction (from 0 to ~200)
 Button: MouseWheel down
 
 Create construction
@@ -43,9 +41,7 @@ Remove construction
 Button: G
 
 
-## Technical
-
-### Console commands
+Technical - Console commands
 The following list contains regular console commands
 
 - architect_help - show the help menu
@@ -56,47 +52,47 @@ The following list contains regular console commands
 - architect_recompileAll - reload the source-code of the project
 
 
-### Lua functions
-In order to execute a lua function, you have to prepend a '#'-character to execute it
+Technical - Lua functions
+In order to execute a lua function, you have to prepend a '#'-character to execute it (
+
 - reloadall() - Reloads the source files of the modification
 - rayCastHit() - Use a raycast to determine entities in front of the player
 - deleteall() - Deletes ALL constructions youve build
-- showall()   - Lists all constructions to the ingame console
-- deleteAt(index)() - Delete the construction with the number "index" (use #showall())
+- showall()  -  Lists all constructions to the ingame console
+- deleteAt(index) - Delete the construction with the number "index" (use #showall())
 
 
-### HowTo
-##### Change default key-bindings
+HowTo / FAQ
+Change default key-bindings
 The `keybinds.cfg` file contains all keybindings used in the project - change it to a key or a controller button as you like.
 
-##### Add new constructions to the selection, remove constructions
-Not every asset is referenced in the project, because some are not suitable (split into multiple parts which would be a 
+Add new constructions to the selection, remove constructions
+Not every asset is referenced in the project, because some are not suitable (split into multiple parts which would be a
 pain to position by hand, some are graphical effects, some are too large to be positioned by the player, etc.).
 
-However, one could add models / cgfs from the assets  on its own, the currently used constructions are 
+However, one could add models / cgfs from the assets on its own, the currently used constructions are
 listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Scripts/Manager/BuildingsManager.lua
 
 
 Planned features
 This is a list of planned features for later development - this will take some time however:
-- useable objects like beds, chairs, etc.
 - resource / cost management
 - spawn dynamic entities like npcs, items,
-
+- useable objects like beds, chairs, etc.
 
 
 ### Changelog
-This is the list of changes - the version should be compatible to each other. 
+This is the list of changes - the version should be compatible to each other.
 Your already created entities wont be affected.
 
 v0.5a
 - added useable entities (like chairs, benches, beds, etc.)
-- refactored project, upgraded entity-model, controller, utils, etc.
+- refactored project, upgraded entity-model, etc.
 - removed invalid references from assets
 
 v0.4b
-- added option to rebind keys (look at the keybinds.cfg file to define your own keys) 
-- added further docs 
+- added option to rebind keys (look at the keybinds.cfg file to define your own keys)
+- added further docs
 
 v0.3b
 - added console commands
@@ -116,5 +112,5 @@ v0.1b
 v0.1
 - basic functionality
 - construct and deconstruct buildings
-- mock-api 
+- mock-api
 
