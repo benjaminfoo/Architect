@@ -2,8 +2,7 @@
 --- Created by Benjamin Foo
 --- DateTime: 04.03.2020 23:09
 ---
---- The BasicBuildingEntity is the common parent type for constructions within the application.
----
+--- The BasicBuildingEntity is the common parent type for static constructions for decoration purposes or ld.
 ---
 Script.ReloadScript("scripts/Utils/EntityUtils.lua")
 

@@ -10,8 +10,5 @@
     </dependencies>
   </info>
   <supports>
-		<!--
-		/!\ Do not fill, or the game will eventually *disable* this mod...
-		-->
   </supports>
 </kcd_mod>

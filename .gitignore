@@ -115,3 +115,6 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 /.idea/
+
+# We dont want to include releases within the project sources
+/Data/architect.pak

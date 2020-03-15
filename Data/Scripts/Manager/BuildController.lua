@@ -62,6 +62,7 @@ function rayCastHit()
     local hits = Physics.RayWorldIntersection(from, dir, 10, ent_all, skip, nil, hitData);
 
     if hits > 0 then
+        dump(hitData[1])
         return hitData[1];
     end
 
@@ -78,14 +79,18 @@ function SpawnBuildingInstance(line)
     if(hitData ~= nil) then
 
         local entity = hitData
-        System.LogAlways("Hit entity: " .. tostring(entity))
 
+        System.LogAlways("Hit entity: " .. tostring(entity))
 
         -- construct the entity and setup its parameters
         local spawnParams = {}
 
-        -- use the BasicBuildingEntity.lua as a class for this entity
+        -- use BasicBuildingEntity.lua as type for static constructions
         spawnParams.class = "BasicBuildingEntity"
+
+        -- use DynamicBuildingEntity.lua as type for constructions with any kind of functionality
+        -- spawnParams.class = "DynamicBuildingEntity"
+
 
         -- setup the position from the raycast hit
         spawnParams.position = entity.pos
@@ -97,17 +102,92 @@ function SpawnBuildingInstance(line)
         spawnParams.properties.bSerialize = 1 -- non-persistent
 
         -- use the input of %line if provided, else use the current building index for the selection of the building
+        --[[
         if(line ~= nil) then
             modelPath = line
         else
-            modelPath = buildings[bIndex]
+            modelPath = parameterizedConstructions[bIndex]
         end
-        spawnParams.properties.object_Model = modelPath
+        ]]
 
-        spawnParams.name = modelPath .. "_".. uuid()
+        construction = parameterizedConstructions[bIndex]
 
+        spawnParams.properties.object_Model = construction.modelPath
 
+        spawnParams.name = construction.modelPath .. "_" .. uuid()
+
+        if (construction.sitable) then
+            spawnParams.properties.guidSmartObjectType = "2320f814-8ec1-430d-860f-960286323dbc"
+            spawnParams.properties.soclasses_SmartObjectHelpers = "Bench_1Place_noTable"
+            spawnParams.properties.sWH_AI_EntityCategory = "Seat"
+        end
+
+        if (construction.sleepable) then
+
+            -- object_Model="Objects/props/furniture/beds/bed_cottage_01.cgf"
+
+            spawnParams.class = "DynamicBuildingEntity"
+
+            --[[
+            spawnParams.class = "Bed"
+            spawnParams.properties.sSittingTagGlobal="sittingNoTable"
+            spawnParams.properties.Script = { esBedTypes="ground", Misc="" }
+            spawnParams.properties.Physics= { CollisionFiltering= { collisionType= { }, collisionIgnore= {}}}
+
+            spawnParams.properties.soclasses_SmartObjectHelpers="CampBed"
+            spawnParams.properties.soclasses_SmartObjectClass=""
+            spawnParams.properties.Body= {guidClothingPresetId="0",guidBodyPrestId="0"}
+            spawnParams.properties.UseMessage=""
+            spawnParams.properties.sWH_AI_EntityCategory="Bed"
+            spawnParams.properties.bInteractiveCollisionClass=1
+            spawnParams.properties.object_Model="objects/buildings/refugee_camp/bad_straw.cgf"
+            spawnParams.properties.guidSmartObjectType="39012413-1895-4828-b202-b3835a78984d"
+            spawnParams.properties.esFaction=""
+            spawnParams.properties.MultiplayerOptions= {}
+            spawnParams.properties.Bed= {esSleepQuality="low", esReadingQuality="bed_ground"}
+
+            --]]
+        end
+
+        -- spawn the new entity
         local ent = System.SpawnEntity(spawnParams)
+
+        -- setup the spawned entity in the world
+        if construction.sitable then
+            ent.GetActions = function(user, firstFast)
+                output = {}
+                AddInteractorAction(output, firstFast, Action():hint("@ui_hud_sit"):action("use"):func(ent.OnUsed):interaction(inr_bedSleep):enabled(1))
+                return output
+            end
+            ent.OnUsed = function(user)
+                XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(ent)) .. "), mode ('use')")
+            end
+        end
+
+        if construction.sleepable then
+            --[[
+            ent.GetActions = function (user,firstFast)
+                output = {}
+                --local sleepPrompt = EntityModule.WillSleepingOnThisBedSave( self.id ) and "@ui_hud_sleep_and_save" or "@ui_hud_sleep";
+                AddInteractorAction( output, firstFast, Action():hint( "@ui_hud_sleep_and_save" ):action("use_bed"):func(ent.OnUsed):interaction(inr_bedSleep ):enabled(not ent.usedByNPC) )
+                return output
+            end
+            ent.OnUsed = function (user)
+                System.LogAlways("CampBed Used")
+                System.LogAlways("CampBed Used")
+
+                -- XGenAIModule.SendMessageToEntity( player.this.id, "player:request", "target("..Framework.WUIDToMsg( XGenAIModule.GetMyWUID(ent) ).."), behavior('bed_onRelease')" )
+                XGenAIModule.SendMessageToEntity( player.this.id, "player:request", "target("..Framework.WUIDToMsg( XGenAIModule.GetMyWUID(ent) ).."), mode ('use'), behavior('player_use_sleep')" )
+                --Game.SaveGameViaResting()
+            end
+            ent.OnUsedHold = function (user)
+                System.LogAlways("CampBed Used OnHold")
+            end
+            --Script.SetTimerForFunction(3000,"ent.SleepDelay")
+            ]]--
+        end
+
+
 
         -- setup the rotation of the spawned entity align the y-axis
         local up = player:GetAngles()
@@ -195,18 +275,17 @@ function bIndexInc()
     -- update the current building for the ui-controller
     -- TODO: refactor global variables from UIController to object instances
 
-    if bIndex < #buildings then
+    if bIndex < #parameterizedConstructions then
         bIndex = bIndex + 1
         l("Increment bIndex to " .. tostring(bIndex))
-
     end
 
     -- update the current building for the ui-controller
     -- TODO: refactor global variables from UIController to object instances
-    modelPath = buildings[bIndex]
+    modelPath = parameterizedConstructions[bIndex]
     res_current_model = modelPath;
 
-    Game.SendInfoText("Selected (" .. bIndex ..  "/" .. #buildings .. ")\n " .. tostring(res_current_model), true, nil, 1)
+    Game.SendInfoText("Selected (" .. bIndex .. "/" .. #parameterizedConstructions .. ")\n" .. tostring(parameterizedConstructions[bIndex].modelPath), true, nil, 1)
 
 end
 
@@ -227,10 +306,10 @@ function bIndexDec()
 
     -- update the current building for the ui-controller
     -- TODO: refactor global variables from UIController to object instances
-    modelPath = buildings[bIndex]
+    modelPath = parameterizedConstructions[bIndex]
     res_current_model = modelPath;
 
-    Game.SendInfoText("Selected (" .. bIndex ..  "/" .. #buildings .. ")\n " .. tostring(res_current_model), true, nil, 1)
+    Game.SendInfoText("Selected (" .. bIndex .. "/" .. #parameterizedConstructions .. ")\n" .. tostring(parameterizedConstructions[bIndex].modelPath), true, nil, 1)
 
 end
 
@@ -253,7 +332,22 @@ end
 
 -- reloads all scripts but is shorter to type into console
 function reloadall ()
+    -- unload all controller first
+    Script.UnloadScript("Scripts/Manager/UIController.lua")
+    Script.UnloadScript("Scripts/Manager/BuildController.lua")
+    Script.UnloadScript("Scripts/Manager/BuildingsManager.lua")
+    Script.UnloadScript("Scripts/Manager/CCommandManager.lua")
+
+    -- unload entity related scripts (which MUST be inside pak structure at least once)
+    Script.UnloadScript("Scripts/Entities/BasicBuildingEntity.lua")
+    Script.UnloadScript("Scripts/Entities/DynamicBuildingEntity.lua")
+
+    -- reload everything
     Script.ReloadScripts()
+
+    Script.ReloadEntityScript("Scripts/Entities/DynamicBuildingEntity.lua")
+    Script.ReloadEntityScript("Scripts/Entities/DynamicBuildingEntity.lua")
+
 end
 
 
