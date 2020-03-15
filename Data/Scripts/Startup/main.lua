@@ -4,6 +4,9 @@
 --- DateTime: 03.03.2020 01:01
 ---
 
+-- Load simple constants or runtime settings
+Script.ReloadScript("Scripts/Util/Constants.lua")
+
 -- load mathematical operations for lua
 Script.ReloadScript("Scripts/Math/linmath.lua")
 
@@ -22,9 +25,9 @@ Script.ReloadScript("Scripts/Manager/EventManager.lua")
 -- load the core api of the project
 Script.ReloadScript("Scripts/Manager/BuildController.lua")
 
--- load the core api of the project
+-- load external key bindings
 System.ExecuteCommand( 'exec Mods/architect/keybinds.cfg' )
 System.ExecuteCommand( 'exec Mods/architect_release/keybinds.cfg' )
 
 -- if this gets printed the mod should work :)
-System.LogAlways("kcd architect 0.4b - initialized!")
+System.LogAlways("architect " .. architect_version .. " - initialized!")

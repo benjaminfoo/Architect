@@ -5,8 +5,8 @@
 
 local Game = {}
 
-function Game.SendInfoText(string, boolean, any, number)
-    print("SendInfoText ... ")
+function Game.SendInfoText(shownMessage, bAbortCurrent, any, duration)
+    print("SendInfoText - called with: " .. showMessage)
 end
 
 return Game

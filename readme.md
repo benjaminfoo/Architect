@@ -65,6 +65,14 @@ listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Sc
 
 
 ### Changelog
+This is the list of changes - the version should be compatible to each other. 
+Your already created entities wont be affected.
+
+v0.5a
+- added useable entities (like chairs, benches, beds, etc.)
+- refactored project, upgraded entity-model, etc.
+- removed invalid references from assets
+
 v0.4b
 - added option to rebind keys (look at the keybinds.cfg file to define your own keys) 
 - added further docs 

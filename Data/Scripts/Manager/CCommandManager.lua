@@ -73,7 +73,7 @@ t = tostring
 
 function architect_help()
     System.LogAlways("")
-    System.LogAlways("architect modification v0.4b - initialized and loaded!");
+    System.LogAlways("architect modification " .. architect_version .. " - initialized and loaded!");
     System.LogAlways("")
     System.LogAlways("Commands:")
     System.LogAlways("architect_help        - Prints this message")

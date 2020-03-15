@@ -91,7 +91,6 @@ function SpawnBuildingInstance(line)
         -- use DynamicBuildingEntity.lua as type for constructions with any kind of functionality
         -- spawnParams.class = "DynamicBuildingEntity"
 
-
         -- setup the position from the raycast hit
         spawnParams.position = entity.pos
         spawnParams.orientation = { x = 0, y = 0, z = 1 }
@@ -123,30 +122,7 @@ function SpawnBuildingInstance(line)
         end
 
         if (construction.sleepable) then
-
-            -- object_Model="Objects/props/furniture/beds/bed_cottage_01.cgf"
-
             spawnParams.class = "DynamicBuildingEntity"
-
-            --[[
-            spawnParams.class = "Bed"
-            spawnParams.properties.sSittingTagGlobal="sittingNoTable"
-            spawnParams.properties.Script = { esBedTypes="ground", Misc="" }
-            spawnParams.properties.Physics= { CollisionFiltering= { collisionType= { }, collisionIgnore= {}}}
-
-            spawnParams.properties.soclasses_SmartObjectHelpers="CampBed"
-            spawnParams.properties.soclasses_SmartObjectClass=""
-            spawnParams.properties.Body= {guidClothingPresetId="0",guidBodyPrestId="0"}
-            spawnParams.properties.UseMessage=""
-            spawnParams.properties.sWH_AI_EntityCategory="Bed"
-            spawnParams.properties.bInteractiveCollisionClass=1
-            spawnParams.properties.object_Model="objects/buildings/refugee_camp/bad_straw.cgf"
-            spawnParams.properties.guidSmartObjectType="39012413-1895-4828-b202-b3835a78984d"
-            spawnParams.properties.esFaction=""
-            spawnParams.properties.MultiplayerOptions= {}
-            spawnParams.properties.Bed= {esSleepQuality="low", esReadingQuality="bed_ground"}
-
-            --]]
         end
 
         -- spawn the new entity
@@ -165,36 +141,15 @@ function SpawnBuildingInstance(line)
         end
 
         if construction.sleepable then
-            --[[
-            ent.GetActions = function (user,firstFast)
-                output = {}
-                --local sleepPrompt = EntityModule.WillSleepingOnThisBedSave( self.id ) and "@ui_hud_sleep_and_save" or "@ui_hud_sleep";
-                AddInteractorAction( output, firstFast, Action():hint( "@ui_hud_sleep_and_save" ):action("use_bed"):func(ent.OnUsed):interaction(inr_bedSleep ):enabled(not ent.usedByNPC) )
-                return output
-            end
-            ent.OnUsed = function (user)
-                System.LogAlways("CampBed Used")
-                System.LogAlways("CampBed Used")
 
-                -- XGenAIModule.SendMessageToEntity( player.this.id, "player:request", "target("..Framework.WUIDToMsg( XGenAIModule.GetMyWUID(ent) ).."), behavior('bed_onRelease')" )
-                XGenAIModule.SendMessageToEntity( player.this.id, "player:request", "target("..Framework.WUIDToMsg( XGenAIModule.GetMyWUID(ent) ).."), mode ('use'), behavior('player_use_sleep')" )
-                --Game.SaveGameViaResting()
-            end
-            ent.OnUsedHold = function (user)
-                System.LogAlways("CampBed Used OnHold")
-            end
-            --Script.SetTimerForFunction(3000,"ent.SleepDelay")
-            ]]--
         end
-
-
 
         -- setup the rotation of the spawned entity align the y-axis
         local up = player:GetAngles()
         up = { up.x, up.y, up.z }
         ent:SetAngles(up)
 
-        Game.SendInfoText("Constructing\n" .. tostring(ent:GetName()), true, nil, 1)
+        Game.SendInfoText("Constructing\n" .. tostring(ent:GetName()), true, nil, 2)
 
         -- undo / redo control, build history
         table.insert(builtEntities, ent)

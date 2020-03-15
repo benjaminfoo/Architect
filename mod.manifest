@@ -4,7 +4,7 @@
     <name>medieval architect</name>
     <description>Adds architecture / base-building elements to the game.</description>
     <author>Benjamin Foo</author>
-    <version>0.0.4b</version>
+    <version>0.0.5a</version>
     <created_on></created_on>
     <dependencies>
     </dependencies>
