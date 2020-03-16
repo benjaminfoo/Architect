@@ -118,10 +118,12 @@ fabric.properties
 
 # We dont want to include releases within the project sources
 /Data/architect.pak
+
 !/Data/Docs/pak_index/
-!/Data/Docs/architect.png
+
 !/Data/Docs/items_names_and_ids.txt
+
 !/Data/Docs/architect.xcf
 !/Data/Docs/architect_header.xcf
-!/Data/Docs/resources.ods
+
 !/Data/Docs/resources.ods

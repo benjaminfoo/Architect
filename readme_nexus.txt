@@ -1,4 +1,4 @@
- Kingdom Come Deliverance Modification - Architect
+KCD - Architect
 
 A base-building modification for Kingdom Come Deliverance by Warhorse Studios.
 
@@ -74,12 +74,13 @@ However, one could add models / cgfs from the assets on its own, the currently u
 listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Scripts/Manager/BuildingsManager.lua
 
 
-Planned features
+##### Planned features
 This is a list of planned features for later development - this will take some time however:
-- useable objects like beds, chairs, etc.
-- spawn dynamic entities like npcs, item
-- define custom entities
+- custom constructions, or existing constructions with custom actions / usages
+- define further custom entities
 - resource / cost management
+- spawn npcs
+- spawn items
 
 
 ### Changelog
@@ -89,8 +90,10 @@ Your already created entities wont be affected.
 v0.5a
 - added useable entities (like chairs, benches, beds, etc.)
 - added custom actions and new entities (generator, cooking)
+- added basic custom crafting system
 - refactored project, upgraded entity-model, controller, utils, documentation etc.
 - removed invalid references from assets
+- further removal of debug output which caused incompatibilities, tested compatibility with other mods
 
 v0.4b
 - added option to rebind keys (look at the keybinds.cfg file to define your own keys)
