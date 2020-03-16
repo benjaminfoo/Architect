@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <kcd_mod>
   <info>
-    <name>medieval architect</name>
+    <name>architect</name>
     <description>Adds architecture / base-building elements to the game.</description>
     <author>Benjamin Foo</author>
-    <version>0.0.5a</version>
+    <version>0.5.1a</version>
     <created_on></created_on>
     <dependencies>
     </dependencies>
