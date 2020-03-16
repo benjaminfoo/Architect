@@ -9,11 +9,11 @@ architect_init = {}
 
 function architect_init:uiActionListener(actionName, eventName, argTable)
 
-    System.LogAlways("actionName: " .. actionName)
-    System.LogAlways("eventName: " .. eventName)
+    -- System.LogAlways("actionName: " .. actionName)
+    -- System.LogAlways("eventName: " .. eventName)
 
     if argTable then
-        System.LogAlways("argTable: " .. tostring(eventName))
+        -- System.LogAlways("argTable: " .. tostring(eventName))
     end
 
     if actionName == "sys_loadingimagescreen" and eventName == "OnEnd" then

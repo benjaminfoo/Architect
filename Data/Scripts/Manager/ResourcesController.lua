@@ -4,14 +4,12 @@
 -- Calendar.GetGameTime()
 -- Returns game time (whole seconds from start of level)
 
-
-function getTime()
-    local gameTimeInSeconds = Calendar.GetWorldTime()
-    local days = math.floor(gameTimeInSeconds / TIME_DAY_DURATION)
-    local hours = (gameTimeInSeconds / TIME_HOURS * TIME_HOURS) % TIME_HOURS -- = 60 * 60 = 3600
-    local minutes = (gameTimeInSeconds / TIME_SECONDS) % TIME_MINUTES
-    local seconds = gameTimeInSeconds % TIME_SECONDS
-    local time = string.format("days=%.3d time=%.2d:%.2d:%.2d speed=%d paused=%s",
-            days, hours, minutes, seconds, Calendar.GetWorldTimeRatio(), tostring(Calendar.IsWorldTimePaused()))
+function GetCurrentTime()
+    local CURRENT_GAMETIME_IN_SECONDS = Calendar.GetWorldTime()
+    local CURRENT_DAYS = math.floor(CURRENT_GAMETIME_IN_SECONDS / TIME_DAY_DURATION)
+    local CURRENT_HOURS = (CURRENT_GAMETIME_IN_SECONDS / TIME_HOURS * TIME_HOURS) % TIME_HOURS -- = 60 * 60 = 3600
+    local CURRENT_MINUTES = (CURRENT_GAMETIME_IN_SECONDS / TIME_SECONDS) % TIME_MINUTES
+    local CURRENT_SECONDS = CURRENT_GAMETIME_IN_SECONDS % TIME_SECONDS
+    local time = string.format("Day 2d - %.2d:%.2d", CURRENT_DAYS, CURRENT_HOURS, CURRENT_MINUTES, CURRENT_SECONDS)
     log(time)
 end

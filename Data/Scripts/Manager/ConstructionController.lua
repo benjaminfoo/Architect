@@ -7,30 +7,6 @@
 
 builtEntities = {}
 
--- boolean for toggling the required files
--- if loading is enabled, load the mockup api for kcd
---- (true) useful for debug mode / standalone mode (with lua or luac) or ingame mode (=false)
--- require = built-in lua-reloading
--- Script.ReloadScript = kcd lua-reloading
-useRequireInsteadOfReload = false;
-
----- optional dependencies
-if useRequireInsteadOfReload then
-
-    -- loading mockup API of KCD
-    System = require("MockAPI/System")
-    Game = require("MockAPI/Game")
-    player = require("MockAPI/player")
-    Script = require("MockAPI/Script")
-    Physics = require("MockAPI/Physics")
-
-    linmath = require("linmath")
-else
-    Script.ReloadScript("Scripts/Math/linmath.lua")
-end
-
----- building / architecture / resources
-
 -- the current index of the building-selection
 -- the id of the next construction, gets incremented
 bIndex = 1
@@ -76,7 +52,9 @@ function removeItem(itemRemovedByClass, deleteAmount)
     end
 end
 
-availableResources = 10
+-- TODO: this is just a placeholder variable
+-- in order to execute crafting
+availableResources = 999
 
 -- spawn the currently selected entity with the current selection as modelpath
 function SpawnBuildingInstance(line)
@@ -162,6 +140,7 @@ function SpawnBuildingInstance(line)
                 AddInteractorAction(output, firstFast, Action():hint("Bake bread"):action("use"):func(ent.OnUsed):interaction(inr_chair):enabled(1))
                 return output
             end
+            -- executed when this entity has been used
             ent.OnUsed = function(user)
 
                 -- TODO: This is all in todo state!
@@ -196,7 +175,7 @@ function SpawnBuildingInstance(line)
                 -- 5e9b4fa1-aafa-4352-b5d6-58df2c263caa : Nettle
                 local recipeName = "Bread"
                 local costUUIDs = "5e9b4fa1-aafa-4352-b5d6-58df2c263caa"
-                local costAmount = 5
+                local costAmount = 1
                 local costResource = "Nettle"
 
 
@@ -221,10 +200,11 @@ function SpawnBuildingInstance(line)
                     newItemInstance = ItemManager.CreateItem(craftedResourceUUID, 100, craftedAmount)
                     player.inventory:AddItem(newItemInstance);
 
-                    Game.SendInfoText("Created " .. craftedAmount .. "x " .. recipeName .. " for " .. costAmount .. "x " .. costResource, true, nil, 2)
+                    Game.SendInfoText("Created " .. craftedAmount .. "x " .. recipeName .. " for " .. costAmount .. "x " .. costResource
+                            .. "\n" .. "" .. costResource .. " left: " .. tostring(availableResources), true, nil, 3)
                 else
                     -- If there arent enough resources available than needed, abort this
-                    Game.SendInfoText("Not enough resources for " .. craftedAmount .. "x " .. recipeName, true, nil, 2)
+                    Game.SendInfoText("Not enough resources for " .. craftedAmount .. "x " .. recipeName, true, nil, 3)
                 end
 
                 XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(ent)) .. "), mode ('use')")

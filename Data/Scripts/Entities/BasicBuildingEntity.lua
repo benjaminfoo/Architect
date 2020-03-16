@@ -4,7 +4,7 @@
 ---
 --- The BasicBuildingEntity is the common parent type for static constructions for decoration purposes or ld.
 ---
-Script.ReloadScript("scripts/Utils/EntityUtils.lua")
+-- Script.ReloadScript("scripts/Utils/EntityUtils.lua")
 
 BasicBuildingEntity = {
     Client = {},
@@ -93,8 +93,8 @@ function BasicBuildingEntity:SetupModel()
 
     local Properties = self.Properties;
 
-    System.LogAlways("SetupModel")
-    System.LogAlways("self.Properties.object_model: " .. Properties.object_Model)
+    -- System.LogAlways("SetupModel")
+    -- System.LogAlways("self.Properties.object_model: " .. Properties.object_Model)
     -- System.LogAlways("self.Properties.object_model: " .. Properties.object_Model)
 
     self:LoadObject(0, Properties.object_Model);
@@ -113,8 +113,8 @@ function BasicBuildingEntity:OnLoad(table)
     local Properties = self.Properties;
     Properties.object_Model = table.object_Model;
 
-    System.LogAlways("Loading")
-    System.LogAlways("Persisted_Entity.object_model: " .. table.object_Model)
+    -- System.LogAlways("Loading")
+    -- System.LogAlways("Persisted_Entity.object_model: " .. table.object_Model)
 
     -- load the persisted model path from the save file
     self:LoadObject(0, table.object_Model)
@@ -132,8 +132,8 @@ function BasicBuildingEntity:OnSave(table)
     table.dead = self.dead;
     table.object_Model = self.Properties.object_Model;
 
-    System.LogAlways("Saving")
-    System.LogAlways("Persisting Entity.object_model: " .. table.object_Model)
+    -- System.LogAlways("Saving")
+    -- System.LogAlways("Persisting Entity.object_model: " .. table.object_Model)
 
 end
 function BasicBuildingEntity:IsRigidBody()

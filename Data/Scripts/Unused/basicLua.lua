@@ -16,40 +16,40 @@ print("}")
 ]]
 
 --[[
-BuiltEntity = {
-    modelPath = 0,
-    name = "",
-    resourcesCost = {
-        wood = 10,
-        stone = 5
+    BuiltEntity = {
+        modelPath = 0,
+        name = "",
+        resourcesCost = {
+            wood = 10,
+            stone = 5
+        }
     }
-}
 
-Account = {
-    balance=0,
-    withdraw = function (self, v)
-        self.balance = self.balance - v
+    Inventory = {
+        balance=0,
+        withdraw = function (self, v)
+            self.balance = self.balance - v
+        end
+    }
+
+    function Inventory:deposit (v)
+        self.balance = self.balance + v
     end
-}
 
-function Account:deposit (v)
-    self.balance = self.balance + v
-end
+    Inventory.deposit(Inventory, 200.00)
+    Inventory:withdraw(100.00)
+    function Inventory:new (o)
+        o = o or {}
+        setmetatable(o, self)
+        self.__index = self
+        return o
+    end
 
-Account.deposit(Account, 200.00)
-Account:withdraw(100.00)
-function Account:new (o)
-    o = o or {}   -- create object if user does not provide one
-    setmetatable(o, self)
-    self.__index = self
-    return o
-end
+    a = Inventory:new{balance = 0}
+    a:deposit(100.00)
 
-a = Account:new{balance = 0}
-a:deposit(100.00)
+    print(a.balance)
 
-print(a.balance)
-
-a:withdraw(25)
-print(a.balance)
+    a:withdraw(25)
+    print(a.balance)
 ]]

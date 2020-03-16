@@ -14,6 +14,8 @@ Constructions are saved across your savegames - there is no new save required.
 Its also safe to remove the mod at any time (however - if you've already created something within the game, without
 deleting it then, the entity stays in the game. Use **#deleteall()** within the ingame-console to clean up your scene.) 
 
+Note: As always, make a backup of your saved games before doing anything else
+
 ## Installation
 Download the latest release, unzip the archive into your `KingdomComeDeliverance\mods`-folder.
 If the installation was succesful you'll see the instructions-message on how to use the mod when the game has been started (and a savegame loaded or a new game hast been created).
@@ -30,17 +32,17 @@ _-> right click on kingdom come in your steam library -> Properties ->  General,
 ## Usage / Keys
 These keys can be used to interact with the mod - they're also shown ingame.
 
-Choose the next construction (from 0 to 251)
+Choose the next construction (from 0 to ~200) \
 Button: MouseWheel up
 
-Choose the previous construction (from 0 to 251)
+Choose the previous construction (from 0 to ~200) \
 Button: MouseWheel down
 
-Create construction
-Button: V
+Create a new construction \
+Key V
 
-Remove construction
-Button: G
+Remove an newly created construction \
+Key G
 
 
 ## Technical
@@ -77,14 +79,14 @@ However, one could add models / cgfs from the assets  on its own, the currently 
 listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Scripts/Manager/BuildingsManager.lua
 
 
+
 ##### Planned features
 This is a list of planned features for later development - this will take some time however:
-- useable objects like beds, chairs, etc.
-- spawn dynamic entities like npcs, item
-- define custom entities
+- custom constructions, or existing constructions with custom actions / usages
+- define further custom entities
 - resource / cost management
-
-
+- spawn npcs
+- spawn items
 
 
 ### Changelog
@@ -94,9 +96,9 @@ Your already created entities wont be affected.
 v0.5a
 - added useable entities (like chairs, benches, beds, etc.)
 - added custom actions and new entities (generator, cooking)
+- added basic custom crafting system  
 - refactored project, upgraded entity-model, controller, utils, documentation etc.
 - removed invalid references from assets
-- ensured compatibility with other mods
 
 v0.4b
 - added option to rebind keys (look at the keybinds.cfg file to define your own keys) 

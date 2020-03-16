@@ -13,10 +13,10 @@ Script.ReloadScript("Scripts/Math/linmath.lua")
 -- load utility methods for development
 Script.ReloadScript("Scripts/Util/Utils.lua")
 
--- load the console-commands
+-- load the console-commands manager
 Script.ReloadScript("Scripts/Manager/CCommandManager.lua")
 
--- define the constructable buildings of the player
+-- load the buildings-manager
 Script.ReloadScript("Scripts/Manager/BuildingsManager.lua")
 
 -- add event-handlers for common in-game events

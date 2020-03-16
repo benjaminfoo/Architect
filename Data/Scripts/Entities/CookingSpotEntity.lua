@@ -44,7 +44,7 @@ CookingSpotEntity = {
         UseMessage = "",
         sWH_AI_EntityCategory = "",
         bInteractiveCollisionClass = 1,
-        object_Model = "objects/buildings/refugee_camp/bad_straw.cgf",
+        object_Model = "",
         guidSmartObjectType = "",
         esFaction = "",
         MultiplayerOptions = {},
@@ -268,17 +268,59 @@ end
 
 function CookingSpotEntity:GetActions(user, firstFast)
     output = {}
-    AddInteractorAction(output, firstFast, Action():hint("Bake bread"):action("use"):func(selfi.OnUsed):interaction(inr_chair):enabled(1))
+    -- AddInteractorAction(output, firstFast, Action():hint("Bake bread"):action("use"):func(self.OnUsed):interaction(inr_chair):enabled(1))
+    AddInteractorAction(output, firstFast, Action():hint("Bake bread"):action("use"):func(ent.OnUsed):interaction(inr_chair):enabled(1))
+
     return output
 end
 
 function CookingSpotEntity:OnUsed(user)
-    -- System.LogAlways("Hello World! this has been used!")
-    -- XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target("..Framework.WUIDToMsg( XGenAIModule.GetMyWUID(self) ).."), mode ('use')" )
+
+
+    -- This is only a prototype
+    -- TODO: define needed resources for newly crafted items
+    -- TODO: define dynamic amounts for recipes and results
+
+    -- 5e9b4fa1-aafa-4352-b5d6-58df2c263caa : Nettle
+    local recipeName = "Bread"
+    local costUUIDs = "5e9b4fa1-aafa-4352-b5d6-58df2c263caa"
+    local costAmount = 1
+    local costResource = "Nettle"
+
+
+
+    -- bread:  86e4ff24-88db-4024-abe6-46545fa0fbd1
+    local craftedResourceUUID = "86e4ff24-88db-4024-abe6-46545fa0fbd1"
+    local craftedAmount = 1
+    local playerTable = "player_item"
+
+    -- 1. Check if costs are covered for creating the construction
+    if (availableResources - costAmount >= 0) then
+
+        -- 2. Remove costs from inventory
+        removeItem(costUUIDs, costAmount)
+
+        -- this is for debugging purposes - this should work two times
+        availableResources = availableResources - costAmount
+
+        resultSuccess = Database.LoadTable(playerTable)
+
+        -- 3. Create new item instance, add to inventory
+        newItemInstance = ItemManager.CreateItem(craftedResourceUUID, 100, craftedAmount)
+        player.inventory:AddItem(newItemInstance);
+
+        Game.SendInfoText("Created " .. craftedAmount .. "x " .. recipeName .. " for " .. costAmount .. "x " .. costResource
+                .. "\n" .. "" .. costResource .. " left: " .. tostring(availableResources), true, nil, 3)
+    else
+        -- If there arent enough resources available than needed, abort this
+        Game.SendInfoText("Not enough resources for " .. craftedAmount .. "x " .. recipeName, true, nil, 3)
+    end
+
+    XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(ent)) .. "), mode ('use')")
 end
 
 function CookingSpotEntity:OnUsedHold(user)
-    -- System.LogAlways("Hello World! this has been used!")
+    -- System.LogAlways("Hello World! this entity has been used!")
     -- XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(self)) .. "), mode ('use'), behavior('player_use_sleep')")
 end
 
@@ -311,168 +353,3 @@ MakePickable(CookingSpotEntity);
 AddHeavyObjectProperty(CookingSpotEntity);
 AddInteractLargeObjectProperty(CookingSpotEntity);
 SetupCollisionFiltering(CookingSpotEntity);
-
-
-
-
---[[
-function Bed:GetReadingQuality()
-
-   local str = self.Properties.Bed.esReadingQuality;
-
-   if str=="none" then
-       return 0;
-   elseif str=="bed_ground" then
-       return 1;
-   elseif str=="bed" then
-       return 3;
-   elseif str=="bed_exceptional" then
-       return 4;
-   elseif str=="bench_table" then
-       return 5;
-   elseif str=="bench_notable" then
-       return 6;
-   else
-       return 0;
-   end
-end
-function Bed.Client:OnInit()
-   self:SetFlags(ENTITY_FLAG_CLIENT_ONLY,0);
-end
-
-function Bed.Server:OnInit()
-   self:SetFlags(ENTITY_FLAG_CLIENT_ONLY,0);
-end
-function Bed.Client:OnPhysicsBreak( vPos,nPartId,nOtherPartId )
-   self:ActivateOutput("Break",nPartId+1 );
-end
-function Bed:Event_Remove()
-   self:DrawSlot(0,0);
-   self:DestroyPhysics();
-   self:ActivateOutput( "Remove", true );
-end
-function Bed:Event_Hide()
-   self:Hide(1);
-   self:ActivateOutput( "Hide", true );
-end
-function Bed:Event_UnHide()
-   self:Hide(0);
-   self:ActivateOutput( "UnHide", true );
-end
-
-function Bed:OnLoad(table)
-   self.health = table.health;
-   self.dead = table.dead;
-   if(table.bAnimateOffScreenShadow) then
-       self.bAnimateOffScreenShadow = table.bAnimateOffScreenShadow;
-   else
-       self.bAnimateOffScreenShadow = false;
-   end
-   self.usedByNPC = nil
-end
-
-function Bed:OnSave(table)
-   table.health = self.health;
-   table.dead = self.dead;
-   if(self.bAnimateOffScreenShadow) then
-       table.bAnimateOffScreenShadow = self.bAnimateOffScreenShadow;
-   else
-       table.bAnimateOffScreenShadow = false;
-   end
-end
-
-function Bed.Client:OnLevelLoaded()
-   self:SetInteractiveCollisionType();
-end
-
-function Bed:OnEnablePhysics()
-   self:SetInteractiveCollisionType();
-end
-function Bed:OnPropertyChange()
-   BasicEntity.OnPropertyChange( self );
-   self:SetInteractiveCollisionType();
-end
-function Bed:MarkUsedByNPC( used )
-   self.usedByNPC = used
-end
-
-
-function Bed:IsUsableByPlayer(user)
-
-   local myDirection = g_Vectors.temp_v1;
-   local vecToPlayer = g_Vectors.temp_v2;
-   local myPos = g_Vectors.temp_v3;
-
-   myDirection = self:GetDirectionVector(0);
-
-   user:GetWorldPos(vecToPlayer);
-   self:GetWorldPos(myPos);
-
-   FastDifferenceVectors(vecToPlayer,myPos,vecToPlayer);
-   local len = LengthVector(vecToPlayer);
-
-   if(len <= self.Properties.fUsabilityDistance) then
-       return true;
-   end
-   return false;
-end
-
-function Bed:GetActions(user,firstFast)
-   output = {}
-   local sleepPrompt = EntityModule.WillSleepingOnThisBedSave( self.id ) and "@ui_hud_sleep_and_save" or "@ui_hud_sleep";
-   if( self:IsUsableByPlayer(user) ) then
-       if ( self.Properties.Script.esBedTypes == 'normal' or self.Properties.Script.esBedTypes == 'bench' ) then
-           AddInteractorAction( output, firstFast, Action():hint("@ui_hud_sit"):action("use_bed"):func(Bed.OnUsed):interaction(inr_bedSit):enabled(not self.usedByNPC) )
-           if Variables.GetGlobal('bed_disable_direct_sleep') == 0 then
-               AddInteractorAction( output, firstFast, Action():hint( sleepPrompt ):action("use_bed"):hintType( AHT_HOLD ):func(Bed.OnUsedHold):interaction(inr_bedSit):enabled(not self.usedByNPC) )
-           end
-       else
-           AddInteractorAction( output, firstFast, Action():hint( sleepPrompt ):action("use_bed"):func(Bed.OnUsed):interaction(inr_bedSleep ):enabled(not self.usedByNPC) )
-       end
-   end
-   return output
-end
-
-function Bed:OnUsed(user)
-   if( self.Properties.Script.esBedTypes == 'normal' or self.Properties.Script.esBedTypes == 'bench' or ( user.player and user.player.CanSleepAndReportProblem() ) ) then
-       XGenAIModule.SendMessageToEntity( player.this.id, "player:request", "target("..Framework.WUIDToMsg( XGenAIModule.GetMyWUID(self) ).."), mode ('use')" )
-   end
-end
-
-function Bed:OnUsedHold(user)
-   if( user.player and user.player.CanSleepAndReportProblem() ) then
-       XGenAIModule.SendMessageToEntity( player.this.id, "player:request", "target("..Framework.WUIDToMsg( XGenAIModule.GetMyWUID(self) ).."), mode ('use'), behavior('player_use_sleep')" )
-   end
-end
-
-function Bed:SetInteractiveCollisionType()
-   local filtering = {}
-
-   if(self.Properties.bInteractiveCollisionClass == 1) then
-       filtering.collisionClass = 262144;
-   else
-       filtering.collisionClassUNSET = 262144;
-   end
-
-   self:SetPhysicParams(PHYSICPARAM_COLLISION_CLASS, filtering );
-end
-
-Bed.FlowEvents =
-{
-   Inputs =
-   {
-       Hide = { Bed.Event_Hide, "bool" },
-       UnHide = { Bed.Event_UnHide, "bool" },
-       Remove = { Bed.Event_Remove, "bool" },
-   },
-   Outputs =
-   {
-       Hide = "bool",
-       UnHide = "bool",
-       Remove = "bool",
-       Break = "int",
-   },
-}
-
-MakeDerivedEntityOverride( Bed, BasicEntity )
-]] --
