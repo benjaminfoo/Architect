@@ -5,28 +5,28 @@
 ---
 
 -- Load simple constants or runtime settings
-Script.ReloadScript("Scripts/Util/Constants.lua")
+Script.ReloadScript("Scripts/Util/arc_constants.lua")
 
 -- load mathematical operations for lua
-Script.ReloadScript("Scripts/Math/linmath.lua")
+Script.ReloadScript("Scripts/Math/arc_linmath.lua")
 
 -- load utility methods for development
-Script.ReloadScript("Scripts/Util/Utils.lua")
+Script.ReloadScript("Scripts/Util/arc_utils.lua")
 
 -- load the console-commands manager
-Script.ReloadScript("Scripts/Manager/CCommandManager.lua")
+Script.ReloadScript("Scripts/Manager/arc_CCommandManager.lua")
 
 -- load the buildings-manager
-Script.ReloadScript("Scripts/Manager/BuildingsManager.lua")
+Script.ReloadScript("Scripts/Manager/arc_buildingsManager.lua")
 
 -- add event-handlers for common in-game events
-Script.ReloadScript("Scripts/Manager/EventManager.lua")
+Script.ReloadScript("Scripts/Manager/arc_EventManager.lua")
 
 -- load the core api of the project
-Script.ReloadScript("Scripts/Manager/ConstructionController.lua")
+Script.ReloadScript("Scripts/Manager/arc_ConstructionController.lua")
 
 -- load the resource-system, basic
-Script.ReloadScript("Scripts/Manager/ResourcesController.lua")
+Script.ReloadScript("Scripts/Manager/arc_ResourcesController.lua")
 
 -- load external key bindings
 System.ExecuteCommand('exec Mods/architect/keybinds.cfg')

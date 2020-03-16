@@ -93,6 +93,9 @@ This is a list of planned features for later development - this will take some t
 This is the list of changes - the version should be compatible to each other. 
 Your already created entities wont be affected.
 
+v0.5.1a
+- increased compatibility to other modifications
+
 v0.5a
 - added useable entities (like chairs, benches, beds, etc.)
 - added custom actions and new entities (generator, cooking)

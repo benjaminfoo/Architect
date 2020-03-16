@@ -18,8 +18,8 @@ function architect_init:uiActionListener(actionName, eventName, argTable)
 
     if actionName == "sys_loadingimagescreen" and eventName == "OnEnd" then
         -- create controller for the ingame user-interface
-        -- Script.UnloadScript("Scripts/Manager/UIController.lua")
-        -- Script.ReloadScript("Scripts/Manager/UIController.lua")
+        -- Script.UnloadScript("Scripts/Manager/arc_UIController.lua")
+        -- Script.ReloadScript("Scripts/Manager/arc_UIController.lua")
         uiManagerParams = {}
         uiManagerParams.class = "UIManager"
         uiManagerParams.name = "UIManager_Instance"

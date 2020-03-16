@@ -358,11 +358,11 @@ end
 -- reloads all scripts but is shorter to type into console
 function reloadall ()
     -- unload all controller first
-    Script.UnloadScript("Scripts/Manager/UIController.lua")
-    Script.UnloadScript("Scripts/Manager/ConstructionController.lua")
-    Script.UnloadScript("Scripts/Manager/BuildingsManager.lua")
-    Script.UnloadScript("Scripts/Manager/CCommandManager.lua")
-    Script.UnloadScript("Scripts/Util/Constants.lua")
+    Script.UnloadScript("Scripts/Manager/arc_UIController.lua")
+    Script.UnloadScript("Scripts/Manager/arc_ConstructionController.lua")
+    Script.UnloadScript("Scripts/Manager/arc_buildingsManager.lua")
+    Script.UnloadScript("Scripts/Manager/arc_CCommandManager.lua")
+    Script.UnloadScript("Scripts/Util/arc_constants.lua")
 
     -- unload entity related scripts (which MUST be inside pak structure at least once)
     Script.UnloadScript("Scripts/Entities/BasicBuildingEntity.lua")
@@ -383,7 +383,7 @@ function reloadall ()
     Script.ReloadEntityScript("Scripts/Entities/CookingSpotEntity.lua")
     Script.ReloadEntityScript("Scripts/Entities/GeneratorEntity.lua")
 
-    Script.ReloadScript("Scripts/Util/Constants.lua")
+    Script.ReloadScript("Scripts/Util/arc_constants.lua")
 
 end
 

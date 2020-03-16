@@ -50,8 +50,8 @@ function UIManager.Server:OnInit()
         self.bInitialized = 1;
     end ;
 
-    Script.UnloadScript("Scripts/Manager/UIController.lua")
-    Script.ReloadScript("Scripts/Manager/UIController.lua")
+    Script.UnloadScript("Scripts/Manager/arc_UIController.lua")
+    Script.ReloadScript("Scripts/Manager/arc_UIController.lua")
 
 end;
 
@@ -68,8 +68,8 @@ function UIManager.Client:OnInit()
     else
         System.LogAlways("UIController_Init not loaded ...")
 
-        Script.UnloadScript("Scripts/Manager/UIController.lua")
-        Script.ReloadScript("Scripts/Manager/UIController.lua")
+        Script.UnloadScript("Scripts/Manager/arc_UIController.lua")
+        Script.ReloadScript("Scripts/Manager/arc_UIController.lua")
     end
 
 
@@ -105,8 +105,8 @@ function UIManager.Client:OnUpdate()
         UIController_OnUpdate();
     else
         -- System.LogAlways("UIController_OnUpdate not loaded ...")
-        -- Script.UnloadScript("Scripts/Manager/UIController.lua")
-        -- Script.ReloadScript("Scripts/Manager/UIController.lua")
+        -- Script.UnloadScript("Scripts/Manager/arc_UIController.lua")
+        -- Script.ReloadScript("Scripts/Manager/arc_UIController.lua")
     end
 
 end;

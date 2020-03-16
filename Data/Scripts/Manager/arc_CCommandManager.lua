@@ -54,8 +54,8 @@ end
 function architect_recompile()
     System.LogAlways("called architect_recompile() ...")
 
-    System.ExecuteCommand("#Script.UnloadScript('Scripts/Manager/ConstructionController.lua')")
-    System.ExecuteCommand("#Script.ReloadScript('Scripts/Manager/ConstructionController.lua')")
+    System.ExecuteCommand("#Script.UnloadScript('Scripts/Manager/arc_ConstructionController.lua')")
+    System.ExecuteCommand("#Script.ReloadScript('Scripts/Manager/arc_ConstructionController.lua')")
 
     System.LogAlways("... finished architect_recompile()")
 end
