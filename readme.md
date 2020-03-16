@@ -124,7 +124,4 @@ v0.1
 
 ##### Thanks / Credits / Links 
 - [Warhorse Studios](https://warhorsestudios.cz) for making such a great game, engine & sdk
-- Modding community on [nexus](https://www.nexusmods.com/kingdomcomedeliverance) and discord
-- Huge thanks to the existing mods like [ogp](https://www.nexusmods.com/kingdomcomedeliverance/mods/121), [SimCamping](https://www.nexusmods.com/kingdomcomedeliverance/mods/881) & [cheat](https://www.nexusmods.com/kingdomcomedeliverance/mods/106?tab=posts)
-
 
