@@ -95,6 +95,11 @@ This is a list of planned features for later development - this will take some t
 This is the list of changes - the version should be compatible to each other. 
 Your already created entities wont be affected.
 
+
+**Remember** 
+- Alpha versions (a) are unstable and in subject of larger changes - expect bugs.
+- Beta versions (b) are more stable and in subject of smaller bugfixes - expect less bugs.
+
 v0.5.1a
 - increased compatibility to other modifications
 
