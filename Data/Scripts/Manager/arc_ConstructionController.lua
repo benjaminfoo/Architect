@@ -360,7 +360,7 @@ function reloadall ()
     -- unload all controller first
     Script.UnloadScript("Scripts/Manager/arc_UIController.lua")
     Script.UnloadScript("Scripts/Manager/arc_ConstructionController.lua")
-    Script.UnloadScript("Scripts/Manager/arc_buildingsManager.lua")
+    Script.UnloadScript("Scripts/Manager/arc_BuildingsManager.lua")
     Script.UnloadScript("Scripts/Manager/arc_CCommandManager.lua")
     Script.UnloadScript("Scripts/Util/arc_constants.lua")
 

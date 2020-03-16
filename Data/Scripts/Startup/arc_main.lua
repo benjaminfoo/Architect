@@ -17,7 +17,7 @@ Script.ReloadScript("Scripts/Util/arc_utils.lua")
 Script.ReloadScript("Scripts/Manager/arc_CCommandManager.lua")
 
 -- load the buildings-manager
-Script.ReloadScript("Scripts/Manager/arc_buildingsManager.lua")
+Script.ReloadScript("Scripts/Manager/arc_BuildingsManager.lua")
 
 -- add event-handlers for common in-game events
 Script.ReloadScript("Scripts/Manager/arc_EventManager.lua")
