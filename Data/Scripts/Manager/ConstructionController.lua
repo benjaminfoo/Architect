@@ -59,14 +59,14 @@ function rayCastHit()
 end
 
 -- remove an item by its class and by an amount
--- class = example - bred, 86e4ff24-88db-4024-abe6-46545fa0fbd1
+-- class = example - bread, 86e4ff24-88db-4024-abe6-46545fa0fbd1
 -- deleteAmount = how often an item gets removed
-function removebread(findByClass, deleteAmount)
-    removed = 0
+function removeItem(itemRemovedByClass, deleteAmount)
+    local removed = 0
     for i, userdata in pairs(player.inventory:GetInventoryTable()) do
         local item = ItemManager.GetItem(userdata)
         for i = 1, item.amount do
-            if (item.class == findByClass) then
+            if (item.class == itemRemovedByClass) then
                 if (removed < deleteAmount) then
                     removed = removed + 1
                     player.inventory:RemoveItem(item.id, 1)
@@ -75,6 +75,8 @@ function removebread(findByClass, deleteAmount)
         end
     end
 end
+
+availableResources = 10
 
 -- spawn the currently selected entity with the current selection as modelpath
 function SpawnBuildingInstance(line)
@@ -152,7 +154,6 @@ function SpawnBuildingInstance(line)
         end
 
         if construction.sleepable then
-
         end
 
         if (construction.cookable) then
@@ -164,60 +165,67 @@ function SpawnBuildingInstance(line)
             ent.OnUsed = function(user)
 
                 -- TODO: This is all in todo state!
-                -- features: generate x from y - done
-                -- features: remove x from inventory - done
-                -- features: add y to inventory - done
-                -- refactoring needed
-                -- refactoring needed
-
                 --[[
-                for i,userdata in pairs(player.inventory:GetInventoryTable()) do
-                    local item = ItemManager.GetItem(userdata)
-                    for i=1,item.amount do
-                        if(item.class == "86e4ff24-88db-4024-abe6-46545fa0fbd1") then
-                            player.inventory:RemoveItem(item.id, 1)
+                -- remove item with UUID from inventory
+                -- local removeableItemUUID = "86e4ff24-88db-4024-abe6-46545fa0fbd1" == bread
+                    for i,dat in pairs(player.inventory:GetInventoryTable()) do
+                        local item = ItemManager.GetItem(dat)
+                        for i=1, item.amount do
+                            if(item.class == removeableItemUUID) then
+                                player.inventory:RemoveItem(item.id, 1)
+                            end
                         end
                     end
-                end
+
+                    -- Syntax: Database.LoadTable("player_item")
+                    -- Loads or reloads table. Returns true if table is loaded.
+
+                    -- Syntax: Database.GetTableInfo("player_item")
+                    -- Returns lua table with C_Table properties.
+
+                    -- true if table was loaded
+                    log("Entity " .. ent:GetName() .. " has been used!")
+
                 ]]
 
 
+                -- This is only a prototype
+                -- TODO: define needed resources for newly crafted items
+                -- TODO: define dynamic amounts for recipes and results
 
-                -- refactoring needed
+                -- 5e9b4fa1-aafa-4352-b5d6-58df2c263caa : Nettle
+                local recipeName = "Bread"
+                local costUUIDs = "5e9b4fa1-aafa-4352-b5d6-58df2c263caa"
+                local costAmount = 5
+                local costResource = "Nettle"
 
-                log("Ent has been used!")
 
-                -- 86e4ff24-88db-4024-abe6-46545fa0fbd1 : Bread
-                local breadUUID = "86e4ff24-88db-4024-abe6-46545fa0fbd1"
-                local tableName = "player_item"
-                Database.LoadTable(tableName)
 
-                bakedBread = ItemManager.CreateItem(breadUUID, 100, 1)
-                player.inventory:AddItem(bakedBread);
-                Game.SendInfoText("You baked a new bread", false, nil, 2)
+                -- bread:  86e4ff24-88db-4024-abe6-46545fa0fbd1
+                local craftedResourceUUID = "86e4ff24-88db-4024-abe6-46545fa0fbd1"
+                local craftedAmount = 1
+                local playerTable = "player_item"
 
-                -- removebread(breadUUID, 1)
+                -- 1. Check if costs are covered for creating the construction
+                if (availableResources - costAmount >= 0) then
 
-                --[[
-                local breadUUID = "86e4ff24-88db-4024-abe6-46545fa0fbd1"
-                local tableName = "player_item"
-                Database.LoadTable(tableName)
-                local tableInfo = Database.GetTableInfo(tableName)
-                local rows = tableInfo.LineCount - 1
-                for i=0,rows do
-                    local rowInfo = Database.GetTableLine(tableName, i)
-                    if string.upper(rowInfo.item_id) == string.upper(breadUUID) then
-                        if player.inventory:FindItem(rowInfo.item_id) == nil then
-                            log(rowInfo)
-                            log(rowInfo.item_id)
-                            bakedBread = ItemManager.CreateItem(rowInfo.item_id, 100, 1)
-                            player.inventory:AddItem(bakedBread);
-                            Game.SendInfoText("You baked a new bread",false,nil,2)
-                            return
-                        end
-                    end
+                    -- 2. Remove costs from inventory
+                    removeItem(costUUIDs, costAmount)
+
+                    -- this is for debugging purposes - this should work two times
+                    availableResources = availableResources - costAmount
+
+                    resultSuccess = Database.LoadTable(playerTable)
+
+                    -- 3. Create new item instance, add to inventory
+                    newItemInstance = ItemManager.CreateItem(craftedResourceUUID, 100, craftedAmount)
+                    player.inventory:AddItem(newItemInstance);
+
+                    Game.SendInfoText("Created " .. craftedAmount .. "x " .. recipeName .. " for " .. costAmount .. "x " .. costResource, true, nil, 2)
+                else
+                    -- If there arent enough resources available than needed, abort this
+                    Game.SendInfoText("Not enough resources for " .. craftedAmount .. "x " .. recipeName, true, nil, 2)
                 end
-                ]]--
 
                 XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(ent)) .. "), mode ('use')")
             end

@@ -102,6 +102,3 @@ System.AddCCommand('log', 'log(%line)', "Shortcut for architect_log")
 
 System.AddCCommand('architect_recompile', 'architect_recompile()', "Compile the mod sources at runtime")
 System.AddCCommand('architect_recompileAll', 'architect_recompileAll()', "Recompile everything during runtime")
-
--- bindings
--- System.ExecuteCommand("bind f9 architect_recompile ")

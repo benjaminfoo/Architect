@@ -96,6 +96,7 @@ v0.5a
 - added custom actions and new entities (generator, cooking)
 - refactored project, upgraded entity-model, controller, utils, documentation etc.
 - removed invalid references from assets
+- ensured compatibility with other mods
 
 v0.4b
 - added option to rebind keys (look at the keybinds.cfg file to define your own keys) 

@@ -4,6 +4,29 @@
 --- DateTime: 03.03.2020 01:01
 ---
 
+--[[
+    Time related constants
+]]
+
+-- The seconds per minute
+TIME_SECONDS = 60
+
+-- The minutes per hour
+TIME_MINUTES = 60
+
+-- The hours per day
+TIME_HOURS = 24
+
+-- The days per week
+TIME_DAYS_PER_WEEK = 7
+
+-- The days per year
+TIME_DAYS_PER_YEAR = 365
+
+-- = 60 * 60 * 24 = 86400
+TIME_DAY_DURATION = 86400
+
+
 -- setup seed for using random rng of lua
 current = System.GetCurrTime()
 math.randomseed(current)
@@ -18,35 +41,7 @@ function uuid()
     end)
 end
 
-function print_all_functions(object)
-    if not object then
-        object = _G
-    end
-
-    for key, value in pairs(object) do
-        local getKeyType = loadstring("return type(" .. key .. ")")
-        if getKeyType() == "function" then
-            System.LogAlways("BEGIN FUNC:" .. key)
-            local func = loadstring("print_method_args(" .. key .. ")")
-            func()
-        end
-    end
-end
-
-function isBlank(value)
-    return value == nil or value == ''
-end
-
-function toUpper(value)
-    if not isBlank(value) then
-        -- string.upper fails if passed nil
-        return string.upper(value)
-    else
-        return value
-    end
-end
-
-function print_methods(object, filter)
+function logKeyValues(object, filter)
     for key, value in pairs(object) do
         if not isBlank(filter) then
             if string.find(toUpper(key), toUpper(filter), 1, true) then

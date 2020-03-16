@@ -63,7 +63,6 @@ function UIManager.Client:OnInit()
         self.bInitialized = 1;
     end ;
 
-
     if (UIController_Init ~= nil) then
         UIController_Init();
     else
@@ -75,7 +74,6 @@ function UIManager.Client:OnInit()
 
 
 end;
-
 
 function UIManager:OnAction(action, activation, value)
 

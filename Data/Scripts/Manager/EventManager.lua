@@ -17,26 +17,25 @@ function architect_init:uiActionListener(actionName, eventName, argTable)
     end
 
     if actionName == "sys_loadingimagescreen" and eventName == "OnEnd" then
-            -- create controller for the ingame user-interface
-            -- Script.UnloadScript("Scripts/Manager/UIController.lua")
-            -- Script.ReloadScript("Scripts/Manager/UIController.lua")
-            uiManagerParams = {}
-            uiManagerParams.class = "UIManager"
-            uiManagerParams.name = "UIManager_Instance"
+        -- create controller for the ingame user-interface
+        -- Script.UnloadScript("Scripts/Manager/UIController.lua")
+        -- Script.ReloadScript("Scripts/Manager/UIController.lua")
+        uiManagerParams = {}
+        uiManagerParams.class = "UIManager"
+        uiManagerParams.name = "UIManager_Instance"
 
-            uiManagerEntity = System.SpawnEntity(uiManagerParams)
+        uiManagerEntity = System.SpawnEntity(uiManagerParams)
 
-            -- create tutorial and show
-            showMessage = "<font color='#333333' size='34'>Architect " .. architect_version .. "</font> <font color='#333333' size='18'>\nA base-building / resource-management modification for kingdom come deliverance.</font>"
+        -- create tutorial and show
+        showMessage = "<font color='#333333' size='34'>Architect " .. architect_version .. "</font> <font color='#333333' size='18'>\nA base-building / resource-management modification for kingdom come deliverance.</font>"
         showMessageT = "<font color='#333333' size='20'>\n\nUsage / Keys\n</font><font color='#333333' size='18'>\nMousewheel up/down \nChoose construction\n\nKey V \nCreate construction \n\nKey G \nRemove construction </font> \n\n"
         showMessageTT = "<font color='#333333' size='18'>F9 \nRecompile mod at runtime\n\nContact\n"
 
-            third = "<font color='#333333' size='14'>http://github.com/benjaminfoo/architect/</font> \n\n"
-            fourth = "<font color='#333333' size='18'>Execute architect_help in the ingame console for additional help.</font> \n\n"
-            Game.ShowTutorial(showMessage .. showMessageT ..  showMessageTT .. third .. fourth, 20, false, true)
+        third = "<font color='#333333' size='14'>http://github.com/benjaminfoo/architect/</font> \n\n"
+        fourth = "<font color='#333333' size='18'>Execute architect_help in the ingame console for additional help.</font> \n\n"
+        Game.ShowTutorial(showMessage .. showMessageT .. showMessageTT .. third .. fourth, 20, false, true)
     end
 end
-
 
 UIAction.UnregisterActionListener(architect_init, "uiActionListener")
 UIAction.RegisterActionListener(architect_init, "", "", "uiActionListener")

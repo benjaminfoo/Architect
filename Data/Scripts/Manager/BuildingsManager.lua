@@ -8,6 +8,8 @@
 --- This file could be used to add further structures which are already implemented in kcd or new assets
 ---
 
+--[[
+Outdated structures without parameters, just static content
 buildings = {
 
     -- camp
@@ -334,10 +336,14 @@ buildings = {
     "Objects/vehicles/cart/wooden_curb_long_a.cgf",
     "Objects/vehicles/cart/wooden_curb_long_b.cgf",
 }
+]]
 
+-- This set contains every creatable construction within the project.
+-- This set could be rearranged, your savegame-files wont be affected.
 parameterizedConstructions = {
 
-    --     { modelPath = "", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+    -- template for new construction / structure
+    -- { modelPath = "", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
     -- cooking spots, generators (use x to make y)
     { modelPath = "objects/structures/bread_oven/bread_oven_01.cgf", sitable = false, useable = false, saveable = false, cookable = true, sleepable = false },

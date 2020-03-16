@@ -110,10 +110,8 @@ function BasicBuildingEntity:OnLoad(table)
     self.dead = table.dead;
     self.object_Model = table.object_Model;
 
-
     local Properties = self.Properties;
     Properties.object_Model = table.object_Model;
-
 
     System.LogAlways("Loading")
     System.LogAlways("Persisted_Entity.object_model: " .. table.object_Model)
