@@ -1,4 +1,4 @@
-<img src="/Data/Docs/architect.png">  
+<img src="/Data/Docs/architect_nm.png">  
 
 # KCD - Architect
  
@@ -60,6 +60,7 @@ The following list contains regular console commands
 
 ### Lua functions
 In order to execute a lua function, you have to prepend a '#'-character to execute it
+
 - reloadall() - Reloads the source files of the modification
 - rayCastHit() - Use a raycast to determine entities in front of the player
 - deleteall() - Deletes ALL constructions youve build
@@ -81,7 +82,8 @@ listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Sc
 
 
 ##### Planned features
-This is a list of planned features for later development - this will take some time however:
+This is a list of planned features for later development - this will take some time however
+
 - custom constructions, or existing constructions with custom actions / usages
 - define further custom entities
 - resource / cost management
