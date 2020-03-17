@@ -260,7 +260,15 @@ function deleteRayCastEntityHit()
 
         result = hitData.entity;
 
-        if (result ~= nil) then
+        -- We only want to delete our constructions,
+        -- so we keep a whitelist of everything - if the hit entity is within the list, the entity will get deleted
+        if (result ~= nil
+                and result.class == "BasicBuildingEntity"
+                or result.class == "CookingSpotEntity"
+                or result.class == "DynamicBuildingEntity"
+                or result.class == "GeneratorEntity"
+                or result.class == "UIManager"
+        ) then
 
             -- if there is something to delete, log its name to the player first
             visRes = "Removing entity: " .. tostring(result:GetName()) .. "\n" .. "ID: " .. tostring(hitData.entity:GetRawId())

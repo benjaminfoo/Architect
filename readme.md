@@ -81,14 +81,19 @@ listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Sc
 
 
 
-##### Planned features
-This is a list of planned features for later development - this will take some time however
+### Planned features
+This is a list of planned features for later development or features recommended by the community
 
-- custom constructions, or existing constructions with custom actions / usages
-- define further custom entities
-- resource / cost management
-- spawn npcs
-- spawn items
+- custom crafting
+- custom constructions / entities
+- systems for the generation of resources and / or groschen
+- resource / cost management system (for spending and recieving groschen w constructions)
+- spawn setups with relations to npcs or items
+- make torches toggleable!
+- siege invasions
+- trigger / buttons, ...
+- introduce some kind of favorite system or grouping of entities
+- ...
 
 
 ### Changelog

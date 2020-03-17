@@ -393,10 +393,14 @@ parameterizedConstructions = {
     { modelPath = "objects/buildings/refugee_camp/camp_wood.cgf", sitable = true, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/buildings/refugee_camp/fireplace_empty.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
+
     -- tents
-    { modelPath = "objects/buildings/bath_tent/rataje_bathhouse.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/structures/tent_bath_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/structures/tent_bath_round_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/structures/bath_tent/tent_bath_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/structures/bath_tent/tent_bath_round_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/buildings/houses/rataje_bathhouse/bathtub_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/buildings/houses/rataje_bathhouse/bathtub_a_water.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "Objects/props/interiors/home_content/shelve_homeworks.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = true },
+    { modelPath = "Objects/props/interiors/home_content/pk_group_ceramics.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = true },
 
     { modelPath = "objects/structures/tent_cuman/tent_cuman_small_v1.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = true },
     { modelPath = "objects/structures/tent_cuman/tent_cuman_small_v4.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = true },
@@ -557,7 +561,6 @@ parameterizedConstructions = {
     { modelPath = "objects/props/tools/scythe.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/tools/shovel.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/tools/sickle.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/props/tools/snare.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/tools/stick.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/tools/tongs.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
@@ -606,7 +609,6 @@ parameterizedConstructions = {
     { modelPath = "objects/props/groups_of_stuff/group_barrels_c.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/groups_of_stuff/group_barrels_d.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
-    { modelPath = "objects/structures/stone_wall/stone_wall_low_mossy_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/structures/stone_wall/stone_wall_low_mossy_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/structures/stone_wall/stone_wall_low_mossy_c.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/structures/stone_wall/stone_wall_low_mossy_d.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
