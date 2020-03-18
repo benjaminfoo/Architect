@@ -7,9 +7,7 @@ A base-building modification for Kingdom Come Deliverance.
 This modification adds base-building mechanics to the existing game by providing the ability to create constructions
 within the games world (its not possible to remove existing structures though).
 
-The player can create anything from simple props to flora & fauna, vegetation, houses, walls, towers, chairs, benches, beds, etc.
-- any createable entity is already defined within the games data - this modification however just adds and executes additional lua code
-and makes use of the already existing engine & sdk by warhorse studios.
+The player can create anything from simple props to flora & fauna, vegetation, houses, walls, towers, chairs, benches, beds, etc. - any createable entity is already defined within the games data - this modification however just adds and executes additional lua code and makes use of the already existing engine & sdk by warhorse studios.
 
 Constructions are saved across your savegames - there is no new save required.
 
@@ -19,7 +17,7 @@ deleting it then, the entity stays in the game. Use #deleteall() within the inga
 Note: As always, make a backup of your saved games before doing anything else.
 
 If you're having fun using this mod, maybe you're interested in buying me a coffee :)
-- thanks to Warhorse Studios for creating this fine game
+Thanks to  [Warhorse Studios](https://warhorsestudios.cz) for creating this gem.
 
 
 ## Installation
@@ -98,14 +96,14 @@ This is a list of planned features for later development - this will take some t
 
 
 ### Changelog
-This list contains all changes during development - the versions should be compatible to each other, maybe.
-- Your already created entities wont be affected.
+This list contains all changes during development - the versions should be compatible to each other, maybe - already created entities wont be affected.
 
 Remember
 - Alpha versions (a) are unstable and in subject of larger changes - expect bugs.
 - Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).
 
-Version 0.5.1b
+```
+Version 0.5.1b - dev
 - updated available constructions
 - added keybinding fallback 
 - limited users ability of deletion - its now only possible to delete objects created by the user
@@ -144,7 +142,7 @@ Version 0.1a
 - basic functionality
 - construct and deconstruct buildings
 - mock-api
-
+```
 
 ##### Thanks / Credits
 Big thanks to [Warhorse Studios](https://warhorsestudios.cz) for creating such a great game, with engine, assets & sdk -
@@ -185,7 +183,7 @@ scroll through the list - but there will be some kind of solution to
 this.
 
 Are you some kind of wizard?
-No but the people at warhorse studios are.
+No but the people at [Warhorse Studios](https://warhorsestudios.cz) are.
 
 This looks like an emulated version of FO4!
 I love FO4 and the workshop but in case of building things I always preferred garry's mod (the beta version of it) with wiremod.
