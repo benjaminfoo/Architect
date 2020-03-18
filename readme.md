@@ -97,48 +97,94 @@ This is a list of planned features for later development or features recommended
 
 
 ### Changelog
-This is the list of changes - the version should be compatible to each other. 
-Your already created entities wont be affected.
+This list contains all changes during development - the versions should be compatible to each other, maybe.
+- Your already created entities wont be affected.
 
-
-**Remember** 
+Remember
 - Alpha versions (a) are unstable and in subject of larger changes - expect bugs.
-- Beta versions (b) are more stable and in subject of smaller bugfixes - expect less bugs.
+- Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).
 
-v0.5.1a
-- increased compatibility to other modifications
+Version 0.5.1b
+- updated available constructions
+- added keybinding fallback 
+- limited users ability of deletion - its now only possible to delete objects created by the user
+- updated documentation
 
-v0.5a
+Version 0.5.1a
+- increased compatibility with other modifications
+
+Version 0.5a
 - added useable entities (like chairs, benches, beds, etc.)
 - added custom actions and new entities (generator, cooking)
-- added basic custom crafting system  
+- added basic custom crafting system
 - refactored project, upgraded entity-model, controller, utils, documentation etc.
 - removed invalid references from assets
 
-v0.4b
-- added option to rebind keys (look at the keybinds.cfg file to define your own keys) 
-- added further docs 
+Version 0.4b
+- added option to rebind keys (look at the keybinds.cfg file to define your own keys)
+- added further docs
 
-v0.3b
+Version 0.3b
 - added console commands
 - refactoring, ui finish
 - documentation, screenshots
 
-v0.2b
+Version 0.2b
 - bug-fixes, removed all known problems
 - finished major refactoring
 - unique naming of entities (GUIDs)
 - setup proper constructions
 
-v0.1b
+Version 0.1b
 - advanced ingame-console functionality
 - added persistence (constructions wont get lost on save- & loading a level)
 
-v0.1
+Version 0.1a
 - basic functionality
 - construct and deconstruct buildings
-- mock-api 
+- mock-api
 
-##### Thanks / Credits / Links 
-- [Warhorse Studios](https://warhorsestudios.cz) for making such a great game, engine & sdk
 
+##### Thanks / Credits
+Big thanks to [Warhorse Studios](https://warhorsestudios.cz) for creating such a great game, with engine, assets & sdk -
+this fun project wouldnt be possible without you.
+
+Also big thanks to the modding community on nexus﻿ and discord (i dont know the public link currently, TODO).
+
+Thanks @sexybiscuit for creating the great video on how to use and install the modification!
+
+
+###### FAQ / Known problems :(
+You should know that developing mods is just a really small side hobby of mine - so you have to experience bugs, crashes, lowered sleeping quality because of lost save games -
+but im giving my best, however as always, create backups of whatever youre doing right now if possible. The following is a list of questions and answers and known problems :( of the project.
+
+The people are ignoring my constructions.
+Yes that happens, because, I think of an outdated navmesh - I dont know if
+its possible to do it at runtime, but maybe if someone at warhorse
+studios sees this - is this doable?
+
+The constructions are still available even though ive deleted the mod >:( !
+Yes, this is true.
+
+Vegetation and some other models arent removeable
+Yes, this is also true.
+
+I want feature x!
+Me too! Write me a message!
+
+I cant spawn any animals with this mod!
+This is true but I never claimed this (but gamestar.de﻿ did), however ill be thinking about this!
+
+Nothing works!
+This is too bad - you could take a look into your kcd.log file within your kingdom come folder and look for errors.
+
+The user interface is so minimal!
+How dare you! This ui looks great! But you are correct its a bit work to
+scroll through the list - but there will be some kind of solution to
+this.
+
+Are you some kind of wizard?
+No but the people at warhorse studios are.
+
+This looks like an emulated version of FO4!
+I love FO4 and the workshop but in case of building things I always preferred garry's mod (the beta version of it) with wiremod.

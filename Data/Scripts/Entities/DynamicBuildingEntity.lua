@@ -13,21 +13,6 @@ DynamicBuildingEntity = {
     Server = {},
     Properties = {
 
-        --[[
-            Physics = {
-                bPhysicalize = 1,
-                bRigidBody = 0,
-                bPushableByPlayers = 0,
-
-                Density = -1,
-                Mass = -1,
-            },
-
-            MultiplayerOptions = {
-                bNetworked = 0,
-            },
-        ]]
-
         MaxSpeed = 1,
         fHealth = 100,
         bTurnedOn = 1,
@@ -45,12 +30,13 @@ DynamicBuildingEntity = {
             Misc = ""
         },
         Physics = {
-            CollisionFiltering = {
-                collisionType = { },
-                collisionIgnore = {}
-            }
-        },
+            bPhysicalize = 1,
+            bRigidBody = 1,
+            bPushableByPlayers = 1,
 
+            Density = -1,
+            Mass = -1,
+        },
         Body = {
             guidClothingPresetId = "0",
             guidBodyPrestId = "0"
@@ -69,33 +55,21 @@ DynamicBuildingEntity = {
         bInteractiveCollisionClass = 1,
         object_Model = "objects/buildings/refugee_camp/bad_straw.cgf",
         guidSmartObjectType = "39012413-1895-4828-b202-b3835a78984d",
-        esFaction = "",
         MultiplayerOptions = {},
 
         -- soclasses_SmartObjectClass = "",
-        sWH_AI_EntityCategory = "",
-        bMissionCritical = 0,
-        bCanTriggerAreas = 0,
-        DmgFactorWhenCollidingAI = 1,
-    },
-
-    Editor = {
-        Icon = "physicsobject.bmp",
-        IconOnTop = 1,
+        -- sWH_AI_EntityCategory = "",
+        -- bMissionCritical = 0,
+        -- bCanTriggerAreas = 0,
+        -- esFaction = "",
+        -- DmgFactorWhenCollidingAI = 1,
     },
 
     Script = {
     }
 }
 
-local Physics_DX9MP_Simple = {
-    bPhysicalize = 1,
-    bPushableByPlayers = 0,
 
-    Density = 0,
-    Mass = 0,
-
-}
 function DynamicBuildingEntity:OnSpawn()
     if (self.Properties.MultiplayerOptions.bNetworked == 0) then
         self:SetFlags(ENTITY_FLAG_CLIENT_ONLY, 0);
@@ -105,6 +79,7 @@ function DynamicBuildingEntity:OnSpawn()
 
     self:SetFromProperties();
 end
+
 function DynamicBuildingEntity:SetFromProperties()
     local Properties = self.Properties;
 
@@ -113,8 +88,6 @@ function DynamicBuildingEntity:SetFromProperties()
             return
         end ;
     end
-
-    self.freezable = (tonumber(Properties.bFreezable) ~= 0);
 
     self:SetupModel();
     if (Properties.bAutoGenAIHidePts == 1) then
@@ -129,6 +102,7 @@ function DynamicBuildingEntity:SetFromProperties()
         self:SetFlags(ENTITY_FLAG_TRIGGER_AREAS, 2);
     end
 end
+
 function DynamicBuildingEntity:SetupModel()
 
     local Properties = self.Properties;
@@ -144,6 +118,7 @@ function DynamicBuildingEntity:SetupModel()
     -- disable near fade-out by default
     self:SetViewDistUnlimited()
 end
+
 
 function DynamicBuildingEntity:OnLoad(table)
     self.health = table.health;
@@ -167,6 +142,7 @@ function DynamicBuildingEntity:OnLoad(table)
 
 end
 
+
 function DynamicBuildingEntity:OnSave(table)
     table.health = self.health;
     table.dead = self.dead;
@@ -176,6 +152,7 @@ function DynamicBuildingEntity:OnSave(table)
     System.LogAlways("Persisting Entity.object_model: " .. table.object_Model)
 
 end
+
 function DynamicBuildingEntity:IsRigidBody()
     local Properties = self.Properties;
     local Mass = Properties.Mass;
@@ -185,13 +162,12 @@ function DynamicBuildingEntity:IsRigidBody()
     end
     return true;
 end
+
 function DynamicBuildingEntity:PhysicalizeThis()
     local Physics = self.Properties.Physics;
-    if (CryAction.IsImmersivenessEnabled() == 0) then
-        Physics = Physics_DX9MP_Simple;
-    end
     EntityCommon.PhysicalizeRigid(self, 0, Physics, self.bRigidBodyActive);
 end
+
 function DynamicBuildingEntity:OnPropertyChange()
     if (self.__usable) then
         if (self.__origUsable ~= self.Properties.bUsable or self.__origPickable ~= self.Properties.bPickable) then
@@ -200,6 +176,7 @@ function DynamicBuildingEntity:OnPropertyChange()
     end
     self:SetFromProperties();
 end
+
 function DynamicBuildingEntity:OnReset()
     System.LogAlways("OnReset entity ...")
 

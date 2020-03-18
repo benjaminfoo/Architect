@@ -11,6 +11,15 @@ builtEntities = {}
 -- the id of the next construction, gets incremented
 bIndex = 1
 
+-- the set of elements which are allowed to delete by the user
+whitelistSet = {
+    "BasicBuildingEntity",
+    "CookingSpotEntity",
+    "DynamicBuildingEntity",
+    "GeneratorEntity",
+    "UIManager",
+}
+
 function rayCastHit()
     System.LogAlways("# rayCastHit start")
 
@@ -116,6 +125,10 @@ function SpawnBuildingInstance(line)
             spawnParams.class = "CookingSpotEntity"
         end
 
+        if (construction.useable) then
+            spawnParams.class = "GeneratorEntity"
+        end
+
         -- spawn the new entity
         local ent = System.SpawnEntity(spawnParams)
 
@@ -132,6 +145,17 @@ function SpawnBuildingInstance(line)
         end
 
         if construction.sleepable then
+        end
+
+        if (construction.useable) then
+            ent.GetActions = function(user, firstFast)
+                output = {}
+                AddInteractorAction(output, firstFast, Action():hint("Check water"):action("use"):func(ent.OnUsed):interaction(inr_chair):enabled(1))
+                return output
+            end
+            ent.OnUsed = function(user)
+                Game.SendInfoText("Collected amount of water: " .. tostring(ent.Properties.generated_value), true, nil, 3)
+            end
         end
 
         if (construction.cookable) then
@@ -262,13 +286,7 @@ function deleteRayCastEntityHit()
 
         -- We only want to delete our constructions,
         -- so we keep a whitelist of everything - if the hit entity is within the list, the entity will get deleted
-        if (result ~= nil
-                and result.class == "BasicBuildingEntity"
-                or result.class == "CookingSpotEntity"
-                or result.class == "DynamicBuildingEntity"
-                or result.class == "GeneratorEntity"
-                or result.class == "UIManager"
-        ) then
+        if (contains(whitelistSet, result.class)) then
 
             -- if there is something to delete, log its name to the player first
             visRes = "Removing entity: " .. tostring(result:GetName()) .. "\n" .. "ID: " .. tostring(hitData.entity:GetRawId())
@@ -283,6 +301,14 @@ function deleteRayCastEntityHit()
     System.LogAlways("# deleteRayCastEntityHit end")
 end
 
+
+-- list all elements of the whitelist
+function show_whitelist()
+    System.LogAlways("Elements of the whitelist:")
+    for i = 1, #whitelistSet do
+        System.LogAlways(tostring(i) .. ".) " .. whitelistSet[i])
+    end
+end
 
 -- lists all built constructions by the player to the console
 function showall()
@@ -348,40 +374,57 @@ end
 
 
 --[[
-    Helper methods
-]]
+        Helper methods
+--]]
 
 
--- removes all entities of class "BasicBuildingEntity"
+-- removes all whitelisted entities by their classes
 function deleteall ()
-    -- local ents =  System.GetEntitiesByClass("BasicBuildingEntity")
-    local ents = System.GetEntitiesByClass("BasicBuildingEntity")
-    for i, e in pairs(ents) do
-        -- remove the entity from the game
-        System.RemoveEntity(e.id)
+
+    --[[
+    -- local ents = System.GetEntitiesByClass("BasicBuildingEntity")
+        for i, e in pairs(ents) do
+            -- remove the entity from the game
+            System.RemoveEntity(e.id)
+        end
+    --]]
+
+    for i = 1, #whitelistSet do
+
+        whitelistElem = whitelistSet[i]
+
+        local ents = System.GetEntitiesByClass(whitelistElem)
+
+        System.LogAlways("Removing " .. #ents .. " entities with class " .. whitelistElem)
+
+        for i, e in pairs(ents) do
+            -- remove the entity from the game by its id
+            System.RemoveEntity(e.id)
+        end
+
     end
+
 end
 
 
 -- reloads all scripts but is shorter to type into console
 function reloadall ()
+
     -- unload all controller first
     Script.UnloadScript("Scripts/Manager/arc_UIController.lua")
     Script.UnloadScript("Scripts/Manager/arc_ConstructionController.lua")
     Script.UnloadScript("Scripts/Manager/arc_BuildingsManager.lua")
     Script.UnloadScript("Scripts/Manager/arc_CCommandManager.lua")
+
     Script.UnloadScript("Scripts/Util/arc_constants.lua")
+    Script.UnloadScript("Scripts/Util/arc_utils.lua")
+
 
     -- unload entity related scripts (which MUST be inside pak structure at least once)
     Script.UnloadScript("Scripts/Entities/BasicBuildingEntity.lua")
     Script.UnloadScript("Scripts/Entities/DynamicBuildingEntity.lua")
     Script.UnloadScript("Scripts/Entities/CookingSpotEntity.lua")
     Script.UnloadScript("Scripts/Entities/GeneratorEntity.lua")
-
-    Script.ReloadEntityScript("Scripts/Entities/BasicBuildingEntity.lua")
-    Script.ReloadEntityScript("Scripts/Entities/DynamicBuildingEntity.lua")
-    Script.ReloadEntityScript("Scripts/Entities/CookingSpotEntity.lua")
-    Script.ReloadEntityScript("Scripts/Entities/GeneratorEntity.lua")
 
     -- reload everything
     Script.ReloadScripts()
@@ -392,6 +435,7 @@ function reloadall ()
     Script.ReloadEntityScript("Scripts/Entities/GeneratorEntity.lua")
 
     Script.ReloadScript("Scripts/Util/arc_constants.lua")
+    Script.ReloadScript("Scripts/Util/arc_utils.lua")
 
 end
 

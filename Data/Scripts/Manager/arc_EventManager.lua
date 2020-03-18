@@ -7,7 +7,7 @@
 
 architect_init = {}
 
-function architect_init:uiActionListener(actionName, eventName, argTable)
+function architect_init:sceneInitListener(actionName, eventName, argTable)
 
     -- System.LogAlways("actionName: " .. actionName)
     -- System.LogAlways("eventName: " .. eventName)
@@ -37,8 +37,8 @@ function architect_init:uiActionListener(actionName, eventName, argTable)
     end
 end
 
-UIAction.UnregisterActionListener(architect_init, "uiActionListener")
-UIAction.RegisterActionListener(architect_init, "", "", "uiActionListener")
+UIAction.UnregisterActionListener(architect_init, "sceneInitListener")
+UIAction.RegisterActionListener(architect_init, "", "", "sceneInitListener")
 
 --[[
 

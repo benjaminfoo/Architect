@@ -11,12 +11,14 @@ BasicBuildingEntity = {
     Server = {},
     Properties = {
 
-        soclasses_SmartObjectClass = "",
-        sWH_AI_EntityCategory = "",
-        bMissionCritical = 0,
-        bCanTriggerAreas = 0,
-        DmgFactorWhenCollidingAI = 1,
+        class = "BasicEntity",
         object_Model = "objects/default/primitive_sphere.cgf",
+
+        bTurnedOn = 1,
+
+        bSaved_by_game = 1,
+        Saved_by_game = 1,
+        bSerialize = 1,
 
         Physics = {
             bPhysicalize = 1,
@@ -26,42 +28,22 @@ BasicBuildingEntity = {
             Density = -1,
             Mass = -1,
         },
-        MultiplayerOptions = {
-            bNetworked = 0,
-        },
-
-        MaxSpeed = 0.1,
-        fHealth = 100,
-        bTurnedOn = 1,
-        bExcludeCover = 0,
-        bSaved_by_game = 1,
-        Saved_by_game = 1,
-        bSerialize = 1
-    },
-
-    Editor = {
-        Icon = "physicsobject.bmp",
-        IconOnTop = 1,
     },
 
     Script = {
     }
 }
 
-local Physics_DX9MP_Simple = {
-    bPhysicalize = 1,
-    bPushableByPlayers = 0,
-
-    Density = 0,
-    Mass = 0,
-
-}
 function BasicBuildingEntity:OnSpawn()
+    System.LogAlways("Spawned basic entity ...")
+
+    --[[
     if (self.Properties.MultiplayerOptions.bNetworked == 0) then
         self:SetFlags(ENTITY_FLAG_CLIENT_ONLY, 0);
     end
 
     self.bRigidBodyActive = 1;
+    ]]
 
     self:SetFromProperties();
 end
@@ -69,12 +51,8 @@ function BasicBuildingEntity:SetFromProperties()
     local Properties = self.Properties;
 
     if (Properties.object_Model == "") then
-        do
-            return
-        end ;
+        return
     end
-
-    self.freezable = (tonumber(Properties.bFreezable) ~= 0);
 
     self:SetupModel();
     if (Properties.bAutoGenAIHidePts == 1) then
@@ -147,9 +125,6 @@ function BasicBuildingEntity:IsRigidBody()
 end
 function BasicBuildingEntity:PhysicalizeThis()
     local Physics = self.Properties.Physics;
-    if (CryAction.IsImmersivenessEnabled() == 0) then
-        Physics = Physics_DX9MP_Simple;
-    end
     EntityCommon.PhysicalizeRigid(self, 0, Physics, self.bRigidBodyActive);
 end
 function BasicBuildingEntity:OnPropertyChange()
@@ -254,7 +229,6 @@ BasicBuildingEntity.FlowEvents = {
 }
 
 MakeUsable(BasicBuildingEntity);
-MakePickable(BasicBuildingEntity);
 AddHeavyObjectProperty(BasicBuildingEntity);
 AddInteractLargeObjectProperty(BasicBuildingEntity);
 SetupCollisionFiltering(BasicBuildingEntity);

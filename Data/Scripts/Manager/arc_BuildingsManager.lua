@@ -342,6 +342,9 @@ buildings = {
 -- This set could be rearranged, your savegame-files wont be affected.
 parameterizedConstructions = {
 
+    -- in dev
+    { modelPath = "Objects/buildings/houses/budin_mill/barrel_01.cgf", sitable = false, useable = true, saveable = false, cookable = false, sleepable = false },
+
     -- template for new construction / structure
     -- { modelPath = "", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 

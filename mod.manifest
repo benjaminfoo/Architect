@@ -4,7 +4,7 @@
     <name>architect</name>
     <description>Adds architecture / base-building elements to the game.</description>
     <author>Benjamin Foo</author>
-    <version>0.5.1a</version>
+    <version>0.5.2a</version>
     <created_on></created_on>
     <dependencies>
     </dependencies>

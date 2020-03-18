@@ -5,6 +5,13 @@
 --- The linmath class contains basic functions for linear algebra
 ---
 
+-- unit vectors
+i = { x = 1, y = 0, z = 0 }
+j = { x = 0, y = 1, z = 0 }
+k = { x = 0, y = 0, z = 1 }
+
+quat_identity = { x = 0, y = 0, z = 0, w = 1 }
+
 
 -- calculate the cross product of the vectors
 -- https://rosettacode.org/wiki/Vector_products#Lua
@@ -74,7 +81,10 @@ function Vector_CalculateNormalFromVector(vec)
     end
 end
 
--- https://github.com/topameng/CsToLua/blob/master/tolua/Assets/Lua/Quaternion.lua
+
+-- Inspired by:
+-- - https://github.com/topameng/CsToLua/blob/master/tolua/Assets/Lua/Vector3.lua
+-- - https://github.com/topameng/CsToLua/blob/master/tolua/Assets/Lua/Quaternion.lua
 -- rotate the vector from fromVec to toVec
 function Vector_SetFromToRotation(fromVec, toVec)
 
@@ -88,9 +98,9 @@ function Vector_SetFromToRotation(fromVec, toVec)
 
     if dotProduct > -1 + 1e-6 then
         local s = math.sqrt((1 + dotProduct) * 2)
-        local invs = 1 / s
-        local c = Vector_Cross(normalizedFrom, normalizedTo)
-        identity = { x = (c.x * invs), y = (c.y * invs), z = (c.z * invs), w = (s * 0.5) }
+        local inverse = 1 / s
+        local crossP = Vector_Cross(normalizedFrom, normalizedTo)
+        identity = { x = (crossP.x * inverse), y = (crossP.y * inverse), z = (crossP.z * inverse), w = (s * 0.5) }
     elseif dotProduct > 1 - 1e-6 then
         identity = { x = 0, y = 0, z = 0, w = 1 }
     else
@@ -105,8 +115,8 @@ function Vector_SetFromToRotation(fromVec, toVec)
 end
 
 function Quat_Align(newEntity, normal)
-    local identity = { x = 0, y = 0, z = 1 }
-    local rotVec = Vector_SetFromToRotation(identity, normal)
+    local upZ = { x = 0, y = 0, z = 1 }
+    local rotVec = Vector_SetFromToRotation(upZ, normal)
     newEntity:SetAngles({ rotVec.x * 2, rotVec.y * 2, 90 })
 end
 

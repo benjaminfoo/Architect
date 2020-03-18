@@ -41,14 +41,12 @@ function uuid()
     end)
 end
 
-function logKeyValues(object, filter)
-    for key, value in pairs(object) do
-        if not isBlank(filter) then
-            if string.find(toUpper(key), toUpper(filter), 1, true) then
-                System.LogAlways(key .. " | " .. value)
-            end
-        else
-            System.LogAlways(key)
+function contains (tab, val)
+    for index, value in ipairs(tab) do
+        if value == val then
+            return true
         end
     end
+
+    return false
 end

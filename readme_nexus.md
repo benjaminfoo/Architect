@@ -98,10 +98,11 @@ This is a list of planned features for later development or features recommended
 - custom entities for the generation of resources
 - resource / cost management system (for spending and recieving groschen w constructions)
 - spawn setups with relations to npcs or items
-- make torches toggleable!
+- make torches & lights toggleable
 - siege invasions
 - trigger / buttons, ...
-- maybe another ui
+- preview for constructions
+- gizmo for rotation, translation of the constructions
 - ...
 
 
@@ -115,8 +116,8 @@ Remember
 
 Version 0.5.2a
 - updated available constructions
-- added fallback keybindings
-- reduced deletion - its now only possible to delete objects created by the user
+- added keybinding fallback 
+- limited users ability of deletion - its now only possible to delete objects created by the user
 - updated documentation
 
 Version 0.5.1a
@@ -177,9 +178,6 @@ Yes, this is true.
 
 Vegetation and some other models arent removeable
 Yes, this is also true.
-
-Ive deleted a door, npc, my dog, someones horse ...
-Yes, this is also true - this gets fixed in the next version
 
 I want feature x!
 Me too! Write me a message!

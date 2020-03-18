@@ -12,10 +12,6 @@ UIManager = {
         Saved_by_game = 0,
         bSerialize = 0
     },
-    Editor = {
-        Icon = "animobject.bmp",
-        IconOnTop = 1,
-    },
     States = {  },
 }
 

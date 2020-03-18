@@ -41,7 +41,7 @@ System.ExecuteCommand("bind f9 architect_recompile")        -- debug: reload the
 -- load external key bindings
 -- these file must be stored under:
 -- <path-to-steam-folder>\steamapps\common\KingdomComeDeliverance\mods\architect\keybinds.cfg
-System.ExecuteCommand('exec keybinds.cfg')
+System.ExecuteCommand('exec mods/architect/keybinds.cfg')
 
 -- if this gets printed the mod should work :)
 System.LogAlways("architect " .. architect_version .. " - initialized!")

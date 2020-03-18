@@ -269,7 +269,7 @@ end
 function CookingSpotEntity:GetActions(user, firstFast)
     output = {}
     -- AddInteractorAction(output, firstFast, Action():hint("Bake bread"):action("use"):func(self.OnUsed):interaction(inr_chair):enabled(1))
-    AddInteractorAction(output, firstFast, Action():hint("Bake bread"):action("use"):func(ent.OnUsed):interaction(inr_chair):enabled(1))
+    AddInteractorAction(output, firstFast, Action():hint("Bake bread"):action("use"):func(self.OnUsed):interaction(inr_chair):enabled(1))
     return output
 end
 

@@ -1,0 +1,4 @@
+<Entity
+        Name="BedEntity"
+        Script="Scripts/Entities/BedEntity.lua"
+/>
