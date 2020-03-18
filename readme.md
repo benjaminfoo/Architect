@@ -2,36 +2,43 @@
 
 # KCD - Architect
  
-A base-building modification for Kingdom Come Deliverance.
-
-This modification adds base-building mechanics to the existing game by providing the ability to create constructions
+A modification for Kingdom Come Deliverance which adds base-building mechanics to the existing game by providing the ability to create constructions
 within the games world (its not possible to remove existing structures though).
 
 The player can create anything from simple props to flora & fauna, vegetation, houses, walls, towers, chairs, benches, beds, etc. - any createable entity is already defined within the games data - this modification however just adds and executes additional lua code and makes use of the already existing engine & sdk by warhorse studios.
 
-Constructions are saved across your savegames - there is no new save required.
-
-Its also safe to remove the mod at any time (however - if you've already created something within the game, without
-deleting it then, the entity stays in the game. Use #deleteall() within the ingame-console to clean up your scene.)
-
-Note: As always, make a backup of your saved games before doing anything else.
+##### Notes 
+- Make a backup of your saved games before doing anything else.
+- Constructions are saved across your savegames - there is no new save required.
 
 If you're having fun using this mod, maybe you're interested in buying me a coffee :) \
-Thanks to  [Warhorse Studios](https://warhorsestudios.cz) for creating this gem.
+Thanks to  [Warhorse Studios](https://warhorsestudios.cz) for creating this gem!
 
+<br>
 
-## Installation
-Download the latest release, unzip the archive into your `KingdomComeDeliverance\mods`-folder.
-If the installation was succesful you'll see the instructions-message on how to use the mod when the game has been started (and a savegame loaded or a new game hast been created).
+### Installation
+Download the latest release, unzip the archive into your KingdomComeDeliverance\mods - folder.
+If the installation was succesful you'll see the instructions-message on how to use the mod when the game has been started
+(and a savegame loaded or a new game hast been created).
 
-You need to start the game with devmode enabled (the modification won't work otherwise apparently).
+##### For Steam
+- Steam\steamapps\common\KingdomComeDeliverance\mods\architect\mod.manifest
+- Steam\steamapps\common\KingdomComeDeliverance\mods\architect\keybinds.cfg
+- Steam\steamapps\common\KingdomComeDeliverance\mods\architect\Data\architect.pak
 
-You can do this by creating a shortcut of the KingdomCome.exe and append '_-devmode_' on it, you could also use steam:\
-_-> right click on kingdom come in your steam library -> Properties ->  General, set launch options -> and add "-devmode"_.
+##### For Epic Store
+This will get updated soon - however, take a look at the posts section of this site - people using epic were also able to use this mod.
 
-**In your OS / explorer / shell:**\
-`C:\dev\Steam\steamapps\common\KingdomComeDeliverance\Bin\Win64\KingdomCome.exe -devmode
-`
+##### Using Dev-mode
+You need to start the game with devmode enabled (the modification won't work otherwise apparently). \
+**In your OS / explorer / shell:** `<Steam>\steamapps\common\KingdomComeDeliverance\Bin\Win64\KingdomCome.exe -devmode`
+
+<br>
+
+## Uninstall / Removal
+Its also safe to remove the mod at any time (if you've already created something within the game, without
+deleting it first, the entity stays in the game. Use **#deleteall()** within the ingame-console to clean up your scene.)
+
 
 ## Usage / Keys
 These keys can be used to interact with the mod - they're also shown ingame.
@@ -48,6 +55,7 @@ Key V
 Remove an newly created construction \
 Key G
 
+<br>
 
 ## Technical
 
@@ -71,6 +79,7 @@ In order to execute a lua function, you have to prepend a '#'-character to execu
 - showall()   - Lists all constructions to the ingame console
 - deleteAt(index)() - Delete the construction with the number "index" (use #showall())
 
+<br>
 
 ### HowTo
 ##### Change default key-bindings
@@ -83,9 +92,9 @@ pain to position by hand, some are graphical effects, some are too large to be p
 However, one could add models / cgfs from the assets  on its own, the currently used constructions are 
 listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Scripts/Manager/BuildingsManager.lua
 
+<br>
 
-
-##### Planned features
+#### Planned features
 This is a list of planned features for later development - this will take some time however
 
 - custom constructions, or existing constructions with custom actions / usages
@@ -94,6 +103,7 @@ This is a list of planned features for later development - this will take some t
 - spawn npcs
 - spawn items
 
+<br>
 
 ### Changelog
 This list contains all changes during development - the versions should be compatible to each other, maybe - already created entities wont be affected.
