@@ -16,7 +16,7 @@ deleting it then, the entity stays in the game. Use #deleteall() within the inga
 
 Note: As always, make a backup of your saved games before doing anything else.
 
-If you're having fun using this mod, maybe you're interested in buying me a coffee :)
+If you're having fun using this mod, maybe you're interested in buying me a coffee :) \
 Thanks to  [Warhorse Studios](https://warhorsestudios.cz) for creating this gem.
 
 
