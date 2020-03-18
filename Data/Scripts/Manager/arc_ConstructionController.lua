@@ -280,7 +280,7 @@ function deleteRayCastEntityHit()
 
     hitData = rayCastHit()
 
-    if (hitData ~= nil) then
+    if (hitData ~= nil and hitData.entity ~= nil and hitData.entity.class ~= nil) then
 
         result = hitData.entity;
 

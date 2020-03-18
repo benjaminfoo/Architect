@@ -57,6 +57,11 @@ GeneratorEntity = {
     States = {  },
 }
 
+function GeneratorEntity:OnSpawn()
+    self.bRigidBodyActive = 1;
+    self:SetFromProperties();
+end
+
 function GeneratorEntity:OnReset()
     System.LogAlways("GeneratorEntity OnReset")
 
@@ -84,16 +89,29 @@ function GeneratorEntity.Client:OnInit()
         self.bInitialized = 1;
     end ;
 
-    System.LogAlways("GeneratorEntity client not loaded ...")
+    System.LogAlways("GeneratorEntity client loaded ...")
 
 end
 
+countdownTime = 3 -- two and a half seconds
+
 function GeneratorEntity.Server:OnUpdate(delta)
-    System.LogAlways("GeneratorEntity.Server onUpdate" .. tostring(delta))
+    -- System.LogAlways("GeneratorEntity.Server onUpdate" .. tostring(delta))
+
+    countdownTime = countdownTime - delta
+    if countdownTime <= 0 then
+        countdownTime = countdownTime + 3
+
+        self.Properties.generated_value = self.Properties.generated_value + 1
+
+        System.LogAlways("Something should happen now: " .. "\n" .. "Generated water by " .. self:GetName() .. " - " .. tostring(self.Properties.generated_value))
+
+    end
+
 end
 
 function GeneratorEntity.Client:OnUpdate(delta)
-    System.LogAlways("GeneratorEntity.Client onUpdate" .. tostring(delta))
+    -- System.LogAlways("GeneratorEntity.Client onUpdate" .. tostring(delta))
 end
 
 function GeneratorEntity:SetupModel()
@@ -159,9 +177,36 @@ function GeneratorEntity:PhysicalizeThis()
     EntityCommon.PhysicalizeRigid(self, 0, Physics, self.bRigidBodyActive);
 end
 
+function GeneratorEntity:SetFromProperties()
+    local Properties = self.Properties;
+
+    if (Properties.object_Model == "") then
+        do
+            return
+        end ;
+    end
+
+    self:SetupModel();
+
+    if (Properties.bAutoGenAIHidePts == 1) then
+        self:SetFlags(ENTITY_FLAG_AI_HIDEABLE, 0);
+    else
+        self:SetFlags(ENTITY_FLAG_AI_HIDEABLE, 2);
+    end
+
+    if (self.Properties.bCanTriggerAreas == 1) then
+        self:SetFlags(ENTITY_FLAG_TRIGGER_AREAS, 0);
+    else
+        self:SetFlags(ENTITY_FLAG_TRIGGER_AREAS, 2);
+    end
+end
+
 function GeneratorEntity:OnPropertyChange()
-    self:OnReset();
-    System.LogAlways("GeneratorEntity opc")
+    if (self.__usable) then
+        if (self.__origUsable ~= self.Properties.bUsable or self.__origPickable ~= self.Properties.bPickable) then
+            self.__usable = nil;
+        end
+    end
     self:SetFromProperties();
 end
 
@@ -260,19 +305,6 @@ end
 function GeneratorEntity:OnUsedHold(user)
 
 end
-
-GeneratorEntity.Server.TurnedOn = {
-    OnBeginState = function(self)
-        BroadcastEvent(self, "TurnOn")
-    end,
-    OnUpdate = function(self, dt)
-        --[[ do something every frame, like rendering, ai, ..]]
-        System.LogAlways("Anonymous GeneratorEntity.Server onUpdate")
-    end,
-    OnEndState = function(self)
-
-    end,
-}
 
 GeneratorEntity.FlowEvents = {
     Inputs = {
