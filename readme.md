@@ -98,15 +98,16 @@ This is a list of planned features for later development - this will take some t
 ### Changelog
 This list contains all changes during development - the versions should be compatible to each other, maybe - already created entities wont be affected.
 
+
+```
 Remember
 - Alpha versions (a) are unstable and in subject of larger changes - expect bugs.
 - Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).
 
-```
 Version 0.5.1b - dev
 - updated available constructions
 - added keybinding fallback 
-- limited users ability of deletion - its now only possible to delete objects created by the user
+- limited user to only remove his own constructions
 - updated documentation
 
 Version 0.5.1a
