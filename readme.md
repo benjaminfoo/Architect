@@ -61,7 +61,7 @@ Key G
 Lock / unlock construction for deletion \
 Key O
 
-Lock / unlock construction for deletion \
+Reload the project sources at runtime \
 Key F9
 
 <br>
