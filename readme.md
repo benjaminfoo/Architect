@@ -2,17 +2,18 @@
 
 # KCD - Architect
  
-A modification for Kingdom Come Deliverance which adds base-building mechanics to the existing game by providing the ability to create constructions
-within the games world (its not possible to remove existing structures though).
+A modification for Kingdom Come Deliverance which introduces base-building mechanics and new features to the game.
 
-The player can create anything from simple props to flora & fauna, vegetation, houses, walls, towers, chairs, benches, beds, etc. - any createable entity is already defined within the games data - this modification however just adds and executes additional lua code and makes use of the already existing engine & sdk by warhorse studios.
+The usage of the architect project allows the construction of entities within the games world - 
+this means that the player can spawn anything from simple props to flora & fauna, vegetation, houses, walls, towers,
+tents, chairs, benches, beds, etc. anywhere in the world.
 
-##### Notes 
-- Make a backup of your saved games before doing anything else.
-- Constructions are saved across your savegames - there is no new save required.
-
-If you're having fun using this mod, maybe you're interested in buying me a coffee :) \
+If you're having fun with this mod you're maybe interested in buying me a coffee :) \
 Thanks to  [Warhorse Studios](https://warhorsestudios.cz) for creating this gem!
+
+**Notes**  
+Make a backup of your saved games before doing anything else. \
+Constructions are saved across your savegames - there is no new save required.
 
 <br>
 
@@ -25,12 +26,13 @@ If the installation was succesful you'll see the instructions-message on how to 
 - Steam\steamapps\common\KingdomComeDeliverance\mods\architect\mod.manifest
 - Steam\steamapps\common\KingdomComeDeliverance\mods\architect\keybinds.cfg
 - Steam\steamapps\common\KingdomComeDeliverance\mods\architect\Data\architect.pak
-
+ \ 
 ##### For Epic Store
 This will get updated soon - however, take a look at the posts section of this site - people using epic were also able to use this mod.
 
 ##### Using Dev-mode
-You need to start the game with devmode enabled (the modification won't work otherwise apparently). \
+You need to start the game with devmode enabled (the modification won't work otherwise). \
+
 **In your OS / explorer / shell:** `<Steam>\steamapps\common\KingdomComeDeliverance\Bin\Win64\KingdomCome.exe -devmode`
 
 <br>
