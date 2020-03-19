@@ -4,7 +4,7 @@
  
 A modification for Kingdom Come Deliverance which introduces base-building mechanics and new features to the game.
 
-The usage of the architect project allows the construction of entities within the games world - 
+This project allows the construction of entities within the games world - 
 this means that the player can spawn anything from simple props to flora & fauna, vegetation, houses, walls, towers,
 tents, chairs, benches, beds, etc. anywhere in the world.
 
