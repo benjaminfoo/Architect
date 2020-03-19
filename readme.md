@@ -8,12 +8,11 @@ This project allows the construction of entities within the games world -
 this means that the player can spawn anything from simple props to flora & fauna, vegetation, houses, walls, towers,
 tents, chairs, benches, beds, etc. anywhere in the world.
 
-If you're having fun with this mod you're maybe interested in buying me a coffee :) \
-Thanks to  [Warhorse Studios](https://warhorsestudios.cz) for creating this gem!
-
-**Notes**  
 Make a backup of your saved games before doing anything else. \
 Constructions are saved across your savegames - there is no new save required.
+
+If you're having fun with this mod you're maybe interested in buying me a coffee :) \
+Thanks to  [Warhorse Studios](https://warhorsestudios.cz) for creating this gem!
 
 <br>
 
