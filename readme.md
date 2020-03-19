@@ -44,16 +44,22 @@ deleting it first, the entity stays in the game. Use **#deleteall()** within the
 These keys can be used to interact with the mod - they're also shown ingame.
 
 Choose the next construction (from 0 to ~200) \
-Button: MouseWheel up
+Button MouseWheel up
 
 Choose the previous construction (from 0 to ~200) \
-Button: MouseWheel down
+Button MouseWheel down
 
 Create a new construction \
 Key V
 
-Remove an newly created construction \
+Remove a construction \
 Key G
+
+Lock / unlock construction for deletion \
+Key O
+
+Lock / unlock construction for deletion \
+Key F9
 
 <br>
 
@@ -71,13 +77,39 @@ The following list contains regular console commands
 
 
 ### Lua functions
-In order to execute a lua function, you have to prepend a '#'-character to execute it
+These functions offer advanced usage to the modifications internals, use at your own risk and save the game. \
+In order to execute a lua function, you have to prepend a '#'-character to execute it.
 
-- reloadall() - Reloads the source files of the modification
-- rayCastHit() - Use a raycast to determine entities in front of the player
-- deleteall() - Deletes ALL constructions youve build
-- showall()   - Lists all constructions to the ingame console
-- deleteAt(index)() - Delete the construction with the number "index" (use #showall())
+```
+SelectFirst()  
+-- selects the first construction and updates the user interface
+
+SelectLast()
+-- selects the last construction and updates the user interface
+
+SelectIndex(nr)
+-- selects the construction at Number nr and updates the user interface
+
+showall()
+-- lists all constructions to the ingame console
+
+deleteall()
+-- deletes all constructions you've created
+
+deleteAt(index)()
+-- delete the construction at number index (use #showall())
+
+toggleEntityLock()
+-- toggles the deletion_lock-value of the currently faced entity
+-- If true, the entity wont get deleted, no matter which function / mechanism is used,
+-- if false, the entity will get deleted (default) 
+
+reloadall()
+-- Reloads the source files of the project at runtime
+
+rayCastHit()
+-- Use a raycast to determine entities in front of the player
+```
 
 <br>
 
@@ -95,38 +127,45 @@ listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Sc
 <br>
 
 #### Planned features
-This is a list of planned features for later development - this will take some time however
+This list contains all the features planned for later development, recommended by myself or the community:
 
-- custom constructions, or existing constructions with custom actions / usages
-- define further custom entities
-- resource / cost management
-- spawn npcs
-- spawn items
+- custom crafting systems
+- custom constructions / entities, or existing with custom actions / usages
+- custom entities for the generation of resources
+- resource / cost management system (for spending and recieving groschen w constructions)
+- spawn setups with relations to npcs or items
+- make torches & lights toggleable
+- trigger / buttons
+- preview for constructions
+- gizmo / mode for rotation, translation of the constructions
+- siege invasions
+- ...
 
 <br>
 
 ### Changelog
-This list contains all changes during development - the versions should be compatible to each other, maybe - already created entities wont be affected.
-
+This list contains all changes happened during development - the versions should be compatible to each other (maybe) - already created entities wont be affected.
 
 ```
-Remember
 - Alpha versions (a) are unstable and in subject of larger changes - expect bugs.
 - Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).
 
-Version 0.5.1b - dev
-- updated available constructions
-- added keybinding fallback 
-- limited user to only remove his own constructions
-- updated documentation
+changelog 0.5.2b
+- added fallback keybinding
+- limited user to only remove his own constructions (no more deleted doors, ... or dogs)
+- added deletion lock for entities (by pressing 'O' you're locking the currently faced entity, which makes it undeleteable, press again to retoggle the state)
+- updated construction-types, construction-set (its now possible to build a water generators or different kind of ovens)
+- updated console commands (allows selection of the first, last or n-th entity from available constructions) 
+- the functionalities / mechanics of constructions now work on saved/loaded games
+- updated console commands, refactored almost entire project, updated docs :)
 
 Version 0.5.1a
 - increased compatibility with other modifications
 
 Version 0.5a
-- added useable entities (like chairs, benches, beds, etc.)
-- added custom actions and new entities (generator, cooking)
-- added basic custom crafting system
+- added basic custom crafting system (this only works with constructions created by the player) 
+- added useable entities (like chairs, beds, benches, etc.)
+- updates of custom actions and entities
 - refactored project, upgraded entity-model, controller, utils, documentation etc.
 - removed invalid references from assets
 
@@ -141,9 +180,8 @@ Version 0.3b
 
 Version 0.2b
 - bug-fixes, removed all known problems
-- finished major refactoring
-- unique naming of entities (GUIDs)
 - setup proper constructions
+- unique naming of entities
 
 Version 0.1b
 - advanced ingame-console functionality
