@@ -24,9 +24,9 @@ If the installation was succesful you'll see the instructions-message on how to 
 ##### For Steam
 The following list of files files need to be stored at: \
 `Steam\steamapps\common\KingdomComeDeliverance\mods\architect\`
-- architect\mod.manifest
-- architect\keybinds.cfg
-- architect\Data\architect.pak
+- mod.manifest
+- keybinds.cfg
+- Data\architect.pak
 
 ##### For Epic Store
 This will get updated soon - however, take a look at the posts section of this site - people using epic were also able to use this mod.
