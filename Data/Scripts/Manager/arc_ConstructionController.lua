@@ -14,10 +14,12 @@ bIndex = 1
 -- the set of elements which are allowed to delete by the user
 whitelistSet = {
     "BasicBuildingEntity",
+    "BedEntity",
+    "ChairEntity",
     "CookingSpotEntity",
     "DynamicBuildingEntity",
     "GeneratorEntity",
-    "UIManager",
+    "UIManager"
 }
 
 function rayCastHit()
@@ -80,10 +82,10 @@ function SpawnBuildingInstance(line)
         -- construct the entity and setup its parameters
         local spawnParams = {}
 
-        -- use BasicBuildingEntity.lua as type for static constructions
+        -- use arc_BasicBuildingEntity.lua as type for static constructions
         spawnParams.class = "BasicBuildingEntity"
 
-        -- use DynamicBuildingEntity.lua as type for constructions with any kind of functionality
+        -- use arc_DynamicBuildingEntity.lua as type for constructions with any kind of functionality
         -- spawnParams.class = "DynamicBuildingEntity"
 
         -- setup the position from the raycast hit
@@ -96,13 +98,7 @@ function SpawnBuildingInstance(line)
         spawnParams.properties.bSerialize = 1
 
         -- use the input of %line if provided, else use the current building index for the selection of the building
-        --[[
-        if(line ~= nil) then
-            modelPath = line
-        else
-            modelPath = parameterizedConstructions[bIndex]
-        end
-        ]]
+        -- if(line ~= nil) then modelPath = line else  modelPath = parameterizedConstructions[bIndex] end
 
         -- get the path of the model for the construction
         construction = parameterizedConstructions[bIndex]
@@ -112,13 +108,11 @@ function SpawnBuildingInstance(line)
         spawnParams.name = construction.modelPath .. "_" .. uuid()
 
         if (construction.sitable) then
-            spawnParams.properties.guidSmartObjectType = "2320f814-8ec1-430d-860f-960286323dbc"
-            spawnParams.properties.soclasses_SmartObjectHelpers = "Bench_1Place_noTable"
-            spawnParams.properties.sWH_AI_EntityCategory = "Seat"
+            spawnParams.class = "ChairEntity"
         end
 
         if (construction.sleepable) then
-            spawnParams.class = "DynamicBuildingEntity"
+            spawnParams.class = "BedEntity"
         end
 
         if (construction.cookable) then
@@ -129,110 +123,22 @@ function SpawnBuildingInstance(line)
             spawnParams.class = "GeneratorEntity"
         end
 
+        -- finish any work _before_ the entity gets initialized and spawned
+
         -- spawn the new entity
         local ent = System.SpawnEntity(spawnParams)
 
-        -- setup the entity within the world after it has been spawned
+        -- setup the entity within the world _after_ it has been spawned
         if construction.sitable then
-            ent.GetActions = function(user, firstFast)
-                output = {}
-                AddInteractorAction(output, firstFast, Action():hint("@ui_hud_sit"):action("use"):func(ent.OnUsed):interaction(inr_bedSleep):enabled(1))
-                return output
-            end
-            ent.OnUsed = function(user)
-                XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(ent)) .. "), mode ('use')")
-            end
         end
 
         if construction.sleepable then
         end
 
         if (construction.useable) then
-            ent.GetActions = function(user, firstFast)
-                output = {}
-                AddInteractorAction(output, firstFast, Action():hint("Check water"):action("use"):func(ent.OnUsed):interaction(inr_chair):enabled(1))
-                return output
-            end
-            ent.OnUsed = function(user)
-                Game.SendInfoText("Collected amount of water: " .. tostring(ent.Properties.generated_value), true, nil, 3)
-            end
         end
 
         if (construction.cookable) then
-            ent.GetActions = function(user, firstFast)
-                output = {}
-                AddInteractorAction(output, firstFast, Action():hint("Bake bread"):action("use"):func(ent.OnUsed):interaction(inr_chair):enabled(1))
-                return output
-            end
-            -- executed when this entity has been used
-            ent.OnUsed = function(user)
-
-                -- TODO: This is all in todo state!
-                --[[
-                -- remove item with UUID from inventory
-                -- local removeableItemUUID = "86e4ff24-88db-4024-abe6-46545fa0fbd1" == bread
-                    for i,dat in pairs(player.inventory:GetInventoryTable()) do
-                        local item = ItemManager.GetItem(dat)
-                        for i=1, item.amount do
-                            if(item.class == removeableItemUUID) then
-                                player.inventory:RemoveItem(item.id, 1)
-                            end
-                        end
-                    end
-
-                    -- Syntax: Database.LoadTable("player_item")
-                    -- Loads or reloads table. Returns true if table is loaded.
-
-                    -- Syntax: Database.GetTableInfo("player_item")
-                    -- Returns lua table with C_Table properties.
-
-                    -- true if table was loaded
-                    log("Entity " .. ent:GetName() .. " has been used!")
-
-                ]]
-
-
-                -- This is only a prototype
-                -- TODO: define needed resources for newly crafted items
-                -- TODO: define dynamic amounts for recipes and results
-
-                -- 5e9b4fa1-aafa-4352-b5d6-58df2c263caa : Nettle
-                local recipeName = "Bread"
-                local costUUIDs = "5e9b4fa1-aafa-4352-b5d6-58df2c263caa"
-                local costAmount = 1
-                local costResource = "Nettle"
-
-
-
-                -- bread:  86e4ff24-88db-4024-abe6-46545fa0fbd1
-                local craftedResourceUUID = "86e4ff24-88db-4024-abe6-46545fa0fbd1"
-                local craftedAmount = 1
-                local playerTable = "player_item"
-
-                -- 1. Check if costs are covered for creating the construction
-                if (availableResources - costAmount >= 0) then
-
-                    -- 2. Remove costs from inventory
-                    removeItem(costUUIDs, costAmount)
-
-                    -- this is for debugging purposes - this should work two times
-                    availableResources = availableResources - costAmount
-
-                    resultSuccess = Database.LoadTable(playerTable)
-
-                    -- 3. Create new item instance, add to inventory
-                    newItemInstance = ItemManager.CreateItem(craftedResourceUUID, 100, craftedAmount)
-                    player.inventory:AddItem(newItemInstance);
-
-                    Game.SendInfoText("Created " .. craftedAmount .. "x " .. recipeName .. " for " .. costAmount .. "x " .. costResource
-                            .. "\n" .. "" .. costResource .. " left: " .. tostring(availableResources), true, nil, 3)
-                else
-                    -- If there arent enough resources available than needed, abort this
-                    Game.SendInfoText("Not enough resources for " .. craftedAmount .. "x " .. recipeName, true, nil, 3)
-                end
-
-                XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(ent)) .. "), mode ('use')")
-            end
         end
 
 
@@ -253,25 +159,41 @@ end
 
 
 
--- dumps information about the current "seen" entity to the console
-function detectEntity()
-    System.LogAlways("# detectEntity start")
+-- Toggles the currently "seen" deletion_lock state
+-- If the entity's deletion_lock property's value equals to zero, it wont be deleted
+-- Also dumps information about the current entity to the console
+function toggleEntityLock()
+    System.LogAlways("# toggleEntityLock start")
 
+    -- execute a raycast within the players fov
     hitData = rayCastHit()
 
+    -- if our ray collided with something ...
     if (hitData ~= nil) then
 
+        -- get the entity from the collision
         result = hitData.entity;
 
-        visRes = "Hit entity: " .. tostring(result:GetName()) .. "\n" .. "ID: " .. tostring(hitData.entity:GetRawId())
+        -- if there was an entity related to this collision ...
+        if result ~= nil then
 
-        log(result.id)
-        Game.SendInfoText(visRes, true, nil, 1)
-        builtEntities[#builtEntities - 1] = nil
+            -- toggle the current state (true => false, false => true)
+            result.Properties.deletion_lock = not result.Properties.deletion_lock
+
+            if (result.Properties.deletion_lock) then
+                visRes = "Locked entity: " .. tostring(result:GetName()) .. "\n" .. "ID: " .. tostring(hitData.entity:GetRawId())
+            else
+                visRes = "Unlocked entity: " .. tostring(result:GetName()) .. "\n" .. "ID: " .. tostring(hitData.entity:GetRawId())
+            end
+
+            -- output state message
+            Game.SendInfoText(visRes, true, nil, 1)
+
+        end
 
     end
 
-    System.LogAlways("# detectEntity end")
+    System.LogAlways("# toggleEntityLock end")
 end
 
 -- delete the current entity (the entity which collides with the raycast)
@@ -292,8 +214,11 @@ function deleteRayCastEntityHit()
             visRes = "Removing entity: " .. tostring(result:GetName()) .. "\n" .. "ID: " .. tostring(hitData.entity:GetRawId())
             Game.SendInfoText(visRes, true, nil, 1)
 
-            -- remove the entity by its id
-            System.RemoveEntity(hitData.entity.id)
+            if (result.Properties.deletion_lock == false) then
+                -- remove the entity by its id
+                System.RemoveEntity(result.id)
+            end
+
         end
 
     end
@@ -319,12 +244,20 @@ function showall()
     end
 end
 
+-- Delete an existing construction by its build-index
 function deleteAt(index)
     if (index) then
+
         deletionEntity = builtEntities[index]
-        System.RemoveEntity(deletionEntity.id)
+
+        if (deletionEntity ~= nil and e.Properties.deletion_lock == false) then
+            System.RemoveEntity(deletionEntity.id)
+        end
+
         log("Deleting " .. tostring(deletionEntity))
         builtEntities[index] = nil
+
+
     end
 end
 
@@ -341,10 +274,7 @@ function bIndexInc()
 
     -- update the current building for the ui-controller
     -- TODO: refactor global variables from UIController to object instances
-    modelPath = parameterizedConstructions[bIndex]
-    res_current_model = modelPath;
-
-    Game.SendInfoText("Selected (" .. bIndex .. "/" .. #parameterizedConstructions .. ")\n" .. tostring(parameterizedConstructions[bIndex].modelPath), true, nil, 1)
+    updateSelection()
 
 end
 
@@ -365,11 +295,14 @@ function bIndexDec()
 
     -- update the current building for the ui-controller
     -- TODO: refactor global variables from UIController to object instances
+    updateSelection()
+
+end
+
+function updateSelection()
     modelPath = parameterizedConstructions[bIndex]
     res_current_model = modelPath;
-
     Game.SendInfoText("Selected (" .. bIndex .. "/" .. #parameterizedConstructions .. ")\n" .. tostring(parameterizedConstructions[bIndex].modelPath), true, nil, 1)
-
 end
 
 
@@ -395,18 +328,19 @@ function deleteall ()
 
         local ents = System.GetEntitiesByClass(whitelistElem)
 
+        -- TODO: update the stats, exclude the entities with deletion_lock = true
         System.LogAlways("Removing " .. #ents .. " entities with class " .. whitelistElem)
 
         for i, e in pairs(ents) do
-            -- remove the entity from the game by its id
-            System.RemoveEntity(e.id)
+            if (e.Properties.deletion_lock == false) then
+                -- remove the entity from the game by its id
+                System.RemoveEntity(e.id)
+            end
         end
 
     end
 
 end
-
-
 -- reloads all scripts but is shorter to type into console
 function reloadall ()
 
@@ -421,18 +355,18 @@ function reloadall ()
 
 
     -- unload entity related scripts (which MUST be inside pak structure at least once)
-    Script.UnloadScript("Scripts/Entities/BasicBuildingEntity.lua")
-    Script.UnloadScript("Scripts/Entities/DynamicBuildingEntity.lua")
-    Script.UnloadScript("Scripts/Entities/CookingSpotEntity.lua")
-    Script.UnloadScript("Scripts/Entities/GeneratorEntity.lua")
+    Script.UnloadScript("Scripts/Entities/arc_BasicBuildingEntity.lua")
+    Script.UnloadScript("Scripts/Entities/arc_DynamicBuildingEntity.lua")
+    Script.UnloadScript("Scripts/Entities/arc_CookingSpotEntity.lua")
+    Script.UnloadScript("Scripts/Entities/arc_GeneratorEntity.lua")
 
     -- reload everything
     Script.ReloadScripts()
 
-    Script.ReloadEntityScript("Scripts/Entities/BasicBuildingEntity.lua")
-    Script.ReloadEntityScript("Scripts/Entities/DynamicBuildingEntity.lua")
-    Script.ReloadEntityScript("Scripts/Entities/CookingSpotEntity.lua")
-    Script.ReloadEntityScript("Scripts/Entities/GeneratorEntity.lua")
+    Script.ReloadEntityScript("Scripts/Entities/arc_BasicBuildingEntity.lua")
+    Script.ReloadEntityScript("Scripts/Entities/arc_DynamicBuildingEntity.lua")
+    Script.ReloadEntityScript("Scripts/Entities/arc_CookingSpotEntity.lua")
+    Script.ReloadEntityScript("Scripts/Entities/arc_GeneratorEntity.lua")
 
     Script.ReloadScript("Scripts/Util/arc_constants.lua")
     Script.ReloadScript("Scripts/Util/arc_utils.lua")
@@ -461,6 +395,22 @@ System.AddCCommand('deleteRayCastEntityHit', 'deleteRayCastEntityHit()', "delete
 --System.ExecuteCommand("bind mouse4 deleteRayCastEntityHit ")
 
 -- Detect / dump information about the current "seen" entity
-System.AddCCommand('detectEntity', 'detectEntity()', "detectEntity!")
---System.ExecuteCommand("bind mouse5 detectEntity ")
+System.AddCCommand('toggleEntityLock', 'toggleEntityLock()', "toggleEntityLock!")
+--System.ExecuteCommand("bind mouse5 toggleEntityLock ")
 
+
+-- helper methods and commands
+function SelectFirst()
+    bIndex = 1
+    updateSelection()
+end
+
+function SelectLast()
+    bIndex = #parameterizedConstructions - 1
+    updateSelection()
+end
+
+function SelectIndex(newIndex)
+    bIndex = newIndex;
+    updateSelection()
+end

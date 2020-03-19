@@ -6,7 +6,7 @@
 ---
 --- For example: TODO :)
 ---
--- Script.ReloadScript("scripts/Utils/EntityUtils.lua")
+---
 
 GeneratorEntity = {
     Client = {},
@@ -29,15 +29,22 @@ GeneratorEntity = {
 
         Physics = {
             bPhysicalize = 1,
-            bRigidBody = 1,
-            bPushableByPlayers = 1,
+            bRigidBody = 0,
+            bPushableByPlayers = 0,
+
             Density = -1,
             Mass = -1,
+
+            CollisionFiltering = {
+                collisionType = { },
+                collisionIgnore = { }
+            }
         },
 
         bSaved_by_game = 1,
         Saved_by_game = 1,
         bSerialize = 1,
+        deletion_lock = false,
 
         bInteractiveCollisionClass = 1,
         object_Model = "objects/buildings/refugee_camp/bad_straw.cgf",
@@ -93,8 +100,8 @@ function GeneratorEntity.Client:OnInit()
 
 end
 
-countdownTime = 3 -- two and a half seconds
-
+-- todo - refactor like there is no tomorrow, but tomorrow
+countdownTime = 3
 function GeneratorEntity.Server:OnUpdate(delta)
     -- System.LogAlways("GeneratorEntity.Server onUpdate" .. tostring(delta))
 
@@ -104,7 +111,11 @@ function GeneratorEntity.Server:OnUpdate(delta)
 
         self.Properties.generated_value = self.Properties.generated_value + 1
 
-        System.LogAlways("Something should happen now: " .. "\n" .. "Generated water by " .. self:GetName() .. " - " .. tostring(self.Properties.generated_value))
+        -- System.LogAlways("Something should happen now: " .. "\n" .. "Generated water by " .. self:GetName() .. " - " .. tostring(self.Properties.generated_value))
+
+        -- TODO - remove this comment
+        -- Time for an update! Finished the implementation of custom generators.
+        -- This could be used for water collectors, or scenarios for wood income, money income, decrease, ...
 
     end
 
@@ -244,10 +255,12 @@ function GeneratorEntity:Event_Ragdollize()
     end
 end
 
+
 function GeneratorEntity.Client:OnPhysicsBreak(vPos, nPartId, nOtherPartId)
     self:ActivateOutput("Break", nPartId + 1);
 end
 
+-- determines if the entity is useable overall
 function GeneratorEntity:IsUsable(user)
     local ret = nil
     if not self.__usable then
@@ -271,6 +284,7 @@ function GeneratorEntity:IsUsable(user)
     return ret or 0
 end
 
+-- Determines if the entity is useable by the player
 function GeneratorEntity:IsUsableByPlayer(user)
 
     local myDirection = g_Vectors.temp_v1;
@@ -291,21 +305,29 @@ function GeneratorEntity:IsUsableByPlayer(user)
     return false;
 end
 
+-- This callback aggregates the available actions of the entity
 function GeneratorEntity:GetActions(user, firstFast)
     output = {}
-    -- AddInteractorAction(output, firstFast, Action():hint("Bake bread"):action("use"):func(self.OnUsed):interaction(inr_chair):enabled(1))
-    AddInteractorAction(output, firstFast, Action():hint("Bake bread"):action("use"):func(ent.OnUsed):interaction(inr_chair):enabled(1))
+
+    -- we'll provide a regular functionwhich gets executed when "using" the entity
+    AddInteractorAction(output, firstFast, Action():hint("Check water"):action("use"):func((function()
+        Game.SendInfoText("Collected amount of water: " .. tostring(self.Properties.generated_value), true, nil, 3)
+    end))                                          :interaction(inr_chair):enabled(1))
+
     return output
 end
 
+--
 function GeneratorEntity:OnUsed(user)
-    Game.SendInfoText("Used by player", true, nil, 3)
+
 end
 
+--
 function GeneratorEntity:OnUsedHold(user)
 
 end
 
+--
 GeneratorEntity.FlowEvents = {
     Inputs = {
         Used = { GeneratorEntity.Event_Used, "bool" },

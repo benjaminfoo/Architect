@@ -1,4 +1,4 @@
-architect_version = '0.5.2a'
+architect_version = '0.5.2b'
 architect_debugMode = true
 
 architect_primary_town_name = ""

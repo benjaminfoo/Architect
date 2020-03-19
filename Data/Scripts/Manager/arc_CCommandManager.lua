@@ -5,14 +5,11 @@
 --- The CCommandManager contains code related to the ingame-console and the management of key-bindings
 ---
 
-function architect_dbg()
-    System.LogAlways("starting lua-debugger !");
-    System.ShowDebugger();
-end
 
 function architect_clear()
     System.ClearConsole();
 end
+
 
 function architect_gamble()
     System.LogAlways("Gamble started ..");
@@ -33,6 +30,7 @@ function architect_gamble()
     System.LogAlways("Gamble finished ..")
 
 end
+
 
 function architect_eval(line)
     System.LogAlways("Begin eval [%s].", tostring(line))
@@ -59,6 +57,7 @@ function architect_recompile()
 
     System.LogAlways("... finished architect_recompile()")
 end
+
 function architect_recompileAll()
     System.LogAlways("called architect_recompileAll() ...")
 
@@ -84,12 +83,16 @@ function architect_help()
     System.LogAlways("architect_recompile       - Recompile the mod during runtime")
     System.LogAlways("architect_recompileAll    - Recompile the mod during runtime - use at your own risk")
     System.LogAlways("")
-    System.LogAlways("Lua functions")
+    System.LogAlways("Lua functions - Case sensitive")
+    System.LogAlways("")
+    System.LogAlways("#SelectFirst()            - Select the first construction")
+    System.LogAlways("#SelectLast()             - Select the last construction")
+    System.LogAlways("#SelectIndex(nr)          - Select the construction at Number nr")
     System.LogAlways("#showall()                - Lists all constructions to the ingame console")
+    System.LogAlways("#deleteall()              - Deletes ALL constructions you've build")
+    System.LogAlways("#deleteAt(index)()        - Delete the construction with the number <index> (use #showall())")
     System.LogAlways("#reloadall()              - Reloads the source files of the modification")
-    System.LogAlways("#deleteall()              - Deletes ALL constructions youve build")
     System.LogAlways("#rayCastHit()             - Use a raycast to determine entities in front of the player")
-    System.LogAlways("#deleteAt(index)          - Delete the construction with the number <index> (use #showall())")
     System.LogAlways("")
     System.LogAlways("log                       - same as architect_log")
     System.LogAlways("l                         - same as architect_log")

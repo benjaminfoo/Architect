@@ -1,4 +1,4 @@
 <Entity
         Name="CookingSpotEntity"
-        Script="Scripts/Entities/CookingSpotEntity.lua"
+        Script="Scripts/Entities/arc_CookingSpotEntity.lua"
 />

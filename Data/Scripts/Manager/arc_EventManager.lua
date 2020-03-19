@@ -7,6 +7,44 @@
 
 architect_init = {}
 
+function showUsage()
+    -- create controller for the ingame user-interface
+    -- Script.UnloadScript("Scripts/Manager/arc_UIController.lua")
+    -- Script.ReloadScript("Scripts/Manager/arc_UIController.lua")
+    uiManagerParams = {}
+    uiManagerParams.class = "UIManager"
+    uiManagerParams.name = "UIManager_Instance"
+
+    uiManagerEntity = System.SpawnEntity(uiManagerParams)
+
+    message = "<font color='#333333' size='8'>\n</font>"
+            .. "<font color='#333333' size='32'>Architect " .. architect_version .. "</font>" .. "\n"
+            .. "<font color='#333333' size='14'>codename: Farklewood</font>" .. "\n"
+            .. "<font color='#333333' size='8'>\n</font>"
+            .. "<font color='#333333' size='16'>An advanced base-building modification for kingdom come deliverance.</font>" .. "\n"
+
+            .. "<font color='#333333' size='18'>\nKey Mousewheel up/down</font>" .. "\n"
+            .. "<font color='#333333' size='16'>Choose construction</font>" .. "\n"
+
+            .. "<font color='#333333' size='18'>\nKey V </font>" .. "\n"
+            .. "<font color='#333333' size='16'>Create construction</font>" .. "\n"
+
+            .. "<font color='#333333' size='18'>\nKey G </font>" .. "\n"
+            .. "<font color='#333333' size='16'>Remove construction</font>" .. "\n"
+
+            .. "<font color='#333333' size='18'>\nKey O </font>" .. "\n"
+            .. "<font color='#333333' size='16'>Toggle deletion of entity-lock</font>" .. "\n\n"
+
+            .. "<font color='#333333' size='16'>Execute architect_help in the ingame console for additional help.</font>" .. "\n\n"
+
+            .. "<font color='#333333' size='18'>Contact - Ideas, Feedback, etc.</font>" .. "\n"
+            .. "<font color='#333333' size='14'>http://github.com/benjaminfoo/architect/</font>" .. "\n"
+
+    -- create tutorial and show
+    Game.ShowTutorial(message, 20, false, true)
+
+end
+
 function architect_init:sceneInitListener(actionName, eventName, argTable)
 
     -- System.LogAlways("actionName: " .. actionName)
@@ -17,23 +55,7 @@ function architect_init:sceneInitListener(actionName, eventName, argTable)
     end
 
     if actionName == "sys_loadingimagescreen" and eventName == "OnEnd" then
-        -- create controller for the ingame user-interface
-        -- Script.UnloadScript("Scripts/Manager/arc_UIController.lua")
-        -- Script.ReloadScript("Scripts/Manager/arc_UIController.lua")
-        uiManagerParams = {}
-        uiManagerParams.class = "UIManager"
-        uiManagerParams.name = "UIManager_Instance"
-
-        uiManagerEntity = System.SpawnEntity(uiManagerParams)
-
-        -- create tutorial and show
-        showMessage = "<font color='#333333' size='34'>Architect " .. architect_version .. "</font> <font color='#333333' size='18'>\nA base-building / resource-management modification for kingdom come deliverance.</font>"
-        showMessageT = "<font color='#333333' size='20'>\n\nUsage / Keys\n</font><font color='#333333' size='18'>\nMousewheel up/down \nChoose construction\n\nKey V \nCreate construction \n\nKey G \nRemove construction </font> \n\n"
-        showMessageTT = "<font color='#333333' size='18'>F9 \nRecompile mod at runtime\n\nContact\n"
-
-        third = "<font color='#333333' size='14'>http://github.com/benjaminfoo/architect/</font> \n\n"
-        fourth = "<font color='#333333' size='18'>Execute architect_help in the ingame console for additional help.</font> \n\n"
-        Game.ShowTutorial(showMessage .. showMessageT .. showMessageTT .. third .. fourth, 20, false, true)
+        showUsage()
     end
 end
 

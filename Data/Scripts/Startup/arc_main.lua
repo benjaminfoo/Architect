@@ -35,7 +35,7 @@ System.ExecuteCommand("bind mwheel_up bIndexInc")           -- select the next c
 System.ExecuteCommand("bind mwheel_down bIndexDec")         -- select the previous construction
 System.ExecuteCommand("bind 'v' architect_spawn")           -- create the current construction
 System.ExecuteCommand("bind 'g' deleteRayCastEntityHit")    -- delete the currently facing entity (the thing you looking at)
-System.ExecuteCommand("bind 'p' detectEntity")              -- debug: print information about currently facing entity
+System.ExecuteCommand("bind 'o' toggleEntityLock")              -- debug: print information about currently facing entity
 System.ExecuteCommand("bind f9 architect_recompile")        -- debug: reload the mods sources
 
 -- load external key bindings

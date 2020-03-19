@@ -1,4 +1,4 @@
 <Entity
         Name="BedEntity"
-        Script="Scripts/Entities/BedEntity.lua"
+        Script="Scripts/Entities/arc_BedEntity.lua"
 />

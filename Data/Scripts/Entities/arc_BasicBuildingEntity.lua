@@ -4,7 +4,7 @@
 ---
 --- The BasicBuildingEntity is the common parent type for static constructions for decoration purposes or ld.
 ---
--- Script.ReloadScript("scripts/Utils/EntityUtils.lua")
+---
 
 BasicBuildingEntity = {
     Client = {},
@@ -19,6 +19,7 @@ BasicBuildingEntity = {
         bSaved_by_game = 1,
         Saved_by_game = 1,
         bSerialize = 1,
+        deletion_lock = false,
 
         Physics = {
             bPhysicalize = 1,
@@ -27,6 +28,11 @@ BasicBuildingEntity = {
 
             Density = -1,
             Mass = -1,
+
+            CollisionFiltering = {
+                collisionType = { },
+                collisionIgnore = { }
+            }
         },
     },
 
@@ -47,6 +53,7 @@ function BasicBuildingEntity:OnSpawn()
 
     self:SetFromProperties();
 end
+
 function BasicBuildingEntity:SetFromProperties()
     local Properties = self.Properties;
 
@@ -67,6 +74,7 @@ function BasicBuildingEntity:SetFromProperties()
         self:SetFlags(ENTITY_FLAG_TRIGGER_AREAS, 2);
     end
 end
+
 function BasicBuildingEntity:SetupModel()
 
     local Properties = self.Properties;
@@ -82,6 +90,7 @@ function BasicBuildingEntity:SetupModel()
     -- disable near fade-out by default
     self:SetViewDistUnlimited()
 end
+
 
 function BasicBuildingEntity:OnLoad(table)
     self.health = table.health;
@@ -105,6 +114,7 @@ function BasicBuildingEntity:OnLoad(table)
 
 end
 
+
 function BasicBuildingEntity:OnSave(table)
     table.health = self.health;
     table.dead = self.dead;
@@ -114,6 +124,7 @@ function BasicBuildingEntity:OnSave(table)
     -- System.LogAlways("Persisting Entity.object_model: " .. table.object_Model)
 
 end
+
 function BasicBuildingEntity:IsRigidBody()
     local Properties = self.Properties;
     local Mass = Properties.Mass;
@@ -123,10 +134,12 @@ function BasicBuildingEntity:IsRigidBody()
     end
     return true;
 end
+
 function BasicBuildingEntity:PhysicalizeThis()
     local Physics = self.Properties.Physics;
     EntityCommon.PhysicalizeRigid(self, 0, Physics, self.bRigidBodyActive);
 end
+
 function BasicBuildingEntity:OnPropertyChange()
     if (self.__usable) then
         if (self.__origUsable ~= self.Properties.bUsable or self.__origPickable ~= self.Properties.bPickable) then
@@ -135,6 +148,7 @@ function BasicBuildingEntity:OnPropertyChange()
     end
     self:SetFromProperties();
 end
+
 function BasicBuildingEntity:OnReset()
     System.LogAlways("OnReset entity ...")
 
@@ -147,6 +161,7 @@ function BasicBuildingEntity:OnReset()
         self:AwakePhysics(0);
     end
 end
+
 function BasicBuildingEntity:Event_Remove()
     System.LogAlways("Removing entity ...")
 
@@ -154,6 +169,7 @@ function BasicBuildingEntity:Event_Remove()
     self:DestroyPhysics();
     self:ActivateOutput("Remove", true);
 end
+
 function BasicBuildingEntity:Event_Hide()
     System.LogAlways("Hiding entity ...")
     self:Hide(1);
@@ -162,6 +178,7 @@ function BasicBuildingEntity:Event_Hide()
         Log("%.3f %s %s : Event_Hide", _time, CurrentCinematicName, self:GetName());
     end
 end
+
 function BasicBuildingEntity:Event_UnHide()
     System.LogAlways("Unhiding entity ...")
     self:Hide(0);
@@ -170,6 +187,7 @@ function BasicBuildingEntity:Event_UnHide()
         Log("%.3f %s %s : Event_UnHide", _time, CurrentCinematicName, self:GetName());
     end
 end
+
 function BasicBuildingEntity:Event_Ragdollize()
     self:RagDollize(0);
     self:ActivateOutput("Ragdollized", true);
@@ -177,6 +195,7 @@ function BasicBuildingEntity:Event_Ragdollize()
         self:Event_RagdollizeDerived();
     end
 end
+
 function BasicBuildingEntity.Client:OnPhysicsBreak(vPos, nPartId, nOtherPartId)
     self:ActivateOutput("Break", nPartId + 1);
 end

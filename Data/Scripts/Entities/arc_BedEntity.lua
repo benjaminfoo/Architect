@@ -2,31 +2,44 @@
 --- Created by Benjamin Foo
 --- DateTime: 04.03.2020 23:09
 ---
---- The CookingSpotEntity is the common parent type for constructions which offer some kind of cooking functionality.
+--- The BedEntity is the common parent type for constructions which offer some kind of functionality.
 ---
--- Script.ReloadScript("scripts/Utils/EntityUtils.lua")
+--- For example, a bed provides the ability to sleep, a chair provides the ability to sit, etc.
+---
+---
 
-CookingSpotEntity = {
+BedEntity = {
     Client = {},
     Server = {},
     Properties = {
-
-        class = "BasicEntity",
 
         MaxSpeed = 1,
         fHealth = 100,
         bTurnedOn = 1,
         bExcludeCover = 0,
+
         bSaved_by_game = 1,
         Saved_by_game = 1,
         bSerialize = 1,
+        deletion_lock = false,
+
         fUsabilityDistance = 100,
 
+        class = "Bed",
+        sSittingTagGlobal = "sittingNoTable",
+
         Script = {
+            esBedTypes = "ground",
             Misc = ""
         },
-
         Physics = {
+            bPhysicalize = 1,
+            bRigidBody = 0,
+            bPushableByPlayers = 0,
+
+            Density = -1,
+            Mass = -1,
+
             CollisionFiltering = {
                 collisionType = { },
                 collisionIgnore = {}
@@ -38,42 +51,31 @@ CookingSpotEntity = {
             guidBodyPrestId = "0"
         },
 
-        soclasses_SmartObjectHelpers = "",
-        soclasses_SmartObjectClass = "",
+        Bed = {
+            esSleepQuality = "low",
+            esReadingQuality = "bed_ground"
+        },
 
         UseMessage = "",
-        sWH_AI_EntityCategory = "",
+        sWH_AI_EntityCategory = "Bed",
         bInteractiveCollisionClass = 1,
-        object_Model = "",
-        guidSmartObjectType = "",
-        esFaction = "",
+        object_Model = "objects/buildings/refugee_camp/bad_straw.cgf",
+        guidSmartObjectType = "39012413-1895-4828-b202-b3835a78984d",
         MultiplayerOptions = {},
 
         -- soclasses_SmartObjectClass = "",
-        sWH_AI_EntityCategory = "",
-        bMissionCritical = 0,
-        bCanTriggerAreas = 0,
-        DmgFactorWhenCollidingAI = 1,
-    },
-
-    Editor = {
-        Icon = "physicsobject.bmp",
-        IconOnTop = 1,
+        -- sWH_AI_EntityCategory = "",
+        -- bMissionCritical = 0,
+        -- bCanTriggerAreas = 0,
+        -- esFaction = "",
+        -- DmgFactorWhenCollidingAI = 1,
     },
 
     Script = {
     }
 }
 
-local Physics_DX9MP_Simple = {
-    bPhysicalize = 1,
-    bPushableByPlayers = 0,
-
-    Density = 0,
-    Mass = 0,
-
-}
-function CookingSpotEntity:OnSpawn()
+function BedEntity:OnSpawn()
     if (self.Properties.MultiplayerOptions.bNetworked == 0) then
         self:SetFlags(ENTITY_FLAG_CLIENT_ONLY, 0);
     end
@@ -82,7 +84,8 @@ function CookingSpotEntity:OnSpawn()
 
     self:SetFromProperties();
 end
-function CookingSpotEntity:SetFromProperties()
+
+function BedEntity:SetFromProperties()
     local Properties = self.Properties;
 
     if (Properties.object_Model == "") then
@@ -90,8 +93,6 @@ function CookingSpotEntity:SetFromProperties()
             return
         end ;
     end
-
-    self.freezable = (tonumber(Properties.bFreezable) ~= 0);
 
     self:SetupModel();
     if (Properties.bAutoGenAIHidePts == 1) then
@@ -106,7 +107,8 @@ function CookingSpotEntity:SetFromProperties()
         self:SetFlags(ENTITY_FLAG_TRIGGER_AREAS, 2);
     end
 end
-function CookingSpotEntity:SetupModel()
+
+function BedEntity:SetupModel()
 
     local Properties = self.Properties;
 
@@ -122,7 +124,7 @@ function CookingSpotEntity:SetupModel()
     self:SetViewDistUnlimited()
 end
 
-function CookingSpotEntity:OnLoad(table)
+function BedEntity:OnLoad(table)
     self.health = table.health;
     self.dead = table.dead;
     self.object_Model = table.object_Model;
@@ -144,7 +146,7 @@ function CookingSpotEntity:OnLoad(table)
 
 end
 
-function CookingSpotEntity:OnSave(table)
+function BedEntity:OnSave(table)
     table.health = self.health;
     table.dead = self.dead;
     table.object_Model = self.Properties.object_Model;
@@ -153,7 +155,8 @@ function CookingSpotEntity:OnSave(table)
     System.LogAlways("Persisting Entity.object_model: " .. table.object_Model)
 
 end
-function CookingSpotEntity:IsRigidBody()
+
+function BedEntity:IsRigidBody()
     local Properties = self.Properties;
     local Mass = Properties.Mass;
     local Density = Properties.Density;
@@ -162,14 +165,13 @@ function CookingSpotEntity:IsRigidBody()
     end
     return true;
 end
-function CookingSpotEntity:PhysicalizeThis()
+
+function BedEntity:PhysicalizeThis()
     local Physics = self.Properties.Physics;
-    if (CryAction.IsImmersivenessEnabled() == 0) then
-        Physics = Physics_DX9MP_Simple;
-    end
     EntityCommon.PhysicalizeRigid(self, 0, Physics, self.bRigidBodyActive);
 end
-function CookingSpotEntity:OnPropertyChange()
+
+function BedEntity:OnPropertyChange()
     if (self.__usable) then
         if (self.__origUsable ~= self.Properties.bUsable or self.__origPickable ~= self.Properties.bPickable) then
             self.__usable = nil;
@@ -177,7 +179,8 @@ function CookingSpotEntity:OnPropertyChange()
     end
     self:SetFromProperties();
 end
-function CookingSpotEntity:OnReset()
+
+function BedEntity:OnReset()
     System.LogAlways("OnReset entity ...")
 
     self:ResetOnUsed();
@@ -189,14 +192,14 @@ function CookingSpotEntity:OnReset()
         self:AwakePhysics(0);
     end
 end
-function CookingSpotEntity:Event_Remove()
+function BedEntity:Event_Remove()
     System.LogAlways("Removing entity ...")
 
     self:DrawSlot(0, 0);
     self:DestroyPhysics();
     self:ActivateOutput("Remove", true);
 end
-function CookingSpotEntity:Event_Hide()
+function BedEntity:Event_Hide()
     System.LogAlways("Hiding entity ...")
     self:Hide(1);
     self:ActivateOutput("Hide", true);
@@ -204,7 +207,7 @@ function CookingSpotEntity:Event_Hide()
         Log("%.3f %s %s : Event_Hide", _time, CurrentCinematicName, self:GetName());
     end
 end
-function CookingSpotEntity:Event_UnHide()
+function BedEntity:Event_UnHide()
     System.LogAlways("Unhiding entity ...")
     self:Hide(0);
     self:ActivateOutput("UnHide", true);
@@ -212,18 +215,18 @@ function CookingSpotEntity:Event_UnHide()
         Log("%.3f %s %s : Event_UnHide", _time, CurrentCinematicName, self:GetName());
     end
 end
-function CookingSpotEntity:Event_Ragdollize()
+function BedEntity:Event_Ragdollize()
     self:RagDollize(0);
     self:ActivateOutput("Ragdollized", true);
     if (self.Event_RagdollizeDerived) then
         self:Event_RagdollizeDerived();
     end
 end
-function CookingSpotEntity.Client:OnPhysicsBreak(vPos, nPartId, nOtherPartId)
+function BedEntity.Client:OnPhysicsBreak(vPos, nPartId, nOtherPartId)
     self:ActivateOutput("Break", nPartId + 1);
 end
 
-function CookingSpotEntity:IsUsable(user)
+function BedEntity:IsUsable(user)
     local ret = nil
     if not self.__usable then
         self.__usable = self.Properties.bUsable
@@ -246,7 +249,7 @@ function CookingSpotEntity:IsUsable(user)
     return ret or 0
 end
 
-function CookingSpotEntity:IsUsableByPlayer(user)
+function BedEntity:IsUsableByPlayer(user)
 
     local myDirection = g_Vectors.temp_v1;
     local vecToPlayer = g_Vectors.temp_v2;
@@ -266,73 +269,78 @@ function CookingSpotEntity:IsUsableByPlayer(user)
     return false;
 end
 
-function CookingSpotEntity:GetActions(user, firstFast)
+function BedEntity:GetActions(user, firstFast)
     output = {}
-    -- AddInteractorAction(output, firstFast, Action():hint("Bake bread"):action("use"):func(self.OnUsed):interaction(inr_chair):enabled(1))
-    AddInteractorAction(output, firstFast, Action():hint("Bake bread"):action("use"):func(self.OnUsed):interaction(inr_chair):enabled(1))
+    local sleepPrompt = EntityModule.WillSleepingOnThisBedSave(self.id) and "@ui_hud_sleep_and_save" or "@ui_hud_sleep";
+    if (self:IsUsableByPlayer(user)) then
+        if (self.Properties.Script.esBedTypes == 'normal' or self.Properties.Script.esBedTypes == 'bench') then
+            AddInteractorAction(output, firstFast, Action():hint("@ui_hud_sit"):action("use_bed"):func(Bed.OnUsed):interaction(inr_bedSit):enabled(not self.usedByNPC))
+            if Variables.GetGlobal('bed_disable_direct_sleep') == 0 then
+                AddInteractorAction(output, firstFast, Action():hint(sleepPrompt):action("use_bed"):hintType(AHT_HOLD):func(Bed.OnUsedHold):interaction(inr_bedSit):enabled(not self.usedByNPC))
+            end
+        else
+            AddInteractorAction(output, firstFast, Action():hint(sleepPrompt):action("use_bed"):func(Bed.OnUsed):interaction(inr_bedSleep):enabled(not self.usedByNPC))
+        end
+    end
     return output
 end
 
-function CookingSpotEntity:OnUsed(user)
+function BedEntity:OnUsed(user)
 
+end
 
-    -- This is only a prototype
-    -- TODO: define needed resources for newly crafted items
-    -- TODO: define dynamic amounts for recipes and results
+function BedEntity:OnUsedHold(user)
 
-    -- 5e9b4fa1-aafa-4352-b5d6-58df2c263caa : Nettle
-    local recipeName = "Bread"
-    local costUUIDs = "5e9b4fa1-aafa-4352-b5d6-58df2c263caa"
-    local costAmount = 1
-    local costResource = "Nettle"
+end
 
+function BedEntity:GetReadingQuality()
 
+    local str = self.Properties.Bed.esReadingQuality;
 
-    -- bread:  86e4ff24-88db-4024-abe6-46545fa0fbd1
-    local craftedResourceUUID = "86e4ff24-88db-4024-abe6-46545fa0fbd1"
-    local craftedAmount = 1
-    local playerTable = "player_item"
-
-    -- 1. Check if costs are covered for creating the construction
-    if (availableResources - costAmount >= 0) then
-
-        -- 2. Remove costs from inventory
-        removeItem(costUUIDs, costAmount)
-
-        -- this is for debugging purposes - this should work two times
-        availableResources = availableResources - costAmount
-
-        resultSuccess = Database.LoadTable(playerTable)
-
-        -- 3. Create new item instance, add to inventory
-        newItemInstance = ItemManager.CreateItem(craftedResourceUUID, 100, craftedAmount)
-        player.inventory:AddItem(newItemInstance);
-
-        Game.SendInfoText("Created " .. craftedAmount .. "x " .. recipeName .. " for " .. costAmount .. "x " .. costResource
-                .. "\n" .. "" .. costResource .. " left: " .. tostring(availableResources), true, nil, 3)
+    if str == "none" then
+        return 0;
+    elseif str == "bed_ground" then
+        return 1;
+    elseif str == "bed" then
+        return 3;
+    elseif str == "bed_exceptional" then
+        return 4;
+    elseif str == "bench_table" then
+        return 5;
+    elseif str == "bench_notable" then
+        return 6;
     else
-        -- If there arent enough resources available than needed, abort this
-        Game.SendInfoText("Not enough resources for " .. craftedAmount .. "x " .. recipeName, true, nil, 3)
+        return 0;
     end
-
-    XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(ent)) .. "), mode ('use')")
 end
 
-function CookingSpotEntity:OnUsedHold(user)
-    -- System.LogAlways("Hello World! this entity has been used!")
-    -- XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(self)) .. "), mode ('use'), behavior('player_use_sleep')")
+function BedEntity:GetSleepQuality()
+
+    local str = self.Properties.Bed.esSleepQuality;
+
+    if str == "low" then
+        return 2;
+    elseif str == "medium" then
+        return 3;
+    elseif str == "high" then
+        return 1;
+    elseif str == "exceptional" then
+        return 0;
+    else
+        return 2;
+    end
 end
 
-CookingSpotEntity.FlowEvents = {
+BedEntity.FlowEvents = {
     Inputs = {
-        Used = { CookingSpotEntity.Event_Used, "bool" },
-        EnableUsable = { CookingSpotEntity.Event_EnableUsable, "bool" },
-        DisableUsable = { CookingSpotEntity.Event_DisableUsable, "bool" },
+        Used = { BedEntity.Event_Used, "bool" },
+        EnableUsable = { BedEntity.Event_EnableUsable, "bool" },
+        DisableUsable = { BedEntity.Event_DisableUsable, "bool" },
 
-        Hide = { CookingSpotEntity.Event_Hide, "bool" },
-        UnHide = { CookingSpotEntity.Event_UnHide, "bool" },
-        Remove = { CookingSpotEntity.Event_Remove, "bool" },
-        Ragdollize = { CookingSpotEntity.Event_Ragdollize, "bool" },
+        Hide = { BedEntity.Event_Hide, "bool" },
+        UnHide = { BedEntity.Event_UnHide, "bool" },
+        Remove = { BedEntity.Event_Remove, "bool" },
+        Ragdollize = { BedEntity.Event_Ragdollize, "bool" },
     },
     Outputs = {
         Used = "bool",
@@ -347,8 +355,8 @@ CookingSpotEntity.FlowEvents = {
     },
 }
 
-MakeUsable(CookingSpotEntity);
-MakePickable(CookingSpotEntity);
-AddHeavyObjectProperty(CookingSpotEntity);
-AddInteractLargeObjectProperty(CookingSpotEntity);
-SetupCollisionFiltering(CookingSpotEntity);
+MakeUsable(BedEntity);
+MakePickable(BedEntity);
+AddHeavyObjectProperty(BedEntity);
+AddInteractLargeObjectProperty(BedEntity);
+SetupCollisionFiltering(BedEntity);
