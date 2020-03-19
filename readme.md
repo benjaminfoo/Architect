@@ -12,7 +12,7 @@ Make a backup of your saved games before doing anything else. \
 Constructions are saved across your savegames - there is no new save required.
 
 If you're having fun with this mod you're maybe interested in buying me a coffee :) \
-Thanks to  [Warhorse Studios](https://warhorsestudios.cz) for creating this gem!
+Thanks to [Warhorse Studios](https://warhorsestudios.cz) for creating this gem!
 
 <br> 
 
