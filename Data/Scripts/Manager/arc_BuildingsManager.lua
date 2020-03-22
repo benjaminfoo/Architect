@@ -15,6 +15,10 @@ parameterizedConstructions = {
     -- template for new construction / structure
     -- { modelPath = "", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
+    -- in dev
+    { modelPath = "Objects/buildings/houses/budin_mill/barrel_01.cgf", sitable = false, useable = true, saveable = false, cookable = false, sleepable = false },
+
+
     -- furniture - beds
     { modelPath = "objects/props/furniture/beds/bed_cottage_01.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = true },
     { modelPath = "objects/props/furniture/beds/bed_castle_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = true },
@@ -44,9 +48,6 @@ parameterizedConstructions = {
     { modelPath = "objects/structures/bread_oven/bread_oven_01.cgf", sitable = false, useable = false, saveable = false, cookable = true, sleepable = false },
     { modelPath = "objects/structures/bread_oven/bread_oven_02.cgf", sitable = false, useable = false, saveable = false, cookable = true, sleepable = false },
     { modelPath = "objects/structures/bread_oven/bread_oven_indoor.cgf", sitable = false, useable = false, saveable = false, cookable = true, sleepable = false },
-
-    -- in dev
-    { modelPath = "Objects/buildings/houses/budin_mill/barrel_01.cgf", sitable = false, useable = true, saveable = false, cookable = false, sleepable = false },
 
 
     --[[

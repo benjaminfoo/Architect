@@ -120,7 +120,11 @@ function SpawnBuildingInstance(line)
         end
 
         if (construction.useable) then
-            spawnParams.class = "GeneratorEntity"
+            -- spawnParams.class = "GeneratorEntity"
+            -- spawnParams.class = "ShootingTarget"
+            spawnParams.class = "RigidBody"
+            spawnParams.properties.objModel = "Objects/buildings/houses/budin_mill/barrel_01.cgf"
+
         end
 
         -- finish any work _before_ the entity gets initialized and spawned
@@ -302,7 +306,9 @@ end
 function updateSelection()
     modelPath = parameterizedConstructions[bIndex]
     res_current_model = modelPath;
-    Game.SendInfoText("Selected (" .. bIndex .. "/" .. #parameterizedConstructions .. ")\n" .. tostring(parameterizedConstructions[bIndex].modelPath), true, nil, 1)
+    Game.SendInfoText(
+            "Selected (" .. bIndex .. "/" .. #parameterizedConstructions .. ")\n" .. tostring(parameterizedConstructions[bIndex].modelPath)
+    , true, nil, 1)
 end
 
 
@@ -414,3 +420,16 @@ function SelectIndex(newIndex)
     bIndex = newIndex;
     updateSelection()
 end
+
+-- This code is used to obtain resources after the player used the entity to gather resources
+Script.SetTimerForFunction(1000, "GatherStone", {}, false)
+
+function GatherStone(self)
+    -- System.LogAlways("HELLO ")
+end
+
+-- what do we want to do today?
+-- basic resource management?
+--- basic resource costs
+
+-- preview for building

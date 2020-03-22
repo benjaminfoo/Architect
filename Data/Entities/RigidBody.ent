@@ -1,0 +1,4 @@
+<Entity
+        Name="RigidBody"
+        Script="Scripts/Entities/RigidBody.lua"
+/>

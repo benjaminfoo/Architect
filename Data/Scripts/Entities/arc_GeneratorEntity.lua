@@ -31,6 +31,7 @@ GeneratorEntity = {
             bPhysicalize = 1,
             bRigidBody = 0,
             bPushableByPlayers = 0,
+            sName = "GeneratorEntity",
 
             Density = -1,
             Mass = -1,
@@ -39,6 +40,8 @@ GeneratorEntity = {
                 collisionType = { },
                 collisionIgnore = { }
             }
+
+
         },
 
         bSaved_by_game = 1,
@@ -60,19 +63,32 @@ GeneratorEntity = {
         bCanTriggerAreas = 0,
         DmgFactorWhenCollidingAI = 1,
         ]]
+
+        objectModel = "Objects/Natural/Bushes/cliff_bush_a1.cgf",
+        bPhysicalize = 1,
+        sName = "GeneratorEntity",
+        fDensity = -1,
+        fMass = -1
+
     },
     States = {  },
+
+
+    nShootCount = 0,
+    nContactCount = 0,
+    nLog = 1,
+    fDamage = 0,
+    fCollisionDamage = 0,
+    nDamageQueueSize = 100,
 }
 
-function GeneratorEntity:OnSpawn()
-    self.bRigidBodyActive = 1;
-    self:SetFromProperties();
-end
 
 function GeneratorEntity:OnReset()
     System.LogAlways("GeneratorEntity OnReset")
 
     self:Activate(1);
+
+    -- self:CreateStaticEntity( self.Properties.fMass,-1 );
     -- self:SetCurrentSlot(0);
     -- self:PhysicalizeThis(0);
 
@@ -98,6 +114,51 @@ function GeneratorEntity.Client:OnInit()
 
     System.LogAlways("GeneratorEntity client loaded ...")
 
+end
+
+function GeneratorEntity.Client:OnDamage(Hit)
+    System.LogAlways "On Damage Client hit"
+end
+
+function GeneratorEntity.Server:OnDamage(Hit)
+    System.LogAlways "On Damage Server hit"
+end
+
+function GeneratorEntity:OnDamage(Hit)
+    System.LogAlways "On Damage hit"
+end
+
+function GeneratorEntity:Event_StartAnimation(sender)
+    self:StartAnimation(0, self.Properties.Animation);
+end
+
+function GeneratorEntity:Event_StopAnimtion(sender)
+    self:ResetAnimation(0, -1);
+end
+
+function GeneratorEntity:OnContact(Hit)
+    self.nContactCount = self.nContactCount + 1;
+    local dmg = Hit.CollisionDmg;
+    if dmg then
+        self.fCollisionDamage = self.fCollisionDamage + dmg;
+    end
+    local dam = format("%.2f", self.fCollisionDamage);
+    if Hud then
+        Hud:AddMessage("Collided with " .. self.Properties.sName .. " " .. self.nContactCount .. " times, total damage " .. dam);
+    end
+
+    if (self.nLog == 1) then
+        System.Log("Dumping the hit structure:");
+        for name, value in pairs(Hit) do
+            System.Log(" " .. name);
+        end
+        self.nLog = 0
+    end
+end
+
+function GeneratorEntity:OnSpawn()
+    self.bRigidBodyActive = 1;
+    self:SetFromProperties();
 end
 
 -- todo - refactor like there is no tomorrow, but tomorrow
@@ -338,17 +399,25 @@ GeneratorEntity.FlowEvents = {
         UnHide = { GeneratorEntity.Event_UnHide, "bool" },
         Remove = { GeneratorEntity.Event_Remove, "bool" },
         Ragdollize = { GeneratorEntity.Event_Ragdollize, "bool" },
+
+        StartAnimation = { GeneratorEntity.Event_StartAnimation, "bool" },
+        StopAnimation = { GeneratorEntity.Event_StopAnimation, "bool" },
     },
     Outputs = {
         Used = "bool",
         EnableUsable = "bool",
         DisableUsable = "bool",
+
         Activate = "bool",
         Hide = "bool",
         UnHide = "bool",
         Remove = "bool",
+
         Ragdollized = "bool",
         Break = "int",
+
+        StartAnimation = "bool",
+        StopAnimation = "bool",
     },
 }
 
