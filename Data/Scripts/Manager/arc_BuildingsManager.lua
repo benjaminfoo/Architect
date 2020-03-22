@@ -16,8 +16,36 @@ parameterizedConstructions = {
     -- { modelPath = "", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
     -- in dev
+    -- generator entity -- water tank / collector --  generates water every 30 seconds
     { modelPath = "Objects/buildings/houses/budin_mill/barrel_01.cgf", sitable = false, useable = true, saveable = false, cookable = false, sleepable = false },
 
+    -- generator entity -- some thing to generate stones but in a logical way
+    -- ... TODO !
+
+    -- generator entity -- stone collections / someone brings stone in here -- generates stone every 60 seconds
+    { modelPath = "objects/nature/rocks/rocks_quarry/stone_granite_group_01.cgf", sitable = false, useable = true, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/buildings/gamblers/gamblers_stones_group_a.cgf", sitable = false, useable = true, saveable = false, cookable = false, sleepable = false },
+
+    -- generator entity -- wood onuse-generator -- generates wood per hit
+    { modelPath = "objects/props/wooden_blocks/chopping_block01.cgf", sitable = false, useable = true, saveable = false, cookable = false, sleepable = false },
+
+    -- generator entity -- wood collections / someone brings stone in here -- generates stone every 60 seconds
+    -- or maybe generates wood every {60, 30, 15} secs <OR> generate {1,2,3} wood ever  30 secs
+    { modelPath = "objects/props/groups_of_stuff/group_woodshed_a.cgf", sitable = false, useable = true, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/props/groups_of_stuff/group_woodshed_b.cgf", sitable = false, useable = true, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/props/groups_of_stuff/group_woodshed_c.cgf", sitable = false, useable = true, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/props/groups_of_stuff/group_woodshed_d.cgf", sitable = false, useable = true, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/props/groups_of_stuff/group_woodshed_e.cgf", sitable = false, useable = true, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/props/groups_of_stuff/group_woodshed_f.cgf", sitable = false, useable = true, saveable = false, cookable = false, sleepable = false },
+
+
+    { modelPath = "objects/structures/mining_structures/money_forging_workshop/mine_wood_structure.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/structures/mining_structures/roasting_hole_01.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/structures/mining_structures/roasting_hole_02.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/structures/mining_structures/crushing_mill_01.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+    { modelPath = "objects/structures/mining_structures/mining_dam_bridge_01.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+
+    { modelPath = "objects/structures/woodsheds/woodshed_1/woodshed_1.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
     -- furniture - beds
     { modelPath = "objects/props/furniture/beds/bed_cottage_01.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = true },
@@ -252,12 +280,6 @@ parameterizedConstructions = {
     { modelPath = "objects/props/misc/street_props/street_props_05.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/misc/street_props/street_props_06.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
-    { modelPath = "objects/props/groups_of_stuff/group_woodshed_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/props/groups_of_stuff/group_woodshed_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/props/groups_of_stuff/group_woodshed_c.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/props/groups_of_stuff/group_woodshed_d.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/props/groups_of_stuff/group_woodshed_e.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
-    { modelPath = "objects/props/groups_of_stuff/group_woodshed_f.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
     { modelPath = "objects/props/groups_of_stuff/group_sacks_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/groups_of_stuff/group_sacks_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
@@ -318,6 +340,8 @@ parameterizedConstructions = {
     { modelPath = "objects/structures/brewery/brewery_boiler_a.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/structures/brewery/brewery_boiler_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
+    -- misc
+    { modelPath = "objects/structures/platforms/wooden_riser_b.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
 
     -- exluded stuff, demo-content?
     -- should get exluded maybe
@@ -328,6 +352,7 @@ parameterizedConstructions = {
     { modelPath = "objects/props/construction/sign.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/construction/toitoi.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
     { modelPath = "objects/props/construction/traffic_cone.cgf", sitable = false, useable = false, saveable = false, cookable = false, sleepable = false },
+
 
 }
 

@@ -112,6 +112,16 @@ reloadall()
 
 rayCastHit()
 -- Use a raycast to determine entities in front of the player
+
+
+lockAll()
+-- locks all constructions from the user
+-- this method is useful when used after loading a saved game - this way you can keep your changes 
+
+unlockAll()
+-- unlocks all constructions from the user
+
+
 ```
 
 <br>

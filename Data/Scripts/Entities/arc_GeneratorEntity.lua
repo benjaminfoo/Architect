@@ -373,9 +373,19 @@ function GeneratorEntity:GetActions(user, firstFast)
     -- we'll provide a regular functionwhich gets executed when "using" the entity
     AddInteractorAction(output, firstFast, Action():hint("Check water"):action("use"):func((function()
         Game.SendInfoText("Collected amount of water: " .. tostring(self.Properties.generated_value), true, nil, 3)
+
+        -- This code is used to obtain resources after the player used the entity to gather resources
+        Script.SetTimerForFunction(1000, "GatherStone", {}, false)
+
     end))                                          :interaction(inr_chair):enabled(1))
 
     return output
+end
+
+function GatherStone(self)
+    -- System.LogAlways("HELLO ")
+    modifyResourceByAmount("wood", 20)
+    showRes()
 end
 
 --

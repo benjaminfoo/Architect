@@ -12,7 +12,7 @@ builtEntities = {}
 bIndex = 1
 
 -- the set of elements which are allowed to delete by the user
-whitelistSet = {
+classesWhiteList = {
     "BasicBuildingEntity",
     "BedEntity",
     "ChairEntity",
@@ -21,6 +21,10 @@ whitelistSet = {
     "GeneratorEntity",
     "UIManager"
 }
+
+-- TODO: this is just a placeholder variable
+-- in order to execute crafting
+availableResources = 999
 
 function rayCastHit()
     System.LogAlways("# rayCastHit start")
@@ -62,10 +66,6 @@ function removeItem(itemRemovedByClass, deleteAmount)
         end
     end
 end
-
--- TODO: this is just a placeholder variable
--- in order to execute crafting
-availableResources = 999
 
 -- spawn the currently selected entity with the current selection as modelpath
 function SpawnBuildingInstance(line)
@@ -120,11 +120,11 @@ function SpawnBuildingInstance(line)
         end
 
         if (construction.useable) then
-            -- spawnParams.class = "GeneratorEntity"
+            spawnParams.class = "GeneratorEntity"
             -- spawnParams.class = "ShootingTarget"
-            spawnParams.class = "RigidBody"
-            spawnParams.properties.objModel = "Objects/buildings/houses/budin_mill/barrel_01.cgf"
-
+            -- spawnParams.class = "RigidBody"
+            -- spawnParams.properties.objModel = "Objects/buildings/houses/budin_mill/barrel_01.cgf"
+            -- TODO MAKE spawnParams.class = "RigidBody" useful somewhere!
         end
 
         -- finish any work _before_ the entity gets initialized and spawned
@@ -151,7 +151,7 @@ function SpawnBuildingInstance(line)
         up = { up.x, up.y, up.z }
         ent:SetAngles(up)
 
-        Game.SendInfoText("Constructing\n" .. tostring(ent:GetName()), true, nil, 2)
+        Game.SendInfoText("Constructing: \n" .. tostring(ent:GetName()), true, nil, 2)
 
         -- undo / redo control, build history
         table.insert(builtEntities, ent)
@@ -161,7 +161,85 @@ function SpawnBuildingInstance(line)
     System.LogAlways("# SpawnBuildingInstance end")
 end
 
+function lockAll()
 
+    log("")
+    log("# Locking all entities")
+    log("")
+
+    for i = 1, #classesWhiteList do
+        whiteListElement = classesWhiteList[i]
+
+        System.LogAlways("Locking all user constructions by class: " .. whiteListElement)
+
+        local userConstructions = System.GetEntitiesByClass(whiteListElement)
+
+        lockedEntities = 0
+        for jii, e in pairs(userConstructions) do
+            -- .. do something with locking!
+            toggleEntityLock_WithoutRaycast(e, true)
+
+            if (e.Properties.deletion_lock == true) then
+                lockedEntities = lockedEntities + 1
+            end
+        end
+
+        log(whiteListElement .. " - locked " .. lockedEntities .. " entities")
+        log("")
+    end
+
+end
+
+function unlockAll()
+    log("")
+    log("# Locking all entities")
+    log("")
+
+    for i = 1, #classesWhiteList do
+        whiteListElement = classesWhiteList[i]
+
+        System.LogAlways("Unlocking all user constructions by class: " .. whiteListElement)
+
+        local userConstructions = System.GetEntitiesByClass(whiteListElement)
+
+        unlockedEntities = 0
+        for jii, e in pairs(userConstructions) do
+            -- .. do something with locking!
+            toggleEntityLock_WithoutRaycast(e, false)
+
+            if (e.Properties.deletion_lock == false) then
+                unlockedEntities = unlockedEntities + 1
+            end
+        end
+
+        log(whiteListElement .. " - unlocked " .. unlockedEntities .. " entities")
+        log("")
+    end
+end
+
+function toggleEntityLock_WithoutRaycast(entityRef, newValue)
+    -- System.LogAlways("# toggleEntityLock_WithoutRaycast start")
+
+
+    -- entityRef
+    if entityRef ~= nil then
+
+        -- toggle the current state (true => false, false => true)
+        entityRef.Properties.deletion_lock = newValue
+
+        if (entityRef.Properties.deletion_lock) then
+            -- visRes = "Locked entity: " .. tostring(entityRef:GetName()) .. "\n" .. "ID: " .. tostring(hitData.entity:GetRawId())
+        else
+            -- visRes = "Unlocked entity: " .. tostring(entityRef:GetName()) .. "\n" .. "ID: " .. tostring(hitData.entity:GetRawId())
+        end
+
+        -- output state message
+        -- System.LogAlways(visRes)
+
+    end
+
+    -- System.LogAlways("# toggleEntityLock_WithoutRaycast end")
+end
 
 -- Toggles the currently "seen" deletion_lock state
 -- If the entity's deletion_lock property's value equals to zero, it wont be deleted
@@ -200,6 +278,7 @@ function toggleEntityLock()
     System.LogAlways("# toggleEntityLock end")
 end
 
+
 -- delete the current entity (the entity which collides with the raycast)
 function deleteRayCastEntityHit()
     System.LogAlways("# deleteRayCastEntityHit start")
@@ -212,16 +291,23 @@ function deleteRayCastEntityHit()
 
         -- We only want to delete our constructions,
         -- so we keep a whitelist of everything - if the hit entity is within the list, the entity will get deleted
-        if (contains(whitelistSet, result.class)) then
+        if (contains(classesWhiteList, result.class)) then
 
             -- if there is something to delete, log its name to the player first
-            visRes = "Removing entity: " .. tostring(result:GetName()) .. "\n" .. "ID: " .. tostring(hitData.entity:GetRawId())
-            Game.SendInfoText(visRes, true, nil, 1)
 
             if (result.Properties.deletion_lock == false) then
+
+                visRes = "Removing entity: \n" .. tostring(result:GetName())
+
                 -- remove the entity by its id
                 System.RemoveEntity(result.id)
+            else
+                visRes = "Cant remove entity: \n" .. tostring(result:GetName())
+
             end
+
+            Game.SendInfoText(visRes, true, nil, 1)
+
 
         end
 
@@ -234,19 +320,33 @@ end
 -- list all elements of the whitelist
 function show_whitelist()
     System.LogAlways("Elements of the whitelist:")
-    for i = 1, #whitelistSet do
-        System.LogAlways(tostring(i) .. ".) " .. whitelistSet[i])
+    for i = 1, #classesWhiteList do
+        System.LogAlways(tostring(i) .. ".) " .. classesWhiteList[i])
     end
 end
 
--- lists all built constructions by the player to the console
+
+-- lists all whitelisted categories and their related entities to the console
 function showall()
-    for i = 1, #builtEntities do
-        if (builtEntities[i] ~= nil and i ~= nil) then
-            log("Built (" .. tostring(i) .. ") = " .. tostring(builtEntities[i]))
+    for i = 1, #classesWhiteList do
+
+        whiteListElement = classesWhiteList[i]
+        amountOfEntities = 0
+
+        local ents = System.GetEntitiesByClass(whiteListElement)
+        for i, e in pairs(ents) do
+            -- remove the entity from the game
+            -- System.RemoveEntity(e.id)
+            -- .. do something with locking!
+            amountOfEntities = amountOfEntities + 1
         end
+
+        System.LogAlways("Category: " .. whiteListElement)
+        System.LogAlways("Amount of Entities: " .. amountOfEntities)
+
     end
 end
+
 
 -- Delete an existing construction by its build-index
 function deleteAt(index)
@@ -264,6 +364,7 @@ function deleteAt(index)
 
     end
 end
+
 
 --[[ Increments the index of the currently selected building when the player uses the mousewheel (up) ]]
 function bIndexInc()
@@ -303,17 +404,23 @@ function bIndexDec()
 
 end
 
+
+-- This method updates the current modelPath using the building-index
 function updateSelection()
     modelPath = parameterizedConstructions[bIndex]
     res_current_model = modelPath;
+
+    -- TODO: only render the selection information if there isnt any other ui currently shown
     Game.SendInfoText(
             "Selected (" .. bIndex .. "/" .. #parameterizedConstructions .. ")\n" .. tostring(parameterizedConstructions[bIndex].modelPath)
-    , true, nil, 1)
+    , true, nil, 3)
 end
 
 
 --[[
-        Helper methods
+
+    Helper methods
+
 --]]
 
 
@@ -328,25 +435,30 @@ function deleteall ()
         end
     --]]
 
-    for i = 1, #whitelistSet do
+    for i = 1, #classesWhiteList do
 
-        whitelistElem = whitelistSet[i]
+        whitelistElem = classesWhiteList[i]
 
         local ents = System.GetEntitiesByClass(whitelistElem)
 
         -- TODO: update the stats, exclude the entities with deletion_lock = true
-        System.LogAlways("Removing " .. #ents .. " entities with class " .. whitelistElem)
+        removedEntities = 0
 
         for i, e in pairs(ents) do
             if (e.Properties.deletion_lock == false) then
                 -- remove the entity from the game by its id
                 System.RemoveEntity(e.id)
+                removedEntities = removedEntities + 1
             end
         end
+
+        System.LogAlways("Removing " .. removedEntities .. " entities with class " .. whitelistElem)
 
     end
 
 end
+
+
 -- reloads all scripts but is shorter to type into console
 function reloadall ()
 
@@ -421,15 +533,13 @@ function SelectIndex(newIndex)
     updateSelection()
 end
 
--- This code is used to obtain resources after the player used the entity to gather resources
-Script.SetTimerForFunction(1000, "GatherStone", {}, false)
-
-function GatherStone(self)
-    -- System.LogAlways("HELLO ")
+-- shortcuts / eliminate case sensitivity, i dont know
+function deleteAll()
+    deleteall()
 end
 
--- what do we want to do today?
--- basic resource management?
---- basic resource costs
+function reloadAll()
+    reloadall()
+end
 
--- preview for building
+

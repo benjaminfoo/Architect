@@ -1,6 +1,5 @@
 ---
 --- Created by Benjamin Foo
---- DateTime: 04.03.2020 23:09
 ---
 --- The EventManager handles the initialization of the UIManager and shows tutorial messages to the player
 ---
