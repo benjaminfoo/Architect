@@ -59,6 +59,7 @@ end
 
 
 -- TODO: some simple tests
+--[[
 modifyResourceByAmount("wood", 33)
 modifyResourceByAmount("stone", 18)
 modifyResourceByAmount("food", 5)
@@ -66,6 +67,7 @@ modifyResourceByAmount("water", 40)
 modifyResourceByAmount("money", -20)
 modifyResourceByAmount("honey :3", -20)
 
-
 -- show the resources
 showRes()
+
+]]

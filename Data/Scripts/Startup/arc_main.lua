@@ -7,6 +7,9 @@
 -- Load simple constants or runtime settings
 Script.ReloadScript("Scripts/Util/arc_constants.lua")
 
+-- string handling
+Script.ReloadScript("Scripts/Util/arc_string.lua")
+
 -- load mathematical operations for lua
 Script.ReloadScript("Scripts/Math/arc_linmath.lua")
 
@@ -18,6 +21,8 @@ Script.ReloadScript("Scripts/Manager/arc_CCommandManager.lua")
 
 -- load the buildings-manager
 Script.ReloadScript("Scripts/Manager/arc_BuildingsManager.lua")
+
+-- Execute this function once please
 
 -- add event-handlers for common in-game events
 Script.ReloadScript("Scripts/Manager/arc_EventManager.lua")

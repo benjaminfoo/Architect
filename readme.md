@@ -83,15 +83,22 @@ The following list contains regular console commands
 These functions offer advanced usage to the modifications internals, use at your own risk and save the game. \
 In order to execute a lua function, you have to prepend a '#'-character to execute it.
 
+All commands are available in upper / lowercase format.
+
 ```
+Search(string s) 
+-- Search for entites which name contains string s
+-- For example: #search("stone") - emits a list of entities containing the string "stone"
+-- Use Select to use one of your findings (without using the mouse wheel)
+
+Select(nr)
+-- selects the construction at Number nr and updates the user interface
+
 SelectFirst()  
 -- selects the first construction and updates the user interface
 
 SelectLast()
 -- selects the last construction and updates the user interface
-
-SelectIndex(nr)
--- selects the construction at Number nr and updates the user interface
 
 showall()
 -- lists all constructions to the ingame console
@@ -142,6 +149,10 @@ listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Sc
 #### Planned features
 This list contains all the features planned for later development, recommended by myself or the community:
 
+- 
+- keybind for enabling / disabling the mod - on f12 - pressed => you have activated the mod, these are the keys... etc.
+- a working kitchen / campfire
+- add aim target with hit detection (like "hit one time, ...") on arrow hit
 - custom crafting systems
 - custom constructions / entities, or existing with custom actions / usages
 - custom entities for the generation of resources
@@ -162,6 +173,11 @@ This list contains all changes happened during development - the versions should
 ```
 - Alpha versions (a) are unstable and in subject of larger changes - expect bugs.
 - Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).
+
+changelog 0.5.2b
+- updated user interface
+- updated constructions
+- updated interactions with entities, gather resources, bake bread, ...
 
 changelog 0.5.2b
 - added fallback keybinding

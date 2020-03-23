@@ -1,14 +1,14 @@
 ---
 --- Created by Benjamin Foo
---- DateTime: 04.03.2020 23:09
 ---
 --- The ConstructionController class defines basic and advanced operations
 ---
 
+-- the set of already created constructions
+-- this set will be empty onload of a game, only is used during runtime
 builtEntities = {}
 
 -- the current index of the building-selection
--- the id of the next construction, gets incremented
 bIndex = 1
 
 -- the set of elements which are allowed to delete by the user
@@ -26,6 +26,10 @@ classesWhiteList = {
 -- in order to execute crafting
 availableResources = 999
 
+
+-- check if the user can see something in front of him
+-- (By shooting a raycast from the players camera to a point in front of him,
+-- if something intersects, there is some kind of entity)
 function rayCastHit()
     System.LogAlways("# rayCastHit start")
 
@@ -49,6 +53,7 @@ function rayCastHit()
 
 end
 
+
 -- remove an item by its class and by an amount
 -- class = example - bread, 86e4ff24-88db-4024-abe6-46545fa0fbd1
 -- deleteAmount = how often an item gets removed
@@ -66,6 +71,7 @@ function removeItem(itemRemovedByClass, deleteAmount)
         end
     end
 end
+
 
 -- spawn the currently selected entity with the current selection as modelpath
 function SpawnBuildingInstance(line)
@@ -127,6 +133,27 @@ function SpawnBuildingInstance(line)
             -- TODO MAKE spawnParams.class = "RigidBody" useful somewhere!
         end
 
+        if (construction.generator) then
+            spawnParams.class = "GeneratorEntity"
+            -- spawnParams.class = "ShootingTarget"
+            -- spawnParams.class = "RigidBody"
+            -- spawnParams.properties.objModel = "Objects/buildings/houses/budin_mill/barrel_01.cgf"
+            -- TODO MAKE spawnParams.class = "RigidBody" useful somewhere!
+
+            -- generator = true, generatorItem = "wood", generatorCooldown = 30, generatorItemAmount = 2
+            -- creating a generator with these values
+
+            spawnParams.properties.generatorItem = construction.generatorItem
+            spawnParams.properties.generatorItemAmount = construction.generatorItemAmount
+            spawnParams.properties.generatorCooldown = construction.generatorCooldown
+            spawnParams.properties.generatorOnUse = construction.generatorOnUse
+
+            log("Generator item: " .. construction.generatorItem)
+            log("Generator generatorCooldown: " .. construction.generatorCooldown)
+            log("Generator generatorItemAmount: " .. construction.generatorItemAmount)
+            log("=> Produces " .. construction.generatorItem .. " x" .. construction.generatorItemAmount .. " every " .. construction.generatorCooldown .. " seconds ")
+        end
+
         -- finish any work _before_ the entity gets initialized and spawned
 
         -- spawn the new entity
@@ -145,6 +172,10 @@ function SpawnBuildingInstance(line)
         if (construction.cookable) then
         end
 
+        if (construction.generator) then
+
+        end
+
 
         -- setup the rotation of the spawned entity align the y-axis
         local up = player:GetAngles()
@@ -161,6 +192,8 @@ function SpawnBuildingInstance(line)
     System.LogAlways("# SpawnBuildingInstance end")
 end
 
+
+-- locks every entity which is a member of a whitelist element
 function lockAll()
 
     log("")
@@ -190,6 +223,8 @@ function lockAll()
 
 end
 
+
+-- unlocks every entity which is a member of a whitelist element
 function unlockAll()
     log("")
     log("# Locking all entities")
@@ -240,6 +275,7 @@ function toggleEntityLock_WithoutRaycast(entityRef, newValue)
 
     -- System.LogAlways("# toggleEntityLock_WithoutRaycast end")
 end
+
 
 -- Toggles the currently "seen" deletion_lock state
 -- If the entity's deletion_lock property's value equals to zero, it wont be deleted
@@ -346,7 +382,9 @@ function showall()
 
     end
 end
-
+function ShowAll()
+    showall()
+end
 
 -- Delete an existing construction by its build-index
 function deleteAt(index)
@@ -365,12 +403,20 @@ function deleteAt(index)
     end
 end
 
+bIndex = 1
 
 --[[ Increments the index of the currently selected building when the player uses the mousewheel (up) ]]
 function bIndexInc()
 
+    if (bIndex == "#") then
+        bIndex = 1
+    end
+
     -- update the current building for the ui-controller
     -- TODO: refactor global variables from UIController to object instances
+
+    log("bIndex: " .. bIndex)
+    log("#parameterizedConstructions: " .. #parameterizedConstructions)
 
     if bIndex < #parameterizedConstructions then
         bIndex = bIndex + 1
@@ -406,14 +452,47 @@ end
 
 
 -- This method updates the current modelPath using the building-index
+-- Also shows the current three buildings from the building set
 function updateSelection()
-    modelPath = parameterizedConstructions[bIndex]
-    res_current_model = modelPath;
+
+    bDisableCurrentMessage = true
+    fDisplayTimeInSeconds = 10
+
+    currentConstruction = parameterizedConstructions[bIndex]
+
+    desc = "Decoration"
+    generatorDesc = ""
+
+    if currentConstruction.generator ~= nil then
+        -- currentConstruction.generatorItem
+        -- currentConstruction.generatorItemAmount
+        -- currentConstruction.generatorCooldown
+        -- currentConstruction.generatorOnUse
+        generatorDesc = "Generates x" .. currentConstruction.generatorItemAmount .. " " .. currentConstruction.generatorItem .. " every "
+                .. currentConstruction.generatorCooldown .. " seconds"
+    end
+
+    if (currentConstruction.description ~= nil) then
+        desc = currentConstruction.description
+    end
+
+    priceDesc = ""
+    if (currentConstruction.groschenPrice ~= nil) then
+        priceDesc = "Costs " .. currentConstruction.groschenPrice .. " Groschen"
+    end
+
+    message = tostring(currentConstruction.name) .. " (" .. bIndex .. "/" .. #parameterizedConstructions .. ") \n"
+            .. desc .. "\n"
+            .. generatorDesc .. "\n"
+            .. priceDesc
 
     -- TODO: only render the selection information if there isnt any other ui currently shown
     Game.SendInfoText(
-            "Selected (" .. bIndex .. "/" .. #parameterizedConstructions .. ")\n" .. tostring(parameterizedConstructions[bIndex].modelPath)
-    , true, nil, 3)
+            message,
+            bDisableCurrentMessage,
+            nil,
+            fDisplayTimeInSeconds
+    )
 end
 
 
@@ -471,20 +550,10 @@ function reloadall ()
     Script.UnloadScript("Scripts/Util/arc_constants.lua")
     Script.UnloadScript("Scripts/Util/arc_utils.lua")
 
-
-    -- unload entity related scripts (which MUST be inside pak structure at least once)
-    Script.UnloadScript("Scripts/Entities/arc_BasicBuildingEntity.lua")
-    Script.UnloadScript("Scripts/Entities/arc_DynamicBuildingEntity.lua")
-    Script.UnloadScript("Scripts/Entities/arc_CookingSpotEntity.lua")
-    Script.UnloadScript("Scripts/Entities/arc_GeneratorEntity.lua")
-
     -- reload everything
     Script.ReloadScripts()
 
-    Script.ReloadEntityScript("Scripts/Entities/arc_BasicBuildingEntity.lua")
-    Script.ReloadEntityScript("Scripts/Entities/arc_DynamicBuildingEntity.lua")
-    Script.ReloadEntityScript("Scripts/Entities/arc_CookingSpotEntity.lua")
-    Script.ReloadEntityScript("Scripts/Entities/arc_GeneratorEntity.lua")
+    Script.ReloadScript("Scripts/Manager/arc_BuildingsManager.lua")
 
     Script.ReloadScript("Scripts/Util/arc_constants.lua")
     Script.ReloadScript("Scripts/Util/arc_utils.lua")
@@ -528,7 +597,12 @@ function SelectLast()
     updateSelection()
 end
 
-function SelectIndex(newIndex)
+function Select(newIndex)
+    bIndex = newIndex;
+    updateSelection()
+end
+
+function select(newIndex)
     bIndex = newIndex;
     updateSelection()
 end
@@ -536,10 +610,6 @@ end
 -- shortcuts / eliminate case sensitivity, i dont know
 function deleteAll()
     deleteall()
-end
-
-function reloadAll()
-    reloadall()
 end
 
 

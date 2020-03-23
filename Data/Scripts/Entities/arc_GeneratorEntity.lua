@@ -15,8 +15,6 @@ GeneratorEntity = {
 
         class = "BasicEntity",
 
-        generated_value = 0,
-
         MaxSpeed = 1,
         fHealth = 100,
         bTurnedOn = 1,
@@ -44,11 +42,23 @@ GeneratorEntity = {
 
         },
 
+        -- locking system
+        deletion_lock = false,
+
+        -- resource system
+        -- generator
+        generatorItem = "none",
+        generatorItemAmount = 0,
+        generatorCooldown = 999,
+        generator_generated = 0,
+
+        -- serialize entity for persistence
         bSaved_by_game = 1,
         Saved_by_game = 1,
         bSerialize = 1,
-        deletion_lock = false,
 
+
+        --
         bInteractiveCollisionClass = 1,
         object_Model = "objects/buildings/refugee_camp/bad_straw.cgf",
         guidSmartObjectType = "39012413-1895-4828-b202-b3835a78984d",
@@ -162,23 +172,23 @@ function GeneratorEntity:OnSpawn()
 end
 
 -- todo - refactor like there is no tomorrow, but tomorrow
-countdownTime = 3
 function GeneratorEntity.Server:OnUpdate(delta)
     -- System.LogAlways("GeneratorEntity.Server onUpdate" .. tostring(delta))
 
+    --[[
     countdownTime = countdownTime - delta
     if countdownTime <= 0 then
-        countdownTime = countdownTime + 3
+        countdownTime = countdownTime + self.Properties.generatorCooldown
 
-        self.Properties.generated_value = self.Properties.generated_value + 1
+        self.Properties.generator_generated = self.Properties.generator_generated + 1
 
-        -- System.LogAlways("Something should happen now: " .. "\n" .. "Generated water by " .. self:GetName() .. " - " .. tostring(self.Properties.generated_value))
+        -- System.LogAlways("Something should happen now: " .. "\n" .. "Generated water by " .. self:GetName() .. " - " .. tostring(self.Properties.generator_generated))
 
         -- TODO - remove this comment
         -- Time for an update! Finished the implementation of custom generators.
         -- This could be used for water collectors, or scenarios for wood income, money income, decrease, ...
-
     end
+    ]]
 
 end
 
@@ -371,21 +381,26 @@ function GeneratorEntity:GetActions(user, firstFast)
     output = {}
 
     -- we'll provide a regular functionwhich gets executed when "using" the entity
-    AddInteractorAction(output, firstFast, Action():hint("Check water"):action("use"):func((function()
-        Game.SendInfoText("Collected amount of water: " .. tostring(self.Properties.generated_value), true, nil, 3)
+    AddInteractorAction(output, firstFast, Action():hint("Gather " .. self.Properties.generatorItem):action("use"):func(
+            (function()
 
-        -- This code is used to obtain resources after the player used the entity to gather resources
-        Script.SetTimerForFunction(1000, "GatherStone", {}, false)
+                -- do something actively when used (like generate some item, ...)
+                if self.Properties.generatorOnUse then
+                    self.Properties.generator_generated = self.Properties.generator_generated + 1
+                end
 
-    end))                                          :interaction(inr_chair):enabled(1))
+                Game.SendInfoText("Amount of " .. self.Properties.generatorItem .. ": " .. tostring(self.Properties.generator_generated), true, nil, 3)
+
+            end))
+                                                   :interaction(inr_chair):enabled(1))
 
     return output
 end
 
+-- This code is used to obtain resources after the player used the entity to gather resources
+-- Script.SetTimerForFunction(1000, "GatherStone", {}, false)
 function GatherStone(self)
-    -- System.LogAlways("HELLO ")
-    modifyResourceByAmount("wood", 20)
-    showRes()
+    System.LogAlways("Ive done something after one second")
 end
 
 --
