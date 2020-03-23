@@ -143,6 +143,7 @@ function SpawnBuildingInstance(line)
             -- generator = true, generatorItem = "wood", generatorCooldown = 30, generatorItemAmount = 2
             -- creating a generator with these values
 
+            -- TODO: make these properties persistent!
             spawnParams.properties.generatorItem = construction.generatorItem
             spawnParams.properties.generatorItemAmount = construction.generatorItemAmount
             spawnParams.properties.generatorCooldown = construction.generatorCooldown
@@ -382,6 +383,7 @@ function showall()
 
     end
 end
+
 function ShowAll()
     showall()
 end

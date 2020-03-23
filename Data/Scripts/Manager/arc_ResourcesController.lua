@@ -6,13 +6,24 @@
 ---
 
 resources = {
+
+    -- basic resources
     wood = 0,
     stone = 0,
 
+    -- basic needs
     food = 0,
     water = 0,
 
+    -- the money of the user, this should be bind to the actuals player value
     money = 0,
+
+    -- this can be used for baking bread or other food in kingdom come deliverance
+    wheat = 0,
+
+    cords = 0,
+    linen = 0,
+
 
     -- Other items:
     --  - plants

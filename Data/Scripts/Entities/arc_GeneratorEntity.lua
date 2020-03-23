@@ -378,6 +378,7 @@ end
 
 -- This callback aggregates the available actions of the entity
 function GeneratorEntity:GetActions(user, firstFast)
+
     output = {}
 
     -- we'll provide a regular functionwhich gets executed when "using" the entity
@@ -395,6 +396,7 @@ function GeneratorEntity:GetActions(user, firstFast)
                                                    :interaction(inr_chair):enabled(1))
 
     return output
+
 end
 
 -- This code is used to obtain resources after the player used the entity to gather resources
