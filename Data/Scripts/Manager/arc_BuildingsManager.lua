@@ -1202,6 +1202,10 @@ function search(searchName)
 
                 log("" .. matchId .. ".) " .. construction.name)
 
+                if searchName ~= "" then
+                    return index
+                end
+
             else
 
             end

@@ -14,6 +14,8 @@ Constructions are saved across your savegames - there is no new save required.
 If you're having fun with this mod you're maybe interested in buying me a coffee :) \
 Thanks to [Warhorse Studios](https://warhorsestudios.cz) for creating this gem!
 
+There is _no DLC required_ to use this mod.
+
 For changelogs, planned features or in-depth details see [https://benjaminfoo.github.io/Architect/](https://benjaminfoo.github.io/Architect/)
 
 <br>
@@ -89,20 +91,21 @@ All commands are available in upper / lowercase format.
 
 ```
 
-SetHome()
--- set the position of the home
-
-Home()
--- set the players position the home position
+--- Related to building / construction management ---
 
 
 Search(string s) 
--- Search for entites which name contains string s
--- For example: #search("stone") - emits a list of entities containing the string "stone"
--- Use Select to use one of your findings (without using the mouse wheel)
+-- Search for all constructions which name contains string s
+-- 
+-- For example: 
+-- #search("stone") - emits a list of constructions containing the string "stone"
+-- #search("") - emits the list of all constructions
 
 Select(nr)
 -- selects the construction at Number nr and updates the user interface
+
+Select(search("wood"))
+-- Selects the first construction which contains "wood" as part of its name
 
 SelectFirst()  
 -- selects the first construction and updates the user interface
@@ -119,17 +122,17 @@ deleteall()
 deleteAt(index)()
 -- delete the construction at number index (use #showall())
 
-toggleEntityLock()
--- toggles the deletion_lock-value of the currently faced entity
--- If true, the entity wont get deleted, no matter which function / mechanism is used,
--- if false, the entity will get deleted (default) 
 
-reloadall()
--- Reloads the source files of the project at runtime
+--- Related to town / home management ---
 
-rayCastHit()
--- Use a raycast to determine entities in front of the player
+SetHome()
+-- set the current position as the position of the users home / town 
 
+GetHome()
+-- warps the player to his home / town
+
+
+--- Locking 
 
 lockAll()
 -- locks all constructions from the user
@@ -137,6 +140,23 @@ lockAll()
 
 unlockAll()
 -- unlocks all constructions from the user
+
+toggleEntityLock()
+-- toggles the deletion_lock-value of the currently faced entity
+-- If true, the entity wont get deleted, no matter which function / mechanism is used,
+-- if false, the entity will get deleted (default) 
+
+
+--- Misc ---
+
+reloadall()
+-- Reloads the source files of the project at runtime
+
+rayCastHit()
+-- Use a raycast to determine entities in front of the player
+
+MakeSunshine()
+-- Change the current weather to sunshine
 
 
 ```
