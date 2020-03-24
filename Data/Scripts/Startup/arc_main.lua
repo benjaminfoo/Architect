@@ -33,6 +33,9 @@ Script.ReloadScript("Scripts/Manager/arc_ConstructionController.lua")
 -- load the resource-system, basic
 Script.ReloadScript("Scripts/Manager/arc_ResourcesController.lua")
 
+-- added runtime configuration, basic town management
+Script.ReloadScript("Scripts/Util/arc_runtime.lua")
+
 
 -- keybindings as fallback,
 -- these will be overwritten if keybinds.cfg is correctly set and loaded

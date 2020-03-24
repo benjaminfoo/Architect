@@ -14,9 +14,9 @@ Constructions are saved across your savegames - there is no new save required.
 If you're having fun with this mod you're maybe interested in buying me a coffee :) \
 Thanks to [Warhorse Studios](https://warhorsestudios.cz) for creating this gem!
 
-<br>  
+For changelogs, planned features or in-depth details see [https://benjaminfoo.github.io/Architect/](https://benjaminfoo.github.io/Architect/)
 
-For more in-depth details see [https://benjaminfoo.github.io/Architect/](https://benjaminfoo.github.io/Architect/)
+<br>
 
 ### Installation
 Download the latest release, unzip the archive into your KingdomComeDeliverance\mods - folder.
@@ -88,6 +88,14 @@ In order to execute a lua function, you have to prepend a '#'-character to execu
 All commands are available in upper / lowercase format.
 
 ```
+
+SetHome()
+-- set the position of the home
+
+Home()
+-- set the players position the home position
+
+
 Search(string s) 
 -- Search for entites which name contains string s
 -- For example: #search("stone") - emits a list of entities containing the string "stone"
@@ -147,82 +155,6 @@ However, one could add models / cgfs from the assets  on its own, the currently 
 listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Scripts/Manager/BuildingsManager.lua
 
 <br>
-
-#### Planned features
-This list contains all the features planned for later development, recommended by myself or the community:
-
-- 
-- keybind for enabling / disabling the mod - on f12 - pressed => you have activated the mod, these are the keys... etc.
-- a working kitchen / campfire
-- add aim target with hit detection (like "hit one time, ...") on arrow hit
-- custom crafting systems
-- custom constructions / entities, or existing with custom actions / usages
-- custom entities for the generation of resources
-- resource / cost management system (for spending and recieving groschen w constructions)
-- spawn setups with relations to npcs or items
-- make torches & lights toggleable
-- trigger / buttons
-- preview for constructions
-- gizmo / mode for rotation, translation of the constructions
-- siege invasions
-- ...
-
-<br>
-
-### Changelog
-This list contains all changes happened during development - the versions should be compatible to each other (maybe) - already created entities wont be affected.
-
-```
-- Alpha versions (a) are unstable and in subject of larger changes - expect bugs.
-- Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).
-
-changelog 0.5.2b
-- updated user interface
-- updated constructions
-- updated interactions with entities, gather resources, bake bread, ...
-
-changelog 0.5.2b
-- added fallback keybinding
-- limited user to only remove his own constructions (no more deleted doors, ... or dogs)
-- added deletion lock for entities (by pressing 'O' you're locking the currently faced entity, which makes it undeleteable, press again to retoggle the state)
-- updated construction-types, construction-set (its now possible to build a water generators or different kind of ovens)
-- updated console commands (allows selection of the first, last or n-th entity from available constructions) 
-- the functionalities / mechanics of constructions now work on saved/loaded games
-- updated console commands, refactored almost entire project, updated docs :)
-
-Version 0.5.1a
-- increased compatibility with other modifications
-
-Version 0.5a
-- added basic custom crafting system (this only works with constructions created by the player) 
-- added useable entities (like chairs, beds, benches, etc.)
-- updates of custom actions and entities
-- refactored project, upgraded entity-model, controller, utils, documentation etc.
-- removed invalid references from assets
-
-Version 0.4b
-- added option to rebind keys (look at the keybinds.cfg file to define your own keys)
-- added further docs
-
-Version 0.3b
-- added console commands
-- refactoring, ui finish
-- documentation, screenshots
-
-Version 0.2b
-- bug-fixes, removed all known problems
-- setup proper constructions
-- unique naming of entities
-
-Version 0.1b
-- advanced ingame-console functionality
-- added persistence (constructions wont get lost on save- & loading a level)
-
-Version 0.1a
-- basic functionality
-- construct and deconstruct buildings
-- mock-api
-```
 
 ##### Thanks / Credits
 Big thanks to [Warhorse Studios](https://warhorsestudios.cz) for creating such a great game, with engine, assets & sdk -

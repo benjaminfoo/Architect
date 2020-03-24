@@ -551,6 +551,7 @@ function reloadall ()
 
     Script.UnloadScript("Scripts/Util/arc_constants.lua")
     Script.UnloadScript("Scripts/Util/arc_utils.lua")
+    Script.UnloadScript("Scripts/Util/arc_runtime.lua")
 
     -- reload everything
     Script.ReloadScripts()
@@ -559,6 +560,7 @@ function reloadall ()
 
     Script.ReloadScript("Scripts/Util/arc_constants.lua")
     Script.ReloadScript("Scripts/Util/arc_utils.lua")
+    Script.ReloadScript("Scripts/Util/arc_runtime.lua")
 
 end
 
