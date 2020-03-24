@@ -32,6 +32,7 @@
 --- This file could be used to add further structures which are already implemented in kcd or new assets
 ---
 
+-- categories (currently descriptions) for constructions
 DESC_DECO = "Decoration"
 DESC_CAT_TREES = "Trees"
 DESC_CAT_FLOWERS = "Flowers"
@@ -45,8 +46,15 @@ DESC_CAT_GROUP_SHELVES = "A group of shelves and items"
 DESC_CAT_GRASS_GROUP = "Grass patches"
 DESC_CAT_GROUP_BARRELS = "A group of barrels."
 
+-- category prices until further balancing happened
 DEFAULT_PRICE_BEDS = 250
+DEFAULT_PRICE_CHAIRS = 250
+DEFAULT_PRICE_WALLS = 250
+DEFAULT_PRICE_STAIRS = 250
+DEFAULT_PRICE_FLOWER_SIMPLE = 250
+DEFAULT_PRICE_FLOWER_ADVANCED = 250
 
+-- set of available constructions
 parameterizedConstructions = {
 
     -- template for new construction / structure
