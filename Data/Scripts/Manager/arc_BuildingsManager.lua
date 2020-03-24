@@ -66,82 +66,92 @@ parameterizedConstructions = {
     -- generator entity -- water tank / collector --  generates water every 30 seconds
     {
         description = "A barrel for passively collecting water over time.",
-        groschenPrice = 300,
         modelPath = "Objects/buildings/houses/budin_mill/barrel_01.cgf",
-        useable = true, saveable = true,
-        generator = true, generatorOnUse = true,
+        saveable = true,
+        generator = true, generatorOnUse = false,
         generatorItem = "water", generatorItemAmount = 1,
-        generatorCooldown = 3, generatorItemCosts = { money = 300 }
+        generatorCooldown = 3, generatorItemCosts = { groschen = 300 }
     },
 
 
     -- generator entity -- some thing to generate stones but in a logical way
     {
-        description = "A small pile of stones",
-        groschenPrice = 250,
+        description = "A small pile of stones.",
         modelPath = "objects/nature/rocks/rocks_quarry/stone_granite_group_01.cgf",
-        useable = true, saveable = true,
-        generator = true, generatorOnUse = true, generatorItem = "stone", generatorCooldown = 60, generatorItemAmount = 1
+        saveable = true,
+        generator = true, generatorOnUse = false,
+        generatorItem = "stone", generatorItemAmount = 1,
+        generatorCooldown = 10, generatorItemCosts = { groschen = 300 }
     },
 
 
     -- generator entity -- stone collections / someone brings stone in here -- generates stone every 60 seconds
     {
         description = "A collection of stones, generates 1 stone every 60 seconds.",
-        groschenPrice = 500,
         modelPath = "objects/buildings/gamblers/gamblers_stones_group_a.cgf",
-        useable = true, saveable = true,
-        generator = true, generatorOnUse = true, generatorItem = "stone", generatorCooldown = 60, generatorItemAmount = 1
+        saveable = true,
+        generator = true, generatorOnUse = false,
+        generatorItem = "stone", generatorItemAmount = 2,
+        generatorCooldown = 15, generatorItemCosts = { groschen = 500 }
     },
 
 
     -- generator entity -- wood onuse-generator -- generates wood per hit
     {
         description = "A wooden block for chopping wood.",
-        groschenPrice = 100,
         modelPath = "objects/props/wooden_blocks/chopping_block01.cgf",
-        useable = true, saveable = true,
-        generator = true, generatorOnUse = true, generatorItem = "wood", generatorCooldown = 2, generatorItemAmount = 1
+        saveable = true,
+        generator = false, generatorOnUse = true,
+        generatorItem = "wood", generatorItemAmount = 1,
+        generatorCooldown = 15, generatorItemCosts = { groschen = 250 }
     },
 
 
     -- generator entity -- wood collections / someone brings stone in here -- generates stone every 60 seconds
     -- or maybe generates wood every {60, 30, 15} secs <OR> generate {1,2,3} wood ever  30 secs
     {
-        description = "A pile of wooden logs, consists of at least ten wooden logs.",
-        groschenPrice = 250,
+        description = "A pile of wooden logs.",
         modelPath = "objects/props/groups_of_stuff/group_woodshed_b.cgf",
-        useable = true, saveable = true,
-        generator = true, generatorOnUse = false, generatorItem = "wood", generatorCooldown = 30, generatorItemAmount = 1,
+        saveable = true,
+        generator = true, generatorOnUse = false,
+        generatorItem = "wood", generatorItemAmount = 1,
+        generatorCooldown = 15, generatorItemCosts = { groschen = 500 }
     },
     {
-        description = "A larger pile of wooden logs, consists of at least ten wooden logs.",
-        groschenPrice = 450,
+        description = "A larger pile of wooden logs.",
         modelPath = "objects/props/groups_of_stuff/group_woodshed_e.cgf",
-        useable = true, saveable = true,
-        generator = true, generatorOnUse = false, generatorItem = "wood", generatorCooldown = 30, generatorItemAmount = 1,
+        saveable = true,
+        generator = true, generatorOnUse = false,
+        generatorItem = "wood", generatorItemAmount = 3,
+        generatorCooldown = 30, generatorItemCosts = { groschen = 500 }
     },
 
 
     -- generator entity -- produce coal, should maybe require wood or groschen to produce?
     {
         description = "A construction for making coal.",
-        modelPath = "objects/structures/mining_structures/roasting_hole_01.cgf",
-
+        modelPath = "objects/structures/mining_structures/roasting_hole_02.cgf",
+        saveable = true,
+        generator = true, generatorOnUse = false,
+        generatorItem = "coal", generatorItemAmount = 1,
+        generatorCooldown = 3, generatorItemCosts = { groschen = 300 }
     },
     {
-        description = "A construction for making coal.",
-        modelPath = "objects/structures/mining_structures/roasting_hole_02.cgf",
-
+        description = "A larger construction for making coal.",
+        modelPath = "objects/structures/mining_structures/roasting_hole_01.cgf",
+        saveable = true,
+        generator = true, generatorOnUse = false,
+        generatorItem = "coal", generatorItemAmount = 3,
+        generatorCooldown = 45, generatorItemCosts = { groschen = 1000 }
     },
-
     -- generator entity --
     {
         description = "A pile of wheat.",
-        groschenPrice = 500,
         modelPath = "objects/props/groups_of_stuff/group_hay_pile_b.cgf",
-        useable = true, saveable = true,
-        generator = true, generatorOnUse = true, generatorItem = "wheat", generatorCooldown = 2, generatorItemAmount = 1
+        saveable = true,
+        generator = true, generatorOnUse = false,
+        generatorItem = "wheat", generatorItemAmount = 1,
+        generatorCooldown = 20, generatorItemCosts = { groschen = 500 }
     },
 
 

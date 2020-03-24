@@ -144,15 +144,6 @@ function SpawnBuildingInstance(line)
 
         if (construction.generator) then
             spawnParams.class = "GeneratorEntity"
-            -- spawnParams.class = "ShootingTarget"
-            -- spawnParams.class = "RigidBody"
-            -- spawnParams.properties.objModel = "Objects/buildings/houses/budin_mill/barrel_01.cgf"
-            -- TODO MAKE spawnParams.class = "RigidBody" useful somewhere!
-
-            -- generator = true, generatorItem = "wood", generatorCooldown = 30, generatorItemAmount = 2
-            -- creating a generator with these values
-
-            -- TODO: make these properties persistent!
             spawnParams.properties.generator = construction.generator
             spawnParams.properties.generatorItem = construction.generatorItem
             spawnParams.properties.generatorItemAmount = construction.generatorItemAmount
@@ -160,11 +151,24 @@ function SpawnBuildingInstance(line)
             spawnParams.properties.generatorOnUse = construction.generatorOnUse
             spawnParams.properties.generatorItemCosts = construction.generatorItemCosts
 
-            log("Generator item: " .. construction.generatorItem)
-            log("Generator generatorCooldown: " .. construction.generatorCooldown)
-            log("Generator generatorItemAmount: " .. construction.generatorItemAmount)
-            log("=> Produces " .. construction.generatorItem .. " x" .. construction.generatorItemAmount .. " every " .. construction.generatorCooldown .. " seconds ")
+            --[[
+                log("Generator item: " .. construction.generatorItem)
+                log("Generator generatorCooldown: " .. construction.generatorCooldown)
+                log("Generator generatorItemAmount: " .. construction.generatorItemAmount)
+                log("=> Produces " .. construction.generatorItem .. " x" .. construction.generatorItemAmount .. " every " .. construction.generatorCooldown .. " seconds ")
+            ]]
         end
+
+        if (construction.generatorOnUse) then
+            spawnParams.class = "GeneratorEntity"
+            spawnParams.properties.generator = construction.generator
+            spawnParams.properties.generatorItem = construction.generatorItem
+            spawnParams.properties.generatorItemAmount = construction.generatorItemAmount
+            spawnParams.properties.generatorCooldown = construction.generatorCooldown
+            spawnParams.properties.generatorOnUse = construction.generatorOnUse
+            spawnParams.properties.generatorItemCosts = construction.generatorItemCosts
+        end
+
 
         -- finish any work _before_ the entity gets initialized and spawned
 

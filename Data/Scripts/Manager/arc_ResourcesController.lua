@@ -16,7 +16,7 @@ resources = {
     water = 0,
 
     -- the money of the user, this should be bind to the actuals player value
-    money = 0,
+    groschen = 0,
 
     -- this can be used for baking bread or other food in kingdom come deliverance
     wheat = 0,
@@ -121,17 +121,16 @@ function showStats()
 
 end
 
+---
+--- possible resources and recipes
+---
 
--- TODO: some simple tests
---[[
-modifyResourceByAmount("wood", 33)
-modifyResourceByAmount("stone", 18)
-modifyResourceByAmount("food", 5)
-modifyResourceByAmount("water", 40)
-modifyResourceByAmount("money", -20)
-modifyResourceByAmount("honey :3", -20)
+-- wood
+-- stone
 
--- show the resources
-showRes()
+---
+--- refined resources
+---
 
-]]
+-- wooden log
+-- arrow head

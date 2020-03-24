@@ -256,7 +256,6 @@ function GeneratorEntity.Client:OnUpdate(delta)
     end
 
 
-
 end
 
 function GeneratorEntity:SetupModel()
@@ -286,6 +285,7 @@ function GeneratorEntity:OnLoad(table)
     Properties.generatorItemAmount = table.generatorItemAmount
     Properties.generatorCooldown = table.generatorCooldown
     Properties.generatorGeneratedAmount = table.generatorGeneratedAmount
+    Properties.generatorItemCosts = table.generatorItemCosts
 
 
     -- the initial timer of this generator
@@ -313,6 +313,7 @@ function GeneratorEntity:OnSave(table)
     table.generatorItemAmount = self.Properties.generatorItemAmount
     table.generatorCooldown = self.Properties.generatorCooldown
     table.generatorGeneratedAmount = self.Properties.generatorGeneratedAmount
+    table.generatorItemCosts = self.Properties.generatorItemCosts
 
     System.LogAlways("Saving")
     System.LogAlways("Persisting Entity.object_model: " .. table.object_Model)
@@ -362,12 +363,10 @@ function GeneratorEntity:SetFromProperties()
     countdownTime = self.Properties.generatorCooldown
 
     System.LogAlways("isGenerator: " .. tostring(self.Properties.generator))
-    System.LogAlways(self.Properties.generator)
     System.LogAlways("generatorOnUse: " .. tostring(self.Properties.generatorOnUse))
-    System.LogAlways(self.Properties.generatorOnUse)
     System.LogAlways("genItem: " .. self.Properties.generatorItem)
     System.LogAlways("cooldown: " .. self.Properties.generatorCooldown)
-    System.LogAlways("generatorItemCosts: " .. self.Properties.generatorItemCosts)
+    System.LogAlways("generatorItemCosts: " .. tostring(self.Properties.generatorItemCosts))
     System.LogAlways("generatorItemAmount: " .. self.Properties.generatorItemAmount)
 
     -- table.generatorItemAmount = self.Properties.generatorItemAmount
@@ -474,18 +473,33 @@ function GeneratorEntity:GetActions(user, firstFast)
     output = {}
 
     -- we'll provide a regular functionwhich gets executed when "using" the entity
-    AddInteractorAction(output, firstFast, Action():hint("Gather " .. self.Properties.generatorItem):action("use"):func(
-            (function()
 
-                -- do something actively when used (like generate some item, ...)
-                if self.Properties.generatorOnUse then
-                    self.Properties.generatorGeneratedAmount = self.Properties.generatorGeneratedAmount + 1
+    if self.Properties.generator then
+        AddInteractorAction(output, firstFast, Action():hint("Check resources"):action("use"):func((
+                function()
+                    Game.SendInfoText(
+                            "Amount of " .. self.Properties.generatorItem .. ": " .. tostring(self.Properties.generatorGeneratedAmount .. " - "
+                                    .. "\n"
+                                    .. "Producing " .. tostring(self.Properties.generatorItemAmount)
+                                    .. " amounts of " .. self.Properties.generatorItem
+                                    .. " takes " .. tostring(self.Properties.generatorCooldown) .. " seconds"
+                            ), true, nil, 3)
                 end
+        ))                                             :interaction(inr_chair):enabled(1))
+    end
 
-                Game.SendInfoText("Amount of " .. self.Properties.generatorItem .. ": " .. tostring(self.Properties.generatorGeneratedAmount), true, nil, 3)
-
-            end))
-                                                   :interaction(inr_chair):enabled(1))
+    if self.Properties.generatorOnUse then
+        AddInteractorAction(output, firstFast, Action():hint("Gather resources"):action("use"):func((
+                function()
+                    self.Properties.generatorGeneratedAmount = self.Properties.generatorGeneratedAmount + self.Properties.generatorItemAmount
+                    Game.SendInfoText(
+                            "Produced new " .. self.Properties.generatorItem .. " x" .. tostring(self.Properties.generatorItemAmount
+                                    .. "\n" ..
+                                    "Amount of " .. self.Properties.generatorItem .. ": " .. tostring(self.Properties.generatorGeneratedAmount)
+                            ), true, nil, 3)
+                end
+        ))                                             :hintType("Test"):hintClass("Test"):interaction(inr_chair):enabled(1))
+    end
 
     return output
 
@@ -505,6 +519,7 @@ end
 --
 function GeneratorEntity:OnUsedHold(user)
 
+    System.LogAlways("GeneratorEntity Used OnHold")
 end
 
 --
