@@ -478,7 +478,7 @@ function GeneratorEntity:GetActions(user, firstFast)
         AddInteractorAction(output, firstFast, Action():hint("Check resources"):action("use"):func((
                 function()
                     Game.SendInfoText(
-                            "Amount of " .. self.Properties.generatorItem .. ": " .. tostring(self.Properties.generatorGeneratedAmount .. " - "
+                            "Amount of " .. self.Properties.generatorItem .. ": " .. tostring(self.Properties.generatorGeneratedAmount
                                     .. "\n"
                                     .. "Producing " .. tostring(self.Properties.generatorItemAmount)
                                     .. " amounts of " .. self.Properties.generatorItem
