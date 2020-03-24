@@ -23,6 +23,7 @@
 --- generator           - if true, the item generates items over time specified by following properties
 --- generatorOnUse      - if true, the construction can be used by the player to generate an item
 --- generatorItem       - the item that gets crafted on use or after time
+--- generatorItemCosts  - the costs for producing this item (a set of resources and amounts)
 --- generatorCooldown   - the length of the intervall after an item gets generated passievly
 --- generatorItemAmount - the amount of items the user recieves after an intervall
 ---
@@ -68,8 +69,9 @@ parameterizedConstructions = {
         groschenPrice = 300,
         modelPath = "Objects/buildings/houses/budin_mill/barrel_01.cgf",
         useable = true, saveable = true,
-        generator = true, generatorOnUse = false, generatorItem = "water", generatorCooldown = 30, generatorItemAmount = 1,
-        costs = { wood = 10, metal = 2 }, -- something like this could be used to define needed resources in order to build the construction
+        generator = true, generatorOnUse = true,
+        generatorItem = "water", generatorItemAmount = 1,
+        generatorCooldown = 3, generatorItemCosts = { money = 300 }
     },
 
 

@@ -112,6 +112,7 @@ function showStats()
                             .. " every " .. entity.Properties.generatorCooldown .. " seconds "
             )
 
+            System.LogAlways("Produced already: " .. entity.Properties.generatorGeneratedAmount .. "x " .. entity.Properties.generatorItem)
         end
 
         System.LogAlways("")
