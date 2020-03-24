@@ -16,6 +16,8 @@ Thanks to [Warhorse Studios](https://warhorsestudios.cz) for creating this gem!
 
 <br>  
 
+For more in-depth details see [https://benjaminfoo.github.io/Architect/](https://benjaminfoo.github.io/Architect/)
+
 ### Installation
 Download the latest release, unzip the archive into your KingdomComeDeliverance\mods - folder.
 If the installation was succesful you'll see the instructions-message on how to use the mod when the game has been started
