@@ -42,15 +42,40 @@ GeneratorEntity = {
 
         },
 
+        -- TODO
+        -- TODO - THESE VALUES NEED TO GET SAVED AND RELOADED :)
+        -- TODO
+
         -- locking system
         deletion_lock = false,
 
         -- resource system
         -- generator
+
+        -- is this construction a generator?
+        generator = false,
+
+        -- is this construction producing something when used?
+        generatorOnUse = false,
+
+        -- the name of the generated resource
         generatorItem = "none",
-        generatorItemAmount = 0,
+
+        -- the amount of generated resources
+        generatorItemAmount = -1,
+
+        -- the costs for producing this item
+        generatorItemCosts = {},
+
+        -- the amount of time the user has to wait for producing a new resource
         generatorCooldown = 999,
-        generator_generated = 0,
+
+        -- the current cooldown amount, please dont change this
+        countdownTime = -2,
+
+        -- how much has this construction already created?
+        generatorGeneratedAmount = 0,
+
 
         -- serialize entity for persistence
         bSaved_by_game = 1,
@@ -93,6 +118,9 @@ GeneratorEntity = {
 }
 
 
+-- the initial timer of this generator
+countdownTime = 5
+
 function GeneratorEntity:OnReset()
     System.LogAlways("GeneratorEntity OnReset")
 
@@ -101,6 +129,9 @@ function GeneratorEntity:OnReset()
     -- self:CreateStaticEntity( self.Properties.fMass,-1 );
     -- self:SetCurrentSlot(0);
     -- self:PhysicalizeThis(0);
+
+    -- the initial timer of this generator
+    countdownTime = self.Properties.generatorCooldown
 
 end;
 
@@ -173,27 +204,59 @@ end
 
 -- todo - refactor like there is no tomorrow, but tomorrow
 function GeneratorEntity.Server:OnUpdate(delta)
-    -- System.LogAlways("GeneratorEntity.Server onUpdate" .. tostring(delta))
-
-    --[[
-    countdownTime = countdownTime - delta
-    if countdownTime <= 0 then
-        countdownTime = countdownTime + self.Properties.generatorCooldown
-
-        self.Properties.generator_generated = self.Properties.generator_generated + 1
-
-        -- System.LogAlways("Something should happen now: " .. "\n" .. "Generated water by " .. self:GetName() .. " - " .. tostring(self.Properties.generator_generated))
-
-        -- TODO - remove this comment
-        -- Time for an update! Finished the implementation of custom generators.
-        -- This could be used for water collectors, or scenarios for wood income, money income, decrease, ...
-    end
-    ]]
 
 end
 
 function GeneratorEntity.Client:OnUpdate(delta)
     -- System.LogAlways("GeneratorEntity.Client onUpdate" .. tostring(delta))
+
+
+
+
+
+    -- if this construction is an entity which produces resource over time ...
+    if (self.Properties.generator == true) then
+
+        --[[
+        System.LogAlways("")
+        System.LogAlways("")
+        System.LogAlways("")
+        System.LogAlways("GeneratorEntity.Server onUpdate" .. tostring(delta))
+        System.LogAlways("self.Properties.generator: " .. tostring(self.Properties.generator) )
+        System.LogAlways("self.Properties.countdownTime: " .. tostring(self.Properties.countdownTime))
+        System.LogAlways("self.Properties.countdownTime: " .. tostring(self.Properties.generatorGeneratedAmount))
+        System.LogAlways("")
+        ]]--
+
+        -- remove the delta between the rendering of the last frame from the cooldown-timer
+        self.Properties.countdownTime = self.Properties.countdownTime - delta
+
+        -- ... if the cooldown is reached
+        if self.Properties.countdownTime <= 0 then
+
+            -- reset the countdown if not oneshot
+            self.Properties.countdownTime = self.Properties.countdownTime + self.Properties.generatorCooldown
+
+            -- increase the generated Amount of items
+            self.Properties.generatorGeneratedAmount = self.Properties.generatorGeneratedAmount + self.Properties.generatorItemAmount
+
+            --[[
+            -- log it real good
+            System.LogAlways("Something should happen now: " .. "\n" .. "Generated water by " .. self:GetName() .. " - " .. tostring(self.Properties.generatorGeneratedAmount))
+            System.LogAlways("Something should happen now: " .. "\n" .. "Generated water by " .. self:GetName() .. " - " .. tostring(self.Properties.generatorGeneratedAmount))
+            System.LogAlways("Something should happen now: " .. "\n" .. "Generated water by " .. self:GetName() .. " - " .. tostring(self.Properties.generatorGeneratedAmount))
+            System.LogAlways("Something should happen now: " .. "\n" .. "Generated water by " .. self:GetName() .. " - " .. tostring(self.Properties.generatorGeneratedAmount))
+            System.LogAlways("Something should happen now: " .. "\n" .. "Generated water by " .. self:GetName() .. " - " .. tostring(self.Properties.generatorGeneratedAmount))
+            System.LogAlways("Something should happen now: " .. "\n" .. "Generated water by " .. self:GetName() .. " - " .. tostring(self.Properties.generatorGeneratedAmount))
+            System.LogAlways("Something should happen now: " .. "\n" .. "Generated water by " .. self:GetName() .. " - " .. tostring(self.Properties.generatorGeneratedAmount))
+            ]]--
+
+        end
+
+    end
+
+
+
 end
 
 function GeneratorEntity:SetupModel()
@@ -213,12 +276,20 @@ function GeneratorEntity:SetupModel()
 end
 
 function GeneratorEntity:OnLoad(table)
-    self.health = table.health;
-    self.dead = table.dead;
     self.object_Model = table.object_Model;
 
+    -- reload persisted values
     local Properties = self.Properties;
     Properties.object_Model = table.object_Model;
+    Properties.generator = table.generator
+    Properties.generatorItem = table.generatorItem
+    Properties.generatorItemAmount = table.generatorItemAmount
+    Properties.generatorCooldown = table.generatorCooldown
+    Properties.generatorGeneratedAmount = table.generatorGeneratedAmount
+
+
+    -- the initial timer of this generator
+    countdownTime = self.Properties.generatorCooldown
 
     System.LogAlways("Loading")
     System.LogAlways("Persisted_Entity.object_model: " .. table.object_Model)
@@ -235,9 +306,13 @@ function GeneratorEntity:OnLoad(table)
 end
 
 function GeneratorEntity:OnSave(table)
-    table.health = self.health;
-    table.dead = self.dead;
     table.object_Model = self.Properties.object_Model;
+
+    table.generator = self.Properties.generator
+    table.generatorItem = self.Properties.generatorItem
+    table.generatorItemAmount = self.Properties.generatorItemAmount
+    table.generatorCooldown = self.Properties.generatorCooldown
+    table.generatorGeneratedAmount = self.Properties.generatorGeneratedAmount
 
     System.LogAlways("Saving")
     System.LogAlways("Persisting Entity.object_model: " .. table.object_Model)
@@ -281,6 +356,24 @@ function GeneratorEntity:SetFromProperties()
     else
         self:SetFlags(ENTITY_FLAG_TRIGGER_AREAS, 2);
     end
+
+
+    -- the initial timer of this generator
+    countdownTime = self.Properties.generatorCooldown
+
+    System.LogAlways("isGenerator: " .. tostring(self.Properties.generator))
+    System.LogAlways(self.Properties.generator)
+    System.LogAlways("generatorOnUse: " .. tostring(self.Properties.generatorOnUse))
+    System.LogAlways(self.Properties.generatorOnUse)
+    System.LogAlways("genItem: " .. self.Properties.generatorItem)
+    System.LogAlways("cooldown: " .. self.Properties.generatorCooldown)
+    System.LogAlways("generatorItemCosts: " .. self.Properties.generatorItemCosts)
+    System.LogAlways("generatorItemAmount: " .. self.Properties.generatorItemAmount)
+
+    -- table.generatorItemAmount = self.Properties.generatorItemAmount
+    -- table.generatorCooldown = self.Properties.generatorCooldown
+    -- table.generatorGeneratedAmount = self.Properties.generatorGeneratedAmount
+
 end
 
 function GeneratorEntity:OnPropertyChange()
@@ -325,7 +418,6 @@ function GeneratorEntity:Event_Ragdollize()
         self:Event_RagdollizeDerived();
     end
 end
-
 
 function GeneratorEntity.Client:OnPhysicsBreak(vPos, nPartId, nOtherPartId)
     self:ActivateOutput("Break", nPartId + 1);
@@ -387,10 +479,10 @@ function GeneratorEntity:GetActions(user, firstFast)
 
                 -- do something actively when used (like generate some item, ...)
                 if self.Properties.generatorOnUse then
-                    self.Properties.generator_generated = self.Properties.generator_generated + 1
+                    self.Properties.generatorGeneratedAmount = self.Properties.generatorGeneratedAmount + 1
                 end
 
-                Game.SendInfoText("Amount of " .. self.Properties.generatorItem .. ": " .. tostring(self.Properties.generator_generated), true, nil, 3)
+                Game.SendInfoText("Amount of " .. self.Properties.generatorItem .. ": " .. tostring(self.Properties.generatorGeneratedAmount), true, nil, 3)
 
             end))
                                                    :interaction(inr_chair):enabled(1))

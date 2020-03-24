@@ -61,9 +61,6 @@ Key G
 Lock / unlock construction for deletion \
 Key O
 
-Reload the project sources at runtime \
-Key F9
-
 <br>
 
 ## Technical
@@ -100,7 +97,7 @@ SelectFirst()
 SelectLast()
 -- selects the last construction and updates the user interface
 
-showall()
+showall() 
 -- lists all constructions to the ingame console
 
 deleteall()
@@ -146,24 +143,95 @@ listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Sc
 
 <br>
 
-#### Planned features
+### Additional Features
+
+#### Constructions
+One target functionality architect introduces is the concept of constructions.
+
+```
+A construction is an entity within the cryengine
+There are different kinds of properties an entity can use from
+
+Construction, Construction-Properties
+ - name (optional) - the name of the construction - the name will be built from the modelPath
+ - modelPath       - the relative path to the *.cgf file, contains the name of the model file and its physics
+ - description     - the description for the construction
+ - groschenPrice   - the price in groschen the user has to pay upfront (to whom? who recieves this money) => maybe there should be some kind of logic that 50% goes to the king and 50% to the city, and at some point you will get the money back or something like that, some kind of insurence or something
+ - sitable         - if true, the player can sit on this object
+ - useable         - if true, the player can use the object in some way
+ - saveable        - if true, the instance of the construction gets saved
+ - cookable        - if true, the player can use the construction for cooking
+ - sleepable       - if true, the player can use the construction for sleeping
+
+Properties related to generating some item over a specified amount of time
+(like collecting water passively) or craft something out of x for y (x = generated item, y = cost of crafting for item x)
+ - generator           - if true, the item generates items over time specified by following properties
+ - generatorOnUse      - if true, the construction can be used by the player to generate an item
+ - generatorItem       - the item that gets crafted on use or after time
+ - generatorItemCosts  - the costs for producing this item (a set of resources and amounts)
+ - generatorCooldown   - the length of the intervall after an item gets generated passievly
+ - generatorItemAmount - the amount of items the user recieves after an intervall
+
+Notes
+- Constructions which only contain a modelPath are handled as static entites (no functionality, just a model + collider + manged in savegames)
+```
+#### Crafting
+A construction who posses attributes like generatorOnUse can be used to realize simple crafting mechanics.
+
+```
+{
+    -- create a new construction which can be used for crafting
+    modelPath = "...",
+    generatorOneUse = true
+    generatorItem = "wood"
+    -- TODO
+} 
+```
+.. this needs an update first.
+
+<br>
+
+#### Resource Management
+.. this needs an update first.
+
+#### Current features / todo / bugs
 This list contains all the features planned for later development, recommended by myself or the community:
 
-- 
-- keybind for enabling / disabling the mod - on f12 - pressed => you have activated the mod, these are the keys... etc.
-- a working kitchen / campfire
-- add aim target with hit detection (like "hit one time, ...") on arrow hit
-- custom crafting systems
-- custom constructions / entities, or existing with custom actions / usages
-- custom entities for the generation of resources
 - resource / cost management system (for spending and recieving groschen w constructions)
+  - implement costs for crafting or producing resources or items
+  - implement costs for building stuff, should be in the recipe above!
+  
+   
+- custom crafting systems (missing feature: correct crafting, difference between passive generation and active producing, needs another split maybe)
+  - implement costs for crafting or producing resources or items
+  - implement costs for building stuff, should be in the recipe above! 
+  
+  
+- add further constructions
+  - a working kitchen / campfire
+  - add aim target with hit detection (like "hit one time, ...") on arrow hit
+  - trigger / buttons
+  
+  
+- keybind for enabling / disabling the mod - on f12 - pressed => you have activated the mod, these are the keys... etc.
 - spawn setups with relations to npcs or items
 - make torches & lights toggleable
-- trigger / buttons
 - preview for constructions
-- gizmo / mode for rotation, translation of the constructions
-- siege invasions
-- ...
+- preview-mode for rotation, translation of the constructions
+- ... siege invasions ... ?
+
+
+<br>
+ 
+##### Implemented features - tl;dr
+- custom constructions / entities, or existing with custom actions / usages
+- custom entities for the generation of resources
+- implement un/locking mechanism
+- implement advanced ingame-console usage and help
+- implement minimalistic user interface
+- provide ability to build constructions based on ingame assets
+- provide ability to extend the modification for easier usage / development
+
 
 <br>
 

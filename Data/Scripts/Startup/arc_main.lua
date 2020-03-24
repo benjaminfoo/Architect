@@ -36,6 +36,9 @@ Script.ReloadScript("Scripts/Manager/arc_ResourcesController.lua")
 -- added runtime configuration, basic town management
 Script.ReloadScript("Scripts/Util/arc_runtime.lua")
 
+-- add different kind of ways to use core functions and allow case support
+Script.ReloadScript("Scripts/Util/arc_CammelCaseSupport.lua")
+
 
 -- keybindings as fallback,
 -- these will be overwritten if keybinds.cfg is correctly set and loaded

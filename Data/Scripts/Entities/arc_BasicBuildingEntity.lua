@@ -41,7 +41,7 @@ BasicBuildingEntity = {
 }
 
 function BasicBuildingEntity:OnSpawn()
-    System.LogAlways("Spawned basic entity ...")
+    -- System.LogAlways("Spawned basic entity ...")
 
     --[[
     if (self.Properties.MultiplayerOptions.bNetworked == 0) then

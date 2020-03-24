@@ -23,7 +23,6 @@ function showUsage()
 
         message = "<font color='#333333' size='8'>\n</font>"
                 .. "<font color='#333333' size='32'>Architect " .. architect_version .. "</font>" .. "\n"
-                .. "<font color='#333333' size='14'>codename: Farklewood</font>" .. "\n"
                 .. "<font color='#333333' size='8'>\n</font>"
                 .. "<font color='#333333' size='16'>An advanced base-building modification for kingdom come deliverance.</font>" .. "\n"
 
@@ -33,11 +32,16 @@ function showUsage()
                 .. "<font color='#333333' size='18'>\nKey V </font>" .. "\n"
                 .. "<font color='#333333' size='16'>Create construction</font>" .. "\n"
 
-                .. "<font color='#333333' size='18'>\nKey G </font>" .. "\n"
-                .. "<font color='#333333' size='16'>Remove construction</font>" .. "\n"
-
                 .. "<font color='#333333' size='18'>\nKey O </font>" .. "\n"
                 .. "<font color='#333333' size='16'>Toggle deletion of entity-lock</font>" .. "\n\n"
+
+                .. "<font color='#333333' size='18'>\nCommands </font>" .. "\n"
+                .. "<font color='#333333' size='16'>#setHome()</font>" .. "\n\n"
+                .. "<font color='#333333' size='16'>#getHome()</font>" .. "\n\n"
+                .. "<font color='#333333' size='16'>#showStats()</font>" .. "\n\n"
+                .. "<font color='#333333' size='16'>#search('bridge')</font>" .. "\n\n"
+                .. "<font color='#333333' size='16'>#lockAll()</font>" .. "\n\n"
+                .. "<font color='#333333' size='16'>#unlockAll()</font>" .. "\n\n"
 
                 .. "<font color='#333333' size='16'>Execute architect_help in the ingame console for additional help.</font>" .. "\n\n"
 

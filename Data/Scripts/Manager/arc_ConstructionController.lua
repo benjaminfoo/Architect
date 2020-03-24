@@ -77,7 +77,15 @@ end
 function SpawnBuildingInstance(line)
     System.LogAlways("# SpawnBuildingInstance start")
 
+    if (bIndex == "#") then
+        bIndex = 1
+    end
+
+    -- check if the construction can be built first
     hitData = rayCastHit()
+
+    -- check if the prerequisites have been met
+
 
     if (hitData ~= nil) then
 
@@ -111,7 +119,8 @@ function SpawnBuildingInstance(line)
         spawnParams.properties.object_Model = construction.modelPath
 
         -- generate a unique name for the entity
-        spawnParams.name = construction.modelPath .. "_" .. uuid()
+        -- spawnParams.name = construction.modelPath .. "_" .. uuid()
+        spawnParams.name = construction.name .. "_" .. uuid()
 
         if (construction.sitable) then
             spawnParams.class = "ChairEntity"
@@ -126,7 +135,7 @@ function SpawnBuildingInstance(line)
         end
 
         if (construction.useable) then
-            spawnParams.class = "GeneratorEntity"
+            -- spawnParams.class = "GeneratorEntity"
             -- spawnParams.class = "ShootingTarget"
             -- spawnParams.class = "RigidBody"
             -- spawnParams.properties.objModel = "Objects/buildings/houses/budin_mill/barrel_01.cgf"
@@ -144,10 +153,12 @@ function SpawnBuildingInstance(line)
             -- creating a generator with these values
 
             -- TODO: make these properties persistent!
+            spawnParams.properties.generator = construction.generator
             spawnParams.properties.generatorItem = construction.generatorItem
             spawnParams.properties.generatorItemAmount = construction.generatorItemAmount
             spawnParams.properties.generatorCooldown = construction.generatorCooldown
             spawnParams.properties.generatorOnUse = construction.generatorOnUse
+            spawnParams.properties.generatorItemCosts = construction.generatorItemCosts
 
             log("Generator item: " .. construction.generatorItem)
             log("Generator generatorCooldown: " .. construction.generatorCooldown)
@@ -378,15 +389,10 @@ function showall()
             amountOfEntities = amountOfEntities + 1
         end
 
-        System.LogAlways("Category: " .. whiteListElement)
-        System.LogAlways("Amount of Entities: " .. amountOfEntities)
-
+        System.LogAlways("- " .. whiteListElement .. " x" .. amountOfEntities)
     end
 end
 
-function ShowAll()
-    showall()
-end
 
 -- Delete an existing construction by its build-index
 function deleteAt(index)
@@ -470,7 +476,8 @@ function updateSelection()
         -- currentConstruction.generatorItemAmount
         -- currentConstruction.generatorCooldown
         -- currentConstruction.generatorOnUse
-        generatorDesc = "Generates x" .. currentConstruction.generatorItemAmount .. " " .. currentConstruction.generatorItem .. " every "
+        generatorDesc = "Generates x" .. currentConstruction.generatorItemAmount .. " "
+                .. currentConstruction.generatorItem .. " every "
                 .. currentConstruction.generatorCooldown .. " seconds"
     end
 
@@ -543,6 +550,10 @@ end
 -- reloads all scripts but is shorter to type into console
 function reloadall ()
 
+    -- backup everything that needs to survive the reload
+    local townName = config.primary_town_name
+    local townPos = config.primary_town_position
+
     -- unload all controller first
     Script.UnloadScript("Scripts/Manager/arc_UIController.lua")
     Script.UnloadScript("Scripts/Manager/arc_ConstructionController.lua")
@@ -553,7 +564,7 @@ function reloadall ()
     Script.UnloadScript("Scripts/Util/arc_utils.lua")
     Script.UnloadScript("Scripts/Util/arc_runtime.lua")
 
-    -- reload everything
+    -- reload every script, including /Data and /Mods
     Script.ReloadScripts()
 
     Script.ReloadScript("Scripts/Manager/arc_BuildingsManager.lua")
@@ -561,6 +572,10 @@ function reloadall ()
     Script.ReloadScript("Scripts/Util/arc_constants.lua")
     Script.ReloadScript("Scripts/Util/arc_utils.lua")
     Script.ReloadScript("Scripts/Util/arc_runtime.lua")
+
+    -- reload every value we have stored before
+    config.primary_town_name = townName
+    config.primary_town_position = townPos
 
 end
 
@@ -605,15 +620,3 @@ function Select(newIndex)
     bIndex = newIndex;
     updateSelection()
 end
-
-function select(newIndex)
-    bIndex = newIndex;
-    updateSelection()
-end
-
--- shortcuts / eliminate case sensitivity, i dont know
-function deleteAll()
-    deleteall()
-end
-
-
