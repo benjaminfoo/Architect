@@ -174,6 +174,7 @@ This list contains all changes happened during development - the versions should
 - Alpha versions (a) are unstable and in subject of larger changes - expect bugs.
 - Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).
 
+
 changelog 0.5.2b
 - updated user interface
 - updated constructions
