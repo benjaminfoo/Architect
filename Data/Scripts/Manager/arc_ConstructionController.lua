@@ -120,7 +120,8 @@ function SpawnBuildingInstance(line)
 
         -- generate a unique name for the entity
         -- spawnParams.name = construction.modelPath .. "_" .. uuid()
-        spawnParams.name = construction.name .. "_" .. uuid()
+        spawnParams.name = construction.name
+        spawnParams.uuid = uuid()
 
         if (construction.sitable) then
             spawnParams.class = "ChairEntity"
@@ -142,6 +143,8 @@ function SpawnBuildingInstance(line)
             -- TODO MAKE spawnParams.class = "RigidBody" useful somewhere!
         end
 
+        add = ""
+
         if (construction.generator) then
             spawnParams.class = "GeneratorEntity"
             spawnParams.properties.generator = construction.generator
@@ -157,7 +160,9 @@ function SpawnBuildingInstance(line)
                 log("Generator generatorItemAmount: " .. construction.generatorItemAmount)
                 log("=> Produces " .. construction.generatorItem .. " x" .. construction.generatorItemAmount .. " every " .. construction.generatorCooldown .. " seconds ")
             ]]
+
         end
+
 
         if (construction.generatorOnUse) then
             spawnParams.class = "GeneratorEntity"
@@ -167,6 +172,7 @@ function SpawnBuildingInstance(line)
             spawnParams.properties.generatorCooldown = construction.generatorCooldown
             spawnParams.properties.generatorOnUse = construction.generatorOnUse
             spawnParams.properties.generatorItemCosts = construction.generatorItemCosts
+
         end
 
 
@@ -192,13 +198,14 @@ function SpawnBuildingInstance(line)
 
         end
 
-
         -- setup the rotation of the spawned entity align the y-axis
         local up = player:GetAngles()
         up = { up.x, up.y, up.z }
         ent:SetAngles(up)
 
-        Game.SendInfoText("Constructing: \n" .. tostring(ent:GetName()), true, nil, 2)
+        Game.SendInfoText(
+                "Constructing " .. tostring(ent:GetName())
+        , true, nil, 2)
 
         -- undo / redo control, build history
         table.insert(builtEntities, ent)
@@ -349,12 +356,12 @@ function deleteRayCastEntityHit()
 
             if (result.Properties.deletion_lock == false) then
 
-                visRes = "Removing entity: \n" .. tostring(result:GetName())
+                visRes = "Removing construction: " .. tostring(result:GetName())
 
                 -- remove the entity by its id
                 System.RemoveEntity(result.id)
             else
-                visRes = "Cant remove entity: \n" .. tostring(result:GetName())
+                visRes = "Cant remove entity because its locked: \n" .. tostring(result:GetName())
 
             end
 
@@ -424,19 +431,11 @@ function bIndexInc()
         bIndex = 1
     end
 
-    -- update the current building for the ui-controller
-    -- TODO: refactor global variables from UIController to object instances
-
-    log("bIndex: " .. bIndex)
-    log("#parameterizedConstructions: " .. #parameterizedConstructions)
-
     if bIndex < #parameterizedConstructions then
         bIndex = bIndex + 1
-        l("Increment bIndex to " .. tostring(bIndex))
     end
 
     -- update the current building for the ui-controller
-    -- TODO: refactor global variables from UIController to object instances
     updateSelection()
 
 end
@@ -446,18 +445,16 @@ end
 function bIndexDec()
 
     if bIndex > 1 then
+
         bIndex = bIndex - 1
 
         if bIndex == 0 then
             return
         end
 
-        l("Decrement bIndex to " .. tostring(bIndex))
-
     end
 
     -- update the current building for the ui-controller
-    -- TODO: refactor global variables from UIController to object instances
     updateSelection()
 
 end
@@ -471,6 +468,11 @@ function updateSelection()
     fDisplayTimeInSeconds = 10
 
     currentConstruction = parameterizedConstructions[bIndex]
+
+    if (currentConstruction == nil) then
+        System.LogAlways("No valid construction provided, skipping")
+        return
+    end
 
     desc = "Decoration"
     generatorDesc = ""

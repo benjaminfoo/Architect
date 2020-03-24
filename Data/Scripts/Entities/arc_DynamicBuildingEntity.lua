@@ -187,7 +187,7 @@ function DynamicBuildingEntity:OnReset()
     end
 end
 function DynamicBuildingEntity:Event_Remove()
-    System.LogAlways("Removing entity ...")
+    System.LogAlways("Removing construction")
 
     self:DrawSlot(0, 0);
     self:DestroyPhysics();

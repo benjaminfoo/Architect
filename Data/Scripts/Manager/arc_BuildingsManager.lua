@@ -110,7 +110,7 @@ parameterizedConstructions = {
     -- generator entity -- wood collections / someone brings stone in here -- generates stone every 60 seconds
     -- or maybe generates wood every {60, 30, 15} secs <OR> generate {1,2,3} wood ever  30 secs
     {
-        description = "A pile of wooden logs.",
+        description = "A small pile of wooden logs.",
         modelPath = "objects/props/groups_of_stuff/group_woodshed_b.cgf",
         saveable = true,
         generator = true, generatorOnUse = false,
@@ -119,11 +119,11 @@ parameterizedConstructions = {
     },
     {
         description = "A larger pile of wooden logs.",
-        modelPath = "objects/props/groups_of_stuff/group_woodshed_e.cgf",
+        modelPath = "objects/props/piles_of_logs/pile_of_logs_01/pile_of_logs_02.cgf",
         saveable = true,
         generator = true, generatorOnUse = false,
         generatorItem = "wood", generatorItemAmount = 3,
-        generatorCooldown = 30, generatorItemCosts = { groschen = 500 }
+        generatorCooldown = 30, generatorItemCosts = { groschen = 1000 }
     },
 
 
@@ -361,7 +361,7 @@ parameterizedConstructions = {
         modelPath = "objects/structures/mining_structures/mining_dam_bridge_01.cgf",
     },
 
-    -- tents
+    -- bath tents
     {
         description = "A tent which is frequently used in bath houses.",
         modelPath = "objects/structures/bath_tent/tent_bath_a.cgf",
@@ -378,6 +378,12 @@ parameterizedConstructions = {
     },
     -- {  modelPath = "objects/buildings/houses/rataje_bathhouse/bathtub_a_water.cgf", },
 
+    -- other tents
+    {
+        description = "A tent used by hunters or people living in the woods.",
+        modelPath = "objects/props/poi/hunter_shelter.cgf",
+        sleepable = true
+    },
     {
         description = "A tent often used by cuman soldiers",
         modelPath = "objects/structures/tent_cuman/tent_cuman_small_v1.cgf",
@@ -816,7 +822,7 @@ parameterizedConstructions = {
         modelPath = "objects/structures/stone_wall/stone_wall_uzice_roof_gate.cgf",
     },
 
-    -- markets
+    -- shops / markets
     {
         description = "A shop for buying and selling items, equipment or other things.",
         modelPath = "Objects/structures/shop/shop_02.cgf",
@@ -830,8 +836,42 @@ parameterizedConstructions = {
         modelPath = "Objects/structures/shop/shop_v.cgf",
     },
     {
-        description = "A shop for buying and selling items, equipment or other things iykwim.",
+        description = "A shop for buying and selling items, equipment or other things.",
         modelPath = "Objects/structures/shop/shop_new.cgf",
+    },
+
+    -- shops details
+    {
+        description = "A wooden counter used by merchants.",
+        modelPath = "Objects/props/interiors/specific/merchant/counter_merchant_1.cgf",
+    },
+    {
+        description = "A wooden counter used by butchers",
+        modelPath = "Objects/props/interiors/specific/merchant/counter_butcher.cgf",
+    },
+    {
+        description = "A wooden counter used by weaponsmiths",
+        modelPath = "Objects/props/interiors/specific/merchant/counter_weaponsmith.cgf",
+    },
+    {
+        description = "A wooden counter used by foodstores",
+        modelPath = "Objects/props/interiors/specific/merchant/foodshop_basket_holder.cgf",
+    },
+    {
+        description = "A wooden holder for items.",
+        modelPath = "Objects/props/interiors/specific/merchant/sale_desk_merchant_1.cgf",
+    },
+    {
+        description = "A wooden counter used by foodstores",
+        modelPath = "Objects/props/interiors/specific/merchant/shelf_merchant_01.cgf",
+    },
+    {
+        description = "A wooden counter used by foodstores",
+        modelPath = "Objects/props/interiors/specific/merchant/shelf_merchant_02.cgf",
+    },
+    {
+        description = "A wooden counter used by foodstores",
+        modelPath = "Objects/props/interiors/specific/merchant/shelf_merchant_03.cgf",
     },
 
 
@@ -1055,11 +1095,192 @@ parameterizedConstructions = {
     },
 
 
-    -- misc
+    -- decorative
+    -- decorative - candles
     {
-        description = "A cart which can transfer goods from a to b.",
-        modelPath = "objects/vehicles/cart/cart_01.cgf",
+        description = "A small candle.",
+        modelPath = "objects/props/interiors/candlesticks/candle_01.cgf",
+        generatorItemCosts = { groschen = 25 }
     },
+
+    {
+        description = "A large candle.",
+        modelPath = "objects/props/interiors/candlesticks/candle_02.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+    {
+        description = "A group of candles.",
+        modelPath = "objects/props/interiors/candlesticks/candles_group_01.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+    {
+        description = "Another group of candles.",
+        modelPath = "objects/props/interiors/candlesticks/candles_group_02.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+    {
+        description = "Another group of candles.",
+        modelPath = "objects/props/interiors/candlesticks/candlestick01.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+    {
+        description = "Another group of candles.",
+        modelPath = "objects/props/interiors/candlesticks/candlestick02.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+    {
+        description = "Another group of candles.",
+        modelPath = "objects/props/interiors/candlesticks/candlestick03.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+    {
+        description = "A beautiful chandelier.",
+        modelPath = "objects/props/interiors/candlesticks/chandelier_01.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+    -- decorative -- ovens
+    {
+        description = "A fireplace made out of stone.",
+        modelPath = "objects/props/interiors/fireplaces/fireplace_04.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+    -- decorative -- kitchenware
+    {
+        description = "A plate made out of metal.",
+        modelPath = "objects/props/interiors/kitchenware/plates/plate_01/plate_01.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+    --[[
+    {
+        description = "A fork made out of metal.",
+        modelPath = "objects/props/interiors/kitchenware/eating_tools/knife_eating/fork_eating.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+    {
+        description = "A knife made out of metal.",
+        modelPath = "objects/props/interiors/kitchenware/eating_tools/knife_eating/knife_eating.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+    ]]--
+
+    {
+        description = "A spoon made out of metal.",
+        modelPath = "objects/props/interiors/kitchenware/eating_tools/spoons/metal_spoon.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+
+    {
+        description = "A bowl made out of copper.",
+        modelPath = "objects/props/interiors/kitchenware/bowls/bowl_copper_1.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+    {
+        description = "A wodden scuttle.",
+        modelPath = "objects/props/interiors/kitchenware/scuttle/scuttle_seeding_02.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+    {
+        description = "A jug made out of burned clay.",
+        modelPath = "objects/props/interiors/kitchenware/jugs/jug_01/jug_01.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+    {
+        description = "A kettle made out of metal.",
+        modelPath = "objects/props/interiors/kitchenware/kettles/kettle02.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+    {
+        description = "Another jug made out of burned clay.",
+        modelPath = "objects/props/interiors/kitchenware/jugs/jug_milk/jug_milk.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+    {
+        description = "A teapod made out of metal.",
+        modelPath = "objects/props/interiors/kitchenware/eating_tools/teapod/teapod_metal.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+    -- decorative - office
+    {
+        description = "The alchemy book.",
+        modelPath = "objects/props/alchemy/book/alchemy_book.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+    {
+        description = "The alchemy book, but closed.",
+        modelPath = "objects/props/alchemy/book/alchemy_book_closed.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+    {
+        description = "A beautiful book",
+        modelPath = "objects/props/alchemy/book/book_01.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+    {
+        description = "Another beautiful book",
+        modelPath = "objects/props/alchemy/book/book_02.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+    {
+        description = "A beautiful bookstand",
+        modelPath = "objects/props/alchemy/bookstand/bookstand.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+    {
+        description = "A beautiful bookstand but small.",
+        modelPath = "objects/props/alchemy/bookstand/bookstand_table.cgf",
+        generatorItemCosts = { groschen = 50 }
+    },
+
+    {
+        description = "A bookshelf.",
+        modelPath = "objects/props/furniture/bookshelf/library_bookshelf_group_a_1.cgf",
+        generatorItemCosts = { groschen = 1000 }
+    },
+    {
+        description = "A bookshelf.",
+        modelPath = "objects/props/furniture/bookshelf/library_bookshelf_group_a_2.cgf",
+        generatorItemCosts = { groschen = 1000 }
+    },
+    {
+        description = "A bookshelf.",
+        modelPath = "objects/props/furniture/bookshelf/library_bookshelf_group_a_3.cgf",
+        generatorItemCosts = { groschen = 1000 }
+    },
+    {
+        description = "A bookshelf.",
+        modelPath = "objects/props/furniture/bookshelf/library_bookshelf_group_b_1.cgf",
+        generatorItemCosts = { groschen = 1000 }
+    },
+    {
+        description = "A bookshelf.",
+        modelPath = "objects/props/furniture/bookshelf/library_bookshelf_group_b_2.cgf",
+        generatorItemCosts = { groschen = 1000 }
+    },
+    {
+        description = "A bookshelf.",
+        modelPath = "objects/props/furniture/bookshelf/library_bookshelf_group_b_3.cgf",
+        generatorItemCosts = { groschen = 1000 }
+    },
+
+
+    -- decorative - icons
 
     {
         description = "A decorative item.",
@@ -1126,6 +1347,7 @@ parameterizedConstructions = {
     {
         description = "A wooden plattform.",
         modelPath = "objects/structures/platforms/wooden_riser_b.cgf",
+
     },
 
     {
@@ -1133,9 +1355,13 @@ parameterizedConstructions = {
         modelPath = "Objects/buildings/churches/church_pribyslawitz/pribyslawitz_beam.cgf",
     },
 
+    {
+        description = "A cart which can transfer goods from a to b.",
+        modelPath = "objects/vehicles/cart/cart_01.cgf",
+    },
 
-    --[[
-    -- due to this is beta content people have to manually enable this
+
+    -- trailer content
     {
         modelPath = "objects/props/construction/construction_fence.cgf",
     },
@@ -1157,7 +1383,6 @@ parameterizedConstructions = {
     {
         modelPath = "objects/props/construction/traffic_cone.cgf",
     }
-    ]]--
 
 }
 
@@ -1201,6 +1426,8 @@ updateBuildings() -- this needs to get executed while loading so this call is ac
 -- #search("")     - logs every construction to the console
 function search(searchName)
 
+    firstMatch = -1
+
     for index = 1, #parameterizedConstructions do
 
         construction = parameterizedConstructions[index]
@@ -1214,8 +1441,8 @@ function search(searchName)
 
                 log("" .. matchId .. ".) " .. construction.name)
 
-                if searchName ~= "" then
-                    return index
+                if firstMatch == -1 and searchName ~= "" then
+                    firstMatch = index
                 end
 
             else
@@ -1225,5 +1452,7 @@ function search(searchName)
         end
 
     end
+
+    return firstMatch
 
 end

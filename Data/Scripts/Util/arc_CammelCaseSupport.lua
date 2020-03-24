@@ -57,6 +57,12 @@ function deleteAll()
 end
 
 
+-- delete every cons. but lowerCase
+function lockall()
+    lockAll()
+end
+
+
 ---
 --- Data/Scripts/Manager/arc_ResourcesController.lua
 ---

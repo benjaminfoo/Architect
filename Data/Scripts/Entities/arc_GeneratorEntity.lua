@@ -287,6 +287,8 @@ function GeneratorEntity:OnLoad(table)
     Properties.generatorGeneratedAmount = table.generatorGeneratedAmount
     Properties.generatorItemCosts = table.generatorItemCosts
 
+    Properties.deletion_lock = table.deletion_lock
+
 
     -- the initial timer of this generator
     countdownTime = self.Properties.generatorCooldown
@@ -314,6 +316,8 @@ function GeneratorEntity:OnSave(table)
     table.generatorCooldown = self.Properties.generatorCooldown
     table.generatorGeneratedAmount = self.Properties.generatorGeneratedAmount
     table.generatorItemCosts = self.Properties.generatorItemCosts
+
+    table.deletion_lock = self.Properties.deletion_lock
 
     System.LogAlways("Saving")
     System.LogAlways("Persisting Entity.object_model: " .. table.object_Model)
@@ -385,7 +389,7 @@ function GeneratorEntity:OnPropertyChange()
 end
 
 function GeneratorEntity:Event_Remove()
-    System.LogAlways("Removing entity ...")
+    System.LogAlways("Removing construction")
 
     self:DrawSlot(0, 0);
     self:DestroyPhysics();
