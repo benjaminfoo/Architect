@@ -2,7 +2,7 @@ title: KCD Architect
 description: A modification for Kingdom Come Deliverance which introduces base-building mechanics and new features to the game
 show_downloads: true
 
-# baseurl: "/cayman-blog" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
+baseurl: "/docs" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
 # url: "https://lorepirri.github.io" # change this to the base hostname & protocol for your site
 # google_analytics:
 
