@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<kcd_mod>
+  <info>
+    <name>architect</name>
+    <description>Adds base-building elements to the game.</description>
+    <author>Benjamin Foo</author>
+    <version>0.5.3b</version>
+    <created_on></created_on>
+    <dependencies>
+    </dependencies>
+  </info>
+  <supports>
+  </supports>
+</kcd_mod>

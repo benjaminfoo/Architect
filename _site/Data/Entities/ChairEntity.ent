@@ -1,0 +1,4 @@
+<Entity
+        Name="ChairEntity"
+        Script="Scripts/Entities/arc_ChairEntity.lua"
+/>

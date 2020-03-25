@@ -1,0 +1,4 @@
+<Entity
+        Name="GeneratorEntity"
+        Script="Scripts/Entities/arc_GeneratorEntity.lua"
+/>
