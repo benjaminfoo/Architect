@@ -112,7 +112,7 @@ parameterizedConstructions = {
     {
         description = "A small pile of wooden logs.",
         modelPath = "objects/props/groups_of_stuff/group_woodshed_b.cgf",
-        saveable = true,
+        saveable = true, sh
         generator = true, generatorOnUse = false,
         generatorItem = "wood", generatorItemAmount = 1,
         generatorCooldown = 15, generatorItemCosts = { groschen = 500 }

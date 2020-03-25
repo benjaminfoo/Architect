@@ -14,7 +14,11 @@ Constructions are saved across your savegames - there is no new save required.
 If you're having fun with this mod you're maybe interested in buying me a coffee :) \
 Thanks to [Warhorse Studios](https://warhorsestudios.cz) for creating this gem!
 
-<br>  
+There are _no DLCs required_ in order to use this mod.
+
+For changelogs, planned features or in-depth details see [https://benjaminfoo.github.io/Architect/](https://benjaminfoo.github.io/Architect/)
+
+<br>
 
 ### Installation
 Download the latest release, unzip the archive into your KingdomComeDeliverance\mods - folder.
@@ -125,6 +129,17 @@ lockAll()
 unlockAll()
 -- unlocks all constructions from the user
 
+setHome()
+-- Sets the current player-location as home / town
+
+setHomeName("Farkletown")
+-- Sets the town's name
+
+getHome()
+-- Returns the player to his home / town
+    
+showStats()
+-- Displays a resume (a list of attributes, like name, town, generated resources) for your current town
 
 ```
 
@@ -191,8 +206,53 @@ A construction who posses attributes like generatorOnUse can be used to realize 
 
 <br>
 
+#### Town management
+Its possible to define basic attributes of a home or town now. 
+You can set a home position and return back any time or set a name for your town.
+There is also a statistics command which shows different aspects of your town.
+
+-- Sets the current player-location as home / town
+setHome()
+
+-- Sets the town's name
+setHomeName("Farkletown")
+
+-- Returns the player to his home / town
+getHome()
+    
+-- Displays a resume (a list of attributes, like name, town, generated resources) for your current town
+showStats()
+
 #### Resource Management
-.. this needs an update first.
+Another new feature architect introduces is the management of resources. 
+
+There are different kinds of resources:
+```
+resources = {
+
+    -- basic resources
+    wood = 0,
+    stone = 0,
+
+    -- basic needs
+    food = 0,
+    water = 0,
+
+    -- the money of the user, this should be bind to the actuals player value
+    groschen = 0,
+
+    -- this can be used for baking bread or other food in kingdom come deliverance
+    wheat = 0,
+
+    coal = 0,
+    cords = 0,
+    linen = 0,
+} 
+```
+Building constructions will require the user to spend money and / or resources in order to actually built something - 
+like the ingredients of a recipe. The implementation is not finished yet.
+ 
+.. this needs an update.
 
 #### Current features / todo / bugs
 This list contains all the features planned for later development, recommended by myself or the community:
@@ -243,10 +303,16 @@ This list contains all changes happened during development - the versions should
 - Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).
 
 
-changelog 0.5.2b
-- updated user interface
-- updated constructions
-- updated interactions with entities, gather resources, bake bread, ...
+changelog 0.5.3a
+- implemented alot of console functionality for easer use (use #search("string"), #select(nr), #selectFirst(), #selectLast(), ...)
+- implemented resource-system
+- implemented resource-generation (passively & overtime, actively when used)
+- implemented basic town management (
+- updated simple crafting-system (see the resource-system and generation)
+- updated locking-system (use #lockAll() or #unlockAll()
+- updated available constructions (changed data-model, provided additional data for new model, added alot of interior, ...)
+- updated docs and added about page - https://benjaminfoo.github.io/Architect/
+- ...
 
 changelog 0.5.2b
 - added fallback keybinding
