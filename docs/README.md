@@ -67,9 +67,11 @@ Lock / unlock construction for deletion
 Key O  
 
 <br>
-### Additional Features
 
-#### Constructions
+## Features
+This is an overview of all the implemented features this project contains.
+
+### Constructions
 One target functionality architect introduces is the concept of constructions.
 
 ```
@@ -102,9 +104,7 @@ Notes
 
 <br>
 
-
-
-#### Town management
+### Town management
 Its possible to define basic attributes of a home or town now. 
 You can set a home position and return back any time or set a name for your town.
 There is also a statistics command which shows different aspects of your town.
@@ -123,7 +123,7 @@ Displays a resume (a list of attributes, like name, town, generated resources) f
 
 <br>
 
-#### Resource Management
+### Resource Management
 Another new feature architect introduces is the management of resources. 
 
 There are different kinds of resources:
@@ -155,7 +155,7 @@ like the ingredients of a recipe. The implementation is not finished yet.
 
 <br>
 
-#### Crafting
+### Crafting
 A construction who posses attributes like generatorOnUse can be used to realize simple crafting mechanics.
 
 ```
@@ -171,7 +171,7 @@ A construction who posses attributes like generatorOnUse can be used to realize 
 
 <br>  
 
-#### Current features / todo / bugs
+## Current features / To-Dos / bugs
 This list contains all the features planned for later development, recommended by myself or the community:
 
 - resource / cost management system (for spending and recieving groschen w constructions)
@@ -203,6 +203,7 @@ This list contains all the features planned for later development, recommended b
 
   
 ## Technical
+This is an overview of all the available console- and lua- commands this project contains.
 
 ### Console commands
 The following list contains regular console commands
