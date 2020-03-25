@@ -1,4 +1,0 @@
-<Entity
-        Name="BasicBuildingEntity"
-        Script="Scripts/Entities/arc_BasicBuildingEntity.lua"
-/>

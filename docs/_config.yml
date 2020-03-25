@@ -1,1 +1,29 @@
-theme: jekyll-theme-cayman
+title: KCD Architect
+description: This is the github page of the architect mod for kingdom come deliverance. Gitlab/GitHub Pages.
+show_downloads: false
+
+baseurl: "/" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
+#url: "https://lorepirri.github.io" # change this to the base hostname & protocol for your site
+
+
+# google_analytics:
+
+# cayman-blog date format
+# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
+cayman-blog:
+  date_format: "%b %-d, %Y"
+
+theme: # leave it empty
+
+# social
+#author: benjaminfoo
+# image: /thumbnail-jumbo.png
+# twitter: username: 
+
+plugins:
+  - jekyll-target-blank
+
+target-blank:
+  rel: nofollow
+
+header_page_refs: ['about', 'contact']

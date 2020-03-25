@@ -1,4 +1,0 @@
-<Entity
-        Name="DynamicBuildingEntity"
-        Script="Scripts/Entities/arc_DynamicBuildingEntity.lua"
-/>

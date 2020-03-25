@@ -1,4 +1,0 @@
-<Entity
-        Name="ShootingTarget"
-        Script="Scripts/Entities/ShootingTarget.lua"
-/>

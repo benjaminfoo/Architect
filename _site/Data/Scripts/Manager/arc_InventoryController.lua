@@ -1,2 +1,0 @@
---- The ConstructionController class defines basic and advanced operations
----
