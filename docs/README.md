@@ -27,8 +27,7 @@ If the installation was succesful you'll see the instructions-message on how to 
 (and a savegame loaded or a new game hast been created).
 
 ### Using the devmode
-You need to start the game with devmode enabled (the modification won't work otherwise). \
-
+You need to start the game with devmode enabled (the modification won't work otherwise).  
 **In your OS / explorer / shell:** 
 `<Steam>\steamapps\common\KingdomComeDeliverance\Bin\Win64\KingdomCome.exe -devmode`
   
