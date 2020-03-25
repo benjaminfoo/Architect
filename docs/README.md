@@ -304,6 +304,9 @@ This list contains all changes happened during development - the versions should
 - Alpha versions (a) are unstable and in subject of larger changes - expect bugs.
 - Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).
 
+changelog 0.5.3b
+- updated docs and added about page - https://benjaminfoo.github.io/Architect/
+- "should-be-stable"-release
 
 changelog 0.5.3a
 - implemented alot of console functionality for easer use (use #search("string"), #select(nr), #selectFirst(), #selectLast(), ...)
@@ -313,8 +316,7 @@ changelog 0.5.3a
 - updated simple crafting-system (see the resource-system and generation)
 - updated locking-system (use #lockAll() or #unlockAll()
 - updated available constructions (changed data-model, provided additional data for new model, added alot of interior, ...)
-- updated docs and added about page - https://benjaminfoo.github.io/Architect/
-- ...
+
 
 changelog 0.5.2b
 - added fallback keybinding
