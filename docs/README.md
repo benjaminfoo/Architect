@@ -51,20 +51,20 @@ deleting it first, the entity stays in the game. Use **#deleteall()** within the
 ## Usage / Keys
 These keys can be used to interact with the mod - they're also shown ingame.
 
-Choose the next construction (from 0 to ~200) \
-Button MouseWheel up
+Choose the next construction (from 0 to ~200)  
+Button MouseWheel up  
 
-Choose the previous construction (from 0 to ~200) \
-Button MouseWheel down
+Choose the previous construction (from 0 to ~200)  
+Button MouseWheel down  
 
-Create a new construction \
+Create a new construction  
 Key V
 
-Remove a construction \
+Remove a construction  
 Key G
 
-Lock / unlock construction for deletion \
-Key O
+Lock / unlock construction for deletion  
+Key O  
 
 <br>
 
