@@ -41,17 +41,52 @@ html, body {
     font-family: 'MedievalSharpRegular';
 }
 
-.brand-subtitle {
-    font-family: 'MedievalSharpRegular';
-    font-size: 14pt;
+@media (min-width: 250px) {
+    .brand-subtitle {
+        font-family: 'MedievalSharpRegular';
+        font-size: 10pt;
 
-    color: white !important;
+        color: white !important;
 
-    margin: 0;
-    padding: 0;
-    padding-bottom: 15px;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 10px;
 
-    line-height: 1pt;
+        line-height: 14pt;
+    }
+
+}
+
+@media (min-width: 500px) {
+    .brand-subtitle {
+        font-family: 'MedievalSharpRegular';
+        font-size: 10pt;
+
+        color: white !important;
+
+        margin: 0;
+        padding: 0;
+        padding-bottom: 10px;
+
+        line-height: 14pt;
+    }
+
+}
+
+@media (min-width: 1000px) {
+    .brand-subtitle {
+        font-family: 'MedievalSharpRegular';
+        font-size: 14pt;
+
+        color: white !important;
+
+        margin: 0;
+        padding: 0;
+        padding-bottom: 10px;
+
+        line-height: 14pt;
+    }
+
 }
 
 

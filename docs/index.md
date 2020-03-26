@@ -418,7 +418,6 @@ Use `getHome()` returns the player to his previously set home position.
 ### Changelog
 This list contains all changes happened during development - the versions should be compatible to each other (maybe) - already created entities wont be affected.
 
-```
 - Alpha versions (a) are unstable and in subject of larger changes - expect bugs.
 - Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).
 
@@ -474,7 +473,6 @@ Version 0.1b
 Version 0.1a
 - implementation of basic construction-system (static entities)
 - integration of persistance for constructions
-```
 
 <br>
 
