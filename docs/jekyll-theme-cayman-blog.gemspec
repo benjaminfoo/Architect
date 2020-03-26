@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.version       = "0.0.9"
   s.license       = "CC0-1.0"
   s.authors       = ["Lorenzo Pirritano"]
-  s.email         = ["lorepirri@gmail.com"]
-  s.homepage      = "https://github.com/lorepirri/cayman-blog"
+  s.email         = ["benjaminfoo@gmail.com"]
+  s.homepage      = "https://github.com/benjaminfoo/cayman-blog"
   s.summary       = "Cayman Blog Theme is a clean, responsive blogging theme for Jekyll and Gitlab/GitHub Pages. Based on Cayman theme."
 
   s.files         = `git ls-files -z`.split("\x0").select do |f|

@@ -3,7 +3,7 @@ description:  A modification for Kingdom Come Deliverance which introduces base-
 show_downloads: false
 
 baseurl: "/" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
-#url: "https://lorepirri.github.io" # change this to the base hostname & protocol for your site
+#url: "https://benjaminfoo.github.io" # change this to the base hostname & protocol for your site
 
 
 # google_analytics:
@@ -16,9 +16,13 @@ cayman-blog:
 theme: # leave it empty
 
 # social
-#author: benjaminfoo
-# image: /thumbnail-jumbo.png
-# twitter: username: 
+author: benjaminfoo
+image: /thumbnail-jumbo.png
+twitter:
+  username: benjaminfoo
+
+github:
+  owner_url: test
 
 plugins:
   - jekyll-target-blank
@@ -27,3 +31,4 @@ target-blank:
   rel: nofollow
 
 header_page_refs: ['about', 'contact']
+

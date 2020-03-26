@@ -9,17 +9,24 @@ layout: home
 ---
 <hr>
 # Welcome!
-This project introduces new features and mechanics to kingdom come deliverance,   
-like a construction-system, a resource-system, a basic crafting-system, town management, etc. 
+This project introduces new features and mechanics to [kingdom come deliverance](https://www.kingdomcomerpg.com/) like a construction-system,
+a resource-system, a basic crafting-system, town management, etc. 
 
-This means that the player can create and spawn constructions - this ranges from simple props to flora & fauna,   
-vegetation, houses, walls, towers, tents, chairs, benches, beds, etc. anywhere in the world.
+This means that the player can create and spawn constructions - this ranges from simple props to flora & fauna, 
+vegetation, houses, walls, towers, tents, chairs, benches, beds, etc. almost anywhere in the world. Its also possible to build 
+custom constructions like wood-, stone-, coal-, ... -generators which produce resources or items over time.
 
-Make a backup of your saved games before doing anything else - there is no new save required.  
+**Note**  
+Make a backup of your saved games - there is no new save required.  
+There are no DLCs required to use this mod.
 
-There are _no DLCs required_ in order to use this mod.
+##### Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game!
 
-Thanks to [Warhorse Studios](https://warhorsestudios.cz) for creating this gem!
+
+## News 
+- Version 0.5.3b has been [released](https://github.com/benjaminfoo/Architect/releases)
+
+
 
 <br>
 
@@ -38,7 +45,7 @@ autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></ifra
 <br>
 
 ## Installation
-Download the latest release, unzip the archive into your KingdomComeDeliverance\mods - folder.  
+Download the [latest release](https://www.nexusmods.com/kingdomcomedeliverance/mods/958), unzip the archive into your KingdomComeDeliverance\mods - folder.  
 If the installation was succesful you'll see the instructions-message on how to use the mod when the game has been started  
 (and a savegame loaded or a new game hast been created).  
 
