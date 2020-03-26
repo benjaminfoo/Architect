@@ -4,7 +4,6 @@
 #
 layout: default
 ---
-
 # Welcome!
 This project introduces new features and mechanics to [kingdom come deliverance](https://www.kingdomcomerpg.com/) like a construction-system,
 a resource-system, a basic crafting-system, town management, etc. 
@@ -22,9 +21,9 @@ There are no DLCs required to use this mod.
 <br>
 
 ## News 
-- Version 0.5.3b has been [released](https://github.com/benjaminfoo/Architect/releases)
-
-
+- Version 0.5.3b has been [released!](https://github.com/benjaminfoo/Architect/releases)
+- Version 0.5.2b has been [released!](https://github.com/benjaminfoo/Architect/releases)
+- Version 0.5a has been [released!](https://github.com/benjaminfoo/Architect/releases)
 
 <br>
 
@@ -91,6 +90,19 @@ Key O
 
 <br>
 <br>
+
+
+#### Change default key-bindings
+The `keybinds.cfg` file contains all keybindings used in the project - change it to a key or a controller button as you like.
+
+#### Add new constructions to the selection, remove constructions
+Not every asset is referenced in the project, because some are not suitable (split into multiple parts which would be a 
+pain to position by hand, some are graphical effects, some are too large to be positioned by the player, etc.).
+
+However, one could add models / cgfs from the assets  on its own, 
+the currently used constructions are listed in the file:   
+[Data/Scripts/Manager/arc_BuildingsManager.lua](https://github.com/benjaminfoo/Architect/blob/master/Data/Scripts/Manager/arc_BuildingsManager.lua)
+
 
 <div id="features"></div>
 ## Features
@@ -465,29 +477,14 @@ Version 0.1a
 ```
 
 <br>
-<br>
 
 ### Downloads
 <div id="downloads"></div>
-
-
-### Misc.
-
-#### Change default key-bindings
-The `keybinds.cfg` file contains all keybindings used in the project - change it to a key or a controller button as you like.
-
-#### Add new constructions to the selection, remove constructions
-Not every asset is referenced in the project, because some are not suitable (split into multiple parts which would be a 
-pain to position by hand, some are graphical effects, some are too large to be positioned by the player, etc.).
-
-However, one could add models / cgfs from the assets  on its own, 
-the currently used constructions are listed in the file:   
-[Data/Scripts/Manager/arc_BuildingsManager.lua](https://github.com/benjaminfoo/Architect/blob/master/Data/Scripts/Manager/arc_BuildingsManager.lua)
+Get the modification at the [nexus](https://www.nexusmods.com/kingdomcomedeliverance/mods/958) or at [github](https://github.com/benjaminfoo/Architect/releases).
 
 <br>
-<br>
 
-## Credits
+## Credits & Thanks
 Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game and the modding sdk!  
 Also thanks to [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) for creating the great videos on how to use and install the modification!  
-This page uses a modified version of the [cayman-theme](https://github.com/pages-themes/cayman) and was generated with [jekyll](https://jekyllrb.com/docs/plugins/generators/).
+This page uses [bootstrap 4](https://getbootstrap.com/) and was generated with [jekyll](https://jekyllrb.com/docs/plugins/generators/).

@@ -37,6 +37,10 @@ html, body {
     padding-bottom: 0;
 }
 
+.fancyFont {
+    font-family: 'MedievalSharpRegular';
+}
+
 .brand-subtitle {
     font-family: 'MedievalSharpRegular';
     font-size: 14pt;
