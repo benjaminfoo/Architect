@@ -4,6 +4,9 @@
 #
 layout: default
 ---
+
+<br>
+
 # Welcome!
 This project introduces new features and mechanics to [kingdom come deliverance](https://www.kingdomcomerpg.com/) like a construction-system,
 a resource-system, a basic crafting-system, town management, etc. 
@@ -16,14 +19,17 @@ custom constructions like wood-, stone-, coal-, ... -generators which produce re
 Make a backup of your saved games - there is no new save required.  
 There are no DLCs required to use this mod.
 
-##### Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game and the modding sdk!
+###### Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game and the modding sdk!
 
+<br>
+<br>
 
 ## News 
 - Version 0.5.3b has been [released](https://github.com/benjaminfoo/Architect/releases)
 
 
 
+<br>
 <br>
 
 ## Media 
@@ -39,6 +45,8 @@ autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></ifra
 autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <br>
+<br>
+
 
 ## Installation
 Download the [latest release](https://www.nexusmods.com/kingdomcomedeliverance/mods/958), unzip the archive into your KingdomComeDeliverance\mods - folder.  
@@ -66,6 +74,7 @@ deleting it first, the entity stays in the game. Use **#deleteall()** within the
 
 
 <br>
+<br>
 
 ## Usage / Keys
 These keys can be used to interact with the mod - they're also shown ingame.
@@ -85,6 +94,7 @@ Key G
 Lock / unlock construction for deletion  
 Key O  
 
+<br>
 <br>
 
 ## Features
@@ -122,6 +132,7 @@ Notes
 ```
 
 <br>
+<br>
 
 ### Town management
 Its possible to define basic attributes of a home or town now. 
@@ -140,6 +151,7 @@ Returns the player to his home / town
 Displays a resume (a list of attributes, like name, town, generated resources) for your current town  
 `showStats()`
 
+<br>
 <br>
 
 ### Resource Management
@@ -173,6 +185,7 @@ like the ingredients of a recipe. The implementation is not finished yet.
 
 
 <br>
+<br>
 
 ### Crafting
 A construction who posses attributes like generatorOnUse can be used to realize simple crafting mechanics.
@@ -189,6 +202,7 @@ A construction who posses attributes like generatorOnUse can be used to realize 
 .. this needs an update first.
 
 <br>  
+<br>
 
 ## Current features / To-Dos / bugs
 This list contains all the features planned for later development, recommended by myself or the community:
@@ -219,6 +233,7 @@ This list contains all the features planned for later development, recommended b
   - ... siege invasions ... ?
   
 <br>  
+<br>
 
   
 ## Technical
@@ -300,6 +315,7 @@ showStats()
 ```
 
 <br>
+<br>
 
 ## Screenshots
 
@@ -368,10 +384,6 @@ Use `setHomeName('farkletown')` to set the towns name.
 Use `getHome()` returns the player to his previously set home position.
 
 <br>  
-  
-
-
-
 <br>
  
 ### Implemented features - tl;dr
@@ -448,6 +460,8 @@ Version 0.1a
 ```
 
 <br>
+<br>
+
 
 ### Misc.
 
