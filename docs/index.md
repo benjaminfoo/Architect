@@ -375,7 +375,7 @@ Use `getHome()` returns the player to his previously set home position.
 
 <br>
  
-##### Implemented features - tl;dr
+### Implemented features - tl;dr
 - custom constructions / entities, or existing with custom actions / usages
 - custom entities for the generation of resources
 - implement un/locking mechanism
@@ -452,15 +452,16 @@ Version 0.1a
 
 ### Misc.
 
-##### Change default key-bindings
+#### Change default key-bindings
 The `keybinds.cfg` file contains all keybindings used in the project - change it to a key or a controller button as you like.
 
-##### Add new constructions to the selection, remove constructions
+#### Add new constructions to the selection, remove constructions
 Not every asset is referenced in the project, because some are not suitable (split into multiple parts which would be a 
 pain to position by hand, some are graphical effects, some are too large to be positioned by the player, etc.).
 
-However, one could add models / cgfs from the assets  on its own, the currently used constructions are 
-listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Scripts/Manager/BuildingsManager.lua
+However, one could add models / cgfs from the assets  on its own, 
+the currently used constructions are listed in the file:   
+[Data/Scripts/Manager/arc_BuildingsManager.lua](https://github.com/benjaminfoo/Architect/blob/master/Data/Scripts/Manager/arc_BuildingsManager.lua)
 
 <br>
 <br>
