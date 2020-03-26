@@ -14,7 +14,11 @@
     <link href="{{ '/assets/css/base.css' | relative_url }}" rel="stylesheet">
     <link href="{{ '/assets/css/all.css' | relative_url }}" rel="stylesheet">
 
-    <p>{{ site.baseurl }}</p>
+    <p>"{{ site.baseurl }}"</p>
+    <p>"{{ relative_url}}"</p>
+
+
+    <link rel="stylesheet" href="{{ site.baseurl }}public/css/poole.css">
 
     <script type="text/javascript" src="{{ '/Architect/assets/js/jquery-3.4.1.js' | relative_url }}"></script>
     <script type="text/javascript" src="{{ '/Architect/assets/js/popper.js-1.16.0.js' | relative_url }}"></script>
