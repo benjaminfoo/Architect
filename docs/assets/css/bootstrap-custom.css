@@ -43,7 +43,7 @@ html, body {
 
 
 .nav-link:hover {
-    color: #bbb !important;
+    color: #dba940 !important;
 }
 
 /* increase the navbar's font size*/
@@ -53,6 +53,16 @@ html, body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'MedievalSharpRegular';
+}
+
+a {
+    font-family: 'MedievalSharpRegular';
+    color: #dba940;
+}
+
+a:hover {
+    font-family: 'MedievalSharpRegular';
+    color: #dba940;
 }
 
 
