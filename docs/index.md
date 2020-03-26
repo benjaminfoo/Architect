@@ -398,10 +398,10 @@ changelog 0.5.3b
 - updated docs and added about page - https://benjaminfoo.github.io/Architect/
 - "should-be-stable"-release
 
-changelog 0.5.3b
+changelog 0.5.3a
 - updated console api for easer use (use #search("string"), #select(nr), #selectFirst(), #selectLast(), ...)
-- implemented resource-system & proper resource-generation (passively & overtime and - actively when used)
-- implemented basic town management
+- updated resource-system & proper resource-generation (passively & overtime and - actively when used)
+- updated town management
 - updated simple crafting-system (see the resource-system and generation)
 - updated locking-system (use #lockAll() or #unlockAll()
 - updated available constructions (upgraded data-model, added alot of interior, ...)
@@ -465,7 +465,7 @@ listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Sc
 <br>
 <br>
 
-Credits
+## Credits
 Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game and the modding sdk!  
 Also thanks to [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) for creating the great videos on how to use and install the modification!  
 This page uses a modified version of the [cayman-theme](https://github.com/pages-themes/cayman) and was generated with [jekyll](https://jekyllrb.com/docs/plugins/generators/).
