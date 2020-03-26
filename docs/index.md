@@ -30,9 +30,9 @@ There are no DLCs required to use this mod.
 <br>
 
 ## Media 
-<div id="media">
-Take a look at the base building videos of [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) to get an idea and how to install and use the modification - p.s. the videos are great!
+Take a look at the base building videos of [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) to get an idea and how to install and use the modification - p.s. the videos are great!  
 
+<div id="media">
 <iframe alt="base building video by sexy biscuit" width="48%" height="315" src="https://www.youtube.com/embed/90tNln4SM5w" frameborder="0" allow="accelerometer; 
 autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -46,6 +46,7 @@ autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></ifra
 autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 </div>
+
 <br>
 
 
