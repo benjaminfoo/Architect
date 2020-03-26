@@ -26,19 +26,50 @@ html, body {
 
 .brand-title {
     font-family: 'MedievalSharpRegular';
-    font-size: 300%;
-    color: #777;
+    font-size: 32pt;
+
+    color: white !important;
+
+    margin-top: 0;
+    padding-top: 0;
+
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.brand-subtitle {
+    font-family: 'MedievalSharpRegular';
+    font-size: 14pt;
+
+    color: white !important;
+
+    margin: 0;
+    padding: 0;
+    padding-bottom: 15px;
+
+    line-height: 1pt;
 }
 
 
 /* increase the right sides padding of the navbar list-items */
 .navbar-nav li {
-    padding-right: 1rem;
     font-family: 'MedievalSharpRegular';
+    font-size: 16pt;
+
+    padding-right: 1rem;
+}
+
+
+.li:hover a:before {
+    content: '{' !important;
+}
+
+.li:hover a:after {
+    content: '}' !important;
 }
 
 .nav-link {
-    color: #333 !important;
+    color: white !important;
 }
 
 
@@ -53,16 +84,19 @@ html, body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'MedievalSharpRegular';
+
+    padding-top: 30px;
+
 }
 
 a {
     font-family: 'MedievalSharpRegular';
-    color: #dba940;
+    color: #db9950;
 }
 
 a:hover {
     font-family: 'MedievalSharpRegular';
-    color: #dba940;
+    color: #db9950;
 }
 
 

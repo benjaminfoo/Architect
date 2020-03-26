@@ -5,8 +5,6 @@
 layout: default
 ---
 
-<br>
-
 # Welcome!
 This project introduces new features and mechanics to [kingdom come deliverance](https://www.kingdomcomerpg.com/) like a construction-system,
 a resource-system, a basic crafting-system, town management, etc. 
@@ -22,14 +20,12 @@ There are no DLCs required to use this mod.
 ###### Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game and the modding sdk!
 
 <br>
-<br>
 
 ## News 
 - Version 0.5.3b has been [released](https://github.com/benjaminfoo/Architect/releases)
 
 
 
-<br>
 <br>
 
 ## Media 
@@ -44,7 +40,6 @@ autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></ifra
 <iframe alt="base building video by sexy biscuit" width="32%" height="315" src="https://www.youtube.com/embed/ysLVzh89N_c" frameborder="0" allow="accelerometer; 
 autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<br>
 <br>
 
 
@@ -73,7 +68,6 @@ Its also safe to remove the mod at any time (if you've already created something
 deleting it first, the entity stays in the game. Use **#deleteall()** within the ingame-console to clean up your scene.)
 
 
-<br>
 <br>
 
 ## Usage / Keys

@@ -1,4 +1,6 @@
-I"‹M<h1 id="welcome">Welcome!</h1>
+I"ÌM<p><br /></p>
+
+<h1 id="welcome">Welcome!</h1>
 <p>This project introduces new features and mechanics to <a href="https://www.kingdomcomerpg.com/">kingdom come deliverance</a> like a construction-system,
 a resource-system, a basic crafting-system, town management, etc.</p>
 
@@ -10,12 +12,9 @@ custom constructions like wood-, stone-, coal-, â€¦ -generators which produce re
 Make a backup of your saved games - there is no new save required.<br />
 There are no DLCs required to use this mod.</p>
 
-<p><br /></p>
-
-<h5 id="thanks-to-warhorse-studios-for-developing-and-realizing-this-beautiful-game-and-the-modding-sdk">Thanks to <a href="https://warhorsestudios.cz">Warhorse Studios</a> for developing and realizing this beautiful game and the modding sdk!</h5>
+<h6 id="thanks-to-warhorse-studios-for-developing-and-realizing-this-beautiful-game-and-the-modding-sdk">Thanks to <a href="https://warhorsestudios.cz">Warhorse Studios</a> for developing and realizing this beautiful game and the modding sdk!</h6>
 
 <p><br /></p>
-
 <h2 id="news">News</h2>
 <ul>
   <li>Version 0.5.3b has been <a href="https://github.com/benjaminfoo/Architect/releases">released</a></li>
@@ -83,7 +82,8 @@ Key G</p>
 <p>Lock / unlock construction for deletion<br />
 Key O</p>
 
-<p><br /></p>
+<p><br />
+<br /></p>
 
 <h2 id="features">Features</h2>
 <p>This is an overview of all the implemented features this project contains.</p>
@@ -118,7 +118,8 @@ Notes
 - Constructions which only contain a modelPath are handled as static entites (no functionality, just a model + collider + manged in savegames)
 </code></pre></div></div>
 
-<p><br /></p>
+<p><br />
+<br /></p>
 
 <h3 id="town-management">Town management</h3>
 <p>Its possible to define basic attributes of a home or town now. 
@@ -137,7 +138,8 @@ There is also a statistics command which shows different aspects of your town.</
 <p>Displays a resume (a list of attributes, like name, town, generated resources) for your current town<br />
 <code class="highlighter-rouge">showStats()</code></p>
 
-<p><br /></p>
+<p><br />
+<br /></p>
 
 <h3 id="resource-management">Resource Management</h3>
 <p>Another new feature architect introduces is the management of resources.</p>
@@ -167,7 +169,8 @@ There is also a statistics command which shows different aspects of your town.</
 <p>Building constructions will require the user to spend money and / or resources in order to actually built something - 
 like the ingredients of a recipe. The implementation is not finished yet.</p>
 
-<p><br /></p>
+<p><br />
+<br /></p>
 
 <h3 id="crafting">Crafting</h3>
 <p>A construction who posses attributes like generatorOnUse can be used to realize simple crafting mechanics.</p>
@@ -182,7 +185,8 @@ like the ingredients of a recipe. The implementation is not finished yet.</p>
 </code></pre></div></div>
 <p>.. this needs an update first.</p>
 
-<p><br /></p>
+<p><br /><br />
+<br /></p>
 
 <h2 id="current-features--to-dos--bugs">Current features / To-Dos / bugs</h2>
 <p>This list contains all the features planned for later development, recommended by myself or the community:</p>
@@ -221,7 +225,8 @@ like the ingredients of a recipe. The implementation is not finished yet.</p>
   </li>
 </ul>
 
-<p><br /></p>
+<p><br /><br />
+<br /></p>
 
 <h2 id="technical">Technical</h2>
 <p>This is an overview of all the available console- and lua- commands this project contains.</p>
@@ -301,7 +306,8 @@ showStats()
 
 </code></pre></div></div>
 
-<p><br /></p>
+<p><br />
+<br /></p>
 
 <h2 id="screenshots">Screenshots</h2>
 
@@ -367,9 +373,8 @@ Use <code class="highlighter-rouge">setHomeName('farkletown')</code> to set the 
 <p><img src="assets/img/howto/032_home_getHome.jpg" /><br />
 Use <code class="highlighter-rouge">getHome()</code> returns the player to his previously set home position.</p>
 
-<p><br /></p>
-
-<p><br /></p>
+<p><br /><br />
+<br /></p>
 
 <h3 id="implemented-features---tldr">Implemented features - tl;dr</h3>
 <ul>
@@ -444,7 +449,8 @@ Version 0.1a
 - integration of persistance for constructions
 </code></pre></div></div>
 
-<p><br /></p>
+<p><br />
+<br /></p>
 
 <h3 id="misc">Misc.</h3>
 
