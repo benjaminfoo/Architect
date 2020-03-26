@@ -130,15 +130,15 @@ a {
   margin-bottom: 0.1rem;
 
   @include large {
-    font-size: 3.25rem;
+    font-size: 2rem;
   }
 
   @include medium {
-    font-size: 2.25rem;
+    font-size: 1.75rem;
   }
 
   @include small {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -187,7 +187,7 @@ a {
 
   @include large {
     // max-width: 64rem;
-    padding: 3rem 6rem;
+    padding: 0rem 12rem;
     margin: 0 auto;
     font-size: 1.1rem;
   }

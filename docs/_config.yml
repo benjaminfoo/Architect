@@ -1,5 +1,5 @@
 title: KCD Architect
-description: This is the github page of the architect mod for kingdom come deliverance. Gitlab/GitHub Pages.
+description:  A modification for Kingdom Come Deliverance which introduces base-building mechanics and other new features.
 show_downloads: false
 
 baseurl: "/" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.

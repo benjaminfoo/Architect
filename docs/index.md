@@ -7,7 +7,9 @@
 #
 layout: home
 ---
-This is the about-page of architect - a a modification for Kingdom Come Deliverance which introduces base-building mechanics and new features to the game.
+<hr>
+# Welcome
+This is the about-page of architect - a modification for Kingdom Come Deliverance which introduces base-building mechanics and new features to the game.
 
 This project allows the construction of entities within the games world - 
 this means that the player can spawn anything from simple props to flora & fauna, vegetation, houses, walls, towers,
