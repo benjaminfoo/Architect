@@ -34,6 +34,7 @@ html, body {
 /* increase the right sides padding of the navbar list-items */
 .navbar-nav li {
     padding-right: 1rem;
+    font-family: 'MedievalSharpRegular';
 }
 
 .nav-link {
