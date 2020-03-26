@@ -2,9 +2,8 @@
 #
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 #
-layout: home
+layout: default
 ---
-<hr>
 # Welcome!
 This project introduces new features and mechanics to [kingdom come deliverance](https://www.kingdomcomerpg.com/) like a construction-system,
 a resource-system, a basic crafting-system, town management, etc. 
@@ -305,67 +304,67 @@ showStats()
 ## Screenshots
 
 ### Getting started
-<img src="img/howto/000_help.jpg">  
+<img src="assets/img/howto/000_help.jpg">  
 Use `architect_help` to get an overview of the available console- and lua- commands.  
   
 <br>  
   
-<img src="img/howto/001_help.jpg">  
+<img src="assets/img/howto/001_help.jpg">  
 There are new methods in order to look for constructions like `search(''), select(nr), ...`
   
 <br>  
   
-<img src="img/howto/002_help_lua.jpg">  
+<img src="assets/img/howto/002_help_lua.jpg">  
 The latest release also contains basic town management functionalities with `setHome(), setHomeName(name), getHome or showStats()`
   
 <br>  
   
 ### Navigation    
-<img src="img/howto/005_search_1.jpg">  
+<img src="assets/img/howto/005_search_1.jpg">  
 Use `search("...")` to find all constructions which contain the search-param.
     
 <br>  
   
-<img src="img/howto/006_search_and_Select.jpg">  
+<img src="assets/img/howto/006_search_and_Select.jpg">  
 Its also possible to wrap multiple method calls, like `select(search("smithery")` which search and returns the first construction which contains "smithery" as a part of its name.
 
 <br>  
 
 ### Locking
-<img src="img/howto/010_locking.jpg">  
+<img src="assets/img/howto/010_locking.jpg">  
 Use `lockAll()` to activate the deletion-lock of all constructions.
 
 <br>  
   
 
-<img src="img/howto/011_unlocking.jpg">  
+<img src="assets/img/howto/011_unlocking.jpg">  
 Use `unlockAll()` to deactivate the deletion-lock of all constructions.
   
 <br>  
   
 
 ### Town Management
-<img src="img/howto/020_stats.jpg">  
+<img src="assets/img/howto/020_stats.jpg">  
 Use `showStats()` to get an overview of the towns name, owner, position, resources, ...
 
 <br>  
  
-<img src="img/howto/021_stats.jpg">  
+<img src="assets/img/howto/021_stats.jpg">  
 ... and for an overview of all existing generators, etc. 
 
 <br>  
 
-<img src="img/howto/030_home_setHome.jpg">  
+<img src="assets/img/howto/030_home_setHome.jpg">  
 Use `setHome()` to set the current player position as the new towns home position.
 
 <br>  
 
-<img src="img/howto/031_home_setHomeName.jpg">  
+<img src="assets/img/howto/031_home_setHomeName.jpg">  
 Use `setHomeName('farkletown')` to set the towns name.
 
 <br>  
 
-<img src="img/howto/032_home_getHome.jpg">  
+<img src="assets/img/howto/032_home_getHome.jpg">  
 Use `getHome()` returns the player to his previously set home position.
 
 <br>  

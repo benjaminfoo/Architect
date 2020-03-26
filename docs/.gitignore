@@ -1,7 +1,9 @@
-_site
+
+_site/*
 .sass-cache
-.bundle
-Gemfile.lock
-*.gem
-vendor/*
+.jekyll-cache/*
 .jekyll-metadata
+vendor
+
+# Local Netlify folder
+.netlify

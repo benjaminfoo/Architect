@@ -1,4 +1,4 @@
-<img src="docs/img/architect_nm.png">  
+<img src="docs/assets/img/architect_nm.png">  
 
 # KCD - Architect
  

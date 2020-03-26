@@ -1,0 +1,39 @@
+hr {
+    border-top: 1px solid #343a40;
+}
+
+.heading_one {
+    font-size: x-large;
+}
+
+.alignleft {
+    float: left;
+    text-align: left;
+    width: 80%;
+}
+
+.alignright {
+    float: right;
+    text-align: right;
+    width: 20%;
+}
+
+.small-pad-left {
+    padding-left: 3px;
+}
+
+.small-margin-bottom {
+    margin-bottom: 10px;
+}
+
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+    transition: 0.2s;
+}
+
+.shadow-sm:hover {
+    box-shadow: 0 0.250rem 0.5rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.small-icon {
+}

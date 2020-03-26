@@ -1,31 +1,16 @@
-title: KCD Architect
-description:  A modification for Kingdom Come Deliverance which introduces base-building mechanics and other new features.
-show_downloads: false
+sass:
+  sass_dir: assets/css
 
-baseurl: "/" # change this to the subpath of your site, e.g. /blog. Leave it empty if you don't need it.
-#url: "https://benjaminfoo.github.io" # change this to the base hostname & protocol for your site
+author: BenjaminFoo
+email: "benjaminfoo"
 
+# the name of your site, e.g. ACME Corp.
+title: "KCD Architect"
 
-# google_analytics:
+# this means to ignore newlines until "baseurl:"
+description: "A modification which introduces advanced base-building features and new features to Kingdom Come Deliverance. "
 
-# cayman-blog date format
-# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
-cayman-blog:
-  date_format: "%b %-d, %Y"
+tagline: ""
 
-theme: # leave it empty
-
-# social
-author: benjaminfoo
-
-github:
-  owner_url: test
-
-plugins:
-  - jekyll-target-blank
-
-target-blank:
-  rel: nofollow
-
-header_page_refs: ['about', 'contact']
-
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog

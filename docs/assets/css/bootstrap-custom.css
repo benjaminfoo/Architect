@@ -1,0 +1,254 @@
+/* give the page a defined height and width and default color*/
+html, body {
+    height: 100%;
+    width: 100%;
+    color: #333;
+}
+
+/* debug css for layouting
+* {
+    border: 1px lightcoral dashed;
+}
+*/
+
+/* use the beautiful custom font-face called josefine sans*/
+@font-face {
+    font-family: 'MedievalSharpRegular';
+    src: url('../webfonts/MedievalSharp-Regular.ttf');
+}
+
+/* 1rem = 16px  */
+/* rem, based on the root font-size*/
+/* adds a bit padding to the navbar */
+.navbar {
+    padding: .8rem;
+}
+
+.brand-title {
+    font-family: 'MedievalSharpRegular';
+    font-size: 300%;
+    color: #777;
+}
+
+
+/* increase the right sides padding of the navbar list-items */
+.navbar-nav li {
+    padding-right: 1rem;
+}
+
+.nav-link {
+    color: #333 !important;
+}
+
+
+.nav-link:hover {
+    color: #bbb !important;
+}
+
+/* increase the navbar's font size*/
+.navbar-nav {
+    font-size: 1.1em !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'MedievalSharpRegular';
+}
+
+
+/*
+.container_inner {
+    height: 100vh;
+    width: 100vh;
+}
+
+
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.carousel-caption h4 {
+    font-size: 500%;
+    text-shadow: 1px 1px 10px #000;
+}
+
+.carousel-caption h3 {
+    font-size: 200%;
+    font-weight: 500;
+    text-shadow: 1px 1px 1px #000;
+    padding-bottom: 1rem;
+}
+*/
+
+.btn-primary {
+    background-color: #6648b1;
+    border: 1px solid #563d7c;
+}
+
+.btn-primary:hover {
+    background-color: #563d7c;
+    border: 1px solid #563d7c;
+}
+
+
+/* get rid of jumbotrons padding */
+.jumbotron {
+    padding: 1rem;
+    border-radius: 0;
+}
+
+
+.welcome {
+    width: 75%;
+    margin: 0 auto;
+    padding-top: 2rem;
+}
+
+.welcome hr {
+    border-top: 1px solid #b4b4b4;
+    width: 95%;
+    margin-top: .3rem;
+    margin-bottom: 1rem;
+}
+
+footer {
+    background-color: #3f3f3f;
+    color: #d5d5d5;
+    padding-top: 2rem;
+}
+
+.fa-code, .fa-toolbox, .fa-pen, .fa-server {
+    font-size: 4rem;
+    margin: 1rem;
+}
+
+
+hr.light {
+    border-top: 1px solid #d5d5d5;
+    width: 75%;
+    margin-top: .8rem;
+    margin-bottom: 1rem;
+}
+
+hr.light-100 {
+    border-top: 1px solid #d5d5d5;
+    width: 100%;
+    margin-top: .8rem;
+    margin-bottom: 1rem;
+}
+
+/*
+
+.fa-code {
+    color: #e54d26;
+}
+
+.fa-bold {
+    color: #563d7c;
+}
+
+.fa-css3 {
+    color: #2163af;
+}
+
+.fa-code, .fa-bold, .fa-css3 {
+    font-size: 5rem;
+    margin: 1rem;
+}
+
+.fa-facebook {
+    color: #3b5998;
+}
+
+.fa-twitter {
+    color: #00aced;
+}
+
+.fa-google-plus-g {
+    color: #dd4b39;
+}
+
+.fa-instagram {
+    color: #517fa8;
+}
+
+.fa-youtube {
+    color: #bb0000;
+}
+
+.fa-facebook:hover,.fa-twitter:hover,.fa-google-plus-g:hover,.fa-instagram:hover,.fa-youtube:hover {
+    color: #333333;
+}
+
+
+@media (max-width: 992px) {
+    .social a {
+        font-size: 4em;
+        padding: 2rem;
+    }
+
+    .carousel-caption {
+        top: 45%;
+    }
+
+    .carousel-caption h1 {
+        font-size: 350%;
+        text-shadow: 1px 1px 10px #000;
+    }
+
+    .carousel-caption h3 {
+        font-size: 140%; !* = 2rem *!
+        font-weight: 400;
+        padding-bottom: .2rem;
+    }
+}
+@media (max-width: 768px) {
+    .carousel-caption {
+        top: 50%;
+    }
+
+    .carousel-caption h1 {
+        font-size: 350%;
+    }
+
+    .carousel-caption h3 {
+        font-size: 125%; !* = 2rem *!
+    }
+
+    .social a {
+        font-size: 2.5em;
+        padding: 1.2rem;
+    }
+
+    .display-4 {
+        font-size: 200%;
+    }
+}
+@media (max-width: 576px) {
+    .carousel-caption {
+        top: 40%;
+    }
+
+    .carousel-caption h1 {
+        font-size: 250%;
+    }
+
+    .carousel-caption h3 {
+        font-size: 110%; !* = 2rem *!
+    }
+    .social a {
+        font-size: 2em;
+        padding: .7rem;
+    }
+
+    .display-4 {
+        font-size: 200%;
+    }
+}
+*/
+
+badge:hover {
+
+}
