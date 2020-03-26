@@ -13,8 +13,6 @@ Constructions are saved across your savegames - there is no new save required.
 
 There are _no DLCs required_ in order to use this mod.
 
-If you're having fun with this mod you're maybe interested in buying me a coffee :)
-
 Thanks to [Warhorse Studios](https://warhorsestudios.cz) for creating this gem!
 
 For changelogs, planned features or in-depth details see [https://benjaminfoo.github.io/Architect/](https://benjaminfoo.github.io/Architect/)
