@@ -26,6 +26,11 @@ classesWhiteList = {
 -- in order to execute crafting
 availableResources = 999
 
+-- the model used for rendering a preview
+previewModelEntity = nil
+
+isModePreview = false
+isModeRotation = false
 
 -- check if the user can see something in front of him
 -- (By shooting a raycast from the players camera to a point in front of him,
@@ -33,16 +38,18 @@ availableResources = 999
 function rayCastHit()
     System.LogAlways("# rayCastHit start")
 
+    if (previewModelEntity == nil) then
+        return
+    end
+
     local from = player:GetPos();
     from.z = from.z + 1.615;
 
     local dir = System.GetViewCameraDir();
     dir = vecScale(dir, 250);
 
-    local skip = player.id;
-
     local hitData = {};
-    local hits = Physics.RayWorldIntersection(from, dir, 10, ent_all, skip, nil, hitData);
+    local hits = Physics.RayWorldIntersection(from, dir, 10, ent_all, player.id, previewModelEntity.id, hitData);
 
     if hits > 0 then
         dump(hitData[1])
@@ -50,6 +57,51 @@ function rayCastHit()
     end
 
     System.LogAlways("# rayCastHit end")
+
+end
+
+function rayCastHitOnUpdate()
+    -- System.LogAlways("# rayCastHit start")
+
+    if (previewModelEntity == nil) then
+        return
+    end
+
+    local from = player:GetPos();
+    from.z = from.z + 1.615;
+
+    local hitData = {};
+    local hits = Physics.RayWorldIntersection(
+            from,
+            vecScale(System.GetViewCameraDir(), 250),
+            10,
+            ent_all,
+            player.id,
+            previewModelEntity.id,
+            hitData
+    );
+
+    if hits > 0 then
+        -- dump(hitData[1])
+
+        if (previewModelEntity ~= nil) then
+
+            previewModelEntity:SetPos(hitData[1].pos)
+            local up = player:GetAngles()
+
+            if (isModeRotation) then
+                up = { up.x, up.y, previewRotationAroundY }
+            else
+                up = { up.x, up.y, up.z }
+            end
+            previewModelEntity:SetAngles(up)
+
+        end
+
+        return hitData[1];
+    end
+
+    -- System.LogAlways("# rayCastHit end")
 
 end
 
@@ -72,6 +124,41 @@ function removeItem(itemRemovedByClass, deleteAmount)
     end
 end
 
+function spawnPreview()
+
+    -- construct the entity and setup its parameters
+    local spawnParams = {}
+
+    -- use arc_BasicBuildingEntity.lua as type for static constructions
+    spawnParams.class = "BasicEntity"
+
+    -- use arc_DynamicBuildingEntity.lua as type for constructions with any kind of functionality
+    -- spawnParams.class = "DynamicBuildingEntity"
+
+    -- setup the position from the raycast hit
+    spawnParams.orientation = { x = 0, y = 0, z = 1 }
+
+    -- setup naming and serialization
+    spawnParams.properties = {}
+    spawnParams.properties.bSaved_by_game = 1
+    spawnParams.properties.bSerialize = 1
+
+    -- use the input of %line if provided, else use the current building index for the selection of the building
+    -- if(line ~= nil) then modelPath = line else  modelPath = parameterizedConstructions[bIndex] end
+
+    -- get the path of the model for the construction
+    construction = parameterizedConstructions[bIndex]
+    spawnParams.properties.object_Model = construction.modelPath
+
+    -- generate a unique name for the entity
+    -- spawnParams.name = construction.modelPath .. "_" .. uuid()
+    spawnParams.name = construction.name
+    spawnParams.uuid = uuid()
+
+    -- spawn the new entity
+    previewModelEntity = System.SpawnEntity(spawnParams)
+
+end
 
 -- spawn the currently selected entity with the current selection as modelpath
 function SpawnBuildingInstance(line)
@@ -200,7 +287,13 @@ function SpawnBuildingInstance(line)
 
         -- setup the rotation of the spawned entity align the y-axis
         local up = player:GetAngles()
-        up = { up.x, up.y, up.z }
+
+        if (isModeRotation) then
+            up = { up.x, up.y, previewRotationAroundY }
+        else
+            up = { up.x, up.y, up.z }
+        end
+
         ent:SetAngles(up)
 
         Game.SendInfoText(
@@ -422,6 +515,7 @@ function deleteAt(index)
     end
 end
 
+previewRotationAroundY = 0
 bIndex = 1
 
 --[[ Increments the index of the currently selected building when the player uses the mousewheel (up) ]]
@@ -431,12 +525,21 @@ function bIndexInc()
         bIndex = 1
     end
 
-    if bIndex < #parameterizedConstructions then
-        bIndex = bIndex + 1
+    if isModeRotation then
+        previewRotationAroundY = previewRotationAroundY + 0.1
     end
 
-    -- update the current building for the ui-controller
-    updateSelection()
+    if not isModeRotation then
+
+        previewRotationAroundY = 0
+
+        if bIndex < #parameterizedConstructions then
+            bIndex = bIndex + 1
+        end
+
+        -- update the current building for the ui-controller
+        updateSelection()
+    end
 
 end
 
@@ -448,18 +551,27 @@ function bIndexDec()
         bIndex = 1
     end
 
-    if bIndex > 1 then
-
-        bIndex = bIndex - 1
-
-        if bIndex == 0 then
-            return
-        end
-
+    if isModeRotation then
+        previewRotationAroundY = previewRotationAroundY - 0.1
     end
 
-    -- update the current building for the ui-controller
-    updateSelection()
+    if not isModeRotation then
+
+        previewRotationAroundY = 0
+
+        if bIndex > 1 then
+
+            bIndex = bIndex - 1
+
+            if bIndex == 0 then
+                return
+            end
+
+        end
+
+        -- update the current building for the ui-controller
+        updateSelection()
+    end
 
 end
 
@@ -472,6 +584,13 @@ function updateSelection()
     fDisplayTimeInSeconds = 10
 
     currentConstruction = parameterizedConstructions[bIndex]
+
+    -- previewModelEntity = currentConstruction
+    if (previewModelEntity ~= nil) then
+        System.RemoveEntity(previewModelEntity.id)
+    end
+
+    spawnPreview()
 
     if (currentConstruction == nil) then
         System.LogAlways("No valid construction provided, skipping")
@@ -574,6 +693,9 @@ function reloadall ()
     Script.UnloadScript("Scripts/Util/arc_utils.lua")
     Script.UnloadScript("Scripts/Util/arc_runtime.lua")
 
+    Script.ReloadScript("Scripts/Manager/arc_UIController.lua")
+
+
     -- reload every script, including /Data and /Mods
     Script.ReloadScripts()
 
@@ -612,7 +734,7 @@ System.AddCCommand('deleteRayCastEntityHit', 'deleteRayCastEntityHit()', "delete
 
 -- Detect / dump information about the current "seen" entity
 System.AddCCommand('toggleEntityLock', 'toggleEntityLock()', "toggleEntityLock!")
---System.ExecuteCommand("bind mouse5 toggleEntityLock ")
+System.ExecuteCommand("bind mouse5 toggleEntityLock ")
 
 
 -- helper methods and commands
@@ -630,3 +752,11 @@ function Select(newIndex)
     bIndex = newIndex;
     updateSelection()
 end
+
+function toggleRotationMode()
+    isModeRotation = not isModeRotation
+    previewRotationAroundY = 0
+end
+
+System.AddCCommand('toggleRotationMode', 'toggleRotationMode()', "toggleRotationMode!")
+System.ExecuteCommand("bind 'r' toggleRotationMode ")
