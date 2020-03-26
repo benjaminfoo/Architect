@@ -24,7 +24,13 @@ There are no DLCs required to use this mod.
 
 ## News 
 - Version 0.5.3b has been [released!](https://github.com/benjaminfoo/Architect/releases)
+- Version 0.5.3a has been [released!](https://github.com/benjaminfoo/Architect/releases)
+- [Sexy Biscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) has released a two hour stream about town building and using architect on [YouTube](https://www.youtube.com/watch?v=tZISnQW5ms4)
 - Version 0.5.2b has been [released!](https://github.com/benjaminfoo/Architect/releases)
+- [Sexy Biscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) has released another great gameplay video using the architect modification on [YouTube](https://www.youtube.com/watch?v=ysLVzh89N_c)
+- [Sexy Biscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) has released an overview on how to install and use the architect modification on [YouTube](https://www.youtube.com/watch?v=0D_I73Jn3G8)
+- The german computer magazine [Gamestar](www.gamestar.de/) wrote an article about the [architect!](https://www.gamestar.de/artikel/mod-kingdom-come-eigenen-doerfer-burgen-bauen,3355483.html)
+- Version 0.51a has been [released!](https://github.com/benjaminfoo/Architect/releases)
 - Version 0.5a has been [released!](https://github.com/benjaminfoo/Architect/releases)
 
 <br>
