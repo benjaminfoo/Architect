@@ -8,7 +8,7 @@
 layout: home
 ---
 <hr>
-# Welcome
+# Welcome!
 This project allows the construction of entities within the games world - 
 this means that the player can spawn anything from simple props to flora & fauna, vegetation, houses, walls, towers,
 tents, chairs, benches, beds, etc. anywhere in the world.
@@ -281,6 +281,74 @@ showStats()
 
 <br>
 
+## Screenshots
+
+### Getting started
+<img src="img/howto/000_help.jpg">  
+Use `architect_help` to get an overview of the available console- and lua- commands.  
+  
+<br>  
+  
+<img src="img/howto/001_help.jpg">  
+There are new methods in order to look for constructions like `search(''), select(nr), ...`
+  
+<br>  
+  
+<img src="img/howto/002_help_lua.jpg">  
+The latest release also contains basic town management functionalities with `setHome(), setHomeName(name), getHome or showStats()`
+  
+<br>  
+  
+### Navigation    
+<img src="img/howto/005_search_1.jpg">  
+Use `search("...")` to find all constructions which contain the search-param.
+    
+<br>  
+  
+<img src="img/howto/006_search_and_Select.jpg">  
+Its also possible to wrap multiple method calls, like `select(search("smithery")` which search and returns the first construction which contains "smithery" as a part of its name.
+
+<br>  
+
+### Locking
+<img src="img/howto/010_locking.jpg">  
+Use `lockAll()` to activate the deletion-lock of all constructions.
+
+<br>  
+  
+
+<img src="img/howto/011_unlocking.jpg">  
+Use `unlockAll()` to deactivate the deletion-lock of all constructions.
+  
+<br>  
+  
+
+### Town Management
+<img src="img/howto/020_stats.jpg">  
+Use `showStats()` to get an overview of the towns name, owner, position, resources, ...
+
+<br>  
+ 
+<img src="img/howto/021_stats.jpg">  
+... and for an overview of all existing generators, etc. 
+
+<br>  
+
+<img src="img/howto/030_home_setHome.jpg">  
+Use `setHome()` to set the current player position as the new towns home position.
+
+<br>  
+
+<img src="img/howto/031_home_setHomeName.jpg">  
+Use `setHomeName('farkletown')` to set the towns name.
+
+<br>  
+
+<img src="img/howto/032_home_getHome.jpg">  
+Use `getHome()` returns the player to his previously set home position.
+
+<br>  
+  
 
 
 
