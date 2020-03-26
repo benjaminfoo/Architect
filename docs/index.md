@@ -52,7 +52,7 @@ You need to start the game with devmode enabled (the modification won't work oth
 `<Steam>\steamapps\common\KingdomComeDeliverance\Bin\Win64\KingdomCome.exe -devmode`
   
 ### For Steam Users
-The following list of files files need to be stored at:  
+The following list of files needed to be stored at:  
 `Steam\steamapps\common\KingdomComeDeliverance\mods\architect\` 
 - mod.manifest
 - keybinds.cfg
