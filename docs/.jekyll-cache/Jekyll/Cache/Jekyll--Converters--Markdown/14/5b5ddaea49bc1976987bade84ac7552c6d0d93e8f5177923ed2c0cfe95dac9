@@ -1,6 +1,4 @@
-I"ÍM<p><br /></p>
-
-<h1 id="welcome">Welcome!</h1>
+I"ÊN<h1 id="welcome">Welcome!</h1>
 <p>This project introduces new features and mechanics to <a href="https://www.kingdomcomerpg.com/">kingdom come deliverance</a> like a construction-system,
 a resource-system, a basic crafting-system, town management, etc.</p>
 
@@ -24,6 +22,7 @@ There are no DLCs required to use this mod.</p>
 <p><br /></p>
 
 <h2 id="media">Media</h2>
+<div id="media"></div>
 <p>Take a look at the base building videos of <a href="https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ">sexybiscuit</a> to get an idea and how to install and use the modification - p.s. the videos are great!</p>
 
 <iframe alt="base building video by sexy biscuit" width="32%" height="315" src="https://www.youtube.com/embed/0D_I73Jn3G8" frameborder="0" allow="accelerometer;
@@ -86,10 +85,14 @@ Key O</p>
 <p><br />
 <br /></p>
 
+<div id="features"></div>
 <h2 id="features">Features</h2>
+
 <p>This is an overview of all the implemented features this project contains.</p>
 
-<h3 id="constructions">Constructions</h3>
+<div id="constructions"></div>
+<h3 id="construction-system">Construction-System</h3>
+
 <p>One target functionality architect introduces is the concept of constructions.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A construction is an entity within the cryengine
@@ -121,8 +124,10 @@ Notes
 
 <p><br />
 <br /></p>
+<div id="townManagement"></div>
 
 <h3 id="town-management">Town management</h3>
+
 <p>Its possible to define basic attributes of a home or town now. 
 You can set a home position and return back any time or set a name for your town.
 There is also a statistics command which shows different aspects of your town.</p>
@@ -142,6 +147,7 @@ There is also a statistics command which shows different aspects of your town.</
 <p><br />
 <br /></p>
 
+<div id="resourceManagement"></div>
 <h3 id="resource-management">Resource Management</h3>
 <p>Another new feature architect introduces is the management of resources.</p>
 
@@ -173,7 +179,7 @@ like the ingredients of a recipe. The implementation is not finished yet.</p>
 <p><br />
 <br /></p>
 
-<h3 id="crafting">Crafting</h3>
+<h3 id="custom-crafting">Custom Crafting</h3>
 <p>A construction who posses attributes like generatorOnUse can be used to realize simple crafting mechanics.</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
@@ -311,6 +317,7 @@ showStats()
 <br /></p>
 
 <h2 id="screenshots">Screenshots</h2>
+<div id="screenshots"></div>
 
 <h3 id="getting-started">Getting started</h3>
 <p><img src="assets/img/howto/000_help.jpg" /><br />
@@ -452,6 +459,9 @@ Version 0.1a
 
 <p><br />
 <br /></p>
+
+<h3 id="downloads">Downloads</h3>
+<div id="downloads"></div>
 
 <h3 id="misc">Misc.</h3>
 

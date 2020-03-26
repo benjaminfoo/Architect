@@ -1,47 +1,40 @@
----
-#
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-#
-layout: default
----
+I"6B<h1 id="welcome">Welcome!</h1>
+<p>This project introduces new features and mechanics to <a href="https://www.kingdomcomerpg.com/">kingdom come deliverance</a> like a construction-system,
+a resource-system, a basic crafting-system, town management, etc.</p>
 
-# Welcome!
-This project introduces new features and mechanics to [kingdom come deliverance](https://www.kingdomcomerpg.com/) like a construction-system,
-a resource-system, a basic crafting-system, town management, etc. 
-
-This means that the player can create and spawn constructions - this ranges from simple props to flora & fauna, 
+<p>This means that the player can create and spawn constructions - this ranges from simple props to flora &amp; fauna, 
 vegetation, houses, walls, towers, tents, chairs, benches, beds, etc. almost anywhere in the world. Its also possible to build 
-custom constructions like wood-, stone-, coal-, ... -generators which produce resources or items over time.
+custom constructions like wood-, stone-, coal-, … -generators which produce resources or items over time.</p>
 
-**Note**  
-Make a backup of your saved games - there is no new save required.  
-There are no DLCs required to use this mod.
+<p><strong>Note</strong><br />
+Make a backup of your saved games - there is no new save required.<br />
+There are no DLCs required to use this mod.</p>
 
-###### Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game and the modding sdk!
+<h6 id="thanks-to-warhorse-studios-for-developing-and-realizing-this-beautiful-game-and-the-modding-sdk">Thanks to <a href="https://warhorsestudios.cz">Warhorse Studios</a> for developing and realizing this beautiful game and the modding sdk!</h6>
 
-<br>
+<p><br /></p>
 
-## News 
-- Version 0.5.3b has been [released](https://github.com/benjaminfoo/Architect/releases)
+<h2 id="news">News</h2>
+<ul>
+  <li>Version 0.5.3b has been <a href="https://github.com/benjaminfoo/Architect/releases">released</a></li>
+</ul>
 
+<p><br /></p>
 
-
-<br>
-
-## Media 
-<div id="media"></div>
+<h2 id="media">Media</h2>
+<div id="media">&lt;s/div&gt;
 Take a look at the base building videos of [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) to get an idea and how to install and use the modification - p.s. the videos are great!
 
 <iframe alt="base building video by sexy biscuit" width="32%" height="315" src="https://www.youtube.com/embed/0D_I73Jn3G8" frameborder="0" allow="accelerometer;
- autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+ autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
 <iframe alt="base building video by sexy biscuit" width="32%" height="315" src="https://www.youtube.com/embed/tZISnQW5ms4" frameborder="0" allow="accelerometer; 
-autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
 <iframe alt="base building video by sexy biscuit" width="32%" height="315" src="https://www.youtube.com/embed/ysLVzh89N_c" frameborder="0" allow="accelerometer; 
-autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
-<br>
+<br />
 
 
 ## Installation
@@ -69,7 +62,7 @@ Its also safe to remove the mod at any time (if you've already created something
 deleting it first, the entity stays in the game. Use **#deleteall()** within the ingame-console to clean up your scene.)
 
 
-<br>
+<br />
 
 ## Usage / Keys
 These keys can be used to interact with the mod - they're also shown ingame.
@@ -89,17 +82,13 @@ Key G
 Lock / unlock construction for deletion  
 Key O  
 
-<br>
-<br>
+<br />
+<br />
 
-<div id="features"></div>
 ## Features
-
 This is an overview of all the implemented features this project contains.
 
-<div id="constructions"></div>
-### Construction-System
-
+### Constructions
 One target functionality architect introduces is the concept of constructions.
 
 ```
@@ -110,7 +99,7 @@ Construction, Construction-Properties
  - name (optional) - the name of the construction - the name will be built from the modelPath
  - modelPath       - the relative path to the *.cgf file, contains the name of the model file and its physics
  - description     - the description for the construction
- - groschenPrice   - the price in groschen the user has to pay upfront (to whom? who recieves this money) => maybe there should be some kind of logic that 50% goes to the king and 50% to the city, and at some point you will get the money back or something like that, some kind of insurence or something
+ - groschenPrice   - the price in groschen the user has to pay upfront (to whom? who recieves this money) =&gt; maybe there should be some kind of logic that 50% goes to the king and 50% to the city, and at some point you will get the money back or something like that, some kind of insurence or something
  - sitable         - if true, the player can sit on this object
  - useable         - if true, the player can use the object in some way
  - saveable        - if true, the instance of the construction gets saved
@@ -130,12 +119,10 @@ Notes
 - Constructions which only contain a modelPath are handled as static entites (no functionality, just a model + collider + manged in savegames)
 ```
 
-<br>
-<br>
-<div id="townManagement"></div>
+<br />
+<br />
 
 ### Town management
-
 Its possible to define basic attributes of a home or town now. 
 You can set a home position and return back any time or set a name for your town.
 There is also a statistics command which shows different aspects of your town.
@@ -152,10 +139,9 @@ Returns the player to his home / town
 Displays a resume (a list of attributes, like name, town, generated resources) for your current town  
 `showStats()`
 
-<br>
-<br>
+<br />
+<br />
 
-<div id="resourceManagement"></div>
 ### Resource Management
 Another new feature architect introduces is the management of resources. 
 
@@ -186,11 +172,10 @@ Building constructions will require the user to spend money and / or resources i
 like the ingredients of a recipe. The implementation is not finished yet.
 
 
-<br>
-<br>
+<br />
+<br />
 
-<div id="customCrafting"></div>
-### Custom Crafting
+### Crafting
 A construction who posses attributes like generatorOnUse can be used to realize simple crafting mechanics.
 
 ```
@@ -204,8 +189,8 @@ A construction who posses attributes like generatorOnUse can be used to realize 
 ```
 .. this needs an update first.
 
-<br>  
-<br>
+<br />  
+<br />
 
 ## Current features / To-Dos / bugs
 This list contains all the features planned for later development, recommended by myself or the community:
@@ -228,15 +213,15 @@ This list contains all the features planned for later development, recommended b
   - trigger / buttons
   
 - misc  
-  - keybind for enabling / disabling the mod - on f12 - pressed => you have activated the mod, these are the keys... etc.
+  - keybind for enabling / disabling the mod - on f12 - pressed =&gt; you have activated the mod, these are the keys... etc.
   - spawn setups with relations to npcs or items
-  - make torches & lights toggleable
+  - make torches &amp; lights toggleable
   - preview for constructions
   - preview-mode for rotation, translation of the constructions
   - ... siege invasions ... ?
   
-<br>  
-<br>
+<br />  
+<br />
 
   
 ## Technical
@@ -317,79 +302,77 @@ showStats()
 
 ```
 
-<br>
-<br>
+<br />
+<br />
 
 ## Screenshots
-<div id="screenshots"></div>
-
 
 ### Getting started
-<img src="assets/img/howto/000_help.jpg">  
+<img src="assets/img/howto/000_help.jpg" />  
 Use `architect_help` to get an overview of the available console- and lua- commands.  
   
-<br>  
+<br />  
   
-<img src="assets/img/howto/001_help.jpg">  
+<img src="assets/img/howto/001_help.jpg" />  
 There are new methods in order to look for constructions like `search(''), select(nr), ...`
   
-<br>  
+<br />  
   
-<img src="assets/img/howto/002_help_lua.jpg">  
+<img src="assets/img/howto/002_help_lua.jpg" />  
 The latest release also contains basic town management functionalities with `setHome(), setHomeName(name), getHome or showStats()`
   
-<br>  
+<br />  
   
 ### Navigation    
-<img src="assets/img/howto/005_search_1.jpg">  
+<img src="assets/img/howto/005_search_1.jpg" />  
 Use `search("...")` to find all constructions which contain the search-param.
     
-<br>  
+<br />  
   
-<img src="assets/img/howto/006_search_and_Select.jpg">  
+<img src="assets/img/howto/006_search_and_Select.jpg" />  
 Its also possible to wrap multiple method calls, like `select(search("smithery")` which search and returns the first construction which contains "smithery" as a part of its name.
 
-<br>  
+<br />  
 
 ### Locking
-<img src="assets/img/howto/010_locking.jpg">  
+<img src="assets/img/howto/010_locking.jpg" />  
 Use `lockAll()` to activate the deletion-lock of all constructions.
 
-<br>  
+<br />  
   
 
-<img src="assets/img/howto/011_unlocking.jpg">  
+<img src="assets/img/howto/011_unlocking.jpg" />  
 Use `unlockAll()` to deactivate the deletion-lock of all constructions.
   
-<br>  
+<br />  
   
 
 ### Town Management
-<img src="assets/img/howto/020_stats.jpg">  
+<img src="assets/img/howto/020_stats.jpg" />  
 Use `showStats()` to get an overview of the towns name, owner, position, resources, ...
 
-<br>  
+<br />  
  
-<img src="assets/img/howto/021_stats.jpg">  
+<img src="assets/img/howto/021_stats.jpg" />  
 ... and for an overview of all existing generators, etc. 
 
-<br>  
+<br />  
 
-<img src="assets/img/howto/030_home_setHome.jpg">  
+<img src="assets/img/howto/030_home_setHome.jpg" />  
 Use `setHome()` to set the current player position as the new towns home position.
 
-<br>  
+<br />  
 
-<img src="assets/img/howto/031_home_setHomeName.jpg">  
+<img src="assets/img/howto/031_home_setHomeName.jpg" />  
 Use `setHomeName('farkletown')` to set the towns name.
 
-<br>  
+<br />  
 
-<img src="assets/img/howto/032_home_getHome.jpg">  
+<img src="assets/img/howto/032_home_getHome.jpg" />  
 Use `getHome()` returns the player to his previously set home position.
 
-<br>  
-<br>
+<br />  
+<br />
  
 ### Implemented features - tl;dr
 - custom constructions / entities, or existing with custom actions / usages
@@ -401,7 +384,7 @@ Use `getHome()` returns the player to his previously set home position.
 - provide ability to extend the modification for easier usage / development
 
 
-<br>
+<br />
 
 ### Changelog
 This list contains all changes happened during development - the versions should be compatible to each other (maybe) - already created entities wont be affected.
@@ -416,7 +399,7 @@ changelog 0.5.3b
 
 changelog 0.5.3a
 - updated console api for easer use (use #search("string"), #select(nr), #selectFirst(), #selectLast(), ...)
-- updated resource-system & proper resource-generation (passively & overtime and - actively when used)
+- updated resource-system &amp; proper resource-generation (passively &amp; overtime and - actively when used)
 - updated town management
 - updated simple crafting-system (see the resource-system and generation)
 - updated locking-system (use #lockAll() or #unlockAll()
@@ -464,11 +447,8 @@ Version 0.1a
 - integration of persistance for constructions
 ```
 
-<br>
-<br>
-
-### Downloads
-<div id="downloads"></div>
+<br />
+<br />
 
 
 ### Misc.
@@ -484,10 +464,12 @@ However, one could add models / cgfs from the assets  on its own,
 the currently used constructions are listed in the file:   
 [Data/Scripts/Manager/arc_BuildingsManager.lua](https://github.com/benjaminfoo/Architect/blob/master/Data/Scripts/Manager/arc_BuildingsManager.lua)
 
-<br>
-<br>
+<br />
+<br />
 
 ## Credits
 Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game and the modding sdk!  
 Also thanks to [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) for creating the great videos on how to use and install the modification!  
 This page uses a modified version of the [cayman-theme](https://github.com/pages-themes/cayman) and was generated with [jekyll](https://jekyllrb.com/docs/plugins/generators/).
+</Steam></div>
+:ET
