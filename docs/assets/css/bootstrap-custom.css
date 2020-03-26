@@ -41,6 +41,16 @@ html, body {
     font-family: 'MedievalSharpRegular';
 }
 
+.preformat_code {
+    background-color: #aaaaaa12;
+    font-family: monospace;
+    white-space: pre;
+    padding-left: 1rem;
+    border-radius: 10px;
+
+    font-size: 10pt;
+}
+
 @media (min-width: 250px) {
     .brand-subtitle {
         font-family: 'MedievalSharpRegular';

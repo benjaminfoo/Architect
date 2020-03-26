@@ -527,6 +527,13 @@ function bIndexInc()
 
     if isModeRotation then
         previewRotationAroundY = previewRotationAroundY + 0.1
+
+        Game.SendInfoText(
+                "Rotation around Y-Axis: " .. tostring(previewRotationAroundY),
+                true,
+                nil,
+                2
+        )
     end
 
     if not isModeRotation then
@@ -553,6 +560,13 @@ function bIndexDec()
 
     if isModeRotation then
         previewRotationAroundY = previewRotationAroundY - 0.1
+
+        Game.SendInfoText(
+                "Rotation around Y-Axis: " .. tostring(previewRotationAroundY),
+                true,
+                nil,
+                2
+        )
     end
 
     if not isModeRotation then

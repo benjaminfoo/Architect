@@ -12,11 +12,13 @@ This means that the player can create and spawn constructions - this ranges from
 vegetation, houses, walls, towers, tents, chairs, benches, beds, etc. almost anywhere in the world. Its also possible to build 
 custom constructions like wood-, stone-, coal-, ... -generators which produce resources or items over time.
 
+<br>
+
 **Note**  
 Make a backup of your saved games - there is no new save required.  
 There are no DLCs required to use this mod.
 
-###### Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game and the modding sdk!
+##### Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game and the modding sdk!
 
 <br>
 
@@ -44,7 +46,8 @@ autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></ifra
 
 
 ## Installation
-Download the [latest release](https://www.nexusmods.com/kingdomcomedeliverance/mods/958), unzip the archive into your KingdomComeDeliverance\mods - folder.  
+Get the latest release from [mods nexus](https://www.nexusmods.com/kingdomcomedeliverance/mods/958) or [github](https://github.com/benjaminfoo/Architect/releases), 
+unzip the archive into your _'KingdomComeDeliverance\mods'_ - folder.  
 If the installation was succesful you'll see the instructions-message on how to use the mod when the game has been started  
 (and a savegame loaded or a new game hast been created).  
 
@@ -73,10 +76,11 @@ deleting it first, the entity stays in the game. Use **#deleteall()** within the
 ## Usage / Keys
 These keys can be used to interact with the mod - they're also shown ingame.
 
-Choose the next construction (from 0 to ~200)  
+<div class="preformat_code">
+Choose the next construction
 Button MouseWheel up  
 
-Choose the previous construction (from 0 to ~200)  
+Choose the previous construction
 Button MouseWheel down  
 
 Create a new construction  
@@ -88,9 +92,9 @@ Key G
 Lock / unlock construction for deletion  
 Key O  
 
-<br>
-<br>
+</div>
 
+<br>
 
 #### Change default key-bindings
 The `keybinds.cfg` file contains all keybindings used in the project - change it to a key or a controller button as you like.
@@ -114,7 +118,7 @@ This is an overview of all the implemented features this project contains.
 
 One target functionality architect introduces is the concept of constructions.
 
-```
+<div class="preformat_code">
 A construction is an entity within the cryengine
 There are different kinds of properties an entity can use from
 
@@ -140,9 +144,9 @@ Properties related to generating some item over a specified amount of time
 
 Notes
 - Constructions which only contain a modelPath are handled as static entites (no functionality, just a model + collider + manged in savegames)
-```
 
-<br>
+</div>
+
 <br>
 <div id="townManagement"></div>
 
@@ -165,14 +169,14 @@ Displays a resume (a list of attributes, like name, town, generated resources) f
 `showStats()`
 
 <br>
-<br>
 
 <div id="resourceManagement"></div>
 ### Resource Management
 Another new feature architect introduces is the management of resources. 
 
 There are different kinds of resources:
-```
+
+<div class="preformat_code">
 resources = {
 
     -- basic resources
@@ -193,19 +197,17 @@ resources = {
     cords = 0,
     linen = 0,
 } 
-```
+
+</div>
 Building constructions will require the user to spend money and / or resources in order to actually built something - 
 like the ingredients of a recipe. The implementation is not finished yet.
 
-
-<br>
 <br>
 
 <div id="customCrafting"></div>
 ### Custom Crafting
 A construction who posses attributes like generatorOnUse can be used to realize simple crafting mechanics.
-
-```
+<div class="preformat_code">
 {
     -- create a new construction which can be used for crafting
     modelPath = "...",
@@ -213,10 +215,11 @@ A construction who posses attributes like generatorOnUse can be used to realize 
     generatorItem = "wood"
     -- TODO
 } 
-```
-.. this needs an update first.
 
-<br>  
+</div>
+
+.. this needs further updates.
+
 <br>
 
 ## Current features / To-Dos / bugs
@@ -268,9 +271,9 @@ The following list contains regular console commands
 These functions offer advanced usage to the modifications internals, use at your own risk and save the game. \
 In order to execute a lua function, you have to prepend a '#'-character to execute it.
 
+<div class="preformat_code">
 All commands are available in upper / lowercase format.
 
-```
 Search(string s) 
 -- Search for entites which name contains string s
 -- For example: #search("stone") - emits a list of entities containing the string "stone"
@@ -305,12 +308,10 @@ reloadall()
 rayCastHit()
 -- Use a raycast to determine entities in front of the player
 
-
 lockAll()
 -- locks all constructions from the user
 -- by pressing 'O' you're locking the currently faced entity, which makes it undeleteable, press again to retoggle the state
 -- this method is useful when used after loading a saved game - this way you can keep your changes 
-
 
 unlockAll()
 -- unlocks all constructions from the user
@@ -327,9 +328,8 @@ getHome()
 showStats()
 -- Displays a resume (a list of attributes, like name, town, generated resources) for your current town
 
-```
+</div>
 
-<br>
 <br>
 
 ## Screenshots
@@ -418,12 +418,13 @@ Use `getHome()` returns the player to his previously set home position.
 ### Changelog
 This list contains all changes happened during development - the versions should be compatible to each other (maybe) - already created entities wont be affected.
 
-- Alpha versions (a) are unstable and in subject of larger changes - expect bugs.
-- Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).
+<div class="preformat_code">
+- Alpha versions (a) are unstable and in subject of larger changes - expect bugs.  
+- Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).  
 
 changelog 0.5.3b
-- updated docs and added about page - https://benjaminfoo.github.io/Architect/
-- "should-be-stable"-release
+- updated docs and added about page - https://benjaminfoo.github.io/Architect/  
+- "should-be-stable"-release  
 
 changelog 0.5.3a
 - updated console api for easer use (use #search("string"), #select(nr), #selectFirst(), #selectLast(), ...)
@@ -473,6 +474,8 @@ Version 0.1b
 Version 0.1a
 - implementation of basic construction-system (static entities)
 - integration of persistance for constructions
+
+</div>
 
 <br>
 
