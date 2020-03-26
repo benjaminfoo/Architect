@@ -1,8 +1,5 @@
 ---
 #
-# Here you can change the text shown in the Home page before the Latest Posts section.
-#
-# Edit cayman-blog's home layout in _layouts instead if you wanna make some changes
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 #
 layout: home
@@ -20,7 +17,7 @@ custom constructions like wood-, stone-, coal-, ... -generators which produce re
 Make a backup of your saved games - there is no new save required.  
 There are no DLCs required to use this mod.
 
-##### Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game!
+##### Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game and the modding sdk!
 
 
 ## News 
@@ -31,7 +28,7 @@ There are no DLCs required to use this mod.
 <br>
 
 ## Media 
-Take a look at the base building videos of [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) to get an idea and how to install and use the modification - P.S. they are hilarious!
+Take a look at the base building videos of [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) to get an idea and how to install and use the modification - p.s. the videos are great!
 
 <iframe alt="base building video by sexy biscuit" width="32%" height="315" src="https://www.youtube.com/embed/0D_I73Jn3G8" frameborder="0" allow="accelerometer;
  autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -282,7 +279,9 @@ rayCastHit()
 
 lockAll()
 -- locks all constructions from the user
+-- by pressing 'O' you're locking the currently faced entity, which makes it undeleteable, press again to retoggle the state
 -- this method is useful when used after loading a saved game - this way you can keep your changes 
+
 
 unlockAll()
 -- unlocks all constructions from the user
@@ -399,57 +398,54 @@ changelog 0.5.3b
 - updated docs and added about page - https://benjaminfoo.github.io/Architect/
 - "should-be-stable"-release
 
-changelog 0.5.3a
-- implemented alot of console functionality for easer use (use #search("string"), #select(nr), #selectFirst(), #selectLast(), ...)
-- implemented resource-system
-- implemented resource-generation (passively & overtime, actively when used)
-- implemented basic town management (
+changelog 0.5.3b
+- updated console api for easer use (use #search("string"), #select(nr), #selectFirst(), #selectLast(), ...)
+- implemented resource-system & proper resource-generation (passively & overtime and - actively when used)
+- implemented basic town management
 - updated simple crafting-system (see the resource-system and generation)
 - updated locking-system (use #lockAll() or #unlockAll()
-- updated available constructions (changed data-model, provided additional data for new model, added alot of interior, ...)
-
+- updated available constructions (upgraded data-model, added alot of interior, ...)
 
 changelog 0.5.2b
 - added fallback keybinding
-- limited user to only remove his own constructions (no more deleted doors, ... or dogs)
-- added deletion lock for entities (by pressing 'O' you're locking the currently faced entity, which makes it undeleteable, press again to retoggle the state)
-- updated construction-types, construction-set (its now possible to build a water generators or different kind of ovens)
-- updated console commands (allows selection of the first, last or n-th entity from available constructions) 
-- the functionalities / mechanics of constructions now work on saved/loaded games
-- updated console commands, refactored almost entire project, updated docs :)
+- limited user's ability to remove constructions (no more deleted doors, ... or dogs)
+- added locking-functionality for entities 
+- updated construction-types
+- updated persistence of construction parameters
+- removed bugs
 
 Version 0.5.1a
 - increased compatibility with other modifications
 
 Version 0.5a
-- added basic custom crafting system (this only works with constructions created by the player) 
-- added useable entities (like chairs, beds, benches, etc.)
-- updates of custom actions and entities
-- refactored project, upgraded entity-model, controller, utils, documentation etc.
-- removed invalid references from assets
+- implemented basic custom crafting system (this only works with constructions created by the player) 
+- updated useable entities (like chairs, beds, benches, etc.)
+- upgrade of entity-data models
+- split project into sub-packages
 
 Version 0.4b
+- implemented basic town management
+- implemented basic resouce-system
 - added option to rebind keys (look at the keybinds.cfg file to define your own keys)
-- added further docs
+- removed invalid references from assets
 
 Version 0.3b
-- added console commands
+- updated console api
 - refactoring, ui finish
 - documentation, screenshots
 
 Version 0.2b
-- bug-fixes, removed all known problems
-- setup proper constructions
-- unique naming of entities
+- updated set of available constructions
+- implemented collision-free naming of entities
+- bug-fixes
 
 Version 0.1b
-- advanced ingame-console functionality
-- added persistence (constructions wont get lost on save- & loading a level)
+- implemented basic console api
+- refactored project
 
 Version 0.1a
-- basic functionality
-- construct and deconstruct buildings
-- mock-api
+- implementation of basic construction-system (static entities)
+- integration of persistance for constructions
 ```
 
 <br>
@@ -467,11 +463,9 @@ However, one could add models / cgfs from the assets  on its own, the currently 
 listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Scripts/Manager/BuildingsManager.lua
 
 <br>
+<br>
 
-#### Thanks / Credits
-Thanks to [Warhorse Studios](https://warhorsestudios.cz) for creating such a great game, with engine, assets & sdk -
-this fun project wouldnt be possible without you.
-
-Also big thanks to the modding community on nexus﻿.
-
-Thanks @sexybiscuit for creating the great video on how to use and install the modification!
+Credits
+Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game and the modding sdk!  
+Also thanks to [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) for creating the great videos on how to use and install the modification!  
+This page uses a modified version of the [cayman-theme](https://github.com/pages-themes/cayman) and was generated with [jekyll](https://jekyllrb.com/docs/plugins/generators/).

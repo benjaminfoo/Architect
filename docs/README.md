@@ -375,10 +375,7 @@ listed in the file: https://github.com/benjaminfoo/Architect/blob/master/Data/Sc
 
 <br>
 
-#### Thanks / Credits
-Thanks to [Warhorse Studios](https://warhorsestudios.cz) for creating such a great game, with engine, assets & sdk -
-this fun project wouldnt be possible without you.
-
-Also big thanks to the modding community on nexus﻿.
-
-Thanks @sexybiscuit for creating the great video on how to use and install the modification!
+## Credits
+Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game and the modding sdk!  
+Also thanks to [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) for creating the great videos on how to use and install the modification!  
+This page uses a modified version of the [cayman-theme](https://github.com/pages-themes/cayman) and was generated with [jekyll](https://jekyllrb.com/docs/plugins/generators/).

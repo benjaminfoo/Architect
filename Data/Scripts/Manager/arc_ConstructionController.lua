@@ -444,6 +444,10 @@ end
 --[[ Decrements the index of the currently selected building when the player uses the mousewheel (up)  ]]
 function bIndexDec()
 
+    if (bIndex == "#") then
+        bIndex = 1
+    end
+
     if bIndex > 1 then
 
         bIndex = bIndex - 1
