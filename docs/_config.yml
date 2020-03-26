@@ -17,9 +17,6 @@ theme: # leave it empty
 
 # social
 author: benjaminfoo
-image: /thumbnail-jumbo.png
-twitter:
-  username: benjaminfoo
 
 github:
   owner_url: test
