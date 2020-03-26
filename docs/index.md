@@ -9,12 +9,13 @@ layout: home
 ---
 <hr>
 # Welcome!
-This project allows the construction of entities within the games world - 
-this means that the player can spawn anything from simple props to flora & fauna, vegetation, houses, walls, towers,
-tents, chairs, benches, beds, etc. anywhere in the world.
+This project introduces new features and mechanics to kingdom come deliverance,   
+like a construction-system, a resource-system, a basic crafting-system, town management, etc. 
 
-Make a backup of your saved games before doing anything else.  
-Constructions are saved across your savegames - there is no new save required.  
+This means that the player can create and spawn constructions - this ranges from simple props to flora & fauna,   
+vegetation, houses, walls, towers, tents, chairs, benches, beds, etc. anywhere in the world.
+
+Make a backup of your saved games before doing anything else - there is no new save required.  
 
 There are _no DLCs required_ in order to use this mod.
 
@@ -22,19 +23,33 @@ Thanks to [Warhorse Studios](https://warhorsestudios.cz) for creating this gem!
 
 <br>
 
+## Media 
+Take a look at the base building videos of [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) to get an idea - P.S. they are hilarious!
+
+<iframe alt="base building video by sexy biscuit" width="32%" height="315" src="https://www.youtube.com/embed/0D_I73Jn3G8" frameborder="0" allow="accelerometer;
+ autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe alt="base building video by sexy biscuit" width="32%" height="315" src="https://www.youtube.com/embed/tZISnQW5ms4" frameborder="0" allow="accelerometer; 
+autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe alt="base building video by sexy biscuit" width="32%" height="315" src="https://www.youtube.com/embed/ysLVzh89N_c" frameborder="0" allow="accelerometer; 
+autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<br>
+
 ## Installation
-Download the latest release, unzip the archive into your KingdomComeDeliverance\mods - folder.
-If the installation was succesful you'll see the instructions-message on how to use the mod when the game has been started
-(and a savegame loaded or a new game hast been created).
+Download the latest release, unzip the archive into your KingdomComeDeliverance\mods - folder.  
+If the installation was succesful you'll see the instructions-message on how to use the mod when the game has been started  
+(and a savegame loaded or a new game hast been created).  
 
 ### Using the devmode
-You need to start the game with devmode enabled (the modification won't work otherwise).  
-**In your OS / explorer / shell:** 
+You need to start the game with devmode enabled (the modification won't work otherwise).   
+**In your OS / explorer / shell:**  
 `<Steam>\steamapps\common\KingdomComeDeliverance\Bin\Win64\KingdomCome.exe -devmode`
   
 ### For Steam Users
-The following list of files files need to be stored at: 
-`Steam\steamapps\common\KingdomComeDeliverance\mods\architect\`
+The following list of files files need to be stored at:  
+`Steam\steamapps\common\KingdomComeDeliverance\mods\architect\` 
 - mod.manifest
 - keybinds.cfg
 - Data\architect.pak
