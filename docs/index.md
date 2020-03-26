@@ -30,18 +30,22 @@ There are no DLCs required to use this mod.
 <br>
 
 ## Media 
-<div id="media"></div>
+<div id="media">
 Take a look at the base building videos of [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) to get an idea and how to install and use the modification - p.s. the videos are great!
 
-<iframe alt="base building video by sexy biscuit" width="32%" height="315" src="https://www.youtube.com/embed/0D_I73Jn3G8" frameborder="0" allow="accelerometer;
+<iframe alt="base building video by sexy biscuit" width="48%" height="315" src="https://www.youtube.com/embed/90tNln4SM5w" frameborder="0" allow="accelerometer; 
+autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe alt="base building video by sexy biscuit" width="48%" height="315" src="https://www.youtube.com/embed/0D_I73Jn3G8" frameborder="0" allow="accelerometer;
  autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<iframe alt="base building video by sexy biscuit" width="32%" height="315" src="https://www.youtube.com/embed/tZISnQW5ms4" frameborder="0" allow="accelerometer; 
+<iframe alt="base building video by sexy biscuit" width="48%" height="315" src="https://www.youtube.com/embed/tZISnQW5ms4" frameborder="0" allow="accelerometer; 
 autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<iframe alt="base building video by sexy biscuit" width="32%" height="315" src="https://www.youtube.com/embed/ysLVzh89N_c" frameborder="0" allow="accelerometer; 
+<iframe alt="base building video by sexy biscuit" width="48%" height="315" src="https://www.youtube.com/embed/ysLVzh89N_c" frameborder="0" allow="accelerometer; 
 autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+</div>
 <br>
 
 
