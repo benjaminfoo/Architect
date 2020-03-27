@@ -25,6 +25,7 @@ There are no DLCs required to use this mod.
 <br>
 
 ## News 
+- Version 0.5.4a has been [released!](https://github.com/benjaminfoo/Architect/releases)
 - Version 0.5.3b has been [released!](https://github.com/benjaminfoo/Architect/releases)
 - Version 0.5.3a has been [released!](https://github.com/benjaminfoo/Architect/releases)
 - [Sexy Biscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) has released a two hour stream about town building and using architect on [YouTube](https://www.youtube.com/watch?v=tZISnQW5ms4)
