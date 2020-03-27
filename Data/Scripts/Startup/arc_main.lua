@@ -4,6 +4,9 @@
 --- DateTime: 03.03.2020 01:01
 ---
 
+-- added runtime configuration, basic town management
+Script.ReloadScript("Scripts/Util/arc_runtime.lua")
+
 -- Load simple constants or runtime settings
 Script.ReloadScript("Scripts/Util/arc_constants.lua")
 
@@ -31,11 +34,11 @@ Script.ReloadScript("Scripts/Manager/arc_ConstructionController.lua")
 -- load the resource-system, basic
 Script.ReloadScript("Scripts/Manager/arc_ResourcesController.lua")
 
--- added runtime configuration, basic town management
-Script.ReloadScript("Scripts/Util/arc_runtime.lua")
-
 -- add different kind of ways to use core functions and allow case support
 Script.ReloadScript("Scripts/Util/arc_CammelCaseSupport.lua")
+
+-- ...
+Script.ReloadScript("Scripts/Manager/arc_mechaSlide.lua")
 
 
 -- keybindings as fallback,

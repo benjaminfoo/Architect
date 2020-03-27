@@ -38,15 +38,15 @@ isModeRotation = false
 function rayCastHit()
     System.LogAlways("# rayCastHit start")
 
-    if (previewModelEntity == nil) then
-        return
-    end
-
     local from = player:GetPos();
     from.z = from.z + 1.615;
 
     local dir = System.GetViewCameraDir();
     dir = vecScale(dir, 250);
+
+    if previewModelEntity == nil then
+        previewModelEntity = player
+    end
 
     local hitData = {};
     local hits = Physics.RayWorldIntersection(from, dir, 10, ent_all, player.id, previewModelEntity.id, hitData);
@@ -430,6 +430,41 @@ function toggleEntityLock()
     System.LogAlways("# toggleEntityLock end")
 end
 
+-- Toggles the currently "seen" deletion_lock state
+-- If the entity's deletion_lock property's value equals to zero, it wont be deleted
+-- Also dumps information about the current entity to the console
+function raycastDeletion()
+    System.LogAlways("# raycastDeletion start")
+
+    -- execute a raycast within the players fov
+    hitData = rayCastHit()
+
+    -- if our ray collided with something ...
+    if (hitData ~= nil) then
+
+        -- get the entity from the collision
+        result = hitData.entity;
+
+        -- if there was an entity related to this collision ...
+        if result ~= nil then
+
+            -- toggle the current state (true => false, false => true)
+            result.Properties.deletion_lock = not result.Properties.deletion_lock
+
+            visRes = "Removed entity: " .. tostring(result:GetName()) .. "\n" .. "ID: " .. tostring(hitData.entity:GetRawId())
+
+            System.RemoveEntity(result.id)
+
+            -- output state message
+            Game.SendInfoText(visRes, true, nil, 1)
+
+        end
+
+    end
+
+    System.LogAlways("# raycastDeletion end")
+end
+
 
 -- delete the current entity (the entity which collides with the raycast)
 function deleteRayCastEntityHit()
@@ -594,6 +629,11 @@ end
 -- Also shows the current three buildings from the building set
 function updateSelection()
 
+    if (not config.modEnabled) then
+        log("Mod is disabled - not calling updateBuildings()")
+        return
+    end
+
     bDisableCurrentMessage = true
     fDisplayTimeInSeconds = 10
 
@@ -702,19 +742,20 @@ function reloadall ()
     Script.UnloadScript("Scripts/Manager/arc_ConstructionController.lua")
     Script.UnloadScript("Scripts/Manager/arc_BuildingsManager.lua")
     Script.UnloadScript("Scripts/Manager/arc_CCommandManager.lua")
+    Script.UnloadScript("Scripts/Manager/arc_mechaSlide.lua")
 
     Script.UnloadScript("Scripts/Util/arc_constants.lua")
     Script.UnloadScript("Scripts/Util/arc_utils.lua")
     Script.UnloadScript("Scripts/Util/arc_runtime.lua")
 
-    Script.ReloadScript("Scripts/Manager/arc_UIController.lua")
 
 
     -- reload every script, including /Data and /Mods
     Script.ReloadScripts()
 
+    Script.ReloadScript("Scripts/Manager/arc_UIController.lua")
+    Script.ReloadScript("Scripts/Manager/arc_mechaSlide.lua")
     Script.ReloadScript("Scripts/Manager/arc_BuildingsManager.lua")
-
     Script.ReloadScript("Scripts/Util/arc_constants.lua")
     Script.ReloadScript("Scripts/Util/arc_utils.lua")
     Script.ReloadScript("Scripts/Util/arc_runtime.lua")

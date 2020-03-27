@@ -31,11 +31,18 @@ function showUsage()
                 .. "<font color='#333333' size='18'>\nKey V </font>" .. "\n"
                 .. "<font color='#333333' size='16'>Create construction</font>" .. "\n"
 
+                .. "<font color='#333333' size='18'>\nKey R </font>" .. "\n"
+                .. "<font color='#333333' size='16'>Rotate new construction</font>" .. "\n"
+
                 .. "<font color='#333333' size='18'>\nKey G </font>" .. "\n"
                 .. "<font color='#333333' size='16'>Remove construction</font>" .. "\n"
 
                 .. "<font color='#333333' size='18'>\nKey O </font>" .. "\n"
                 .. "<font color='#333333' size='16'>Toggle deletion of entity-lock</font>" .. "\n"
+
+                .. "<font color='#333333' size='18'>\nKey H </font>" .. "\n"
+                .. "<font color='#333333' size='16'>Enable / disable the mod.</font>" .. "\n"
+
                 .. "\n"
 
                 --[[
@@ -103,3 +110,5 @@ UIAction.RegisterActionListener(architect_init, "", "", "sceneInitListener")
     end
 
 ]]
+
+System.AddCCommand('architect_intro', 'showUsage()', "Shows the intro banner from startup")

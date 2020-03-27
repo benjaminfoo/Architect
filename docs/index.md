@@ -18,6 +18,8 @@ custom constructions like wood-, stone-, coal-, ... -generators which produce re
 Make a backup of your saved games - there is no new save required.  
 There are no DLCs required to use this mod.
 
+If you enjoy this mod send me your screenshots or maybe [buy me a cup of coffee](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PMULUFGTQFAJA&source=url)! 
+
 ##### Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game and the modding sdk!
 
 <br>
@@ -97,11 +99,14 @@ Button MouseWheel down
 Create a new construction  
 Key V
 
+Key R
+Toggle rotation-mode for new construction
+                
 Remove a construction  
 Key G
 
-Lock / unlock construction for deletion  
-Key O  
+Enable / Disable the modification  
+Key H
 
 </div>
 
@@ -432,6 +437,10 @@ This list contains all changes happened during development - the versions should
 <div class="preformat_code">
 - Alpha versions (a) are unstable and in subject of larger changes - expect bugs.  
 - Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).  
+
+changelog 0.5.4a
+- added preview-system for new constructions  
+- added rotation-mode pressing R to toggle - using the mousewheel rotates the preview around the Y-Axis
 
 changelog 0.5.3b
 - updated docs and added about page - https://benjaminfoo.github.io/Architect/  

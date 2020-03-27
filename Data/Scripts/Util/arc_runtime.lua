@@ -5,6 +5,7 @@
 ---
 
 config = {
+    modEnabled = true,
     debugMode = true,
     primary_town_name = "Farkletown",
     primary_town_position = { x = 0, y = 0, z = 0 },
@@ -39,3 +40,40 @@ function MakeSunshine()
     EnvironmentModule.BlendTimeOfDay('cloudless_sunny', 1, 1)
     EnvironmentModule.ForceImmediateWeatherUpdate()
 end
+
+function toggleModState()
+
+    -- toggle the mods state
+    config.modEnabled = not config.modEnabled
+
+    -- define a message for user feedback
+    message = ""
+
+    -- setup message and display it for some seconds
+    if (config.modEnabled) then
+        message = "The mod has been enabled."
+
+        -- init
+        spawnPreview()
+
+    else
+        message = "The mod has been disabled."
+
+        -- shutdown
+
+
+        -- remove preview entity
+        if (previewModelEntity ~= nil) then
+            System.LogAlways("Removing preview ...")
+
+            System.RemoveEntity(previewModelEntity.id)
+            previewModelEntity = nil
+        end
+    end
+
+    Game.SendInfoText(message, true, nil, 3)
+
+end
+
+System.AddCCommand('toggleModState', 'toggleModState()', "toggleModState!")
+System.ExecuteCommand("bind 'h' toggleModState ")
