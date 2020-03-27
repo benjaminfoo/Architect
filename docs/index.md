@@ -175,16 +175,16 @@ You can set a home position and return back any time or set a name for your town
 There is also a statistics command which shows different aspects of your town.
 
 Sets the current player-location as home / town  
-`setHome()`
+`#setHome()`
 
 Sets the town's name to Farkletown  
-`setHomeName("Farkletown")`
+`#setHomeName("Farkletown")`
 
 Returns the player to his home / town  
-`getHome()`
+`#getHome()`
     
 Displays a resume (a list of attributes, like name, town, generated resources) for your current town  
-`showStats()`
+`#showStats()`
 
 <br>
 
@@ -292,58 +292,58 @@ These functions offer advanced usage to the modifications internals, use at your
 <div class="preformat_code">
 All commands are available in upper / lowercase format.
 
-Search(string s) 
+#search(string s) 
 -- Search for entites which name contains string s
 -- For example: #search("stone") - emits a list of entities containing the string "stone"
 -- Use Select to use one of your findings (without using the mouse wheel)
 
-Select(nr)
+#select(nr)
 -- selects the construction at Number nr and updates the user interface
 
-SelectFirst()  
+#selectFirst()  
 -- selects the first construction and updates the user interface
 
-SelectLast()
+#selectLast()
 -- selects the last construction and updates the user interface
 
-showall() 
+#showall() 
 -- lists all constructions to the ingame console
 
-deleteall()
+#deleteall()
 -- deletes all constructions you've created
 
-deleteAt(index)()
+#deleteAt(index)()
 -- delete the construction at number index (use #showall())
 
-toggleEntityLock()
+#toggleEntityLock()
 -- toggles the deletion_lock-value of the currently faced entity
 -- If true, the entity wont get deleted, no matter which function / mechanism is used,
 -- if false, the entity will get deleted (default) 
 
-reloadall()
+#reloadall()
 -- Reloads the source files of the project at runtime
 
-rayCastHit()
+#rayCastHit()
 -- Use a raycast to determine entities in front of the player
 
-lockAll()
+#lockAll()
 -- locks all constructions from the user
 -- by pressing 'O' you're locking the currently faced entity, which makes it undeleteable, press again to retoggle the state
 -- this method is useful when used after loading a saved game - this way you can keep your changes 
 
-unlockAll()
+#unlockAll()
 -- unlocks all constructions from the user
 
-setHome()
+#setHome()
 -- Sets the current player-location as home / town
 
-setHomeName("Farkletown")
+#setHomeName("Farkletown")
 -- Sets the town's name
 
-getHome()
+#getHome()
 -- Returns the player to his home / town
     
-showStats()
+#showStats()
 -- Displays a resume (a list of attributes, like name, town, generated resources) for your current town
 
 </div>
@@ -361,42 +361,42 @@ Use `architect_help` to get an overview of the available console- and lua- comma
 <br>  
   
 <img src="assets/img/howto/001_help.jpg">  
-There are new methods in order to look for constructions like `search(''), select(nr), ...`
+There are new methods in order to look for constructions like `#search(''), #select(nr), ...`
   
 <br>  
   
 <img src="assets/img/howto/002_help_lua.jpg">  
-The latest release also contains basic town management functionalities with `setHome(), setHomeName(name), getHome or showStats()`
+The latest release also contains basic town management functionalities with `#setHome(), #setHomeName(name), #getHome or s#howStats()`
   
 <br>  
   
 ### Navigation    
 <img src="assets/img/howto/005_search_1.jpg">  
-Use `search("...")` to find all constructions which contain the search-param.
+Use `#search("...")` to find all constructions which contain the search-param.
     
 <br>  
   
 <img src="assets/img/howto/006_search_and_Select.jpg">  
-Its also possible to wrap multiple method calls, like `select(search("smithery")` which search and returns the first construction which contains "smithery" as a part of its name.
+Its also possible to wrap multiple method calls, like `#select(search("smithery")` which search and returns the first construction which contains "smithery" as a part of its name.
 
 <br>  
 
 ### Locking
 <img src="assets/img/howto/010_locking.jpg">  
-Use `lockAll()` to activate the deletion-lock of all constructions.
+Use `#lockAll()` to activate the deletion-lock of all constructions.
 
 <br>  
   
 
 <img src="assets/img/howto/011_unlocking.jpg">  
-Use `unlockAll()` to deactivate the deletion-lock of all constructions.
+Use `#unlockAll()` to deactivate the deletion-lock of all constructions.
   
 <br>  
   
 
 ### Town Management
 <img src="assets/img/howto/020_stats.jpg">  
-Use `showStats()` to get an overview of the towns name, owner, position, resources, ...
+Use `#showStats()` to get an overview of the towns name, owner, position, resources, ...
 
 <br>  
  
@@ -406,17 +406,17 @@ Use `showStats()` to get an overview of the towns name, owner, position, resourc
 <br>  
 
 <img src="assets/img/howto/030_home_setHome.jpg">  
-Use `setHome()` to set the current player position as the new towns home position.
+Use `#setHome()` to set the current player position as the new towns home position.
 
 <br>  
 
 <img src="assets/img/howto/031_home_setHomeName.jpg">  
-Use `setHomeName('farkletown')` to set the towns name.
+Use `#setHomeName('farkletown')` to set the towns name.
 
 <br>  
 
 <img src="assets/img/howto/032_home_getHome.jpg">  
-Use `getHome()` returns the player to his previously set home position.
+Use `#getHome()` returns the player to his previously set home position.
 
 <br>  
 <br>
