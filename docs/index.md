@@ -25,16 +25,17 @@ There are no DLCs required to use this mod.
 <br>
 
 ## News 
-- Version 0.5.4a has been [released!](https://github.com/benjaminfoo/Architect/releases)
-- Version 0.5.3b has been [released!](https://github.com/benjaminfoo/Architect/releases)
-- Version 0.5.3a has been [released!](https://github.com/benjaminfoo/Architect/releases)
+- Version 0.5.4a-test has been [released!](https://www.nexusmods.com/kingdomcomedeliverance/mods/958)
+- [Sexy Biscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) has released a new video which reviews the latest features of the architect on [YouTube](https://www.youtube.com/watch?v=f_x-3SbbOfc)
+- Version 0.5.4a has been [released!](https://www.nexusmods.com/kingdomcomedeliverance/mods/958)
+- Version 0.5.3b has been [released!](https://www.nexusmods.com/kingdomcomedeliverance/mods/958)
+- Version 0.5.3a has been [released!](https://www.nexusmods.com/kingdomcomedeliverance/mods/958)
 - [Sexy Biscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) has released a two hour stream about town building and using architect on [YouTube](https://www.youtube.com/watch?v=tZISnQW5ms4)
-- Version 0.5.2b has been [released!](https://github.com/benjaminfoo/Architect/releases)
+- Version 0.5.2b has been [released!](https://www.nexusmods.com/kingdomcomedeliverance/mods/958)
 - [Sexy Biscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) has released another great gameplay video using the architect modification on [YouTube](https://www.youtube.com/watch?v=ysLVzh89N_c)
 - [Sexy Biscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) has released an overview on how to install and use the architect modification on [YouTube](https://www.youtube.com/watch?v=0D_I73Jn3G8)
 - The german computer magazine [Gamestar](www.gamestar.de/) wrote an article about the [architect!](https://www.gamestar.de/artikel/mod-kingdom-come-eigenen-doerfer-burgen-bauen,3355483.html)
-- Version 0.51a has been [released!](https://github.com/benjaminfoo/Architect/releases)
-- Version 0.5a has been [released!](https://github.com/benjaminfoo/Architect/releases)
+- Version 0.51a has been [released!](https://www.nexusmods.com/kingdomcomedeliverance/mods/958)
 
 <br>
 
@@ -100,8 +101,8 @@ Button MouseWheel down
 Create a new construction  
 Key V
 
-Key R
 Toggle rotation-mode for new construction
+Key R
                 
 Remove a construction  
 Key G
@@ -286,7 +287,7 @@ The following list contains regular console commands
 
 ### Lua functions
 These functions offer advanced usage to the modifications internals, use at your own risk and save the game. \
-In order to execute a lua function, you have to prepend a '#'-character to execute it.
+**In order to execute a lua function, you have to prepend a '#'-character to execute it.**
 
 <div class="preformat_code">
 All commands are available in upper / lowercase format.
@@ -438,6 +439,12 @@ This list contains all changes happened during development - the versions should
 <div class="preformat_code">
 - Alpha versions (a) are unstable and in subject of larger changes - expect bugs.  
 - Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).  
+
+
+
+changelog 0.5.4a-test
+- its now safe to enable / disable the mod
+- The functionality is now limited to mod-state - except console commands
 
 changelog 0.5.4a
 - added preview-system for new constructions  

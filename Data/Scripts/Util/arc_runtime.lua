@@ -43,6 +43,8 @@ end
 
 function toggleModState()
 
+    -- if not config.modEnabled then return end
+
     -- toggle the mods state
     config.modEnabled = not config.modEnabled
 
@@ -61,9 +63,8 @@ function toggleModState()
 
         -- shutdown
 
-
         -- remove preview entity
-        if (previewModelEntity ~= nil) then
+        if (previewModelEntity ~= nil and previewModelEntity ~= player) then
             System.LogAlways("Removing preview ...")
 
             System.RemoveEntity(previewModelEntity.id)

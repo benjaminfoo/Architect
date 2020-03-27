@@ -34,7 +34,7 @@ function UIController_OnUpdate()
 
     rayCastHitOnUpdate()
 
-    onSlideUpdate()
+    -- onSlideUpdate()
 
 end
 

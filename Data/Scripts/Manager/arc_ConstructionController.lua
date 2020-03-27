@@ -36,6 +36,12 @@ isModeRotation = false
 -- (By shooting a raycast from the players camera to a point in front of him,
 -- if something intersects, there is some kind of entity)
 function rayCastHit()
+
+    -- if the mod is not enabled, dont do anything -- needs refactoring
+    if not config.modEnabled then
+        return
+    end
+
     System.LogAlways("# rayCastHit start")
 
     local from = player:GetPos();
@@ -63,7 +69,7 @@ end
 function rayCastHitOnUpdate()
     -- System.LogAlways("# rayCastHit start")
 
-    if (previewModelEntity == nil) then
+    if (previewModelEntity == nil or previewModelEntity == player) then
         return
     end
 
@@ -126,6 +132,12 @@ end
 
 function spawnPreview()
 
+    -- if the mod is not enabled, dont do anything -- needs refactoring
+    if not config.modEnabled then
+        return
+    end
+
+
     -- construct the entity and setup its parameters
     local spawnParams = {}
 
@@ -155,6 +167,8 @@ function spawnPreview()
     spawnParams.name = construction.name
     spawnParams.uuid = uuid()
 
+    System.LogAlways("Spawning preview ..")
+
     -- spawn the new entity
     previewModelEntity = System.SpawnEntity(spawnParams)
 
@@ -162,6 +176,12 @@ end
 
 -- spawn the currently selected entity with the current selection as modelpath
 function SpawnBuildingInstance(line)
+
+    -- if the mod is not enabled, dont do anything -- needs refactoring
+    if not config.modEnabled then
+        return
+    end
+
     System.LogAlways("# SpawnBuildingInstance start")
 
     if (bIndex == "#") then
@@ -397,6 +417,12 @@ end
 -- If the entity's deletion_lock property's value equals to zero, it wont be deleted
 -- Also dumps information about the current entity to the console
 function toggleEntityLock()
+
+    -- if the mod is not enabled, dont do anything -- needs refactoring
+    if not config.modEnabled then
+        return
+    end
+
     System.LogAlways("# toggleEntityLock start")
 
     -- execute a raycast within the players fov
@@ -430,10 +456,14 @@ function toggleEntityLock()
     System.LogAlways("# toggleEntityLock end")
 end
 
--- Toggles the currently "seen" deletion_lock state
--- If the entity's deletion_lock property's value equals to zero, it wont be deleted
--- Also dumps information about the current entity to the console
+--
 function raycastDeletion()
+
+    -- if the mod is not enabled, dont do anything -- needs refactoring
+    if not config.modEnabled then
+        return
+    end
+
     System.LogAlways("# raycastDeletion start")
 
     -- execute a raycast within the players fov
@@ -469,6 +499,11 @@ end
 -- delete the current entity (the entity which collides with the raycast)
 function deleteRayCastEntityHit()
     System.LogAlways("# deleteRayCastEntityHit start")
+
+    -- if the mod is not enabled, dont do anything -- needs refactoring
+    if not config.modEnabled then
+        return
+    end
 
     hitData = rayCastHit()
 
@@ -556,6 +591,11 @@ bIndex = 1
 --[[ Increments the index of the currently selected building when the player uses the mousewheel (up) ]]
 function bIndexInc()
 
+    -- if the mod is not enabled, dont do anything -- needs refactoring
+    if not config.modEnabled then
+        return
+    end
+
     if (bIndex == "#") then
         bIndex = 1
     end
@@ -588,6 +628,11 @@ end
 
 --[[ Decrements the index of the currently selected building when the player uses the mousewheel (up)  ]]
 function bIndexDec()
+
+    -- if the mod is not enabled, dont do anything -- needs refactoring
+    if not config.modEnabled then
+        return
+    end
 
     if (bIndex == "#") then
         bIndex = 1
@@ -640,7 +685,7 @@ function updateSelection()
     currentConstruction = parameterizedConstructions[bIndex]
 
     -- previewModelEntity = currentConstruction
-    if (previewModelEntity ~= nil) then
+    if (previewModelEntity ~= nil and previewModelEntity ~= player) then
         System.RemoveEntity(previewModelEntity.id)
     end
 
@@ -809,6 +854,11 @@ function Select(newIndex)
 end
 
 function toggleRotationMode()
+
+    if not config.modEnabled then
+        return
+    end
+
     isModeRotation = not isModeRotation
     previewRotationAroundY = 0
 end

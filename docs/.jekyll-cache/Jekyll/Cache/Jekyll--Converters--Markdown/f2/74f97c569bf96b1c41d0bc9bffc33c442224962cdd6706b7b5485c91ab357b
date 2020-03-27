@@ -1,10 +1,12 @@
-I"!S<h1 id="welcome">Welcome!</h1>
+I"sW<h1 id="welcome">Welcome!</h1>
 <p>This project introduces new features and mechanics to <a href="https://www.kingdomcomerpg.com/">kingdom come deliverance</a> like a construction-system,
 a resource-system, a basic crafting-system, town management, etc.</p>
 
 <p>This means that the player can create and spawn constructions - this ranges from simple props to flora &amp; fauna, 
 vegetation, houses, walls, towers, tents, chairs, benches, beds, etc. almost anywhere in the world. Its also possible to build 
 custom constructions like wood-, stone-, coal-, … -generators which produce resources or items over time.</p>
+
+<h5 id="if-you-enjoy-this-mod-send-me-your-screenshots--videos-or-maybe-buy-me-a-cup-of-coffee---thanks-to-all-of-you">If you enjoy this mod send me your <a href="https://www.nexusmods.com/kingdomcomedeliverance/mods/958?tab=images">screenshots / videos</a> or maybe <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=PMULUFGTQFAJA&amp;source=url">buy me a cup of coffee</a> - thanks to all of you!</h5>
 
 <p><br /></p>
 
@@ -18,12 +20,15 @@ There are no DLCs required to use this mod.</p>
 
 <h2 id="news">News</h2>
 <ul>
+  <li>Version 0.5.4a has been <a href="https://github.com/benjaminfoo/Architect/releases">released!</a></li>
   <li>Version 0.5.3b has been <a href="https://github.com/benjaminfoo/Architect/releases">released!</a></li>
+  <li>Version 0.5.3a has been <a href="https://github.com/benjaminfoo/Architect/releases">released!</a></li>
+  <li><a href="https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ">Sexy Biscuit</a> has released a two hour stream about town building and using architect on <a href="https://www.youtube.com/watch?v=tZISnQW5ms4">YouTube</a></li>
   <li>Version 0.5.2b has been <a href="https://github.com/benjaminfoo/Architect/releases">released!</a></li>
-  <li><a href="https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ">Sexy Biscuit</a> has released a two hour stream about town building and using architect on <a href="https://www.youtube.com/embed/90tNln4SM5w">YouTube</a></li>
   <li><a href="https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ">Sexy Biscuit</a> has released another great gameplay video using the architect modification on <a href="https://www.youtube.com/watch?v=ysLVzh89N_c">YouTube</a></li>
   <li><a href="https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ">Sexy Biscuit</a> has released an overview on how to install and use the architect modification on <a href="https://www.youtube.com/watch?v=0D_I73Jn3G8">YouTube</a></li>
-  <li>Version 0.5a has been <a href="https://github.com/benjaminfoo/Architect/releases">released!</a></li>
+  <li>The german computer magazine <a href="www.gamestar.de/">Gamestar</a> wrote an article about the <a href="https://www.gamestar.de/artikel/mod-kingdom-come-eigenen-doerfer-burgen-bauen,3355483.html">architect!</a></li>
+  <li>Version 0.51a has been <a href="https://github.com/benjaminfoo/Architect/releases">released!</a></li>
   <li>Version 0.5a has been <a href="https://github.com/benjaminfoo/Architect/releases">released!</a></li>
 </ul>
 
@@ -91,11 +96,14 @@ Button MouseWheel down
 Create a new construction  
 Key V
 
+Key R
+Toggle rotation-mode for new construction
+                
 Remove a construction  
 Key G
 
-Lock / unlock construction for deletion  
-Key O  
+Enable / Disable the modification  
+Key H
 
 </div>
 
@@ -432,6 +440,10 @@ Use <code class="highlighter-rouge">getHome()</code> returns the player to his p
 <div class="preformat_code">
 - Alpha versions (a) are unstable and in subject of larger changes - expect bugs.  
 - Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).  
+
+changelog 0.5.4a
+- added preview-system for new constructions  
+- added rotation-mode pressing R to toggle - using the mousewheel rotates the preview around the Y-Axis
 
 changelog 0.5.3b
 - updated docs and added about page - https://benjaminfoo.github.io/Architect/  
