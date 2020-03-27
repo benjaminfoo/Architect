@@ -12,13 +12,13 @@ This means that the player can create and spawn constructions - this ranges from
 vegetation, houses, walls, towers, tents, chairs, benches, beds, etc. almost anywhere in the world. Its also possible to build 
 custom constructions like wood-, stone-, coal-, ... -generators which produce resources or items over time.
 
+##### If you enjoy this mod send me your [screenshots / videos](https://www.nexusmods.com/kingdomcomedeliverance/mods/958?tab=images) or maybe [buy me a cup of coffee](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PMULUFGTQFAJA&source=url) - thanks to all of you! 
+
 <br>
 
 **Note**  
 Make a backup of your saved games - there is no new save required.  
 There are no DLCs required to use this mod.
-
-If you enjoy this mod send me your screenshots or maybe [buy me a cup of coffee](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PMULUFGTQFAJA&source=url)! 
 
 ##### Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game and the modding sdk!
 
