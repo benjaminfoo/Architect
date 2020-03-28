@@ -23,6 +23,14 @@ end
 
 -- not a real getter though ...
 function GetHome()
+
+    pos = config.primary_town_position
+
+    if pos.x == 0 and pos.y == 0 and pos.z == 0 then
+        System.LogAlways("Error - No town position has been set! Uset setHome() first.")
+        return
+    end
+
     player:SetWorldPos(config.primary_town_position)
     log("Returning to .. " .. config.primary_town_name .. " at " .. Vec2Str(config.primary_town_position))
 end
