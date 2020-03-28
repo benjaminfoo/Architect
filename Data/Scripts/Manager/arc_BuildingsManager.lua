@@ -58,8 +58,15 @@ DEFAULT_PRICE_FLOWER_ADVANCED = 250
 -- set of available constructions
 parameterizedConstructions = {
 
-    -- template for new construction / structure
-    -- { modelPath = "", },
+    -- wells
+    {
+        description = "A part of the butcher-building in ledecko",
+        modelPath = "objects/buildings/houses/neuhof/neuhof_well.cgf",
+    },
+    {
+        description = "A part of the butcher-building in ledecko",
+        modelPath = "objects/buildings/sazava_monastery/sm_garden_well.cgf",
+    },
 
 
     -- in dev
@@ -321,6 +328,7 @@ parameterizedConstructions = {
 
 
     -- props / stairs
+
     {
         description = "A wooden stair",
         modelPath = "Objects/vehicles/cart/wooden_curb_stairs.cgf",
@@ -328,6 +336,11 @@ parameterizedConstructions = {
     {
         description = "A wooden stair",
         modelPath = "Objects/structures/stairs/wooden_stairs_b.cgf",
+    },
+
+    {
+        description = "Multiple levels of stairs and scaffolding.",
+        modelPath = "objects/buildings/sazava_monastery/sm_stairs_a.cgf",
     },
 
 
@@ -359,6 +372,20 @@ parameterizedConstructions = {
     {
         description = "A wooden bridge",
         modelPath = "objects/structures/mining_structures/mining_dam_bridge_01.cgf",
+    },
+
+    -- platforms
+    {
+        description = "A part of the butcher-building in ledecko",
+        modelPath = "objects/buildings/sazava_monastery/sm_platform_a.cgf",
+    },
+    {
+        description = "A part of the butcher-building in ledecko",
+        modelPath = "objects/buildings/sazava_monastery/sm_platform_b.cgf",
+    },
+    {
+        description = "A part of the butcher-building in ledecko",
+        modelPath = "objects/buildings/sazava_monastery/sm_platform_c.cgf",
     },
 
     -- bath tents
@@ -659,6 +686,26 @@ parameterizedConstructions = {
 
 
     -- buildings / sheds
+    {
+        description = "A part of the butcher-building in ledecko",
+        modelPath = "objects/buildings/houses/ledecko/ledecko_butcher.cgf",
+    },
+    {
+        description = "A part of the butcher-building in ledecko",
+        modelPath = "objects/buildings/houses/ledecko/ledecko_shmithery.cgf",
+    },
+    {
+        description = "A part of the butcher-building in ledecko",
+        modelPath = "objects/buildings/houses/ledecko/ledecko_stairs.cgf",
+    },
+    {
+        description = "A part of the butcher-building in ledecko",
+        modelPath = "objects/buildings/houses/ledecko/sazava_bakery01.cgf",
+    },
+    {
+        description = "A part of the butcher-building in ledecko",
+        modelPath = "objects/buildings/houses/ledecko/sazava_bakery02.cgf",
+    },
     {
         description = "A shed made out of wood and stone. ",
         modelPath = "objects/buildings/houses/shed/shed_01.cgf",
@@ -1096,6 +1143,20 @@ parameterizedConstructions = {
 
 
     -- decorative
+
+    -- props - things which are used in a tavern
+    { modelPath = "objects/props/tavern_things/beer_barrel.cgf", },
+    { modelPath = "objects/props/tavern_things/bowl_clear.cgf", },
+    { modelPath = "objects/props/tavern_things/wood_tankard.cgf", },
+    { modelPath = "objects/props/tavern_things/wood_tankard_full.cgf", },
+    { modelPath = "objects/props/tavern_things/wooden_stein.cgf", },
+
+
+    -- props - target for bow & arrow training
+    { modelPath = "objects/props/target/target.cgf", },
+    { modelPath = "objects/props/target/target_stand.cgf", },
+
+
     -- decorative - candles
     {
         description = "A small candle.",
@@ -1382,7 +1443,20 @@ parameterizedConstructions = {
     },
     {
         modelPath = "objects/props/construction/traffic_cone.cgf",
-    }
+    },
+
+    -- misc misc
+
+    {
+        description = "A stream of water, great for building rivers.",
+        modelPath = "objects/nature/stream_edge/stream_water_v4_a.cgf",
+    },
+
+
+    {
+        description = "A scarecrow to scare crows.",
+        modelPath = "objects/props/scarecrow/scarecrow.cgf",
+    },
 
 }
 

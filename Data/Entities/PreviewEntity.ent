@@ -1,0 +1,4 @@
+<Entity
+        Name="PreviewEntity"
+        Script="Scripts/Entities/arc_PreviewEntity.lua"
+/>

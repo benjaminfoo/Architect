@@ -142,7 +142,7 @@ function spawnPreview()
     local spawnParams = {}
 
     -- use arc_BasicBuildingEntity.lua as type for static constructions
-    spawnParams.class = "BasicEntity"
+    spawnParams.class = "PreviewEntity"
 
     -- use arc_DynamicBuildingEntity.lua as type for constructions with any kind of functionality
     -- spawnParams.class = "DynamicBuildingEntity"
@@ -152,8 +152,6 @@ function spawnPreview()
 
     -- setup naming and serialization
     spawnParams.properties = {}
-    spawnParams.properties.bSaved_by_game = 1
-    spawnParams.properties.bSerialize = 1
 
     -- use the input of %line if provided, else use the current building index for the selection of the building
     -- if(line ~= nil) then modelPath = line else  modelPath = parameterizedConstructions[bIndex] end
@@ -730,6 +728,11 @@ function updateSelection()
             nil,
             fDisplayTimeInSeconds
     )
+
+    -- wh_ui_CopyrightMsgLeft = \n\n\n\nwood:233  money:100  food:12  water:700
+    wh_ui_CopyrightMsgLeft = message
+
+
 end
 
 
