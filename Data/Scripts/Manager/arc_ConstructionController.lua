@@ -668,9 +668,37 @@ function bIndexDec()
 end
 
 
+
+-- this method can be used to visualize multiple lines on the screen. ... ........ :)
+function showUI()
+
+    padding = "     "
+
+    newMessage = ""
+
+    paddedIndex = 0
+
+    -- for i=10,1,-1 do print(i) end
+
+    for i = 0, 9 do
+
+        paddedIndex = i + bIndex
+        newMessage = padding .. tostring(paddedIndex) .. ". - " .. parameterizedConstructions[paddedIndex].name .. '\n' .. newMessage
+
+    end
+
+    newMessage = "\n\n\n" .. newMessage
+
+    System.SetCVar("wh_ui_CopyrightMsgLeft", newMessage .. " aaaa \n bbbbb")
+
+end
+
+
 -- This method updates the current modelPath using the building-index
 -- Also shows the current three buildings from the building set
 function updateSelection()
+
+    -- showUI()
 
     if (not config.modEnabled) then
         log("Mod is disabled - not calling updateBuildings()")
