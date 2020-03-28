@@ -1,6 +1,6 @@
 -- warps the player to the raycasts hit
 ---- massive cheat, not included by default - but its fun :)
-function warpTo(newPos)
+function warpTo()
     System.LogAlways("# warpTo start")
 
     local origin = player:GetPos();
@@ -13,13 +13,6 @@ function warpTo(newPos)
 
     local hitData = {};
     local hitCount = Physics.RayWorldIntersection(origin, direction, 10, ent_all, skip, nil, hitData);
-
-    --[[
-        System.LogAlways("hits=" .. tostring(hits))
-        System.LogAlways("found ent=" .. tostring(hitData[1].pos.x))
-        System.LogAlways("found ent=" .. tostring(hitData[1].pos.y))
-        System.LogAlways("found ent=" .. tostring(hitData[1].pos.z))
-    ]]
 
     if hitCount > 0 then
         local entity = hitData[1]

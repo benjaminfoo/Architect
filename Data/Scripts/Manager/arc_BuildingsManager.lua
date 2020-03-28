@@ -26,6 +26,7 @@
 --- generatorItemCosts  - the costs for producing this item (a set of resources and amounts)
 --- generatorCooldown   - the length of the intervall after an item gets generated passievly
 --- generatorItemAmount - the amount of items the user recieves after an intervall
+--- generatorCapacity   - the maximum amount this generator can produce ( value = -1 means unlimited)
 ---
 --- Note: constructions which only contain a modelPath are handled as static entites (no functionality, just a model + collider + manged in savegames)
 ---
@@ -59,13 +60,24 @@ DEFAULT_PRICE_FLOWER_ADVANCED = 250
 parameterizedConstructions = {
 
     -- wells
+
+    --
     {
-        description = "A part of the butcher-building in ledecko",
+        description = "A well which provides water.",
         modelPath = "objects/buildings/houses/neuhof/neuhof_well.cgf",
+        saveable = true,
+        generator = true, generatorOnUse = false,
+        generatorItem = "water", generatorItemAmount = 1, generatorCapacity = -1,
+        generatorCooldown = 3, generatorItemCosts = { groschen = 1500 },
     },
+
     {
         description = "A part of the butcher-building in ledecko",
         modelPath = "objects/buildings/sazava_monastery/sm_garden_well.cgf",
+        saveable = true,
+        generator = true, generatorOnUse = false,
+        generatorItem = "water", generatorItemAmount = 1, generatorCapacity = -1,
+        generatorCooldown = 3, generatorItemCosts = { groschen = 1500 }
     },
 
 
