@@ -48,6 +48,16 @@ DESC_CAT_GROUP_SHELVES = "A group of shelves and items"
 DESC_CAT_GRASS_GROUP = "Grass patches"
 DESC_CAT_GROUP_BARRELS = "A group of barrels."
 
+----------------------------------
+-- Pricing and groschen details --
+----------------------------------
+DEFAULT_PRICING_CATEGORY_1 = { 5, 249 }
+DEFAULT_PRICING_CATEGORY_2 = { 250, 999 }
+DEFAULT_PRICING_CATEGORY_3 = { 1000, 1999 }
+DEFAULT_PRICING_CATEGORY_4 = { 2000, 4999 }
+DEFAULT_PRICING_CATEGORY_5 = { 5000, 10000 }
+DEFAULT_PRICING_CATEGORY_6 = { 10001 }
+
 -- category prices until further balancing happened
 DEFAULT_PRICE_BEDS = 250
 DEFAULT_PRICE_CHAIRS = 250
@@ -59,9 +69,184 @@ DEFAULT_PRICE_FLOWER_ADVANCED = 250
 -- set of available constructions
 parameterizedConstructions = {
 
-    -- wells
+    -- constructions which are under active development are the first in this list
+    -- dev misc
 
-    --
+
+    {
+        modelPath = "objects/props/ceramics/bowl_03.cgf",
+    },
+
+    {
+        modelPath = "objects/props/ceramics/bowl_05.cgf",
+    },
+
+    {
+        modelPath = "objects/props/ceramics/vase_01.cgf",
+    },
+
+    {
+        modelPath = "objects/props/ceramics/vase_03.cgf",
+    },
+
+    {
+        modelPath = "objects/props/ceramics/vase_05.cgf",
+    },
+    {
+        modelPath = "objects/props/ceramics/demijohn_01.cgf",
+    },
+    {
+        modelPath = "objects/props/ceramics/demijohn_02.cgf",
+    },
+    {
+        modelPath = "objects/props/ceramics/pot_01.cgf",
+    },
+    {
+        modelPath = "objects/props/ceramics/pot_02.cgf",
+    },
+    {
+        modelPath = "objects/props/ceramics/pan_01.cgf",
+    },
+    {
+        modelPath = "objects/props/ceramics/pan_02.cgf",
+    },
+    {
+        modelPath = "objects/props/ceramics/ceramics_set_basket_01.cgf",
+    },
+
+    {
+        modelPath = "objects/props/ceramics/ceramics_set_table_02.cgf",
+    },
+
+    {
+        modelPath = "objects/props/ceramics/ceramics_set_table_03.cgf",
+    },
+
+
+    {
+        modelPath = "objects/props/coal/coal_pile_c.cgf",
+    },
+
+
+    {
+        modelPath = "objects/props/clothes_line/clothes_line_01_a_deform.cgf",
+    },
+
+
+    {
+        modelPath = "objects/props/clothes_line/clothes_line_01_a_deform.cgf",
+    },
+
+
+    {
+        modelPath = "objects/props/clothes_line/clothes_line_02.cgf",
+    },
+
+    {
+        modelPath = "objects/props/clothes_line/clothes_line_02f.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/lamp/lamp_01_wearable.cgf",
+    },
+    {
+        modelPath = "objects/props/misc/lamp/lamp_01.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/pillow/pillow.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/sack_leather/sack_leather.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/church_props/chalice_01.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/church_props/chalice_glass_01.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/church_props/chalice_glass_02.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/church_props/chalice_gold_01.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/church_props/chalice_gold_02.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/church_props/chalice_silver_01.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/church_props/chalice_silver_02.cgf",
+    },
+
+
+    {
+        modelPath = "objects/props/wooden_benches/wood_bench_single.cgf",
+    },
+
+    {
+        modelPath = "objects/props/wooden_benches/wood_bench_composite.cgf",
+    },
+
+    {
+        modelPath = "objects/props/wooden_bins/baskets/basket_01_angular/basket_01_angular.cgf",
+    },
+
+
+    {
+        modelPath = "objects/props/wooden_bins/baskets/basket_02/basket_02.cgf",
+    },
+
+    {
+        modelPath = "objects/props/wooden_bins/baskets/basket_04/basket_04.cgf",
+    },
+    {
+        modelPath = "objects/props/wooden_bins/baskets/basket_05/basket_05.cgf",
+    },
+    {
+        modelPath = "objects/props/wooden_bins/bucket/bucket_water.cgf",
+    },
+    {
+        modelPath = "objects/props/wooden_bins/water_tub/water_tub_wide_water.cgf",
+    },
+
+    {
+        modelPath = "objects/props/wooden_bins/water_tub/water_tube_clean_water.cgf",
+    },
+
+    {
+        modelPath = "objects/props/maps/map.cgf",
+    },
+
+    -- generator entity
+    {
+        description = "A hive for bees..",
+        modelPath = "objects/props/hive/hive_a.cgf",
+        saveable = true,
+        generator = true, generatorOnUse = false,
+        generatorItem = "honey", generatorItemAmount = 1, generatorCapacity = -1,
+        generatorCooldown = 30, generatorItemCosts = { groschen = 750 },
+    },
+    {
+        description = "A hive for bees..",
+        modelPath = "objects/props/hive/bee_skep_1.cgf",
+        saveable = true,
+        generator = true, generatorOnUse = false,
+        generatorItem = "honey", generatorItemAmount = 1, generatorCapacity = -1,
+        generatorCooldown = 30, generatorItemCosts = { groschen = 750 },
+    },
+
+    -- wells
     {
         description = "A well which provides water.",
         modelPath = "objects/buildings/houses/neuhof/neuhof_well.cgf",

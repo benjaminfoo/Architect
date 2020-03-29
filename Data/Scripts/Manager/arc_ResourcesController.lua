@@ -5,6 +5,13 @@
 --- The ResourcesControler defines basic and advanced resource operations.
 ---
 
+-- Every resource should have a use!
+
+-- Wood = can be used for building or crafting
+-- Stone = -||-
+
+-- What to do with coal?
+-- What to do with linen?
 resources = {
 
     -- basic resources
@@ -25,6 +32,11 @@ resources = {
 
     cords = 0,
     linen = 0,
+
+    -- new items
+    honey = 0,
+
+    silver = 0,
 
 
     -- Other items:
