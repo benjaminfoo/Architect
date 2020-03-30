@@ -1,4 +1,4 @@
 <Entity
         Name="ShootingTarget"
-        Script="Scripts/Entities/ShootingTarget.lua"
+        Script="Scripts/Entities/arc_ShootingTarget.lua"
 />

@@ -240,6 +240,10 @@ function SpawnBuildingInstance(line)
             spawnParams.class = "CookingSpotEntity"
         end
 
+        if (construction.reactsToCollision) then
+            spawnParams.class = "ShootingTarget"
+        end
+
         if (construction.useable) then
 
             if (construction.useCategory == "wash") then

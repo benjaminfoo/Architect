@@ -1355,8 +1355,16 @@ parameterizedConstructions = {
 
 
     -- props - target for bow & arrow training
-    { modelPath = "objects/props/target/target.cgf", },
-    { modelPath = "objects/props/target/target_stand.cgf", },
+    {
+        modelPath = "objects/props/target/target.cgf",
+        description = "A target made out of different rings of straw.",
+        reactsToCollision = true
+    },
+
+    {
+        description = "A stand for targets made out of wood",
+        modelPath = "objects/props/target/target_stand.cgf",
+    },
 
 
     -- decorative - candles
