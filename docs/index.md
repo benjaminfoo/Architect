@@ -1,7 +1,5 @@
 ---
-#
-# See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-#
+# index markdown file - main content
 layout: default
 ---
 # Welcome!
@@ -39,26 +37,33 @@ There are no DLCs required to use this mod.
 
 <br>
 
+
 ## Media 
 Take a look at the base building videos of [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) to get an idea and how to install and use the modification - p.s. the videos are great!  
 
 <div id="media">
-<iframe alt="base building video by sexy biscuit" width="48%" height="315" src="https://www.youtube.com/embed/90tNln4SM5w" frameborder="0" allow="accelerometer; 
+
+<iframe class="p-1" width="48%" height="480" src="https://www.youtube.com/embed/f_x-3SbbOfc" frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe class="p-1" width="48%" height="480" src="https://www.youtube.com/embed/gDjDkfh75nU" frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<iframe class="p-1" alt="base building video by sexy biscuit" width="48%" height="480" src="https://www.youtube.com/embed/90tNln4SM5w" frameborder="0" allow="accelerometer; 
 autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<iframe alt="base building video by sexy biscuit" width="48%" height="315" src="https://www.youtube.com/embed/0D_I73Jn3G8" frameborder="0" allow="accelerometer;
+<iframe class="p-1" alt="base building video by sexy biscuit" width="48%" height="480" src="https://www.youtube.com/embed/0D_I73Jn3G8" frameborder="0" allow="accelerometer;
  autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<iframe alt="base building video by sexy biscuit" width="48%" height="315" src="https://www.youtube.com/embed/tZISnQW5ms4" frameborder="0" allow="accelerometer; 
+<iframe class="p-1" alt="base building video by sexy biscuit" width="48%" height="480" src="https://www.youtube.com/embed/tZISnQW5ms4" frameborder="0" allow="accelerometer; 
 autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<iframe alt="base building video by sexy biscuit" width="48%" height="315" src="https://www.youtube.com/embed/ysLVzh89N_c" frameborder="0" allow="accelerometer; 
+<iframe class="p-1" alt="base building video by sexy biscuit" width="48%" height="480" src="https://www.youtube.com/embed/ysLVzh89N_c" frameborder="0" allow="accelerometer; 
 autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 </div>
 
 <br>
-
 
 ## Installation
 Get the latest release from [mods nexus](https://www.nexusmods.com/kingdomcomedeliverance/mods/958) or [github](https://github.com/benjaminfoo/Architect/releases), 
@@ -66,7 +71,7 @@ unzip the archive into your _'KingdomComeDeliverance\mods'_ - folder.
 If the installation was succesful you'll see the instructions-message on how to use the mod when the game has been started  
 (and a savegame loaded or a new game hast been created).  
 
-### Using the devmode
+###  Using the devmode
 You need to start the game with devmode enabled (the modification won't work otherwise).   
 **In your OS / explorer / shell:**  
 `<Steam>\steamapps\common\KingdomComeDeliverance\Bin\Win64\KingdomCome.exe -devmode`
@@ -78,8 +83,10 @@ The following list of files needed to be stored at:
 - keybinds.cfg
 - Data\architect.pak
 
-### For Epic Store Users
-This will get updated soon - however, take a look at the posts section of this site - people using epic were also able to use this mod.
+### Other
+As Im using the steam version I cant provide any details on using how to install and use the mod on the Epic Store or GoG -   
+however, take a look at the nexusmods page because many users reported to get the modification to work. See this [link](https://www.nexusmods.com/kingdomcomedeliverance/mods/958?tab=posts).
+
 
 ### Uninstall / Removal
 Its also safe to remove the mod at any time (if you've already created something within the game, without
@@ -144,7 +151,10 @@ Construction, Construction-Properties
  - name (optional) - the name of the construction - the name will be built from the modelPath
  - modelPath       - the relative path to the *.cgf file, contains the name of the model file and its physics
  - description     - the description for the construction
- - groschenPrice   - the price in groschen the user has to pay upfront (to whom? who recieves this money) => maybe there should be some kind of logic that 50% goes to the king and 50% to the city, and at some point you will get the money back or something like that, some kind of insurence or something
+ - groschenPrice   - the price in groschen the user has to pay upfront (to whom? who recieves this money) 
+                     => maybe there should be some kind of logic that 50% goes to the king and 50% to the city, 
+                        and at some point you will get the money back or something like that, 
+                        some kind of insurence or something
  - sitable         - if true, the player can sit on this object
  - useable         - if true, the player can use the object in some way
  - saveable        - if true, the instance of the construction gets saved
@@ -355,67 +365,67 @@ All commands are available in upper / lowercase format.
 
 
 ### Getting started
-<img src="assets/img/howto/000_help.jpg">  
+<img class="img-fluid" src="assets/img/howto/000_help.jpg">  
 Use `architect_help` to get an overview of the available console- and lua- commands.  
   
 <br>  
   
-<img src="assets/img/howto/001_help.jpg">  
+<img class="img-fluid" src="assets/img/howto/001_help.jpg">  
 There are new methods in order to look for constructions like `#search(''), #select(nr), ...`
   
 <br>  
   
-<img src="assets/img/howto/002_help_lua.jpg">  
+<img class="img-fluid" src="assets/img/howto/002_help_lua.jpg">  
 The latest release also contains basic town management functionalities with `#setHome(), #setHomeName(name), #getHome or s#howStats()`
   
 <br>  
   
 ### Navigation    
-<img src="assets/img/howto/005_search_1.jpg">  
+<img class="img-fluid" src="assets/img/howto/005_search_1.jpg">  
 Use `#search("...")` to find all constructions which contain the search-param.
     
 <br>  
   
-<img src="assets/img/howto/006_search_and_Select.jpg">  
+<img class="img-fluid" src="assets/img/howto/006_search_and_Select.jpg">  
 Its also possible to wrap multiple method calls, like `#select(search("smithery")` which search and returns the first construction which contains "smithery" as a part of its name.
 
 <br>  
 
 ### Locking
-<img src="assets/img/howto/010_locking.jpg">  
+<img class="img-fluid" src="assets/img/howto/010_locking.jpg">  
 Use `#lockAll()` to activate the deletion-lock of all constructions.
 
 <br>  
   
 
-<img src="assets/img/howto/011_unlocking.jpg">  
+<img class="img-fluid" src="assets/img/howto/011_unlocking.jpg">  
 Use `#unlockAll()` to deactivate the deletion-lock of all constructions.
   
 <br>  
   
 
 ### Town Management
-<img src="assets/img/howto/020_stats.jpg">  
+<img class="img-fluid" src="assets/img/howto/020_stats.jpg">  
 Use `#showStats()` to get an overview of the towns name, owner, position, resources, ...
 
 <br>  
  
-<img src="assets/img/howto/021_stats.jpg">  
+<img class="img-fluid" src="assets/img/howto/021_stats.jpg">  
 ... and for an overview of all existing generators, etc. 
 
 <br>  
 
-<img src="assets/img/howto/030_home_setHome.jpg">  
+<img class="img-fluid" src="assets/img/howto/030_home_setHome.jpg">  
 Use `#setHome()` to set the current player position as the new towns home position.
 
 <br>  
 
-<img src="assets/img/howto/031_home_setHomeName.jpg">  
+<img class="img-fluid" src="assets/img/howto/031_home_setHomeName.jpg">  
 Use `#setHomeName('farkletown')` to set the towns name.
 
 <br>  
 
-<img src="assets/img/howto/032_home_getHome.jpg">  
+<img class="img-fluid" src="assets/img/howto/032_home_getHome.jpg">  
 Use `#getHome()` returns the player to his previously set home position.
 
 <br>  

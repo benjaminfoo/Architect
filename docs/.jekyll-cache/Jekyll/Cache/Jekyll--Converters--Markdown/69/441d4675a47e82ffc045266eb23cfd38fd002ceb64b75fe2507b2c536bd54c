@@ -1,4 +1,4 @@
-I"sW<h1 id="welcome">Welcome!</h1>
+I"�[<h1 id="welcome">Welcome!</h1>
 <p>This project introduces new features and mechanics to <a href="https://www.kingdomcomerpg.com/">kingdom come deliverance</a> like a construction-system,
 a resource-system, a basic crafting-system, town management, etc.</p>
 
@@ -20,16 +20,17 @@ There are no DLCs required to use this mod.</p>
 
 <h2 id="news">News</h2>
 <ul>
-  <li>Version 0.5.4a has been <a href="https://github.com/benjaminfoo/Architect/releases">released!</a></li>
-  <li>Version 0.5.3b has been <a href="https://github.com/benjaminfoo/Architect/releases">released!</a></li>
-  <li>Version 0.5.3a has been <a href="https://github.com/benjaminfoo/Architect/releases">released!</a></li>
+  <li>Version 0.5.4a-test has been <a href="https://www.nexusmods.com/kingdomcomedeliverance/mods/958">released!</a></li>
+  <li><a href="https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ">Sexy Biscuit</a> has released a new video which reviews the latest features of the architect on <a href="https://www.youtube.com/watch?v=f_x-3SbbOfc">YouTube</a></li>
+  <li>Version 0.5.4a has been <a href="https://www.nexusmods.com/kingdomcomedeliverance/mods/958">released!</a></li>
+  <li>Version 0.5.3b has been <a href="https://www.nexusmods.com/kingdomcomedeliverance/mods/958">released!</a></li>
+  <li>Version 0.5.3a has been <a href="https://www.nexusmods.com/kingdomcomedeliverance/mods/958">released!</a></li>
   <li><a href="https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ">Sexy Biscuit</a> has released a two hour stream about town building and using architect on <a href="https://www.youtube.com/watch?v=tZISnQW5ms4">YouTube</a></li>
-  <li>Version 0.5.2b has been <a href="https://github.com/benjaminfoo/Architect/releases">released!</a></li>
+  <li>Version 0.5.2b has been <a href="https://www.nexusmods.com/kingdomcomedeliverance/mods/958">released!</a></li>
   <li><a href="https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ">Sexy Biscuit</a> has released another great gameplay video using the architect modification on <a href="https://www.youtube.com/watch?v=ysLVzh89N_c">YouTube</a></li>
   <li><a href="https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ">Sexy Biscuit</a> has released an overview on how to install and use the architect modification on <a href="https://www.youtube.com/watch?v=0D_I73Jn3G8">YouTube</a></li>
   <li>The german computer magazine <a href="www.gamestar.de/">Gamestar</a> wrote an article about the <a href="https://www.gamestar.de/artikel/mod-kingdom-come-eigenen-doerfer-burgen-bauen,3355483.html">architect!</a></li>
-  <li>Version 0.51a has been <a href="https://github.com/benjaminfoo/Architect/releases">released!</a></li>
-  <li>Version 0.5a has been <a href="https://github.com/benjaminfoo/Architect/releases">released!</a></li>
+  <li>Version 0.51a has been <a href="https://www.nexusmods.com/kingdomcomedeliverance/mods/958">released!</a></li>
 </ul>
 
 <p><br /></p>
@@ -38,17 +39,24 @@ There are no DLCs required to use this mod.</p>
 <p>Take a look at the base building videos of <a href="https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ">sexybiscuit</a> to get an idea and how to install and use the modification - p.s. the videos are great!</p>
 
 <div id="media">
-<iframe alt="base building video by sexy biscuit" width="48%" height="315" src="https://www.youtube.com/embed/90tNln4SM5w" frameborder="0" allow="accelerometer; 
+
+<iframe width="48%" height="480" src="https://www.youtube.com/embed/f_x-3SbbOfc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<iframe width="48%" height="480" src="https://www.youtube.com/embed/gDjDkfh75nU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<iframe alt="base building video by sexy biscuit" width="48%" height="480" src="https://www.youtube.com/embed/90tNln4SM5w" frameborder="0" allow="accelerometer; 
 autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
-<iframe alt="base building video by sexy biscuit" width="48%" height="315" src="https://www.youtube.com/embed/0D_I73Jn3G8" frameborder="0" allow="accelerometer;
+<iframe alt="base building video by sexy biscuit" width="48%" height="480" src="https://www.youtube.com/embed/0D_I73Jn3G8" frameborder="0" allow="accelerometer;
  autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
-<iframe alt="base building video by sexy biscuit" width="48%" height="315" src="https://www.youtube.com/embed/tZISnQW5ms4" frameborder="0" allow="accelerometer; 
+<iframe alt="base building video by sexy biscuit" width="48%" height="480" src="https://www.youtube.com/embed/tZISnQW5ms4" frameborder="0" allow="accelerometer; 
 autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
-<iframe alt="base building video by sexy biscuit" width="48%" height="315" src="https://www.youtube.com/embed/ysLVzh89N_c" frameborder="0" allow="accelerometer; 
+<iframe alt="base building video by sexy biscuit" width="48%" height="480" src="https://www.youtube.com/embed/ysLVzh89N_c" frameborder="0" allow="accelerometer; 
 autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+
 
 </div>
 
@@ -96,8 +104,8 @@ Button MouseWheel down
 Create a new construction  
 Key V
 
-Key R
 Toggle rotation-mode for new construction
+Key R
                 
 Remove a construction  
 Key G
@@ -169,16 +177,16 @@ You can set a home position and return back any time or set a name for your town
 There is also a statistics command which shows different aspects of your town.</p>
 
 <p>Sets the current player-location as home / town<br />
-<code class="highlighter-rouge">setHome()</code></p>
+<code class="highlighter-rouge">#setHome()</code></p>
 
 <p>Sets the town’s name to Farkletown<br />
-<code class="highlighter-rouge">setHomeName("Farkletown")</code></p>
+<code class="highlighter-rouge">#setHomeName("Farkletown")</code></p>
 
 <p>Returns the player to his home / town<br />
-<code class="highlighter-rouge">getHome()</code></p>
+<code class="highlighter-rouge">#getHome()</code></p>
 
 <p>Displays a resume (a list of attributes, like name, town, generated resources) for your current town<br />
-<code class="highlighter-rouge">showStats()</code></p>
+<code class="highlighter-rouge">#showStats()</code></p>
 
 <p><br /></p>
 
@@ -290,63 +298,63 @@ like the ingredients of a recipe. The implementation is not finished yet.</p>
 
 <h3 id="lua-functions">Lua functions</h3>
 <p>These functions offer advanced usage to the modifications internals, use at your own risk and save the game. <br />
-In order to execute a lua function, you have to prepend a ‘#’-character to execute it.</p>
+<strong>In order to execute a lua function, you have to prepend a ‘#’-character to execute it.</strong></p>
 
 <div class="preformat_code">
 All commands are available in upper / lowercase format.
 
-Search(string s) 
+#search(string s) 
 -- Search for entites which name contains string s
 -- For example: #search("stone") - emits a list of entities containing the string "stone"
 -- Use Select to use one of your findings (without using the mouse wheel)
 
-Select(nr)
+#select(nr)
 -- selects the construction at Number nr and updates the user interface
 
-SelectFirst()  
+#selectFirst()  
 -- selects the first construction and updates the user interface
 
-SelectLast()
+#selectLast()
 -- selects the last construction and updates the user interface
 
-showall() 
+#showall() 
 -- lists all constructions to the ingame console
 
-deleteall()
+#deleteall()
 -- deletes all constructions you've created
 
-deleteAt(index)()
+#deleteAt(index)()
 -- delete the construction at number index (use #showall())
 
-toggleEntityLock()
+#toggleEntityLock()
 -- toggles the deletion_lock-value of the currently faced entity
 -- If true, the entity wont get deleted, no matter which function / mechanism is used,
 -- if false, the entity will get deleted (default) 
 
-reloadall()
+#reloadall()
 -- Reloads the source files of the project at runtime
 
-rayCastHit()
+#rayCastHit()
 -- Use a raycast to determine entities in front of the player
 
-lockAll()
+#lockAll()
 -- locks all constructions from the user
 -- by pressing 'O' you're locking the currently faced entity, which makes it undeleteable, press again to retoggle the state
 -- this method is useful when used after loading a saved game - this way you can keep your changes 
 
-unlockAll()
+#unlockAll()
 -- unlocks all constructions from the user
 
-setHome()
+#setHome()
 -- Sets the current player-location as home / town
 
-setHomeName("Farkletown")
+#setHomeName("Farkletown")
 -- Sets the town's name
 
-getHome()
+#getHome()
 -- Returns the player to his home / town
     
-showStats()
+#showStats()
 -- Displays a resume (a list of attributes, like name, town, generated resources) for your current town
 
 </div>
@@ -357,66 +365,66 @@ showStats()
 <div id="screenshots"></div>
 
 <h3 id="getting-started">Getting started</h3>
-<p><img src="assets/img/howto/000_help.jpg" /><br />
+<p><img class="img-fluid" src="assets/img/howto/000_help.jpg" /><br />
 Use <code class="highlighter-rouge">architect_help</code> to get an overview of the available console- and lua- commands.</p>
 
 <p><br /></p>
 
-<p><img src="assets/img/howto/001_help.jpg" /><br />
-There are new methods in order to look for constructions like <code class="highlighter-rouge">search(''), select(nr), ...</code></p>
+<p><img class="img-fluid" src="assets/img/howto/001_help.jpg" /><br />
+There are new methods in order to look for constructions like <code class="highlighter-rouge">#search(''), #select(nr), ...</code></p>
 
 <p><br /></p>
 
-<p><img src="assets/img/howto/002_help_lua.jpg" /><br />
-The latest release also contains basic town management functionalities with <code class="highlighter-rouge">setHome(), setHomeName(name), getHome or showStats()</code></p>
+<p><img class="img-fluid" src="assets/img/howto/002_help_lua.jpg" /><br />
+The latest release also contains basic town management functionalities with <code class="highlighter-rouge">#setHome(), #setHomeName(name), #getHome or s#howStats()</code></p>
 
 <p><br /></p>
 
 <h3 id="navigation">Navigation</h3>
-<p><img src="assets/img/howto/005_search_1.jpg" /><br />
-Use <code class="highlighter-rouge">search("...")</code> to find all constructions which contain the search-param.</p>
+<p><img class="img-fluid" src="assets/img/howto/005_search_1.jpg" /><br />
+Use <code class="highlighter-rouge">#search("...")</code> to find all constructions which contain the search-param.</p>
 
 <p><br /></p>
 
-<p><img src="assets/img/howto/006_search_and_Select.jpg" /><br />
-Its also possible to wrap multiple method calls, like <code class="highlighter-rouge">select(search("smithery")</code> which search and returns the first construction which contains “smithery” as a part of its name.</p>
+<p><img class="img-fluid" src="assets/img/howto/006_search_and_Select.jpg" /><br />
+Its also possible to wrap multiple method calls, like <code class="highlighter-rouge">#select(search("smithery")</code> which search and returns the first construction which contains “smithery” as a part of its name.</p>
 
 <p><br /></p>
 
 <h3 id="locking">Locking</h3>
-<p><img src="assets/img/howto/010_locking.jpg" /><br />
-Use <code class="highlighter-rouge">lockAll()</code> to activate the deletion-lock of all constructions.</p>
+<p><img class="img-fluid" src="assets/img/howto/010_locking.jpg" /><br />
+Use <code class="highlighter-rouge">#lockAll()</code> to activate the deletion-lock of all constructions.</p>
 
 <p><br /></p>
 
-<p><img src="assets/img/howto/011_unlocking.jpg" /><br />
-Use <code class="highlighter-rouge">unlockAll()</code> to deactivate the deletion-lock of all constructions.</p>
+<p><img class="img-fluid" src="assets/img/howto/011_unlocking.jpg" /><br />
+Use <code class="highlighter-rouge">#unlockAll()</code> to deactivate the deletion-lock of all constructions.</p>
 
 <p><br /></p>
 
 <h3 id="town-management-1">Town Management</h3>
-<p><img src="assets/img/howto/020_stats.jpg" /><br />
-Use <code class="highlighter-rouge">showStats()</code> to get an overview of the towns name, owner, position, resources, …</p>
+<p><img class="img-fluid" src="assets/img/howto/020_stats.jpg" /><br />
+Use <code class="highlighter-rouge">#showStats()</code> to get an overview of the towns name, owner, position, resources, …</p>
 
 <p><br /></p>
 
-<p><img src="assets/img/howto/021_stats.jpg" /><br />
+<p><img class="img-fluid" src="assets/img/howto/021_stats.jpg" /><br />
 … and for an overview of all existing generators, etc.</p>
 
 <p><br /></p>
 
-<p><img src="assets/img/howto/030_home_setHome.jpg" /><br />
-Use <code class="highlighter-rouge">setHome()</code> to set the current player position as the new towns home position.</p>
+<p><img class="img-fluid" src="assets/img/howto/030_home_setHome.jpg" /><br />
+Use <code class="highlighter-rouge">#setHome()</code> to set the current player position as the new towns home position.</p>
 
 <p><br /></p>
 
-<p><img src="assets/img/howto/031_home_setHomeName.jpg" /><br />
-Use <code class="highlighter-rouge">setHomeName('farkletown')</code> to set the towns name.</p>
+<p><img class="img-fluid" src="assets/img/howto/031_home_setHomeName.jpg" /><br />
+Use <code class="highlighter-rouge">#setHomeName('farkletown')</code> to set the towns name.</p>
 
 <p><br /></p>
 
-<p><img src="assets/img/howto/032_home_getHome.jpg" /><br />
-Use <code class="highlighter-rouge">getHome()</code> returns the player to his previously set home position.</p>
+<p><img class="img-fluid" src="assets/img/howto/032_home_getHome.jpg" /><br />
+Use <code class="highlighter-rouge">#getHome()</code> returns the player to his previously set home position.</p>
 
 <p><br /><br />
 <br /></p>
@@ -440,6 +448,12 @@ Use <code class="highlighter-rouge">getHome()</code> returns the player to his p
 <div class="preformat_code">
 - Alpha versions (a) are unstable and in subject of larger changes - expect bugs.  
 - Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).  
+
+
+
+changelog 0.5.4a-test
+- its now safe to enable / disable the mod
+- The functionality is now limited to mod-state - except console commands
 
 changelog 0.5.4a
 - added preview-system for new constructions  
