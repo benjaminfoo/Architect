@@ -1,5 +1,5 @@
 ---
---- Created by Benjamin Foo
+--- Author:  Benjamin Foo
 ---
 --- Contains lua methods in different variations and parameter types.
 --- This also contains simple aliases for methods in order to type less into the games console.

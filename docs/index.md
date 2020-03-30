@@ -1,5 +1,5 @@
 ---
-# index markdown file - main contentb
+# index markdown file - main content
 layout: default
 ---
 # Welcome!
@@ -158,7 +158,7 @@ Construction, Construction-Properties
  - sitable         - if true, the player can sit on this object
  - useable         - if true, the player can use the object in some way
  - saveable        - if true, the instance of the construction gets saved
- - cookable        - if true, the player can use the construction for cooking
+ - cookingSpot        - if true, the player can use the construction for cooking
  - sleepable       - if true, the player can use the construction for sleeping
 
 Properties related to generating some item over a specified amount of time
@@ -484,7 +484,7 @@ Version 0.5.1a
 - increased compatibility with other modifications
 
 Version 0.5a
-- implemented basic custom crafting system (this only works with constructions created by the player) 
+- implemented basic custom crafting system (this only works with constructions Author:  the player) 
 - updated useable entities (like chairs, beds, benches, etc.)
 - upgrade of entity-data models
 - split project into sub-packages

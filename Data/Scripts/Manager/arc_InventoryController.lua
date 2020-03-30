@@ -1,5 +1,5 @@
 ---
---- Created by Benjamin Foo
+--- Author:  Benjamin Foo
 ---
 --- The ConstructionController class defines basic and advanced operations
 ---

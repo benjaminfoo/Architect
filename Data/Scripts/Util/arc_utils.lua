@@ -1,6 +1,6 @@
 ---
 --- Utility functions for logging
---- Created by Benjamin Foo
+--- Author:  Benjamin Foo
 --- DateTime: 03.03.2020 01:01
 ---
 

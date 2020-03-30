@@ -1,5 +1,5 @@
 ---
---- Created by Benjamin Foo
+--- Author:  Benjamin Foo
 --- DateTime: 04.03.2020 23:09
 ---
 --- UIController handles the drawing of the user-interface

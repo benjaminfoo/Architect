@@ -1,5 +1,5 @@
 ---
---- Created by Benjamin Foo
+--- Author:  Benjamin Foo
 --- DateTime: 04.03.2020 23:09
 ---
 --- The ResourcesControler defines basic and advanced resource operations.

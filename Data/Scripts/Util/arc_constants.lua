@@ -1,5 +1,5 @@
 ---
---- Created by Benjamin Foo
+--- Author:  Benjamin Foo
 ---
 --- This file contains constants related to the modification.
 ---

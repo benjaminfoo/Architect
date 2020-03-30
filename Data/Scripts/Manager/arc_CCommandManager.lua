@@ -1,5 +1,5 @@
 ---
---- Created by Benjamin Foo
+--- Author:  Benjamin Foo
 --- DateTime: 04.03.2020 23:09
 ---
 --- The CCommandManager contains code related to the ingame-console and the management of key-bindings

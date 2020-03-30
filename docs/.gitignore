@@ -4,3 +4,7 @@ vendor
 
 # Local Netlify folder
 .netlify
+
+.jekyll-cache/*
+
+_site/*

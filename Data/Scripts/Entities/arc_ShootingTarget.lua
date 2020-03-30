@@ -4,7 +4,7 @@ ShootingTarget = {
     Client = {},
     Server = {},
     Properties = {
-        object_Model = "objects/props/target/target.cgf",
+        object_Model = "objects/default/primitive_sphere.cgf",
 
         Physics = {
             bPhysicalize = 1,
@@ -37,19 +37,9 @@ function ShootingTarget:OnReset()
     if (not EmptyString(props.object_Model)) then
         self:LoadObject(0, props.object_Model);
     end ;
-    EntityCommon.PhysicalizeRigid(self, 0, self.physics, 0);
-    self.side = 0;
-    self.ended = 0;
-    self:GetAngles(self.initialrot);
-    CopyVector(self.turnrot, self.initialrot);
-    if (self.Properties.bTurningMode == 1) then
-        self.turnrot.z = self.turnrot.z + (math.pi / 2);
-    end ;
+
     self:Activate(1);
-    self:GotoState("Deactivated");
-
     local Physics = self.Properties.Physics;
-
     EntityCommon.PhysicalizeRigid(self, 0, Physics, true);
 
     System.LogAlways("OnReset shootingTarget!")
@@ -57,13 +47,11 @@ function ShootingTarget:OnReset()
 end;
 
 function ShootingTarget:OnSave(tbl)
-    tbl.side = self.side;
-    tbl.ended = self.ended;
+    table.object_Model = self.Properties.object_Model;
 end;
 
 function ShootingTarget:OnLoad(tbl)
-    self.side = tbl.side
-    self.ended = tbl.ended;
+    self.object_Model = table.object_Model;
 end;
 
 function ShootingTarget:OnPropertyChange()

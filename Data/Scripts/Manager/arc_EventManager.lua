@@ -1,5 +1,5 @@
 ---
---- Created by Benjamin Foo
+--- Author:  Benjamin Foo
 ---
 --- The EventManager handles the initialization of the UIManager and shows tutorial messages to the player
 ---

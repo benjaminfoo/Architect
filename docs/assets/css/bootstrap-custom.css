@@ -42,12 +42,11 @@ html, body {
 }
 
 .preformat_code {
-    background-color: #aaaaaa12;
+    background-color: #aaa3;
     font-family: monospace;
     white-space: pre;
     padding-left: 1rem;
-    border-radius: 10px;
-
+    border-radius: 5px;
     font-size: 10pt;
 }
 

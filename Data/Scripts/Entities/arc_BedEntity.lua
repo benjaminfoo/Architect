@@ -1,5 +1,5 @@
 ---
---- Created by Benjamin Foo
+--- Author:  Benjamin Foo
 --- DateTime: 04.03.2020 23:09
 ---
 --- The BedEntity is the common parent type for constructions which offer some kind of functionality.
@@ -286,11 +286,15 @@ function BedEntity:GetActions(user, firstFast)
 end
 
 function BedEntity:OnUsed(user)
-
+    if (self.Properties.Script.esBedTypes == 'normal' or self.Properties.Script.esBedTypes == 'bench' or (user.player and user.player.CanSleepAndReportProblem())) then
+        XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(self)) .. "), mode ('use')")
+    end
 end
 
 function BedEntity:OnUsedHold(user)
-
+    if (user.player and user.player.CanSleepAndReportProblem()) then
+        XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(self)) .. "), mode ('use'), behavior('player_use_sleep')")
+    end
 end
 
 function BedEntity:GetReadingQuality()

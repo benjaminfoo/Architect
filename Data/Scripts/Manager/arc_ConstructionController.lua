@@ -1,5 +1,5 @@
 ---
---- Created by Benjamin Foo
+--- Author:  Benjamin Foo
 ---
 --- The ConstructionController class defines basic and advanced operations
 ---
@@ -236,7 +236,7 @@ function SpawnBuildingInstance(line)
             spawnParams.class = "BedEntity"
         end
 
-        if (construction.cookable) then
+        if (construction.cookingSpot) then
             spawnParams.class = "CookingSpotEntity"
         end
 
@@ -305,7 +305,7 @@ function SpawnBuildingInstance(line)
         if (construction.useable) then
         end
 
-        if (construction.cookable) then
+        if (construction.cookingSpot) then
         end
 
         if (construction.generator) then
@@ -710,7 +710,7 @@ function updateSelection()
     -- showUI()
 
     if (not config.modEnabled) then
-        log("Mod is disabled - not calling updateBuildings()")
+        log("Mod is disabled - not calling initializeBuildings()")
         return
     end
 

@@ -1,6 +1,6 @@
 ---
 --- Entry point for the project
---- Created by Benjamin Foo
+--- Author:  Benjamin Foo
 --- DateTime: 03.03.2020 01:01
 ---
 
@@ -18,6 +18,9 @@ Script.ReloadScript("Scripts/Math/arc_linmath.lua")
 
 -- load utility methods for development
 Script.ReloadScript("Scripts/Util/arc_utils.lua")
+
+-- initialize itemset- and manager
+Script.ReloadScript("Scripts/Controller/arc_ItemController.lua")
 
 -- load the console-commands manager
 Script.ReloadScript("Scripts/Manager/arc_CCommandManager.lua")

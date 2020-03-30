@@ -1,4 +1,8 @@
-# KCD coding guide
+---
+# index markdown file - lua coding guide
+layout: default
+---
+# Coding guide
 This unofficial coding guide is focused on how to interact with the different systems of the engine in order to implement custom features using the lua programming language.
 
 There is no sdk or editor needed for basic lua coding in KCD, however, in order to use advanced features, which'll ease your developers life, 
@@ -21,16 +25,18 @@ otherwise you're executing ingame commands.
 ### Enabling dev mode
 In order to use the developer mode, you have to create a shortcut and append or launch the application with -devmode:
 
-```
 -- release binary
 \common\KingdomComeDeliverance\Bin\Win64\KingdomCome.exe -devmode
-```
 
 In order to use the full development profile, and features of the engine, its recommended to use the kingdomcome binary provided by the sdk. 
-```
+
 -- editor binary
 \common\KingdomComeDeliverance\Bin\win64releasedll\kingdomcome.exe
-```
+
+
+wh_lua_better_print = 1
+-- Enable advanced debug output in release mode (Like System.LogAlways("..."))
+
 
 ## Lua basics
 The source files of your mod have to be get compressed, with a tool like zip or 7zip. 
@@ -46,32 +52,32 @@ A *pak-file is a simple *.zip file, renamed to pak - so its a straightforward ta
 
 ### Source paths
 When using the editor-binary the following source paths get loaded on startup    
-```
-\common\KingdomComeDeliverance\Data\
-\common\KingdomComeDeliverance\Mods\*
+<div class="preformat_code">
+- \common\KingdomComeDeliverance\Data\
+- \common\KingdomComeDeliverance\Mods\*
+</div>
 
 first *.pak-files, than *.lua-files
-```
+
+
 This allows to edit and reload source files at runtime, outside of the *.pak files.
 
 In order to reload a specific scripts or all scripts  at runtime
-```
+<div class="preformat_code">
 #Script.UnloadScript("Scripts/Utils/Utils.lua")
 #Script.ReloadScript("Scripts/Utils/Utils.lua")
 #Script.ReloadScripts()
-```
-
+</div>
 To use advanced console features use the following cvar
 
-wh_lua_better_print = 1
--- Enable advanced debug output in release mode (Like System.LogAlways("..."))
-
 ### Comments
-```
+<div class="preformat_code">
 -- This is a single-line comment 
+
 --[[ This is a multi-
 line comment ]]
-```
+
+</div>
 
 ### Common Commands
 This list is a short overview of helpful commands provided by the engine.

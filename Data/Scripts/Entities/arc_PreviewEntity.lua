@@ -1,5 +1,5 @@
 ---
---- Created by Benjamin Foo
+--- Author:  Benjamin Foo
 --- DateTime: 04.03.2020 23:09
 ---
 --- The PreviewEntity is used by the PreviewSystem in order to visualize the currently selected construction to the user.

@@ -1,11 +1,7 @@
 ---
---- Created by Benjamin Foo
---- DateTime: 04.03.2020 23:09
+--- Author:  Benjamin Foo
 ---
 --- The DynamicBuildingEntity is the common parent type for constructions which offer some kind of functionality.
----
---- For example, a bed provides the ability to sleep, a chair provides the ability to sit, etc.
----
 ---
 
 DynamicBuildingEntity = {
@@ -13,8 +9,6 @@ DynamicBuildingEntity = {
     Server = {},
     Properties = {
 
-        MaxSpeed = 1,
-        fHealth = 100,
         bTurnedOn = 1,
         bExcludeCover = 0,
 
@@ -117,16 +111,12 @@ function DynamicBuildingEntity:SetupModel()
 end
 
 
+-- reloading stored values from savegame
 function DynamicBuildingEntity:OnLoad(table)
-    self.health = table.health;
-    self.dead = table.dead;
     self.object_Model = table.object_Model;
 
     local Properties = self.Properties;
     Properties.object_Model = table.object_Model;
-
-    System.LogAlways("Loading")
-    System.LogAlways("Persisted_Entity.object_model: " .. table.object_Model)
 
     -- load the persisted model path from the save file
     self:LoadObject(0, table.object_Model)
@@ -136,19 +126,13 @@ function DynamicBuildingEntity:OnLoad(table)
 
     -- disable near fade-out by default
     self:SetViewDistUnlimited()
-
 end
 
-
+-- persisting values to save game
 function DynamicBuildingEntity:OnSave(table)
-    table.health = self.health;
-    table.dead = self.dead;
     table.object_Model = self.Properties.object_Model;
-
-    System.LogAlways("Saving")
-    System.LogAlways("Persisting Entity.object_model: " .. table.object_Model)
-
 end
+
 
 function DynamicBuildingEntity:IsRigidBody()
     local Properties = self.Properties;
@@ -265,68 +249,13 @@ end
 
 function DynamicBuildingEntity:GetActions(user, firstFast)
     output = {}
-    local sleepPrompt = EntityModule.WillSleepingOnThisBedSave(self.id) and "@ui_hud_sleep_and_save" or "@ui_hud_sleep";
-    if (self:IsUsableByPlayer(user)) then
-        if (self.Properties.Script.esBedTypes == 'normal' or self.Properties.Script.esBedTypes == 'bench') then
-            AddInteractorAction(output, firstFast, Action():hint("@ui_hud_sit"):action("use_bed"):func(Bed.OnUsed):interaction(inr_bedSit):enabled(not self.usedByNPC))
-            if Variables.GetGlobal('bed_disable_direct_sleep') == 0 then
-                AddInteractorAction(output, firstFast, Action():hint(sleepPrompt):action("use_bed"):hintType(AHT_HOLD):func(Bed.OnUsedHold):interaction(inr_bedSit):enabled(not self.usedByNPC))
-            end
-        else
-            AddInteractorAction(output, firstFast, Action():hint(sleepPrompt):action("use_bed"):func(Bed.OnUsed):interaction(inr_bedSleep):enabled(not self.usedByNPC))
-        end
-    end
     return output
 end
 
 function DynamicBuildingEntity:OnUsed(user)
-    if (self.Properties.Script.esBedTypes == 'normal' or self.Properties.Script.esBedTypes == 'bench' or (user.player and user.player.CanSleepAndReportProblem())) then
-        XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(self)) .. "), mode ('use')")
-    end
 end
 
 function DynamicBuildingEntity:OnUsedHold(user)
-    if (user.player and user.player.CanSleepAndReportProblem()) then
-        XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(self)) .. "), mode ('use'), behavior('player_use_sleep')")
-    end
-end
-
-function DynamicBuildingEntity:GetReadingQuality()
-
-    local str = self.Properties.Bed.esReadingQuality;
-
-    if str == "none" then
-        return 0;
-    elseif str == "bed_ground" then
-        return 1;
-    elseif str == "bed" then
-        return 3;
-    elseif str == "bed_exceptional" then
-        return 4;
-    elseif str == "bench_table" then
-        return 5;
-    elseif str == "bench_notable" then
-        return 6;
-    else
-        return 0;
-    end
-end
-
-function DynamicBuildingEntity:GetSleepQuality()
-
-    local str = self.Properties.Bed.esSleepQuality;
-
-    if str == "low" then
-        return 2;
-    elseif str == "medium" then
-        return 3;
-    elseif str == "high" then
-        return 1;
-    elseif str == "exceptional" then
-        return 0;
-    else
-        return 2;
-    end
 end
 
 DynamicBuildingEntity.FlowEvents = {

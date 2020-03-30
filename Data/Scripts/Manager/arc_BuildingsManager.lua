@@ -1,5 +1,5 @@
 ---
---- Created by Benjamin Foo
+--- Author:  Benjamin Foo
 --- DateTime: 04.03.2020
 ---
 --- The BuildingsManager contains a set of constructions the user is able to choose from
@@ -15,7 +15,7 @@
 --- sitable         - if true, the player can sit on this object
 --- useable         - if true, the player can use the object in some way
 --- saveable        - if true, the instance of the construction gets saved
---- cookable        - if true, the player can use the construction for cooking
+--- cookingSpot        - if true, the player can use the construction for cooking
 --- sleepable       - if true, the player can use the construction for sleeping
 ---
 --- # properties related to generating some item over a specified amount of time
@@ -475,32 +475,32 @@ parameterizedConstructions = {
     {
         description = "An simple oven which can be used to bake bread out of nettles",
         modelPath = "objects/structures/bread_oven/bread_oven_01.cgf",
-        cookable = true,
+        cookingSpot = true,
     },
     {
         description = "An simple oven which can be used to bake .. biscuits .. out of nettles",
         modelPath = "objects/structures/bread_oven/bread_oven_02.cgf",
-        cookable = true,
+        cookingSpot = true,
     },
     {
         description = "An simple oven which can be used to bake bread out of nettles",
         modelPath = "objects/structures/bread_oven/bread_oven_indoor.cgf",
-        cookable = true,
+        cookingSpot = true,
     },
     {
         description = "An oven which can be used to bake bread out of nettles",
         modelPath = "objects/buildings/sazava_monastery/furnace.cgf",
-        cookable = true,
+        cookingSpot = true,
     },
     {
         description = "An oven which can be used to bake bread out of nettles",
         modelPath = "objects/buildings/sazava_monastery/furnace_b.cgf",
-        cookable = true,
+        cookingSpot = true,
     },
     {
         description = "An oven which can be used to bake bread out of nettles",
         modelPath = "objects/buildings/sazava_monastery/furnace_c.cgf",
-        cookable = true,
+        cookingSpot = true,
     },
 
 
@@ -525,7 +525,7 @@ parameterizedConstructions = {
         -- TODO: implement this!
         description = "An empty fireplace, currently decoration only.",
         modelPath = "objects/buildings/refugee_camp/fireplace_empty.cgf",
-        cookable = true
+        cookingSpot = true
     },
 
 
@@ -1347,7 +1347,14 @@ parameterizedConstructions = {
     -- decorative
 
     -- props - things which are used in a tavern
-    { modelPath = "objects/props/tavern_things/beer_barrel.cgf", },
+    {
+        description = "A barrel filled with delicious beer.",
+        modelPath = "objects/props/tavern_things/beer_barrel.cgf",
+        saveable = true,
+        generator = false, generatorOnUse = true,
+        generatorItem = "beer", generatorItemAmount = 1, generatorCapacity = 20,
+        generatorCooldown = 5, generatorItemCosts = { groschen = 10 },
+    },
     { modelPath = "objects/props/tavern_things/bowl_clear.cgf", },
     { modelPath = "objects/props/tavern_things/wood_tankard.cgf", },
     { modelPath = "objects/props/tavern_things/wood_tankard_full.cgf", },
@@ -1677,7 +1684,7 @@ parameterizedConstructions = {
 
 
 -- used to initialize the available constructions
-function updateBuildings()
+function initializeBuildings()
 
     bIndex = 1
 
@@ -1698,10 +1705,10 @@ function updateBuildings()
 
     end
 
-    System.LogAlways("updateBuildings has been called!")
+    System.LogAlways("initializeBuildings has been called!")
 
 end
-updateBuildings() -- this needs to get executed while loading so this call is accepted
+initializeBuildings() -- this needs to get executed while loading so this call is accepted
 
 
 -- a search method in order to find constructions based on names or their descriptions
