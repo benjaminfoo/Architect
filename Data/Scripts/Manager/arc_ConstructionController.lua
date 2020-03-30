@@ -241,6 +241,11 @@ function SpawnBuildingInstance(line)
         end
 
         if (construction.useable) then
+
+            if (construction.useCategory == "wash") then
+                spawnParams.class = "BathEntity"
+            end
+
             -- spawnParams.class = "GeneratorEntity"
             -- spawnParams.class = "ShootingTarget"
             -- spawnParams.class = "RigidBody"
@@ -260,6 +265,7 @@ function SpawnBuildingInstance(line)
             spawnParams.properties.generatorItemCosts = construction.generatorItemCosts
 
             --[[
+                -- debug infos
                 log("Generator item: " .. construction.generatorItem)
                 log("Generator generatorCooldown: " .. construction.generatorCooldown)
                 log("Generator generatorItemAmount: " .. construction.generatorItemAmount)
@@ -277,7 +283,6 @@ function SpawnBuildingInstance(line)
             spawnParams.properties.generatorCooldown = construction.generatorCooldown
             spawnParams.properties.generatorOnUse = construction.generatorOnUse
             spawnParams.properties.generatorItemCosts = construction.generatorItemCosts
-
         end
 
 
@@ -864,8 +869,8 @@ System.AddCCommand('deleteRayCastEntityHit', 'deleteRayCastEntityHit()', "delete
 --System.ExecuteCommand("bind mouse4 deleteRayCastEntityHit ")
 
 -- Detect / dump information about the current "seen" entity
-System.AddCCommand('toggleEntityLock', 'toggleEntityLock()', "toggleEntityLock!")
-System.ExecuteCommand("bind mouse5 toggleEntityLock ")
+-- System.AddCCommand('toggleEntityLock', 'toggleEntityLock()', "toggleEntityLock!")
+-- System.ExecuteCommand("bind mouse5 toggleEntityLock ")
 
 
 -- helper methods and commands

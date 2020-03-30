@@ -1,0 +1,4 @@
+<Entity
+        Name="BathEntity"
+        Script="Scripts/Entities/arc_BathEntity.lua"
+/>

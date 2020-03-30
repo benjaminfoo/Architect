@@ -217,14 +217,19 @@ parameterizedConstructions = {
         modelPath = "objects/props/wooden_bins/bucket/bucket_water.cgf",
     },
     {
+        description = "A wooden water tub to wash yourself.",
         modelPath = "objects/props/wooden_bins/water_tub/water_tub_wide_water.cgf",
+        useable = true, useCategory = "wash"
     },
 
     {
+        description = "Another wooden water tub to get yourself clean tidy.",
         modelPath = "objects/props/wooden_bins/water_tub/water_tube_clean_water.cgf",
+        useable = true, useCategory = "wash", useCosts = { groschen = 25 }
     },
 
     {
+        description = "A map drawn onto fabric.",
         modelPath = "objects/props/maps/map.cgf",
     },
 
