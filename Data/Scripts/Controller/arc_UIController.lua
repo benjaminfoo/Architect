@@ -13,8 +13,6 @@ end
 
 bUpdateActive = true
 
-
-
 function UIController_OnUpdate()
 
     -- System.LogAlways("Drawing stuff with ui-controller")

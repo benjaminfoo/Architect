@@ -278,7 +278,6 @@ function SpawnBuildingInstance(line)
 
         end
 
-
         if (construction.generatorOnUse) then
             spawnParams.class = "GeneratorEntity"
             spawnParams.properties.generator = construction.generator
@@ -823,11 +822,10 @@ function reloadall ()
     local townPos = config.primary_town_position
 
     -- unload all controller first
-    Script.UnloadScript("Scripts/Manager/arc_UIController.lua")
-    Script.UnloadScript("Scripts/Manager/arc_ConstructionController.lua")
+    Script.UnloadScript("Scripts/Controller/arc_UIController.lua")
+    Script.UnloadScript("Scripts/Controller/arc_ConstructionController.lua")
     Script.UnloadScript("Scripts/Manager/arc_BuildingsManager.lua")
     Script.UnloadScript("Scripts/Manager/arc_CCommandManager.lua")
-    Script.UnloadScript("Scripts/Manager/arc_mechaSlide.lua")
 
     Script.UnloadScript("Scripts/Util/arc_constants.lua")
     Script.UnloadScript("Scripts/Util/arc_utils.lua")
@@ -838,8 +836,7 @@ function reloadall ()
     -- reload every script, including /Data and /Mods
     Script.ReloadScripts()
 
-    Script.ReloadScript("Scripts/Manager/arc_UIController.lua")
-    Script.ReloadScript("Scripts/Manager/arc_mechaSlide.lua")
+    Script.ReloadScript("Scripts/Controller/arc_UIController.lua")
     Script.ReloadScript("Scripts/Manager/arc_BuildingsManager.lua")
     Script.ReloadScript("Scripts/Util/arc_constants.lua")
     Script.ReloadScript("Scripts/Util/arc_utils.lua")

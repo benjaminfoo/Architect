@@ -10,7 +10,6 @@ function architect_clear()
     System.ClearConsole();
 end
 
-
 function architect_gamble()
     System.LogAlways("Gambling started ..");
 
@@ -31,7 +30,6 @@ function architect_gamble()
     System.LogAlways(".. Gambling finished!")
 
 end
-
 
 function architect_eval(line)
     System.LogAlways("Begin eval [%s].", tostring(line))

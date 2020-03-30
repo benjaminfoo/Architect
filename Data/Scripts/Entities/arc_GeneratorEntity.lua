@@ -15,8 +15,6 @@ GeneratorEntity = {
 
         class = "BasicEntity",
 
-        MaxSpeed = 1,
-        fHealth = 100,
         bTurnedOn = 1,
         bExcludeCover = 0,
         fUsabilityDistance = 100,

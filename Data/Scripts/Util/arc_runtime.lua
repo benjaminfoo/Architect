@@ -7,6 +7,7 @@
 config = {
     modEnabled = true,
     debugMode = true,
+    mockRuntime = false,
     primary_town_name = "Farkletown",
     primary_town_position = { x = 0, y = 0, z = 0 },
 }

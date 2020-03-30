@@ -50,6 +50,9 @@ DESC_CAT_GROUP_BARRELS = "A group of barrels."
 
 ----------------------------------
 -- Pricing and groschen details --
+-- TODO
+--  - this isnt balanced at all
+--  - this isnt used at all
 ----------------------------------
 DEFAULT_PRICING_CATEGORY_1 = { 5, 249 }
 DEFAULT_PRICING_CATEGORY_2 = { 250, 999 }

@@ -23,6 +23,7 @@ There are no DLCs required to use this mod.
 <br>
 
 ## News 
+- Version 0.5.5a-test has been [released!](https://www.nexusmods.com/kingdomcomedeliverance/mods/958)
 - Version 0.5.4a-test has been [released!](https://www.nexusmods.com/kingdomcomedeliverance/mods/958)
 - [Sexy Biscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) has released a new video which reviews the latest features of the architect on [YouTube](https://www.youtube.com/watch?v=f_x-3SbbOfc)
 - Version 0.5.4a has been [released!](https://www.nexusmods.com/kingdomcomedeliverance/mods/958)
@@ -450,7 +451,11 @@ This list contains all changes happened during development - the versions should
 - Alpha versions (a) are unstable and in subject of larger changes - expect bugs.  
 - Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).  
 
-
+changelog 0.5.5a-test
+- preview-model physics are disabled now (the preview dont collide with the player anymore)
+- updated availabe constructions (updated generators, added useable bathtubs, added reactive targets (use with bow and arrow), added new references, ...)
+- updated about-page, merged coding-guide into project
+- upgraded codebase, removed and refactored (alot of) code
 
 changelog 0.5.4a-test
 - its now safe to enable / disable the mod

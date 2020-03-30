@@ -91,10 +91,7 @@ function BasicBuildingEntity:SetupModel()
     self:SetViewDistUnlimited()
 end
 
-
 function BasicBuildingEntity:OnLoad(table)
-    self.health = table.health;
-    self.dead = table.dead;
     self.object_Model = table.object_Model;
 
     local Properties = self.Properties;
@@ -114,10 +111,7 @@ function BasicBuildingEntity:OnLoad(table)
 
 end
 
-
 function BasicBuildingEntity:OnSave(table)
-    table.health = self.health;
-    table.dead = self.dead;
     table.object_Model = self.Properties.object_Model;
 
     -- System.LogAlways("Saving")

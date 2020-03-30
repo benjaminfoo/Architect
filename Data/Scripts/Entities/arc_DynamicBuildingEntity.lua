@@ -3,7 +3,6 @@
 ---
 --- The DynamicBuildingEntity is the common parent type for constructions which offer some kind of functionality.
 ---
-
 DynamicBuildingEntity = {
     Client = {},
     Server = {},
@@ -61,6 +60,7 @@ DynamicBuildingEntity = {
 }
 
 
+--
 function DynamicBuildingEntity:OnSpawn()
     if (self.Properties.MultiplayerOptions.bNetworked == 0) then
         self:SetFlags(ENTITY_FLAG_CLIENT_ONLY, 0);
@@ -71,6 +71,8 @@ function DynamicBuildingEntity:OnSpawn()
     self:SetFromProperties();
 end
 
+
+--
 function DynamicBuildingEntity:SetFromProperties()
     local Properties = self.Properties;
 
@@ -94,6 +96,8 @@ function DynamicBuildingEntity:SetFromProperties()
     end
 end
 
+
+--
 function DynamicBuildingEntity:SetupModel()
 
     local Properties = self.Properties;
@@ -128,12 +132,14 @@ function DynamicBuildingEntity:OnLoad(table)
     self:SetViewDistUnlimited()
 end
 
+
 -- persisting values to save game
 function DynamicBuildingEntity:OnSave(table)
     table.object_Model = self.Properties.object_Model;
 end
 
 
+--
 function DynamicBuildingEntity:IsRigidBody()
     local Properties = self.Properties;
     local Mass = Properties.Mass;
@@ -144,11 +150,15 @@ function DynamicBuildingEntity:IsRigidBody()
     return true;
 end
 
+
+--
 function DynamicBuildingEntity:PhysicalizeThis()
     local Physics = self.Properties.Physics;
     EntityCommon.PhysicalizeRigid(self, 0, Physics, self.bRigidBodyActive);
 end
 
+
+--
 function DynamicBuildingEntity:OnPropertyChange()
     if (self.__usable) then
         if (self.__origUsable ~= self.Properties.bUsable or self.__origPickable ~= self.Properties.bPickable) then
@@ -158,6 +168,8 @@ function DynamicBuildingEntity:OnPropertyChange()
     self:SetFromProperties();
 end
 
+
+--
 function DynamicBuildingEntity:OnReset()
     System.LogAlways("OnReset entity ...")
 
@@ -170,6 +182,9 @@ function DynamicBuildingEntity:OnReset()
         self:AwakePhysics(0);
     end
 end
+
+
+--
 function DynamicBuildingEntity:Event_Remove()
     System.LogAlways("Removing construction")
 
@@ -177,6 +192,9 @@ function DynamicBuildingEntity:Event_Remove()
     self:DestroyPhysics();
     self:ActivateOutput("Remove", true);
 end
+
+
+--
 function DynamicBuildingEntity:Event_Hide()
     System.LogAlways("Hiding entity ...")
     self:Hide(1);
@@ -185,6 +203,9 @@ function DynamicBuildingEntity:Event_Hide()
         Log("%.3f %s %s : Event_Hide", _time, CurrentCinematicName, self:GetName());
     end
 end
+
+
+--
 function DynamicBuildingEntity:Event_UnHide()
     System.LogAlways("Unhiding entity ...")
     self:Hide(0);
@@ -193,6 +214,9 @@ function DynamicBuildingEntity:Event_UnHide()
         Log("%.3f %s %s : Event_UnHide", _time, CurrentCinematicName, self:GetName());
     end
 end
+
+
+--
 function DynamicBuildingEntity:Event_Ragdollize()
     self:RagDollize(0);
     self:ActivateOutput("Ragdollized", true);
@@ -200,10 +224,15 @@ function DynamicBuildingEntity:Event_Ragdollize()
         self:Event_RagdollizeDerived();
     end
 end
+
+
+--
 function DynamicBuildingEntity.Client:OnPhysicsBreak(vPos, nPartId, nOtherPartId)
     self:ActivateOutput("Break", nPartId + 1);
 end
 
+
+--
 function DynamicBuildingEntity:IsUsable(user)
     local ret = nil
     if not self.__usable then
@@ -227,6 +256,8 @@ function DynamicBuildingEntity:IsUsable(user)
     return ret or 0
 end
 
+
+--
 function DynamicBuildingEntity:IsUsableByPlayer(user)
 
     local myDirection = g_Vectors.temp_v1;
@@ -247,14 +278,20 @@ function DynamicBuildingEntity:IsUsableByPlayer(user)
     return false;
 end
 
+
+--
 function DynamicBuildingEntity:GetActions(user, firstFast)
     output = {}
     return output
 end
 
+
+--
 function DynamicBuildingEntity:OnUsed(user)
 end
 
+
+--
 function DynamicBuildingEntity:OnUsedHold(user)
 end
 

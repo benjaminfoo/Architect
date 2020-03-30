@@ -94,23 +94,22 @@ function PreviewEntity:SetupModel()
 end
 
 
+--
 function PreviewEntity:OnLoad(table)
-    self.health = table.health;
-    self.dead = table.dead;
     self.object_Model = table.object_Model;
 
     local Properties = self.Properties;
     Properties.object_Model = table.object_Model;
-
-
 end
 
+
+--
 function PreviewEntity:OnSave(table)
-    table.health = self.health;
-    table.dead = self.dead;
     table.object_Model = self.Properties.object_Model;
 end
 
+
+--
 function PreviewEntity:IsRigidBody()
     local Properties = self.Properties;
     local Mass = Properties.Mass;
@@ -149,7 +148,6 @@ function PreviewEntity:Event_Remove()
     self:DrawSlot(0, 0);
     self:ActivateOutput("Remove", true);
 end
-
 
 PreviewEntity.FlowEvents = {
     Inputs = {

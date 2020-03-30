@@ -1,12 +1,10 @@
 ---
---- Utility functions for logging
 --- Author:  Benjamin Foo
---- DateTime: 03.03.2020 01:01
 ---
+--- Description
+--- Utility functions
 
---[[
-    Time related constants
-]]
+-- Time related constants
 
 -- The seconds per minute
 TIME_SECONDS = 60
@@ -41,6 +39,7 @@ function uuid()
     end)
 end
 
+-- checks if a table tab contains a value val
 function contains (tab, val)
     for index, value in ipairs(tab) do
         if value == val then

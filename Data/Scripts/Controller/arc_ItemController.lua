@@ -25,3 +25,8 @@ items = {
     -- -
     -- -
 }
+
+
+-- get item by its name and return its id
+function GetItemByName(itemName)
+end

@@ -13,8 +13,6 @@ BedEntity = {
     Server = {},
     Properties = {
 
-        MaxSpeed = 1,
-        fHealth = 100,
         bTurnedOn = 1,
         bExcludeCover = 0,
 
@@ -124,16 +122,13 @@ function BedEntity:SetupModel()
     self:SetViewDistUnlimited()
 end
 
+
+--
 function BedEntity:OnLoad(table)
-    self.health = table.health;
-    self.dead = table.dead;
     self.object_Model = table.object_Model;
 
     local Properties = self.Properties;
     Properties.object_Model = table.object_Model;
-
-    System.LogAlways("Loading")
-    System.LogAlways("Persisted_Entity.object_model: " .. table.object_Model)
 
     -- load the persisted model path from the save file
     self:LoadObject(0, table.object_Model)
@@ -143,19 +138,16 @@ function BedEntity:OnLoad(table)
 
     -- disable near fade-out by default
     self:SetViewDistUnlimited()
-
 end
 
+
+--
 function BedEntity:OnSave(table)
-    table.health = self.health;
-    table.dead = self.dead;
     table.object_Model = self.Properties.object_Model;
-
-    System.LogAlways("Saving")
-    System.LogAlways("Persisting Entity.object_model: " .. table.object_Model)
-
 end
 
+
+--
 function BedEntity:IsRigidBody()
     local Properties = self.Properties;
     local Mass = Properties.Mass;
@@ -166,11 +158,15 @@ function BedEntity:IsRigidBody()
     return true;
 end
 
+
+--
 function BedEntity:PhysicalizeThis()
     local Physics = self.Properties.Physics;
     EntityCommon.PhysicalizeRigid(self, 0, Physics, self.bRigidBodyActive);
 end
 
+
+--
 function BedEntity:OnPropertyChange()
     if (self.__usable) then
         if (self.__origUsable ~= self.Properties.bUsable or self.__origPickable ~= self.Properties.bPickable) then
@@ -180,6 +176,8 @@ function BedEntity:OnPropertyChange()
     self:SetFromProperties();
 end
 
+
+--
 function BedEntity:OnReset()
     System.LogAlways("OnReset entity ...")
 
@@ -192,6 +190,9 @@ function BedEntity:OnReset()
         self:AwakePhysics(0);
     end
 end
+
+
+--
 function BedEntity:Event_Remove()
     System.LogAlways("Removing construction")
 
@@ -199,6 +200,9 @@ function BedEntity:Event_Remove()
     self:DestroyPhysics();
     self:ActivateOutput("Remove", true);
 end
+
+
+--
 function BedEntity:Event_Hide()
     System.LogAlways("Hiding entity ...")
     self:Hide(1);
@@ -207,6 +211,9 @@ function BedEntity:Event_Hide()
         Log("%.3f %s %s : Event_Hide", _time, CurrentCinematicName, self:GetName());
     end
 end
+
+
+--
 function BedEntity:Event_UnHide()
     System.LogAlways("Unhiding entity ...")
     self:Hide(0);
@@ -215,6 +222,9 @@ function BedEntity:Event_UnHide()
         Log("%.3f %s %s : Event_UnHide", _time, CurrentCinematicName, self:GetName());
     end
 end
+
+
+--
 function BedEntity:Event_Ragdollize()
     self:RagDollize(0);
     self:ActivateOutput("Ragdollized", true);
@@ -222,10 +232,15 @@ function BedEntity:Event_Ragdollize()
         self:Event_RagdollizeDerived();
     end
 end
+
+
+--
 function BedEntity.Client:OnPhysicsBreak(vPos, nPartId, nOtherPartId)
     self:ActivateOutput("Break", nPartId + 1);
 end
 
+
+--
 function BedEntity:IsUsable(user)
     local ret = nil
     if not self.__usable then
@@ -249,6 +264,8 @@ function BedEntity:IsUsable(user)
     return ret or 0
 end
 
+
+--
 function BedEntity:IsUsableByPlayer(user)
 
     local myDirection = g_Vectors.temp_v1;
@@ -269,6 +286,8 @@ function BedEntity:IsUsableByPlayer(user)
     return false;
 end
 
+
+--
 function BedEntity:GetActions(user, firstFast)
     output = {}
     local sleepPrompt = EntityModule.WillSleepingOnThisBedSave(self.id) and "@ui_hud_sleep_and_save" or "@ui_hud_sleep";
@@ -285,18 +304,24 @@ function BedEntity:GetActions(user, firstFast)
     return output
 end
 
+
+--
 function BedEntity:OnUsed(user)
     if (self.Properties.Script.esBedTypes == 'normal' or self.Properties.Script.esBedTypes == 'bench' or (user.player and user.player.CanSleepAndReportProblem())) then
         XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(self)) .. "), mode ('use')")
     end
 end
 
+
+--
 function BedEntity:OnUsedHold(user)
     if (user.player and user.player.CanSleepAndReportProblem()) then
         XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(self)) .. "), mode ('use'), behavior('player_use_sleep')")
     end
 end
 
+
+--
 function BedEntity:GetReadingQuality()
 
     local str = self.Properties.Bed.esReadingQuality;
@@ -318,6 +343,8 @@ function BedEntity:GetReadingQuality()
     end
 end
 
+
+--
 function BedEntity:GetSleepQuality()
 
     local str = self.Properties.Bed.esSleepQuality;

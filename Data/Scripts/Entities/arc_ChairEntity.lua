@@ -13,8 +13,6 @@ ChairEntity = {
     Server = {},
     Properties = {
 
-        MaxSpeed = 1,
-        fHealth = 100,
         bTurnedOn = 1,
         bExcludeCover = 0,
 
@@ -66,6 +64,8 @@ ChairEntity = {
     }
 }
 
+
+--
 function ChairEntity:OnSpawn()
     if (self.Properties.MultiplayerOptions.bNetworked == 0) then
         self:SetFlags(ENTITY_FLAG_CLIENT_ONLY, 0);
@@ -76,6 +76,8 @@ function ChairEntity:OnSpawn()
     self:SetFromProperties();
 end
 
+
+--
 function ChairEntity:SetFromProperties()
     local Properties = self.Properties;
 
@@ -99,6 +101,8 @@ function ChairEntity:SetFromProperties()
     end
 end
 
+
+--
 function ChairEntity:SetupModel()
 
     local Properties = self.Properties;
@@ -115,9 +119,9 @@ function ChairEntity:SetupModel()
     self:SetViewDistUnlimited()
 end
 
+
+--
 function ChairEntity:OnLoad(table)
-    self.health = table.health;
-    self.dead = table.dead;
     self.object_Model = table.object_Model;
 
     local Properties = self.Properties;
@@ -137,9 +141,9 @@ function ChairEntity:OnLoad(table)
 
 end
 
+
+--
 function ChairEntity:OnSave(table)
-    table.health = self.health;
-    table.dead = self.dead;
     table.object_Model = self.Properties.object_Model;
 
     System.LogAlways("Saving")
@@ -147,6 +151,8 @@ function ChairEntity:OnSave(table)
 
 end
 
+
+--
 function ChairEntity:IsRigidBody()
     local Properties = self.Properties;
     local Mass = Properties.Mass;
@@ -157,11 +163,15 @@ function ChairEntity:IsRigidBody()
     return true;
 end
 
+
+--
 function ChairEntity:PhysicalizeThis()
     local Physics = self.Properties.Physics;
     EntityCommon.PhysicalizeRigid(self, 0, Physics, self.bRigidBodyActive);
 end
 
+
+--
 function ChairEntity:OnPropertyChange()
     if (self.__usable) then
         if (self.__origUsable ~= self.Properties.bUsable or self.__origPickable ~= self.Properties.bPickable) then
@@ -171,6 +181,8 @@ function ChairEntity:OnPropertyChange()
     self:SetFromProperties();
 end
 
+
+--
 function ChairEntity:OnReset()
     System.LogAlways("OnReset entity ...")
 
@@ -183,6 +195,9 @@ function ChairEntity:OnReset()
         self:AwakePhysics(0);
     end
 end
+
+
+--
 function ChairEntity:Event_Remove()
     System.LogAlways("Removing construction")
 
@@ -190,6 +205,9 @@ function ChairEntity:Event_Remove()
     self:DestroyPhysics();
     self:ActivateOutput("Remove", true);
 end
+
+
+--
 function ChairEntity:Event_Hide()
     System.LogAlways("Hiding entity ...")
     self:Hide(1);
@@ -198,6 +216,9 @@ function ChairEntity:Event_Hide()
         Log("%.3f %s %s : Event_Hide", _time, CurrentCinematicName, self:GetName());
     end
 end
+
+
+--
 function ChairEntity:Event_UnHide()
     System.LogAlways("Unhiding entity ...")
     self:Hide(0);
@@ -206,6 +227,9 @@ function ChairEntity:Event_UnHide()
         Log("%.3f %s %s : Event_UnHide", _time, CurrentCinematicName, self:GetName());
     end
 end
+
+
+--
 function ChairEntity:Event_Ragdollize()
     self:RagDollize(0);
     self:ActivateOutput("Ragdollized", true);
@@ -213,10 +237,15 @@ function ChairEntity:Event_Ragdollize()
         self:Event_RagdollizeDerived();
     end
 end
+
+
+--
 function ChairEntity.Client:OnPhysicsBreak(vPos, nPartId, nOtherPartId)
     self:ActivateOutput("Break", nPartId + 1);
 end
 
+
+--
 function ChairEntity:IsUsable(user)
     local ret = nil
     if not self.__usable then
@@ -240,6 +269,8 @@ function ChairEntity:IsUsable(user)
     return ret or 0
 end
 
+
+--
 function ChairEntity:IsUsableByPlayer(user)
 
     local myDirection = g_Vectors.temp_v1;
@@ -260,6 +291,8 @@ function ChairEntity:IsUsableByPlayer(user)
     return false;
 end
 
+
+--
 function ChairEntity:GetActions(user, firstFast)
     output = {}
 
@@ -268,10 +301,14 @@ function ChairEntity:GetActions(user, firstFast)
     return output
 end
 
+
+--
 function ChairEntity:OnUsed(user)
     Game.SendInfoText("Used by player", true, nil, 3)
 end
 
+
+--
 function ChairEntity:OnUsedHold(user)
 
 end

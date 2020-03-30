@@ -13,14 +13,13 @@ CookingSpotEntity = {
 
         class = "BasicEntity",
 
-        MaxSpeed = 1,
-        fHealth = 100,
         bTurnedOn = 1,
         bExcludeCover = 0,
 
         bSaved_by_game = 1,
         Saved_by_game = 1,
         bSerialize = 1,
+
         deletion_lock = false,
 
         fUsabilityDistance = 100,
@@ -43,11 +42,6 @@ CookingSpotEntity = {
             }
         },
 
-        Body = {
-            guidClothingPresetId = "0",
-            guidBodyPrestId = "0"
-        },
-
         soclasses_SmartObjectHelpers = "",
         soclasses_SmartObjectClass = "",
 
@@ -58,17 +52,6 @@ CookingSpotEntity = {
         guidSmartObjectType = "",
         esFaction = "",
         MultiplayerOptions = {},
-
-        -- soclasses_SmartObjectClass = "",
-        sWH_AI_EntityCategory = "",
-        bMissionCritical = 0,
-        bCanTriggerAreas = 0,
-        DmgFactorWhenCollidingAI = 1,
-    },
-
-    Editor = {
-        Icon = "physicsobject.bmp",
-        IconOnTop = 1,
     },
 
     Script = {
@@ -133,15 +116,10 @@ function CookingSpotEntity:SetupModel()
 end
 
 function CookingSpotEntity:OnLoad(table)
-    self.health = table.health;
-    self.dead = table.dead;
     self.object_Model = table.object_Model;
 
     local Properties = self.Properties;
     Properties.object_Model = table.object_Model;
-
-    System.LogAlways("Loading")
-    System.LogAlways("Persisted_Entity.object_model: " .. table.object_Model)
 
     -- load the persisted model path from the save file
     self:LoadObject(0, table.object_Model)
@@ -154,15 +132,14 @@ function CookingSpotEntity:OnLoad(table)
 
 end
 
+
+--
 function CookingSpotEntity:OnSave(table)
-    table.health = self.health;
-    table.dead = self.dead;
     table.object_Model = self.Properties.object_Model;
-
-    System.LogAlways("Saving")
-    System.LogAlways("Persisting Entity.object_model: " .. table.object_Model)
-
 end
+
+
+--
 function CookingSpotEntity:IsRigidBody()
     local Properties = self.Properties;
     local Mass = Properties.Mass;
@@ -172,6 +149,9 @@ function CookingSpotEntity:IsRigidBody()
     end
     return true;
 end
+
+
+--
 function CookingSpotEntity:PhysicalizeThis()
     local Physics = self.Properties.Physics;
     if (CryAction.IsImmersivenessEnabled() == 0) then
@@ -179,6 +159,9 @@ function CookingSpotEntity:PhysicalizeThis()
     end
     EntityCommon.PhysicalizeRigid(self, 0, Physics, self.bRigidBodyActive);
 end
+
+
+--
 function CookingSpotEntity:OnPropertyChange()
     if (self.__usable) then
         if (self.__origUsable ~= self.Properties.bUsable or self.__origPickable ~= self.Properties.bPickable) then
@@ -187,6 +170,9 @@ function CookingSpotEntity:OnPropertyChange()
     end
     self:SetFromProperties();
 end
+
+
+--
 function CookingSpotEntity:OnReset()
     System.LogAlways("OnReset entity ...")
 
@@ -199,6 +185,9 @@ function CookingSpotEntity:OnReset()
         self:AwakePhysics(0);
     end
 end
+
+
+--
 function CookingSpotEntity:Event_Remove()
     System.LogAlways("Removing construction")
 
@@ -206,6 +195,9 @@ function CookingSpotEntity:Event_Remove()
     self:DestroyPhysics();
     self:ActivateOutput("Remove", true);
 end
+
+
+--
 function CookingSpotEntity:Event_Hide()
     System.LogAlways("Hiding entity ...")
     self:Hide(1);
@@ -214,6 +206,9 @@ function CookingSpotEntity:Event_Hide()
         Log("%.3f %s %s : Event_Hide", _time, CurrentCinematicName, self:GetName());
     end
 end
+
+
+--
 function CookingSpotEntity:Event_UnHide()
     System.LogAlways("Unhiding entity ...")
     self:Hide(0);
@@ -222,6 +217,9 @@ function CookingSpotEntity:Event_UnHide()
         Log("%.3f %s %s : Event_UnHide", _time, CurrentCinematicName, self:GetName());
     end
 end
+
+
+--
 function CookingSpotEntity:Event_Ragdollize()
     self:RagDollize(0);
     self:ActivateOutput("Ragdollized", true);
@@ -229,10 +227,15 @@ function CookingSpotEntity:Event_Ragdollize()
         self:Event_RagdollizeDerived();
     end
 end
+
+
+--
 function CookingSpotEntity.Client:OnPhysicsBreak(vPos, nPartId, nOtherPartId)
     self:ActivateOutput("Break", nPartId + 1);
 end
 
+
+--
 function CookingSpotEntity:IsUsable(user)
     local ret = nil
     if not self.__usable then
@@ -256,6 +259,8 @@ function CookingSpotEntity:IsUsable(user)
     return ret or 0
 end
 
+
+--
 function CookingSpotEntity:IsUsableByPlayer(user)
 
     local myDirection = g_Vectors.temp_v1;
@@ -322,15 +327,21 @@ function CookingSpotEntity:GetActions(user, firstFast)
 
         -- XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(ent)) .. "), mode ('use')")
 
-    end))                                          :interaction(inr_chair):enabled(1))
+    end)):interaction(inr_chair):enabled(1))
 
     return output
 end
 
+
+--
 function CookingSpotEntity:OnUsed(user)
 
+
+    --
 end
 
+
+--
 function CookingSpotEntity:OnUsedHold(user)
     -- System.LogAlways("Hello World! this entity has been used!")
     -- XGenAIModule.SendMessageToEntity(player.this.id, "player:request", "target(" .. Framework.WUIDToMsg(XGenAIModule.GetMyWUID(self)) .. "), mode ('use'), behavior('player_use_sleep')")

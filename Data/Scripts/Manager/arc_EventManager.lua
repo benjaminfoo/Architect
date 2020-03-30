@@ -8,60 +8,60 @@ architect_init = {}
 
 function showUsage()
 
-	-- create controller for the ingame user-interface
-	-- Script.UnloadScript("Scripts/Manager/arc_UIController.lua")
-	-- Script.ReloadScript("Scripts/Manager/arc_UIController.lua")
-	uiManagerParams = {}
-	uiManagerParams.class = "UIManager"
-	uiManagerParams.name = "UIManager_Instance"
+    -- create controller for the ingame user-interface
+    -- Script.UnloadScript("Scripts/Controller/arc_UIController.lua")
+    -- Script.ReloadScript("Scripts/Controller/arc_UIController.lua")
+    uiManagerParams = {}
+    uiManagerParams.class = "UIManager"
+    uiManagerParams.name = "UIManager_Instance"
 
-	uiManagerEntity = System.SpawnEntity(uiManagerParams)
+    uiManagerEntity = System.SpawnEntity(uiManagerParams)
 
-	message = "<font color='#333333' size='32'>Architect " .. architect_version .. "</font>" .. "\n"
-			.. "<font color='#333333' size='8'>\n</font>"
-			.. "<font color='#333333' size='16'>An advanced base-building modification for kingdom come deliverance.</font>" .. "\n"
+    message = "<font color='#333333' size='32'>Architect " .. architect_version .. "</font>" .. "\n"
+            .. "<font color='#333333' size='8'>\n</font>"
+            .. "<font color='#333333' size='16'>An advanced base-building modification for kingdom come deliverance.</font>" .. "\n"
 
-			.. "<font color='#333333' size='18'>\nKey Mousewheel up/down</font>" .. "\n"
-			.. "<font color='#333333' size='16'>Choose construction</font>" .. "\n"
+            .. "<font color='#333333' size='18'>\nKey Mousewheel up/down</font>" .. "\n"
+            .. "<font color='#333333' size='16'>Choose construction</font>" .. "\n"
 
-			.. "<font color='#333333' size='18'>\nKey V </font>" .. "\n"
-			.. "<font color='#333333' size='16'>Create construction</font>" .. "\n"
+            .. "<font color='#333333' size='18'>\nKey V </font>" .. "\n"
+            .. "<font color='#333333' size='16'>Create construction</font>" .. "\n"
 
-			.. "<font color='#333333' size='18'>\nKey R </font>" .. "\n"
-			.. "<font color='#333333' size='16'>Rotate new construction</font>" .. "\n"
+            .. "<font color='#333333' size='18'>\nKey R </font>" .. "\n"
+            .. "<font color='#333333' size='16'>Rotate new construction</font>" .. "\n"
 
-			.. "<font color='#333333' size='18'>\nKey G </font>" .. "\n"
-			.. "<font color='#333333' size='16'>Remove construction</font>" .. "\n"
+            .. "<font color='#333333' size='18'>\nKey G </font>" .. "\n"
+            .. "<font color='#333333' size='16'>Remove construction</font>" .. "\n"
 
-			.. "<font color='#333333' size='18'>\nKey O </font>" .. "\n"
-			.. "<font color='#333333' size='16'>Toggle deletion of entity-lock</font>" .. "\n"
+            .. "<font color='#333333' size='18'>\nKey O </font>" .. "\n"
+            .. "<font color='#333333' size='16'>Toggle deletion of entity-lock</font>" .. "\n"
 
-			.. "<font color='#333333' size='18'>\nKey H </font>" .. "\n"
-			.. "<font color='#333333' size='16'>Enable / disable the mod.</font>" .. "\n"
+            .. "<font color='#333333' size='18'>\nKey H </font>" .. "\n"
+            .. "<font color='#333333' size='16'>Enable / disable the mod.</font>" .. "\n"
 
-			.. "\n"
+            .. "\n"
 
-			--[[
-			.. "<font color='#333333' size='18'>\nCommands </font>"
-			.. "<font color='#333333' size='16'>\n"
-				.. "#setHome()" .. "\n"
-				.. "#setHome()" .. "\n"
-				.. "#setHomeName()" .. "\n"
-				.. "#getHome()" .. "\n"
-				.. "#showStats()" .. "\n"
-				.. "#search('bridge')" .. "\n"
-				.. "#lockAll()" .. "\n"
-				.. "#unlockAll()" .. "\n"
-			.. "</font>" .. "\n"
-			]] --
+            --[[
+            .. "<font color='#333333' size='18'>\nCommands </font>"
+            .. "<font color='#333333' size='16'>\n"
+                .. "#setHome()" .. "\n"
+                .. "#setHome()" .. "\n"
+                .. "#setHomeName()" .. "\n"
+                .. "#getHome()" .. "\n"
+                .. "#showStats()" .. "\n"
+                .. "#search('bridge')" .. "\n"
+                .. "#lockAll()" .. "\n"
+                .. "#unlockAll()" .. "\n"
+            .. "</font>" .. "\n"
+            ]] --
 
-			.. "<font color='#333333' size='16'>Execute 'architect_help' in the ingame-console for additional help.\nUse 'architect_intro' to show this message again.</font>" .. "\n\n"
+            .. "<font color='#333333' size='16'>Execute 'architect_help' in the ingame-console for additional help.\nUse 'architect_intro' to show this message again.</font>" .. "\n\n"
 
 
-	-- create tutorial and show
-	Game.ShowTutorial(message, 20, false, true)
+    -- create tutorial and show
+    Game.ShowTutorial(message, 20, false, true)
 
-	architect_usage_has_been_shown = true
+    architect_usage_has_been_shown = true
 
 
 end
@@ -85,12 +85,10 @@ UIAction.RegisterActionListener(architect_init, "", "", "sceneInitListener")
 
 --[[
 
-    -- this code leads to crashes !
-    UIAction.UnregisterEventSystemListener(architect_init, "uiEventSystemListener")
-    UIAction.RegisterEventSystemListener(architect_init, "", "", "uiEventSystemListener")
+    UIAction.UnregisterEventSystemListener(architect_init, "userInterfaceEventSystemListener")
+    UIAction.RegisterEventSystemListener(architect_init, "", "", "userInterfaceEventSystemListener")
 
-    -- this code leads to crashes !
-    function architect_init:uiEventSystemListener(actionName, eventName, argTable)
+    function architect_init:userInterfaceEventSystemListener(actionName, eventName, argTable)
 
         System.LogAlways("ui-event: actionName: " .. actionName)
         System.LogAlways("ui-event: eventName: " .. eventName)

@@ -132,18 +132,3 @@ function showStats()
     end
 
 end
-
----
---- possible resources and recipes
----
-
--- wood
--- stone
-
----
---- refined resources
----
-
--- wooden log
--- arrow head
-

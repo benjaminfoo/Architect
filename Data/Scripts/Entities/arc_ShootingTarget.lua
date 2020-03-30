@@ -14,24 +14,20 @@ ShootingTarget = {
             Density = 1,
             Mass = 1,
 
-
             bRigidBody = 1,
             bRigidBodyActive = 1,
             bRigidBodyAfterDeath = 1,
             bActivateOnDamage = 1,
-
         },
 
         shootCount = 0,
     },
 
-    Editor = {
-        Icon = "Item.bmp",
-        ShowBounds = 1,
-    },
     States = { "Activated", "Deactivated", "Turning", "Init" },
 }
 
+
+--
 function ShootingTarget:OnReset()
     local props = self.Properties;
     if (not EmptyString(props.object_Model)) then
@@ -46,18 +42,26 @@ function ShootingTarget:OnReset()
 
 end;
 
-function ShootingTarget:OnSave(tbl)
+
+--
+function ShootingTarget:OnSave(table)
     table.object_Model = self.Properties.object_Model;
 end;
 
-function ShootingTarget:OnLoad(tbl)
+
+--
+function ShootingTarget:OnLoad(table)
     self.object_Model = table.object_Model;
 end;
 
+
+--
 function ShootingTarget:OnPropertyChange()
     self:OnReset();
 end;
 
+
+--
 function ShootingTarget.Server:OnInit()
     self.physics = {
         bRigidBody = 1,
@@ -71,6 +75,8 @@ function ShootingTarget.Server:OnInit()
 
 end;
 
+
+--
 function ShootingTarget.Client:OnHit(hit)
     -- System.LogAlways("Someone at Client OnHit me!")
     self.Properties.shootCount = self.Properties.shootCount + 1
@@ -81,38 +87,56 @@ function ShootingTarget.Client:OnHit(hit)
 
 end
 
+
+--
 function ShootingTarget.Client:OnDamage(hit)
     System.LogAlways("Someone at Client OnDamage me!")
 end
 
+
+--
 function ShootingTarget.Client:OnEvent(hit)
     System.LogAlways("Someone at Client OnEvent me!")
 end
 
+
+--
 function ShootingTarget:OnHit(hit)
     System.LogAlways("Someone at Client OnHit me but local !")
 end
 
+
+--
 function ShootingTarget:OnDamage(hit)
     System.LogAlways("Someone at Client OnDamage me but local !")
 end
 
+
+--
 function ShootingTarget:OnEvent(hit)
     System.LogAlways("Someone at Client OnEvent me but local !")
 end
 
+
+--
 function ShootingTarget.Server:OnHit(hit)
     System.LogAlways("Someone at Client OnHit me but local !")
 end
 
+
+--
 function ShootingTarget.Server:OnDamage(hit)
     System.LogAlways("Someone at Client OnDamage me but local !")
 end
 
+
+--
 function ShootingTarget.Server:OnEvent(hit)
     System.LogAlways("Someone at Client OnEvent me but local !")
 end
 
+
+--
 function ShootingTarget.Server:OnHit(hit)
 
     System.LogAlways("Someone at server shot me!")
@@ -132,11 +156,16 @@ function ShootingTarget.Server:OnHit(hit)
     end ;
 
 end;
+
+
+--
 function ShootingTarget:Event_Activated()
     self:GotoState("Init");
     BroadcastEvent(self, "Activated")
 end;
 
+
+--
 function ShootingTarget:Event_Deactivated()
     System.LogAlways("Event_deacted - onbeginstate ")
 

@@ -1,3 +1,9 @@
+---
+--- Author:  Benjamin Foo
+---
+--- This file contains different methods which aren't actually used nor loaded.
+---
+
 -- warps the player to the raycasts hit
 ---- massive cheat, not included by default - but its fun :)
 function warpTo()
