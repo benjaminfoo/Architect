@@ -259,10 +259,12 @@ function SpawnBuildingInstance(line)
 
             if (construction.useCategory == "addDirt") then
                 spawnParams.class = "BathEntity"
+                spawnParams.properties.useCategory = construction.useCategory
             end
 
             if (construction.useCategory == "wash") then
                 spawnParams.class = "BathEntity"
+                spawnParams.properties.useCategory = construction.useCategory
             end
 
             if (construction.useCategory == "showStats") then
@@ -780,10 +782,6 @@ function updateSelection()
             nil,
             fDisplayTimeInSeconds
     )
-
-    -- wh_ui_CopyrightMsgLeft = \n\n\n\nwood:233  money:100  food:12  water:700
-    wh_ui_CopyrightMsgLeft = message
-
 
 end
 

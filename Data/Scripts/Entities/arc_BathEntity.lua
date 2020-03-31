@@ -312,7 +312,7 @@ function BathEntity:GetActions(user, firstFast)
     -- KingdomComeDeliverance/Tools/luadoc/luadoc/!!MEMBERTYPE_Methods_C_ScriptBindActor.html
     -- C_ScriptBindActor__WashDirtAndBlood
 
-    if (self.Properties.addDirt) then
+    if (self.Properties.useCategory == "addDirt") then
         AddInteractorAction(output, firstFast, Action():hint("Charcoal yourself"):action("use"):func((
                 function()
                     dirtVal = 1
@@ -321,7 +321,7 @@ function BathEntity:GetActions(user, firstFast)
                 end))                                  :enabled(1))
     end
 
-    if (self.Properties.wash) then
+    if (self.Properties.useCategory == "wash") then
         AddInteractorAction(output, firstFast, Action():hint("Wash yourself"):action("use"):func((
                 function()
                     cleanVal = 1
