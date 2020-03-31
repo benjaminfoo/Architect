@@ -74,8 +74,77 @@ parameterizedConstructions = {
 
     -- constructions which are under active development are the first in this list
     -- dev misc
+    {
+        -- TODO: this needs to get updated as the project advances
+        description = "Town Book \nA book which contains informations and notes about the current town.",
+        modelPath = "objects/props/alchemy/book/alchemy_book.cgf",
+        useable = true, useCategory = "showStats"
+    },
 
 
+    -- paths
+    {
+        modelPath = "objects/nature/paths/soil_path_01.cgf",
+    },
+    {
+        modelPath = "objects/nature/paths/soil_path_01_curve.cgf",
+    },
+    {
+        modelPath = "objects/nature/paths/soil_path_02.cgf",
+    },
+    {
+        modelPath = "objects/nature/paths/soil_path_02_curve.cgf",
+    },
+    {
+        modelPath = "objects/nature/paths/soil_path_03.cgf",
+    },
+    {
+        modelPath = "objects/nature/paths/soil_path_03_curve.cgf",
+    },
+
+    -- blacksmith
+    {
+        modelPath = "objects/buildings/houses/smithery/sharpening_stone_pedal.cgf",
+    },
+
+    {
+        modelPath = "objects/buildings/houses/smithery/smithery_plosina.cgf",
+    },
+    {
+        modelPath = "objects/buildings/houses/smithery/smithery_v2_stone.cgf",
+    },
+    {
+        modelPath = "objects/buildings/houses/smithery/smithery_v2_stone2.cgf",
+    },
+
+    --[[
+    -- these could be used to spawn rabbits or other animals or increase the rate of wildlife in the area, i dunno
+    {
+        modelPath = "objects/nature/rabbit_burrow/rabbit_burrow.cgf",
+    },
+
+    {
+        modelPath = "objects/nature/rabbit_burrow/rabbit_burrow02.cgf",
+    },
+    ]]--
+
+    {
+        modelPath = "objects/props/blacksmith_tools/blacksmith_tongs.cgf",
+    },
+    {
+        modelPath = "objects/props/blacksmith_tools/blacksmith_chipping.cgf",
+    },
+    {
+        modelPath = "objects/props/blacksmith_tools/blacksmith_hammer.cgf",
+    },
+    {
+        modelPath = "objects/props/blacksmith_tools/horseshoe.cgf",
+    },
+    {
+        modelPath = "objects/props/blacksmith_tools/oil_container.cgf",
+    },
+
+    -- decoration
     {
         modelPath = "objects/props/ceramics/bowl_03.cgf",
     },
@@ -218,17 +287,6 @@ parameterizedConstructions = {
     },
     {
         modelPath = "objects/props/wooden_bins/bucket/bucket_water.cgf",
-    },
-    {
-        description = "A wooden water tub to wash yourself.",
-        modelPath = "objects/props/wooden_bins/water_tub/water_tub_wide_water.cgf",
-        useable = true, useCategory = "wash"
-    },
-
-    {
-        description = "Another wooden water tub to get yourself clean tidy.",
-        modelPath = "objects/props/wooden_bins/water_tub/water_tube_clean_water.cgf",
-        useable = true, useCategory = "wash", useCosts = { groschen = 25 }
     },
 
     {
@@ -593,7 +651,7 @@ parameterizedConstructions = {
         modelPath = "objects/buildings/sazava_monastery/sm_platform_c.cgf",
     },
 
-    -- bath tents
+    -- bath house / tents
     {
         description = "A tent which is frequently used in bath houses.",
         modelPath = "objects/structures/bath_tent/tent_bath_a.cgf",
@@ -604,10 +662,34 @@ parameterizedConstructions = {
         modelPath = "objects/structures/bath_tent/tent_bath_round_a.cgf",
         sleepable = false
     },
+
+    --- bath house equipment
     {
-        description = "A tub which is frequently used in bath houses.",
+        description = "A piece of coal to add dust and dirt to your appearance.",
+        modelPath = "objects/props/alchemy/special/coal.cgf",
+        useable = true, useCategory = "addDirt"
+    }, {
+
+        description = "A wooden water tub to wash yourself and clean your items.",
+        modelPath = "objects/props/wooden_bins/water_tub/water_tub_wide_water.cgf",
+        useable = true, useCategory = "wash", useCosts = { groschen = 25 }
+    },
+
+    {
+        description = "A wooden water tub to wash yourself and clean your items.",
+        modelPath = "objects/props/wooden_bins/water_tub/water_tube_clean_water.cgf",
+        useable = true, useCategory = "wash", useCosts = { groschen = 25 }
+    },
+
+    {
+        description = "An empty wooden tub.",
         modelPath = "objects/buildings/houses/rataje_bathhouse/bathtub_a.cgf",
     },
+    {
+        description = "A wooden dressing screen.",
+        modelPath = "objects/props/furniture/dressing_screen/dressing_screen_01.cgf",
+    },
+
     -- {  modelPath = "objects/buildings/houses/rataje_bathhouse/bathtub_a_water.cgf", },
 
     -- other tents

@@ -1,6 +1,5 @@
 ---
 --- Author:  Benjamin Foo
---- DateTime: 04.03.2020 23:09
 ---
 --- The linmath class contains basic functions for linear algebra
 ---
@@ -10,6 +9,7 @@ i = { x = 1, y = 0, z = 0 }
 j = { x = 0, y = 1, z = 0 }
 k = { x = 0, y = 0, z = 1 }
 
+--
 quat_identity = { x = 0, y = 0, z = 0, w = 1 }
 
 
@@ -114,6 +114,7 @@ function Vector_SetFromToRotation(fromVec, toVec)
     return identity
 end
 
+--
 function Quat_Align(newEntity, normal)
     local upZ = { x = 0, y = 0, z = 1 }
     local rotVec = Vector_SetFromToRotation(upZ, normal)

@@ -14,12 +14,16 @@ bIndex = 1
 -- the set of elements which are allowed to delete by the user
 classesWhiteList = {
     "BasicBuildingEntity",
+    "BathEntity",
     "BedEntity",
     "ChairEntity",
     "CookingSpotEntity",
     "DynamicBuildingEntity",
     "GeneratorEntity",
-    "UIManager"
+    -- no we dont want to remove the previewEntity -- "PreviewEntity",
+    "ShootingTarget",
+    "UIManager",
+    "ECSManager"
 }
 
 -- TODO: this is just a placeholder variable
@@ -115,6 +119,8 @@ end
 -- remove an item by its class and by an amount
 -- class = example - bread, 86e4ff24-88db-4024-abe6-46545fa0fbd1
 -- deleteAmount = how often an item gets removed
+
+-- TODO: move to inventoryController.lua
 function removeItem(itemRemovedByClass, deleteAmount)
     local removed = 0
     for i, userdata in pairs(player.inventory:GetInventoryTable()) do
@@ -130,6 +136,7 @@ function removeItem(itemRemovedByClass, deleteAmount)
     end
 end
 
+-- TODO: move to previewController.lua
 function spawnPreview()
 
     -- if the mod is not enabled, dont do anything -- needs refactoring
@@ -171,6 +178,7 @@ function spawnPreview()
     previewModelEntity = System.SpawnEntity(spawnParams)
 
 end
+
 
 -- spawn the currently selected entity with the current selection as modelpath
 function SpawnBuildingInstance(line)
@@ -246,8 +254,16 @@ function SpawnBuildingInstance(line)
 
         if (construction.useable) then
 
+            if (construction.useCategory == "addDirt") then
+                spawnParams.class = "BathEntity"
+            end
+
             if (construction.useCategory == "wash") then
                 spawnParams.class = "BathEntity"
+            end
+
+            if (construction.useCategory == "showStats") then
+                spawnParams.class = "TownBook"
             end
 
             -- spawnParams.class = "GeneratorEntity"
@@ -503,6 +519,7 @@ end
 
 
 -- delete the current entity (the entity which collides with the raycast)
+-- TODO: merge with raycastDeletion()
 function deleteRayCastEntityHit()
     System.LogAlways("# deleteRayCastEntityHit start")
 
@@ -838,6 +855,7 @@ function reloadall ()
 
     Script.ReloadScript("Scripts/Controller/arc_UIController.lua")
     Script.ReloadScript("Scripts/Manager/arc_BuildingsManager.lua")
+    Script.ReloadScript("Scripts/Manager/arc_CCommandManager.lua")
     Script.ReloadScript("Scripts/Util/arc_constants.lua")
     Script.ReloadScript("Scripts/Util/arc_utils.lua")
     Script.ReloadScript("Scripts/Util/arc_runtime.lua")

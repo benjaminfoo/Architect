@@ -1,0 +1,4 @@
+<Entity
+        Name="TownBook"
+        Script="Scripts/Entities/arc_TownBookEntity.lua"
+/>

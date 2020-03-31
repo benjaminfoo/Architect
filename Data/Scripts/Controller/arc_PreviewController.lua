@@ -5,6 +5,6 @@
 ---
 
 --
-function preview_update()
+function PreviewController_Update()
 
 end

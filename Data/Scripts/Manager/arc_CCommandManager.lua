@@ -10,17 +10,18 @@ function architect_clear()
     System.ClearConsole();
 end
 
+-- Gamble against the random number generator for n groschen
 function architect_gamble()
     System.LogAlways("Gambling started ..");
 
     rand = math.random()
     winThreshold = 0.5
-    betAmount = 5
+    betAmount = 100
 
     if rand > winThreshold then
-        betAmount = 5
+        betAmount = betAmount
     else
-        betAmount = -5
+        betAmount = -betAmount
     end
 
     Game.SendInfoText("Gamble: " .. tostring(betAmount) .. " groschen!", false, nil, 1)
@@ -83,6 +84,8 @@ function architect_help()
     l("deleteall()              - Deletes ALL constructions you've build")
     l("deleteAt(index)          - Delete the construction with the number <index> (use #showall())")
     l("raycastDeletion()        - Delete a construction which the user currently looks at")
+    l("")
+    l("show_whitelist()         - Show the list of classes which are used to limit functionality (fe: remove only player objects, ...")
     l("")
     l("reloadAll()              - Reloads the source files of the modification at runtime")
     l("rayCastHit()             - Use a raycast to determine entities in front of the player")

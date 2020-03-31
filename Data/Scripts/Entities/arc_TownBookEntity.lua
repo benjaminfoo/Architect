@@ -2,7 +2,7 @@
 --- Author:  Benjamin Foo
 ---
 
-BathEntity = {
+TownBookEntity = {
     Client = {},
     Server = {},
     Properties = {
@@ -21,7 +21,7 @@ BathEntity = {
             bPhysicalize = 1,
             bRigidBody = 0,
             bPushableByPlayers = 0,
-            sName = "BathEntity",
+            sName = "TownBook",
 
             Density = -1,
             Mass = -1,
@@ -74,26 +74,22 @@ BathEntity = {
         Saved_by_game = 1,
         bSerialize = 1,
 
-
-        --
         bInteractiveCollisionClass = 1,
-        object_Model = "objects/buildings/refugee_camp/bad_straw.cgf",
 
-        sName = "BathEntity",
     },
     States = {  },
 
 }
 
-function BathEntity:OnReset()
-    System.LogAlways("BathEntity OnReset")
+function TownBookEntity:OnReset()
+    System.LogAlways("TownBookEntity OnReset")
 
     self:Activate(1);
 
 end;
 
-function BathEntity.Server:OnInit()
-    System.LogAlways("BathEntity Server OnInit")
+function TownBookEntity.Server:OnInit()
+    System.LogAlways("TownBookEntity Server OnInit")
 
     if (not self.bInitialized) then
         self:OnReset();
@@ -102,33 +98,33 @@ function BathEntity.Server:OnInit()
 
 end;
 
-function BathEntity.Client:OnInit()
-    System.LogAlways("BathEntity client OnInit")
+function TownBookEntity.Client:OnInit()
+    System.LogAlways("TownBookEntity client OnInit")
 
     if (not self.bInitialized) then
         self:OnReset();
         self.bInitialized = 1;
     end ;
 
-    System.LogAlways("BathEntity client loaded ...")
+    System.LogAlways("TownBookEntity client loaded ...")
 
 end
 
-function BathEntity:OnSpawn()
+function TownBookEntity:OnSpawn()
     self.bRigidBodyActive = 1;
     self:SetFromProperties();
 end
 
 -- todo - refactor like there is no tomorrow, but tomorrow
-function BathEntity.Server:OnUpdate(delta)
+function TownBookEntity.Server:OnUpdate(delta)
 
 end
 
-function BathEntity.Client:OnUpdate(delta)
+function TownBookEntity.Client:OnUpdate(delta)
 
 end
 
-function BathEntity:SetupModel()
+function TownBookEntity:SetupModel()
 
     local Properties = self.Properties;
 
@@ -145,7 +141,7 @@ function BathEntity:SetupModel()
 
 end
 
-function BathEntity:OnLoad(table)
+function TownBookEntity:OnLoad(table)
     self.object_Model = table.object_Model;
 
     -- reload persisted values
@@ -169,7 +165,7 @@ function BathEntity:OnLoad(table)
 
 end
 
-function BathEntity:OnSave(table)
+function TownBookEntity:OnSave(table)
     table.object_Model = self.Properties.object_Model;
     table.deletion_lock = self.Properties.deletion_lock
 
@@ -177,7 +173,7 @@ function BathEntity:OnSave(table)
     System.LogAlways("Persisting Entity.object_model: " .. table.object_Model)
 end
 
-function BathEntity:IsRigidBody()
+function TownBookEntity:IsRigidBody()
     local Properties = self.Properties;
     local Mass = Properties.Mass;
     local Density = Properties.Density;
@@ -187,13 +183,13 @@ function BathEntity:IsRigidBody()
     return true;
 end
 
-function BathEntity:PhysicalizeThis()
+function TownBookEntity:PhysicalizeThis()
     local Physics = self.Properties.Physics;
 
     EntityCommon.PhysicalizeRigid(self, 0, Physics, self.bRigidBodyActive);
 end
 
-function BathEntity:SetFromProperties()
+function TownBookEntity:SetFromProperties()
     local Properties = self.Properties;
 
     if (Properties.object_Model == "") then
@@ -218,7 +214,7 @@ function BathEntity:SetFromProperties()
 
 end
 
-function BathEntity:OnPropertyChange()
+function TownBookEntity:OnPropertyChange()
     if (self.__usable) then
         if (self.__origUsable ~= self.Properties.bUsable or self.__origPickable ~= self.Properties.bPickable) then
             self.__usable = nil;
@@ -227,7 +223,7 @@ function BathEntity:OnPropertyChange()
     self:SetFromProperties();
 end
 
-function BathEntity:Event_Remove()
+function TownBookEntity:Event_Remove()
     System.LogAlways("Removing construction")
 
     self:DrawSlot(0, 0);
@@ -235,19 +231,19 @@ function BathEntity:Event_Remove()
     self:ActivateOutput("Remove", true);
 end
 
-function BathEntity:Event_Hide()
+function TownBookEntity:Event_Hide()
     System.LogAlways("Hiding entity ...")
     self:Hide(1);
     self:ActivateOutput("Hide", true);
 end
 
-function BathEntity:Event_UnHide()
+function TownBookEntity:Event_UnHide()
     System.LogAlways("Unhiding entity ...")
     self:Hide(0);
     self:ActivateOutput("UnHide", true);
 end
 
-function BathEntity:Event_Ragdollize()
+function TownBookEntity:Event_Ragdollize()
     self:RagDollize(0);
     self:ActivateOutput("Ragdollized", true);
     if (self.Event_RagdollizeDerived) then
@@ -255,12 +251,12 @@ function BathEntity:Event_Ragdollize()
     end
 end
 
-function BathEntity.Client:OnPhysicsBreak(vPos, nPartId, nOtherPartId)
+function TownBookEntity.Client:OnPhysicsBreak(vPos, nPartId, nOtherPartId)
     self:ActivateOutput("Break", nPartId + 1);
 end
 
 -- determines if the entity is useable overall
-function BathEntity:IsUsable(user)
+function TownBookEntity:IsUsable(user)
     local ret = nil
     if not self.__usable then
         self.__usable = self.Properties.bUsable
@@ -284,7 +280,7 @@ function BathEntity:IsUsable(user)
 end
 
 -- Determines if the entity is useable by the player
-function BathEntity:IsUsableByPlayer(user)
+function TownBookEntity:IsUsableByPlayer(user)
 
     local myDirection = g_Vectors.temp_v1;
     local vecToPlayer = g_Vectors.temp_v2;
@@ -305,29 +301,21 @@ function BathEntity:IsUsableByPlayer(user)
 end
 
 -- This callback aggregates the available actions of the entity
-function BathEntity:GetActions(user, firstFast)
+function TownBookEntity:GetActions(user, firstFast)
 
     output = {}
 
     -- KingdomComeDeliverance/Tools/luadoc/luadoc/!!MEMBERTYPE_Methods_C_ScriptBindActor.html
     -- C_ScriptBindActor__WashDirtAndBlood
 
-    if (self.Properties.addDirt) then
-        AddInteractorAction(output, firstFast, Action():hint("Charcoal yourself"):action("use"):func((
+    if (self.Properties.showStats) then
+        AddInteractorAction(output, firstFast, Action():hint("Show statistics"):action("use"):func((
                 function()
-                    dirtVal = 1
-                    player.actor:AddDirt(dirtVal)
-                    Game.SendInfoText("You are covered in Charcoal now.", true, nil, 3)
-                end))                                  :enabled(1))
-    end
 
-    if (self.Properties.wash) then
-        AddInteractorAction(output, firstFast, Action():hint("Wash yourself"):action("use"):func((
-                function()
-                    cleanVal = 1
-                    player.actor:WashDirtAndBlood(cleanVal)
-                    player.actor:WashItems(cleanVal)
-                    Game.SendInfoText("You have washed yourself!", true, nil, 3)
+                    showStats()
+                    Game.SendInfoText("Look at the console for the town stats - needs further work.", true, nil, 5)
+
+
                 end))                                  :enabled(1))
     end
 
@@ -337,27 +325,27 @@ end
 
 
 --
-function BathEntity:OnUsed(user)
+function TownBookEntity:OnUsed(user)
 
 end
 
 --
-function BathEntity:OnUsedHold(user)
+function TownBookEntity:OnUsedHold(user)
 
-    System.LogAlways("BathEntity Used OnHold")
+    System.LogAlways("TownBookEntity Used OnHold")
 end
 
 --
-BathEntity.FlowEvents = {
+TownBookEntity.FlowEvents = {
     Inputs = {
-        Used = { BathEntity.Event_Used, "bool" },
-        EnableUsable = { BathEntity.Event_EnableUsable, "bool" },
-        DisableUsable = { BathEntity.Event_DisableUsable, "bool" },
+        Used = { TownBookEntity.Event_Used, "bool" },
+        EnableUsable = { TownBookEntity.Event_EnableUsable, "bool" },
+        DisableUsable = { TownBookEntity.Event_DisableUsable, "bool" },
 
-        Hide = { BathEntity.Event_Hide, "bool" },
-        UnHide = { BathEntity.Event_UnHide, "bool" },
-        Remove = { BathEntity.Event_Remove, "bool" },
-        Ragdollize = { BathEntity.Event_Ragdollize, "bool" },
+        Hide = { TownBookEntity.Event_Hide, "bool" },
+        UnHide = { TownBookEntity.Event_UnHide, "bool" },
+        Remove = { TownBookEntity.Event_Remove, "bool" },
+        Ragdollize = { TownBookEntity.Event_Ragdollize, "bool" },
     },
     Outputs = {
         Used = "bool",
@@ -374,7 +362,7 @@ BathEntity.FlowEvents = {
     },
 }
 
-MakeUsable(BathEntity);
-AddHeavyObjectProperty(BathEntity);
-AddInteractLargeObjectProperty(BathEntity);
-SetupCollisionFiltering(BathEntity);
+MakeUsable(TownBookEntity);
+AddHeavyObjectProperty(TownBookEntity);
+AddInteractLargeObjectProperty(TownBookEntity);
+SetupCollisionFiltering(TownBookEntity);

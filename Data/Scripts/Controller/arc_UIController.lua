@@ -30,9 +30,7 @@ function UIController_OnUpdate()
     ]]--
 
 
-    rayCastHitOnUpdate()
-
-    -- onSlideUpdate()
+    -- PreviewController_Update()
 
 end
 

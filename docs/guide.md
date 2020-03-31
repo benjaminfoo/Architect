@@ -337,16 +337,60 @@ The built-in functions like System.LogAlways, Script.ReloadScript(...), Script.U
 There is a documentation for all of them in <editor>/tools/luadoc.
 
 ## Entities
+
+### Create a new entity
  
-Create *.ent file in Entities/<nameOfEntile.ent>
+Create *.ent file in Entities/TestEntity.lua
 ```
 <Entity
-    Name="UIManager"
-    Script="Scripts/Entities/UIManager.lua"
+    Name="TestEntity"
+    Script="Scripts/Entities/TestEntity.lua"
 />
 ```
 
-Create *.lua file in Scripts/Entities/<nameOfLuaFile.lua>
+Create *.lua file: Scripts/Entities/TestEntity.lua  
+A minimal example of an entity which recieves callbacks from the different systems and the engine could look like this:
+```
+
+TestEntity = {
+    Client = {},
+    Server = {},
+    Properties = {},
+    States = {},
+}
+
+function UIManager:OnPropertyChange()
+    self:OnReset();
+end;
+
+function UIManager:OnSave(tbl) end;
+
+function UIManager:OnLoad(tbl) end;
+
+function UIManager:OnReset() end;
+
+function UIManager.Server:OnInit() end;
+
+function UIManager.Client:OnInit() end;
+
+function UIManager:OnAction(action, activation, value) end
+
+function UIManager.Client:OnUpdate() end;
+
+function UIManager.Server:OnUpdate() end;
+
+UIManager.FlowEvents = {
+    Inputs = { },
+    Outputs = { },
+}
+
+/>
+```
+
+The entity is now able to recieve engine and entity callbacks. Read further information on the crytek documentation:
+- [ScriptBind Entity](https://docs.cryengine.com/display/CEPROG/ScriptBind_Entity)
+- [ScriptBind Script](https://docs.cryengine.com/display/CEPROG/ScriptBind_Script)
+- [ScriptBind System](https://docs.cryengine.com/display/CEPROG/ScriptBind_System)
 
 
 **Note** \

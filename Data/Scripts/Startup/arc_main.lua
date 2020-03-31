@@ -4,9 +4,6 @@
 --- DateTime: 03.03.2020 01:01
 ---
 
--- added runtime configuration, basic town management
-Script.ReloadScript("Scripts/Util/arc_runtime.lua")
-
 -- Load simple constants or runtime settings
 Script.ReloadScript("Scripts/Util/arc_constants.lua")
 
@@ -18,6 +15,9 @@ Script.ReloadScript("Scripts/Math/arc_linmath.lua")
 
 -- load utility methods for development
 Script.ReloadScript("Scripts/Util/arc_utils.lua")
+
+-- added runtime configuration, basic town management
+Script.ReloadScript("Scripts/Util/arc_runtime.lua")
 
 -- initialize itemset- and manager
 Script.ReloadScript("Scripts/Controller/arc_ItemController.lua")

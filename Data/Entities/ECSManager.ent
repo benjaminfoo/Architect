@@ -1,0 +1,4 @@
+<Entity
+        Name="ECSManager"
+        Script="Scripts/Entities/arc_ECSManager.lua"
+/>
