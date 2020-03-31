@@ -8,7 +8,7 @@ ShootingTarget = {
 
         Physics = {
             bPhysicalize = 1,
-            bPushableByPlayers = 1,
+            bPushableByPlayers = 0,
             sName = "GeneratorEntity",
 
             Density = 1,

@@ -301,6 +301,7 @@ parameterizedConstructions = {
         generator = true, generatorOnUse = false,
         generatorItem = "honey", generatorItemAmount = 1, generatorCapacity = -1,
         generatorCooldown = 30, generatorItemCosts = { groschen = 750 },
+        category = "Generator",
     },
     {
         description = "A hive for bees..",
@@ -429,7 +430,8 @@ parameterizedConstructions = {
         description = "A wooden bed for sleeping.",
         groschenPrice = 100,
         modelPath = "objects/props/furniture/beds/bed_cottage_01.cgf",
-        sleepable = true
+        sleepable = true,
+        category = "Beds",
     },
     {
         description = "A wooden bed with pretty blankets and pillows.",
@@ -1774,18 +1776,97 @@ function initializeBuildings()
 
     for index = 1, #parameterizedConstructions do
 
-        construction = parameterizedConstructions[index]
+        cur = parameterizedConstructions[index]
 
         -- remove the postfix ending ".cgf" from the name
         -- construction.name = parameterizedConstructions[index].modelPath
-        construction.name = string.gsub(parameterizedConstructions[index].modelPath, ".cgf", "")
+        cur.name = string.gsub(parameterizedConstructions[index].modelPath, ".cgf", "")
 
         -- locate the index of the last /
-        lastIndex = string.find(construction.name, "/[^/]*$")
+        lastIndex = string.find(cur.name, "/[^/]*$")
 
         -- create a substring of from the stripped down modelPath
-        parameterizedConstructions[index].name = string.sub(construction.name, lastIndex + 1)
+        parameterizedConstructions[index].name = string.sub(cur.name, lastIndex + 1)
         --parameterizedConstructions[index].name = construction.name
+
+        -- setup defaults
+
+        -- setup default category if non existent
+        if cur.category == nil then
+            cur.category = "Default"
+
+            -- this code is the best candidate for a key-value map
+            if string.match(string.lower(cur.name), "Town Book") then
+                cur.category = "Town-Management"
+            end
+            if string.match(string.lower(cur.name), "bed") then
+                cur.category = "Beds"
+            end
+            if string.match(string.lower(cur.name), "chair") then
+                cur.category = "Chairs"
+            end
+            if string.match(string.lower(cur.name), "bench") then
+                cur.category = "Benches"
+            end
+            if string.match(string.lower(cur.name), "table") then
+                cur.category = "Tables"
+            end
+            if string.match(string.lower(cur.name), "well") then
+                cur.category = "Wells"
+            end
+            if string.match(string.lower(cur.name), "tub") then
+                cur.category = "Bath-House"
+            end
+            if string.match(string.lower(cur.name), "bath") then
+                cur.category = "Bath-House"
+            end
+            if string.match(string.lower(cur.name), "flower") then
+                cur.category = "Vegetation"
+            end
+            if string.match(string.lower(cur.name), "tree") then
+                cur.category = "Vegetation"
+            end
+            if string.match(string.lower(cur.name), "bush") then
+                cur.category = "Vegetation"
+            end
+            if string.match(string.lower(cur.name), "field") then
+                cur.category = "Vegetation"
+            end
+            if string.match(string.lower(cur.name), "patch") then
+                cur.category = "Vegetation"
+            end
+            if string.match(string.lower(cur.name), "path") then
+                cur.category = "Paths"
+            end
+            if string.match(string.lower(cur.name), "oven") then
+                cur.category = "Generator - Food (Bread)"
+            end
+            if string.match(string.lower(cur.name), "tent") then
+                cur.category = "Tents"
+            end
+            if string.match(string.lower(cur.name), "bridge") then
+                cur.category = "Structure"
+            end
+            if string.match(string.lower(cur.name), "wall") then
+                cur.category = "Structure"
+            end
+            if string.match(string.lower(cur.name), "pallisade") then
+                cur.category = "Structure"
+            end
+            if string.match(string.lower(cur.name), "gate") then
+                cur.category = "Structure"
+            end
+            if string.match(string.lower(cur.name), "tower") then
+                cur.category = "Structure"
+            end
+
+
+        end
+
+        -- all entities should be persisted
+        if cur.saveable == nil then
+            cur.saveable = true
+        end
 
     end
 

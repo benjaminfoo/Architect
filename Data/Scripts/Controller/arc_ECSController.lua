@@ -13,6 +13,7 @@ end
 -- gets called every second, use delta to get time between this and the last rendered frame
 function ECSController_OnUpdate()
 
+
     -- manage the hit-checking for the preview-system
     rayCastHitOnUpdate()
 

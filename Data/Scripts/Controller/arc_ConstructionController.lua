@@ -698,7 +698,7 @@ function showUI()
 
     padding = "     "
 
-    newMessage = ""
+    messageBuffer = ""
 
     paddedIndex = 0
 
@@ -707,13 +707,13 @@ function showUI()
     for i = 0, 9 do
 
         paddedIndex = i + bIndex
-        newMessage = padding .. tostring(paddedIndex) .. ". - " .. parameterizedConstructions[paddedIndex].name .. '\n' .. newMessage
+        messageBuffer = padding .. tostring(paddedIndex) .. ". - " .. parameterizedConstructions[paddedIndex].name .. '\n' .. messageBuffer
 
     end
 
-    newMessage = "\n\n\n" .. newMessage
+    messageBuffer = "\n\n\n" .. messageBuffer
 
-    System.SetCVar("wh_ui_CopyrightMsgLeft", newMessage .. " aaaa \n bbbbb")
+    System.SetCVar("wh_ui_CopyrightMsgLeft", messageBuffer .. " aaaa \n bbbbb")
 
 end
 
@@ -839,7 +839,9 @@ function reloadall ()
 
     -- unload all controller first
     Script.UnloadScript("Scripts/Controller/arc_UIController.lua")
+    Script.UnloadScript("Scripts/Controller/arc_ECSController.lua")
     Script.UnloadScript("Scripts/Controller/arc_ConstructionController.lua")
+
     Script.UnloadScript("Scripts/Manager/arc_BuildingsManager.lua")
     Script.UnloadScript("Scripts/Manager/arc_CCommandManager.lua")
 
@@ -848,16 +850,18 @@ function reloadall ()
     Script.UnloadScript("Scripts/Util/arc_runtime.lua")
 
 
-
-    -- reload every script, including /Data and /Mods
-    Script.ReloadScripts()
-
+    -- Reload scripts which should be updated
+    Script.ReloadScript("Scripts/Controller/arc_ECSController.lua")
     Script.ReloadScript("Scripts/Controller/arc_UIController.lua")
     Script.ReloadScript("Scripts/Manager/arc_BuildingsManager.lua")
     Script.ReloadScript("Scripts/Manager/arc_CCommandManager.lua")
     Script.ReloadScript("Scripts/Util/arc_constants.lua")
     Script.ReloadScript("Scripts/Util/arc_utils.lua")
     Script.ReloadScript("Scripts/Util/arc_runtime.lua")
+
+    -- reload everything else in  /Data and /Mods
+    Script.ReloadScripts()
+
 
     -- reload every value we have stored before
     config.primary_town_name = townName

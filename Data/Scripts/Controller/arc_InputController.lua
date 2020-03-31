@@ -9,3 +9,8 @@
 arc_inputController = {
 
 }
+
+-- something like this
+function addEventHandler(key, newFunc)
+    -- if key is pressed execute newFunc()
+end

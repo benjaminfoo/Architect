@@ -598,3 +598,18 @@ wh_ui_ShowRatioStrips = 0 / 1
 wh_ui_ShowHud = 0 / 1
 
 r_Fullscreen = 0 / 1
+
+### Key-Handling
+See the crytek documentation for [Setting up controls and action maps](https://docs.cryengine.com/display/CEPROG/Setting+Up+Controls+and+Action+Maps)
+
+1.) Create a function
+function testEcho()
+    System.LogAlways("Hello World!") 
+end
+
+2.) Add a command to the console 
+System.AddCCommand('testEcho', 'testEcho()', "testEcho!")
+
+3.) Bind the key (page down) to method testEcho
+System.ExecuteCommand("bind 'pgdn' testEcho")
+
