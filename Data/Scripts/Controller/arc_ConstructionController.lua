@@ -19,11 +19,12 @@ classesWhiteList = {
     "ChairEntity",
     "CookingSpotEntity",
     "DynamicBuildingEntity",
+    "ECSManager",
     "GeneratorEntity",
     -- no we dont want to remove the previewEntity -- "PreviewEntity",
     "ShootingTarget",
+    "TownBookEntity",
     "UIManager",
-    "ECSManager"
 }
 
 -- TODO: this is just a placeholder variable
@@ -236,6 +237,8 @@ function SpawnBuildingInstance(line)
         spawnParams.name = construction.name
         spawnParams.uuid = uuid()
 
+        -- this is a mapping of boolean or other values to kcd classes
+        -- these classes could be merged with the arc_BuildingsManager however.
         if (construction.sitable) then
             spawnParams.class = "ChairEntity"
         end
@@ -263,14 +266,9 @@ function SpawnBuildingInstance(line)
             end
 
             if (construction.useCategory == "showStats") then
-                spawnParams.class = "TownBook"
+                spawnParams.class = "TownBookEntity"
             end
 
-            -- spawnParams.class = "GeneratorEntity"
-            -- spawnParams.class = "ShootingTarget"
-            -- spawnParams.class = "RigidBody"
-            -- spawnParams.properties.objModel = "Objects/buildings/houses/budin_mill/barrel_01.cgf"
-            -- TODO MAKE spawnParams.class = "RigidBody" useful somewhere!
         end
 
         add = ""
@@ -324,7 +322,6 @@ function SpawnBuildingInstance(line)
         end
 
         if (construction.generator) then
-
         end
 
         -- setup the rotation of the spawned entity align the y-axis
@@ -336,6 +333,8 @@ function SpawnBuildingInstance(line)
             up = { up.x, up.y, up.z }
         end
 
+        -- set the angles (rotation vector) of the new entity to be the same as the players rotation
+        -- Note: this also works while sitting on horses
         ent:SetAngles(up)
 
         Game.SendInfoText(

@@ -75,10 +75,9 @@ parameterizedConstructions = {
     -- constructions which are under active development are the first in this list
     -- dev misc
     {
-        -- TODO: this needs to get updated as the project advances
         description = "Town Book \nA book which contains informations and notes about the current town.",
         modelPath = "objects/props/alchemy/book/alchemy_book.cgf",
-        useable = true, useCategory = "showStats"
+        useable = true, useCategory = "showStats",
     },
 
 

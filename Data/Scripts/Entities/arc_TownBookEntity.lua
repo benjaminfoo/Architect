@@ -21,7 +21,7 @@ TownBookEntity = {
             bPhysicalize = 1,
             bRigidBody = 0,
             bPushableByPlayers = 0,
-            sName = "TownBook",
+            sName = "TownBookEntity",
 
             Density = -1,
             Mass = -1,
@@ -302,25 +302,19 @@ end
 
 -- This callback aggregates the available actions of the entity
 function TownBookEntity:GetActions(user, firstFast)
-
     output = {}
 
-    -- KingdomComeDeliverance/Tools/luadoc/luadoc/!!MEMBERTYPE_Methods_C_ScriptBindActor.html
-    -- C_ScriptBindActor__WashDirtAndBlood
+    -- we'll provide a regular functionwhich gets executed when "using" the entity
 
-    if (self.Properties.showStats) then
-        AddInteractorAction(output, firstFast, Action():hint("Show statistics"):action("use"):func((
-                function()
-
-                    showStats()
-                    Game.SendInfoText("Look at the console for the town stats - needs further work.", true, nil, 5)
-
-
-                end))                                  :enabled(1))
-    end
+    AddInteractorAction(output, firstFast, Action():hint("Show statistics"):action("use"):func((
+            function()
+                Game.SendInfoText(
+                        "Use #showstats() in the ingame console for town stats \nThis will get updated in future versions.",
+                        true, nil, 5)
+            end
+    ))                                             :interaction(inr_chair):enabled(1))
 
     return output
-
 end
 
 
@@ -329,13 +323,13 @@ function TownBookEntity:OnUsed(user)
 
 end
 
+
 --
 function TownBookEntity:OnUsedHold(user)
 
     System.LogAlways("TownBookEntity Used OnHold")
 end
 
---
 TownBookEntity.FlowEvents = {
     Inputs = {
         Used = { TownBookEntity.Event_Used, "bool" },

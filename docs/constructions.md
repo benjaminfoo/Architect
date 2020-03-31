@@ -5,6 +5,8 @@ layout: default
 # Constructions
 This list contains an overview of all available constructions within the architect mod and kingdom come deliverance.
 
+### Town / Admin
+- Town Book 
 
 ### Furniture
 - Beds
@@ -30,16 +32,34 @@ This list contains an overview of all available constructions within the archite
 
 ### Misc / unsorted
 - platforms
-- paths
+- paths / ways
 - lamps
 - church props
 - baskets
-- bee hives / skeps
 - wells
 - chopping woods
+- baskets
+- barrels
+- boulder / stone 
+- hay stack
+- ovens 
+- stairs
+- bridges
+- tents 
+
 
 ### Generators
 - chopping woods
 - wells
 - bee hives
 - roasting holes
+- boulder / stone 
+- barrels
+- hay stack
+- ovens 
+
+
+
+### Smithery
+- props
+- 

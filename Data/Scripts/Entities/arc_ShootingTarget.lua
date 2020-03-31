@@ -52,6 +52,15 @@ end;
 --
 function ShootingTarget:OnLoad(table)
     self.object_Model = table.object_Model;
+
+    -- load the persisted model path from the save file
+    self:LoadObject(0, table.object_Model)
+
+    -- initialize the physical parameter of this entity (like size, shape, etc)
+    self:PhysicalizeThis()
+
+    -- disable near fade-out by default
+    self:SetViewDistUnlimited()
 end;
 
 
