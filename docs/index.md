@@ -268,15 +268,12 @@ This list contains all the features planned for later development, recommended b
   
 - add further constructions
   - a working kitchen / campfire
-  - add aim target with hit detection (like "hit one time, ...") on arrow hit
   - trigger / buttons
   
 - misc  
-  - keybind for enabling / disabling the mod - on f12 - pressed => you have activated the mod, these are the keys... etc.
+  - Implement ladders
   - spawn setups with relations to npcs or items
   - make torches & lights toggleable
-  - preview for constructions
-  - preview-mode for rotation, translation of the constructions
   - ... siege invasions ... ?
   
 <br>  

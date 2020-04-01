@@ -75,6 +75,11 @@ function PreviewEntity:SetFromProperties()
     else
         self:SetFlags(ENTITY_FLAG_TRIGGER_AREAS, 2);
     end
+
+    -- setup entity flags
+    self:SetFlags(ENTITY_FLAG_RAIN_OCCLUDER, 1)
+    self:SetFlags(ENTITY_FLAG_CASTSHADOW, 1)
+
 end
 
 function PreviewEntity:SetupModel()
@@ -107,6 +112,11 @@ function PreviewEntity:OnLoad(table)
     self:SetViewDistUnlimited()
 
     self:Activate(1)
+
+    -- setup entity flags
+    self:SetFlags(ENTITY_FLAG_RAIN_OCCLUDER, 1)
+    self:SetFlags(ENTITY_FLAG_CASTSHADOW, 1)
+
 end
 
 

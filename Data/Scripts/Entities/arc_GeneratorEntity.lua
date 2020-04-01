@@ -303,6 +303,10 @@ function GeneratorEntity:OnLoad(table)
     -- disable near fade-out by default
     self:SetViewDistUnlimited()
 
+    -- setup entity flags
+    self:SetFlags(ENTITY_FLAG_RAIN_OCCLUDER, 1)
+    self:SetFlags(ENTITY_FLAG_CASTSHADOW, 1)
+
 end
 
 function GeneratorEntity:OnSave(table)
@@ -374,6 +378,11 @@ function GeneratorEntity:SetFromProperties()
     -- table.generatorItemAmount = self.Properties.generatorItemAmount
     -- table.generatorCooldown = self.Properties.generatorCooldown
     -- table.generatorGeneratedAmount = self.Properties.generatorGeneratedAmount
+
+    -- setup entity flags
+    self:SetFlags(ENTITY_FLAG_RAIN_OCCLUDER, 1)
+    self:SetFlags(ENTITY_FLAG_CASTSHADOW, 1)
+
 
 end
 

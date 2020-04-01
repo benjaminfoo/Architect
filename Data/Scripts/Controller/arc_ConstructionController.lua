@@ -22,7 +22,7 @@ classesWhiteList = {
     "ECSManager",
     "GeneratorEntity",
     -- no we dont want to remove the previewEntity -- "PreviewEntity",
-    "ShootingTarget",
+    "CustomShootingTarget",
     "TownBookEntity",
     "UIManager",
 }
@@ -76,10 +76,10 @@ end
 
 function rayCastHitOnUpdate()
     -- System.LogAlways("# rayCastHit start")
-    log("call rayCastHitOnUpdate - ")
+    debugLog("call rayCastHitOnUpdate - ")
 
     if (previewModelEntity == nil or previewModelEntity == player) then
-        log("call rayCastHitOnUpdate - previewModel is nil !")
+        debugLog("call rayCastHitOnUpdate - previewModel is nil !")
         return
     end
 
@@ -117,7 +117,7 @@ function rayCastHitOnUpdate()
         return hitData[1];
     end
 
-    log("call rayCastHitOnUpdate - done")
+    debugLog("call rayCastHitOnUpdate - done")
 
 end
 
@@ -197,6 +197,10 @@ function spawnPreview()
         log("call spawnPreview - Preview NOT successfully spawned - ERROR!")
     end
 
+    log("Rendering shadow ... ?")
+    previewModelEntity:SetFlags(ENTITY_FLAG_RAIN_OCCLUDER, 1)
+    previewModelEntity:SetFlags(ENTITY_FLAG_CASTSHADOW, 1)
+
 end
 
 
@@ -271,7 +275,7 @@ function SpawnBuildingInstance(line)
         end
 
         if (construction.reactsToCollision) then
-            spawnParams.class = "ShootingTarget"
+            spawnParams.class = "CustomShootingTarget"
         end
 
         if (construction.useable) then
@@ -357,6 +361,11 @@ function SpawnBuildingInstance(line)
         -- set the angles (rotation vector) of the new entity to be the same as the players rotation
         -- Note: this also works while sitting on horses
         ent:SetAngles(up)
+
+        -- setup flags
+        -- See: https://forums.nexusmods.com/index.php?/topic/8540368-environment-effects-ignore-collision-like-rain-fog/
+        ent:SetFlags(ENTITY_FLAG_RAIN_OCCLUDER, 1)
+        ent:SetFlags(ENTITY_FLAG_CASTSHADOW, 1)
 
         Game.SendInfoText(
                 "Constructing " .. tostring(ent:GetName())
@@ -743,8 +752,6 @@ end
 -- Also shows the current three buildings from the building set
 function updateSelection()
 
-    -- showUI()
-
     if (not config.modEnabled) then
         log("Mod is disabled - not calling initializeBuildings()")
         return
@@ -789,7 +796,7 @@ function updateSelection()
         priceDesc = "Costs " .. currentConstruction.groschenPrice .. " Groschen"
     end
 
-    message = tostring(currentConstruction.name) .. " (" .. bIndex .. "/" .. #parameterizedConstructions .. ") \n"
+    message = "Selected " .. tostring(currentConstruction.name) .. " (" .. bIndex .. "/" .. #parameterizedConstructions .. ") \n"
             .. desc .. "\n"
             .. generatorDesc .. "\n"
             .. priceDesc
@@ -868,7 +875,6 @@ function reloadall ()
 
 
     -- Reload scripts which should be updated
-    --[[
     Script.ReloadScript("Scripts/Controller/arc_ECSController.lua")
     Script.ReloadScript("Scripts/Controller/arc_UIController.lua")
     Script.ReloadScript("Scripts/Manager/arc_BuildingsManager.lua")
@@ -876,7 +882,6 @@ function reloadall ()
     Script.ReloadScript("Scripts/Util/arc_constants.lua")
     Script.ReloadScript("Scripts/Util/arc_utils.lua")
     Script.ReloadScript("Scripts/Util/arc_runtime.lua")
-    ]]--
 
     -- reload everything else in  /Data and /Mods
     Script.ReloadScripts()

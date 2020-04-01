@@ -1,0 +1,4 @@
+<Entity
+        Name="CustomShootingTarget"
+        Script="Scripts/Entities/arc_CustomShootingTarget.lua"
+/>

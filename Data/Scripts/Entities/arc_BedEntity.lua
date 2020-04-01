@@ -104,6 +104,11 @@ function BedEntity:SetFromProperties()
     else
         self:SetFlags(ENTITY_FLAG_TRIGGER_AREAS, 2);
     end
+
+    -- setup entity flags
+    self:SetFlags(ENTITY_FLAG_RAIN_OCCLUDER, 1)
+    self:SetFlags(ENTITY_FLAG_CASTSHADOW, 1)
+
 end
 
 function BedEntity:SetupModel()
@@ -138,6 +143,11 @@ function BedEntity:OnLoad(table)
 
     -- disable near fade-out by default
     self:SetViewDistUnlimited()
+
+    -- setup entity flags
+    self:SetFlags(ENTITY_FLAG_RAIN_OCCLUDER, 1)
+    self:SetFlags(ENTITY_FLAG_CASTSHADOW, 1)
+
 end
 
 

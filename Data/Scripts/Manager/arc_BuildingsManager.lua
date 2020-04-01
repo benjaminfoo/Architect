@@ -102,9 +102,6 @@ parameterizedConstructions = {
     },
 
     -- blacksmith
-    {
-        modelPath = "objects/buildings/houses/smithery/sharpening_stone_pedal.cgf",
-    },
 
     {
         modelPath = "objects/buildings/houses/smithery/smithery_plosina.cgf",
@@ -128,16 +125,7 @@ parameterizedConstructions = {
     ]]--
 
     {
-        modelPath = "objects/props/blacksmith_tools/blacksmith_tongs.cgf",
-    },
-    {
-        modelPath = "objects/props/blacksmith_tools/blacksmith_chipping.cgf",
-    },
-    {
         modelPath = "objects/props/blacksmith_tools/blacksmith_hammer.cgf",
-    },
-    {
-        modelPath = "objects/props/blacksmith_tools/horseshoe.cgf",
     },
     {
         modelPath = "objects/props/blacksmith_tools/oil_container.cgf",

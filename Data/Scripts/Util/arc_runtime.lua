@@ -1,15 +1,30 @@
 ---
 --- Author:  Benjamin Foo
 ---
---- This file contains the runtime configuration and related methods.
+--- This file contains the runtime configuration for the architect mod.
+--- This class also contains methods for manipulation the configuration.
 ---
 
 config = {
+
+    -- is the mod enabled or disabled?
     modEnabled = true,
+
+    -- is the debug mode active?
     debugMode = true,
+
+    -- is the advanced log mode active?
+    debugLogMode = false,
+
+    -- is the mockRuntime used (only used outside of kcd)
     mockRuntime = false,
+
+    -- the name of your town
     primary_town_name = "Farkletown",
+
+    -- the position of your town
     primary_town_position = { x = 0, y = 0, z = 0 },
+
 }
 
 -- TODO: These values need to get stored
@@ -46,7 +61,12 @@ end
 -- Changes the current weather to cloudless_sunny
 -- The sun is shining, the weather is sweet yeah.
 function MakeSunshine()
-    EnvironmentModule.BlendTimeOfDay('cloudless_sunny', 1, 1)
+    EnvironmentModule.BlendTimeOfDay('cloudless_sunny', 1, 5)
+    EnvironmentModule.ForceImmediateWeatherUpdate()
+end
+
+function MakeRain()
+    EnvironmentModule.BlendTimeOfDay('foggy_storm', 1, 5)
     EnvironmentModule.ForceImmediateWeatherUpdate()
 end
 

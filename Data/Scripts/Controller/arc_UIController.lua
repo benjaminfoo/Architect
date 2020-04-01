@@ -24,7 +24,7 @@ stepCount = 10
 lastCategory = ""
 categoryString = ""
 
-messageHeader = " Category: n/a"
+categoryHeader = " Category: n/a"
 paddedIndex = 0
 
 -- newMessage is the "buffer" of the ui
@@ -35,7 +35,7 @@ paddingTop = "\n\n\n"
 
 function UIController_OnUpdate()
 
-    log("UIController_OnUpdate")
+    -- log("UIController_OnUpdate")
 
     if (bIndex == '#') then
         bIndex = 1
@@ -55,8 +55,18 @@ function UIController_OnUpdate()
         -- so when the current selection is for example 23, well start from 23 and end on 42
         paddedIndex = bIndex + i
 
+
+        -- TODO: this wont work WITHIN the listview at the end of the construction-set
+        selectionIndicator = ""
+        if (paddedIndex == bIndex) then
+            selectionIndicator = "=> "
+        end
+
+
         -- get the element at index paddedIndex
         constructionModel = parameterizedConstructions[paddedIndex]
+
+
 
         -- if there is a valid construction at the padded index
         if (constructionModel ~= nil and constructionModel.category ~= nil) then
@@ -64,19 +74,18 @@ function UIController_OnUpdate()
             -- add a selection indicator if menuIndex equals selection or something
             -- TODO
 
-
             -- get its name
             newLineStringContent = constructionModel.name
 
             -- add the content to the current line with proper formation and concatenation
-            lineBuffer = lineBuffer .. paddingLeft .. tostring(paddedIndex) .. ".) " .. newLineStringContent .. "\n"
+            lineBuffer = lineBuffer .. paddingLeft .. selectionIndicator .. tostring(paddedIndex) .. ".) " .. newLineStringContent .. "\n"
 
             -- get and check the category - update the header
             currentCategory = constructionModel.category
 
             -- get the current category
             if (currentCategory ~= lastCategory) then
-                messageHeader = " Category: " .. constructionModel.category
+                categoryHeader = " Category: " .. constructionModel.category
             end
 
 
@@ -101,7 +110,14 @@ function UIController_OnUpdate()
         messageBuffer = paddingLeft .. "+++" .. "\n" .. messageBuffer
     end
 
-    resultString = paddingTop .. messageHeader .. "\n" .. messageBuffer
+    -- detail view
+    detailString = "Available Constructions (" .. tostring(bIndex) .. "/" .. tostring(#parameterizedConstructions) .. ")\n"
+
+    -- this is the result of all the string concatenation
+    resultString = paddingTop .. paddingLeft
+            .. detailString .. "\n"
+            .. categoryHeader .. "\n"
+            .. messageBuffer
 
     if (bIndex < #parameterizedConstructions - listItemCount) then
         resultString = resultString .. paddingLeft .. "+++"

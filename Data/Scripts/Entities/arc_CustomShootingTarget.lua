@@ -1,6 +1,6 @@
 Script.ReloadScript("Scripts/Default/Entities/actor/BasicActor.lua");
 
-ShootingTarget = {
+CustomShootingTarget = {
     Client = {},
     Server = {},
     Properties = {
@@ -28,7 +28,7 @@ ShootingTarget = {
 
 
 --
-function ShootingTarget:OnReset()
+function CustomShootingTarget:OnReset()
     local props = self.Properties;
     if (not EmptyString(props.object_Model)) then
         self:LoadObject(0, props.object_Model);
@@ -38,19 +38,19 @@ function ShootingTarget:OnReset()
     local Physics = self.Properties.Physics;
     EntityCommon.PhysicalizeRigid(self, 0, Physics, true);
 
-    System.LogAlways("OnReset shootingTarget!")
+    System.LogAlways("OnReset CustomShootingTarget!")
 
 end;
 
 
 --
-function ShootingTarget:OnSave(table)
+function CustomShootingTarget:OnSave(table)
     table.object_Model = self.Properties.object_Model;
 end;
 
 
 --
-function ShootingTarget:OnLoad(table)
+function CustomShootingTarget:OnLoad(table)
     self.object_Model = table.object_Model;
 
     -- load the persisted model path from the save file
@@ -61,17 +61,18 @@ function ShootingTarget:OnLoad(table)
 
     -- disable near fade-out by default
     self:SetViewDistUnlimited()
+
 end;
 
 
 --
-function ShootingTarget:OnPropertyChange()
+function CustomShootingTarget:OnPropertyChange()
     self:OnReset();
 end;
 
 
 --
-function ShootingTarget.Server:OnInit()
+function CustomShootingTarget.Server:OnInit()
     self.physics = {
         bRigidBody = 1,
         bRigidBodyActive = 1,
@@ -80,13 +81,13 @@ function ShootingTarget.Server:OnInit()
     };
     self:OnReset();
 
-    System.LogAlways("OnInit shootingTarget!")
+    System.LogAlways("OnInit CustomShootingTarget!")
 
 end;
 
 
 --
-function ShootingTarget.Client:OnHit(hit)
+function CustomShootingTarget.Client:OnHit(hit)
     -- System.LogAlways("Someone at Client OnHit me!")
     self.Properties.shootCount = self.Properties.shootCount + 1
 
@@ -98,55 +99,55 @@ end
 
 
 --
-function ShootingTarget.Client:OnDamage(hit)
+function CustomShootingTarget.Client:OnDamage(hit)
     System.LogAlways("Someone at Client OnDamage me!")
 end
 
 
 --
-function ShootingTarget.Client:OnEvent(hit)
+function CustomShootingTarget.Client:OnEvent(hit)
     System.LogAlways("Someone at Client OnEvent me!")
 end
 
 
 --
-function ShootingTarget:OnHit(hit)
+function CustomShootingTarget:OnHit(hit)
     System.LogAlways("Someone at Client OnHit me but local !")
 end
 
 
 --
-function ShootingTarget:OnDamage(hit)
+function CustomShootingTarget:OnDamage(hit)
     System.LogAlways("Someone at Client OnDamage me but local !")
 end
 
 
 --
-function ShootingTarget:OnEvent(hit)
+function CustomShootingTarget:OnEvent(hit)
     System.LogAlways("Someone at Client OnEvent me but local !")
 end
 
 
 --
-function ShootingTarget.Server:OnHit(hit)
+function CustomShootingTarget.Server:OnHit(hit)
     System.LogAlways("Someone at Client OnHit me but local !")
 end
 
 
 --
-function ShootingTarget.Server:OnDamage(hit)
+function CustomShootingTarget.Server:OnDamage(hit)
     System.LogAlways("Someone at Client OnDamage me but local !")
 end
 
 
 --
-function ShootingTarget.Server:OnEvent(hit)
+function CustomShootingTarget.Server:OnEvent(hit)
     System.LogAlways("Someone at Client OnEvent me but local !")
 end
 
 
 --
-function ShootingTarget.Server:OnHit(hit)
+function CustomShootingTarget.Server:OnHit(hit)
 
     System.LogAlways("Someone at server shot me!")
 
@@ -168,14 +169,14 @@ end;
 
 
 --
-function ShootingTarget:Event_Activated()
+function CustomShootingTarget:Event_Activated()
     self:GotoState("Init");
     BroadcastEvent(self, "Activated")
 end;
 
 
 --
-function ShootingTarget:Event_Deactivated()
+function CustomShootingTarget:Event_Deactivated()
     System.LogAlways("Event_deacted - onbeginstate ")
 
     self.ended = 1;
@@ -183,10 +184,10 @@ function ShootingTarget:Event_Deactivated()
     BroadcastEvent(self, "Deactivated")
 end;
 
-ShootingTarget.FlowEvents = {
+CustomShootingTarget.FlowEvents = {
     Inputs = {
-        Deactivated = { ShootingTarget.Event_Deactivated, "bool" },
-        Activated = { ShootingTarget.Event_Activated, "bool" },
+        Deactivated = { CustomShootingTarget.Event_Deactivated, "bool" },
+        Activated = { CustomShootingTarget.Event_Activated, "bool" },
     },
     Outputs = {
         Deactivated = "bool",
@@ -198,7 +199,7 @@ ShootingTarget.FlowEvents = {
     },
 }
 
-MakeUsable(ShootingTarget);
-MakePickable(ShootingTarget);
-MakeTargetableByAI(ShootingTarget);
-MakeKillable(ShootingTarget);
+MakeUsable(CustomShootingTarget);
+MakePickable(CustomShootingTarget);
+MakeTargetableByAI(CustomShootingTarget);
+MakeKillable(CustomShootingTarget);

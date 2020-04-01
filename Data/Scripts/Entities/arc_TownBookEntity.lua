@@ -164,6 +164,10 @@ function TownBookEntity:OnLoad(table)
     -- disable near fade-out by default
     self:SetViewDistUnlimited()
 
+    -- setup entity flags
+    self:SetFlags(ENTITY_FLAG_RAIN_OCCLUDER, 1)
+    self:SetFlags(ENTITY_FLAG_CASTSHADOW, 1)
+
 end
 
 function TownBookEntity:OnSave(table)

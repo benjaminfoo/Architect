@@ -41,8 +41,19 @@ function architect_eval(line)
     return true
 end
 
+-- logs line to output buffer if debugMode is enabled
 function log(line)
     architect_log(tostring(line));
+end
+
+
+-- logs line to output buffer if debugMode is enabled
+function debugLog(line)
+
+    if (config.debugLogMode) then
+        architect_log(tostring(line));
+    end
+
 end
 
 function architect_log(line)

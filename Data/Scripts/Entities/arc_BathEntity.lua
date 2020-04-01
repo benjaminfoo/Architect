@@ -77,6 +77,7 @@ BathEntity = {
 
         --
         bInteractiveCollisionClass = 1,
+
         object_Model = "objects/buildings/refugee_camp/bad_straw.cgf",
 
         sName = "BathEntity",
@@ -119,7 +120,6 @@ function BathEntity:OnSpawn()
     self:SetFromProperties();
 end
 
--- todo - refactor like there is no tomorrow, but tomorrow
 function BathEntity.Server:OnUpdate(delta)
 
 end
@@ -215,6 +215,10 @@ function BathEntity:SetFromProperties()
     else
         self:SetFlags(ENTITY_FLAG_TRIGGER_AREAS, 2);
     end
+
+    -- setup entity flags
+    self:SetFlags(ENTITY_FLAG_RAIN_OCCLUDER, 1)
+    self:SetFlags(ENTITY_FLAG_CASTSHADOW, 1)
 
 end
 
