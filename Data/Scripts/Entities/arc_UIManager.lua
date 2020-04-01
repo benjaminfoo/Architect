@@ -22,7 +22,6 @@ end;
 
 function UIManager:OnSave(tbl)
     System.LogAlways("UIManager OnSave")
-
 end;
 
 function UIManager:OnLoad(tbl)
@@ -35,16 +34,15 @@ function UIManager:OnReset()
     self:Activate(1);
     -- self:SetCurrentSlot(0);
     -- self:PhysicalizeThis(0);
-
 end;
 
 function UIManager.Server:OnInit()
     System.LogAlways("UIManager OnInit")
 
     if (not self.bInitialized) then
-        self:OnReset();
-        self.bInitialized = 1;
-    end ;
+        self:OnReset()
+        self.bInitialized = 1
+    end
 
     Script.UnloadScript("Scripts/Controller/arc_UIController.lua")
     Script.ReloadScript("Scripts/Controller/arc_UIController.lua")
@@ -55,8 +53,8 @@ function UIManager.Client:OnInit()
     System.LogAlways("UIManager OnInit")
 
     if (not self.bInitialized) then
-        self:OnReset();
-        self.bInitialized = 1;
+        self:OnReset()
+        self.bInitialized = 1
     end ;
 
     if (UIController_Init ~= nil) then
@@ -105,7 +103,7 @@ function UIManager.Client:OnUpdate()
         -- Script.ReloadScript("Scripts/Controller/arc_UIController.lua")
     end
 
-end;
+end
 
 function UIManager.Server:OnUpdate()
     -- System.LogAlways("UIManager.Server onUpdate")

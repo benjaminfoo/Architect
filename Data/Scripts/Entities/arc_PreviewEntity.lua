@@ -100,6 +100,13 @@ function PreviewEntity:OnLoad(table)
 
     local Properties = self.Properties;
     Properties.object_Model = table.object_Model;
+
+    self:LoadObject(0, Properties.object_Model);
+
+    -- disable near fade-out by default
+    self:SetViewDistUnlimited()
+
+    self:Activate(1)
 end
 
 

@@ -35,6 +35,12 @@ paddingTop = "\n\n\n"
 
 function UIController_OnUpdate()
 
+    log("UIController_OnUpdate")
+
+    if (bIndex == '#') then
+        bIndex = 1
+    end
+
     if (not config.modEnabled) then
         System.SetCVar('wh_ui_CopyrightMsgLeft', "")
         return

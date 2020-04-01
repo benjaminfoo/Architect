@@ -4,7 +4,7 @@ ShootingTarget = {
     Client = {},
     Server = {},
     Properties = {
-        object_Model = "objects/default/primitive_sphere.cgf",
+        object_Model = "objects/props/target/target.cgf",
 
         Physics = {
             bPhysicalize = 1,
@@ -14,10 +14,10 @@ ShootingTarget = {
             Density = 1,
             Mass = 1,
 
-            bRigidBody = 1,
-            bRigidBodyActive = 1,
-            bRigidBodyAfterDeath = 1,
-            bActivateOnDamage = 1,
+            bRigidBody = 0,
+            bRigidBodyActive = 0,
+            bRigidBodyAfterDeath = 0,
+            bActivateOnDamage = 0,
         },
 
         shootCount = 0,
@@ -57,7 +57,7 @@ function ShootingTarget:OnLoad(table)
     self:LoadObject(0, table.object_Model)
 
     -- initialize the physical parameter of this entity (like size, shape, etc)
-    self:PhysicalizeThis()
+    -- self:PhysicalizeThis()
 
     -- disable near fade-out by default
     self:SetViewDistUnlimited()

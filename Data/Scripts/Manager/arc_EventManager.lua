@@ -7,24 +7,43 @@
 
 architect_init = {}
 
-
 -- initialize the user-interface and show the introduction message
 function showUsage()
 
-    if uiManagerParams == nil then
+    -- if there already is a uiManagerEntity, remove it
+    if (uiManagerEntity ~= nil) then
+        System.RemoveEntity(uiManagerEntity.id)
+        uiManagerEntity = nil
+        log("Removed uiManagerEntity")
+    end
+
+    -- if there already is a ecsManagerEntity, remove it
+    if (ecsManagerEntity ~= nil) then
+        System.RemoveEntity(ecsManagerEntity.id)
+        ecsManagerEntity = nil
+        log("Removed ecsManagerEntity")
+    end
+
+    -- (re-)spawn the uiManagerEntity
+    if uiManagerEntity == nil then
         uiManagerParams = {}
         uiManagerParams.class = "UIManager"
         uiManagerParams.name = "UIManager_Instance"
         uiManagerEntity = System.SpawnEntity(uiManagerParams)
+        log("Spawning UIManager")
     end
 
-    if ecsManagerParams == nil then
+    -- (re-)spawn the ecsManagerEntity
+    if ecsManagerEntity == nil then
         ecsManagerParams = {}
         ecsManagerParams.class = "ECSManager"
         ecsManagerParams.name = "ECSManager_Instance"
         ecsManagerEntity = System.SpawnEntity(ecsManagerParams)
+        log("Spawning ECSManager")
     end
 
+
+    -- setup the introduction-tutorial
     message = "<font color='#333333' size='28'>Architect " .. architect_version .. "</font>" .. "\n"
             .. "<font color='#333333' size='15'>See benjaminfoo.github.io/Architect/ \n</font>"
             .. "<font color='#333333' size='8'>\n</font>"
@@ -52,18 +71,17 @@ function showUsage()
             .. "\nUse 'architect_intro' to show this message again.</font>" .. "\n"
 
 
-    -- create tutorial and show
+    -- create the introduction tutorial and display it to the user for 20 seconds
     Game.ShowTutorial(message, 20, false, true)
 
-    architect_usage_has_been_shown = true
 end
 
 
 -- this listener gets called after a scene has been loaded or a new game started
 function architect_init:sceneInitListener(actionName, eventName, argTable)
 
-    -- System.LogAlways("actionName: " .. actionName)
-    -- System.LogAlways("eventName: " .. eventName)
+    System.LogAlways("actionName: " .. actionName)
+    System.LogAlways("eventName: " .. eventName)
 
     if argTable then
         -- System.LogAlways("argTable: " .. tostring(eventName))
@@ -74,7 +92,7 @@ function architect_init:sceneInitListener(actionName, eventName, argTable)
     end
 end
 
-UIAction.UnregisterActionListener(architect_init, "sceneInitListener")
+-- UIAction.UnregisterActionListener(architect_init, "sceneInitListener")
 UIAction.RegisterActionListener(architect_init, "", "", "sceneInitListener")
 
 --[[

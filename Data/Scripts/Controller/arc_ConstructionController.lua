@@ -56,8 +56,11 @@ function rayCastHit()
     dir = vecScale(dir, 250);
 
     if previewModelEntity == nil then
-        previewModelEntity = player
+        -- previewModelEntity = player -- wtf!
+        System.LogAlways("ERROR - hit == player !?")
+        return
     end
+
 
     local hitData = {};
     local hits = Physics.RayWorldIntersection(from, dir, 10, ent_all, player.id, previewModelEntity.id, hitData);
@@ -73,8 +76,10 @@ end
 
 function rayCastHitOnUpdate()
     -- System.LogAlways("# rayCastHit start")
+    log("call rayCastHitOnUpdate - ")
 
     if (previewModelEntity == nil or previewModelEntity == player) then
+        log("call rayCastHitOnUpdate - previewModel is nil !")
         return
     end
 
@@ -112,7 +117,7 @@ function rayCastHitOnUpdate()
         return hitData[1];
     end
 
-    -- System.LogAlways("# rayCastHit end")
+    log("call rayCastHitOnUpdate - done")
 
 end
 
@@ -140,10 +145,18 @@ end
 -- TODO: move to previewController.lua
 function spawnPreview()
 
+    log("call spawnPreview")
+
+    if (bIndex == '#') then
+        bIndex = 1
+    end
+
     -- if the mod is not enabled, dont do anything -- needs refactoring
     if not config.modEnabled then
         return
     end
+
+    log("call spawnPreview - prepare spawn")
 
 
     -- construct the entity and setup its parameters
@@ -173,10 +186,16 @@ function spawnPreview()
     spawnParams.name = construction.name
     spawnParams.uuid = uuid()
 
-    System.LogAlways("Spawning preview ..")
-
     -- spawn the new entity
     previewModelEntity = System.SpawnEntity(spawnParams)
+
+    log("call spawnPreview - spawn preview")
+
+    if (previewModelEntity ~= nil) then
+        log("call spawnPreview - Preview successfully spawned")
+    else
+        log("call spawnPreview - Preview NOT successfully spawned - ERROR!")
+    end
 
 end
 
@@ -849,6 +868,7 @@ function reloadall ()
 
 
     -- Reload scripts which should be updated
+    --[[
     Script.ReloadScript("Scripts/Controller/arc_ECSController.lua")
     Script.ReloadScript("Scripts/Controller/arc_UIController.lua")
     Script.ReloadScript("Scripts/Manager/arc_BuildingsManager.lua")
@@ -856,6 +876,7 @@ function reloadall ()
     Script.ReloadScript("Scripts/Util/arc_constants.lua")
     Script.ReloadScript("Scripts/Util/arc_utils.lua")
     Script.ReloadScript("Scripts/Util/arc_runtime.lua")
+    ]]--
 
     -- reload everything else in  /Data and /Mods
     Script.ReloadScripts()

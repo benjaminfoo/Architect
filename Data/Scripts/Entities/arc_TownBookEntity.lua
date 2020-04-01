@@ -12,6 +12,7 @@ TownBookEntity = {
         bTurnedOn = 1,
         bExcludeCover = 0,
         fUsabilityDistance = 100,
+        object_Model = "objects/props/alchemy/book/alchemy_book.cgf",
 
         Script = {
             Misc = ""
