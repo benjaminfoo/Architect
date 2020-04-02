@@ -373,10 +373,19 @@ function GeneratorEntity:SetFromProperties()
     -- the initial timer of this generator
     countdownTime = self.Properties.generatorCooldown
 
-    System.LogAlways("isGenerator: " .. tostring(self.Properties.generator))
-    System.LogAlways("generatorOnUse: " .. tostring(self.Properties.generatorOnUse))
-    System.LogAlways("genItem: " .. self.Properties.generatorItem)
-    System.LogAlways("genItemID: " .. self.Properties.generatorItemId)
+    if (self.Properties.generator) then
+        System.LogAlways("isGenerator: " .. tostring(self.Properties.generator))
+    end
+    if (self.Properties.generatorItem) then
+        System.LogAlways("genItem: " .. self.Properties.generatorItem)
+    end
+    if (self.Properties.generatorItemId) then
+        System.LogAlways("genItemID: " .. self.Properties.generatorItemId)
+    end
+    if (self.Properties.generatorOnUse) then
+        System.LogAlways("generatorOnUse: " .. tostring(self.Properties.generatorOnUse))
+    end
+
     System.LogAlways("cooldown: " .. self.Properties.generatorCooldown)
     System.LogAlways("generatorItemCosts: " .. tostring(self.Properties.generatorItemCosts))
     System.LogAlways("generatorItemAmount: " .. self.Properties.generatorItemAmount)

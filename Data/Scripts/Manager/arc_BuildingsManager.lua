@@ -72,6 +72,8 @@ DEFAULT_PRICE_FLOWER_ADVANCED = 250
 -- set of available constructions
 parameterizedConstructions = {
 
+    -- TODO: Add bags as model for generator entities or something like: spend 500 groschen for 10 resources of x!
+
     -- constructions which are under active development are the first in this list
     -- dev misc
     {
@@ -80,81 +82,6 @@ parameterizedConstructions = {
         useable = true, useCategory = "showStats",
     },
 
-
-    -- archery
-    {
-        description = "A table for creating small things.",
-        modelPath = "Objects/props/engraving/engraving_table.cgf",
-        saveable = true,
-        generator = false, generatorOnUse = true,
-        generatorItem = "Ordinary Arrow",
-        generatorItemId = "4fd563e5-a44a-4a6e-958d-95bcb196814a",
-        generatorItemAmount = 1,
-        generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
-    },
-
-    {
-        description = "A wooden table for eating or placing things on top of it.",
-        modelPath = "Objects/props/furniture/tables/table_castle/table_09_long.cgf",
-    },
-
-    {
-        description = "A barrel which contains some arrows.",
-        modelPath = "Objects/weapons/arrow/basket_arrow_half.cgf",
-        saveable = true,
-        generator = false, generatorOnUse = true,
-        generatorItem = "Ordinary Arrow",
-        generatorItemId = "4fd563e5-a44a-4a6e-958d-95bcb196814a",
-        generatorItemAmount = 1,
-        generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
-    },
-
-    {
-        description = "A barrel full of arrows",
-        modelPath = "Objects/weapons/arrow/basket_arrow_full.cgf",
-        saveable = true,
-        generator = false, generatorOnUse = true,
-        generatorItem = "Ordinary Arrow",
-        generatorItemId = "4fd563e5-a44a-4a6e-958d-95bcb196814a",
-        generatorItemAmount = 1,
-        generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
-    },
-
-    {
-        modelPath = "Objects/buildings/pribyslawitz/barrel_arrows.cgf",
-    },
-
-    -- paths
-    {
-        modelPath = "objects/nature/paths/soil_path_01.cgf",
-    },
-    {
-        modelPath = "objects/nature/paths/soil_path_01_curve.cgf",
-    },
-    {
-        modelPath = "objects/nature/paths/soil_path_02.cgf",
-    },
-    {
-        modelPath = "objects/nature/paths/soil_path_02_curve.cgf",
-    },
-    {
-        modelPath = "objects/nature/paths/soil_path_03.cgf",
-    },
-    {
-        modelPath = "objects/nature/paths/soil_path_03_curve.cgf",
-    },
-
-    -- blacksmith
-
-    {
-        modelPath = "objects/buildings/houses/smithery/smithery_plosina.cgf",
-    },
-    {
-        modelPath = "objects/buildings/houses/smithery/smithery_v2_stone.cgf",
-    },
-    {
-        modelPath = "objects/buildings/houses/smithery/smithery_v2_stone2.cgf",
-    },
 
     --[[
     -- these could be used to spawn rabbits or other animals or increase the rate of wildlife in the area, i dunno
@@ -166,158 +93,6 @@ parameterizedConstructions = {
         modelPath = "objects/nature/rabbit_burrow/rabbit_burrow02.cgf",
     },
     ]]--
-
-    {
-        modelPath = "objects/props/blacksmith_tools/blacksmith_hammer.cgf",
-    },
-    {
-        modelPath = "objects/props/blacksmith_tools/oil_container.cgf",
-    },
-
-    -- decoration
-    {
-        modelPath = "objects/props/ceramics/bowl_03.cgf",
-    },
-
-    {
-        modelPath = "objects/props/ceramics/bowl_05.cgf",
-    },
-
-    {
-        modelPath = "objects/props/ceramics/vase_01.cgf",
-    },
-
-    {
-        modelPath = "objects/props/ceramics/vase_03.cgf",
-    },
-
-    {
-        modelPath = "objects/props/ceramics/vase_05.cgf",
-    },
-    {
-        modelPath = "objects/props/ceramics/demijohn_01.cgf",
-    },
-    {
-        modelPath = "objects/props/ceramics/demijohn_02.cgf",
-    },
-    {
-        modelPath = "objects/props/ceramics/pot_01.cgf",
-    },
-    {
-        modelPath = "objects/props/ceramics/pot_02.cgf",
-    },
-    {
-        modelPath = "objects/props/ceramics/pan_01.cgf",
-    },
-    {
-        modelPath = "objects/props/ceramics/pan_02.cgf",
-    },
-    {
-        modelPath = "objects/props/ceramics/ceramics_set_basket_01.cgf",
-    },
-
-    {
-        modelPath = "objects/props/ceramics/ceramics_set_table_02.cgf",
-    },
-
-    {
-        modelPath = "objects/props/ceramics/ceramics_set_table_03.cgf",
-    },
-
-
-    {
-        modelPath = "objects/props/coal/coal_pile_c.cgf",
-    },
-
-
-    {
-        modelPath = "objects/props/clothes_line/clothes_line_01_a_deform.cgf",
-    },
-
-
-    {
-        modelPath = "objects/props/clothes_line/clothes_line_01_a_deform.cgf",
-    },
-
-
-    {
-        modelPath = "objects/props/clothes_line/clothes_line_02.cgf",
-    },
-
-    {
-        modelPath = "objects/props/clothes_line/clothes_line_02f.cgf",
-    },
-
-    {
-        modelPath = "objects/props/misc/lamp/lamp_01_wearable.cgf",
-    },
-    {
-        modelPath = "objects/props/misc/lamp/lamp_01.cgf",
-    },
-
-    {
-        modelPath = "objects/props/misc/pillow/pillow.cgf",
-    },
-
-    {
-        modelPath = "objects/props/misc/sack_leather/sack_leather.cgf",
-    },
-
-    {
-        modelPath = "objects/props/misc/church_props/chalice_01.cgf",
-    },
-
-    {
-        modelPath = "objects/props/misc/church_props/chalice_glass_01.cgf",
-    },
-
-    {
-        modelPath = "objects/props/misc/church_props/chalice_glass_02.cgf",
-    },
-
-    {
-        modelPath = "objects/props/misc/church_props/chalice_gold_01.cgf",
-    },
-
-    {
-        modelPath = "objects/props/misc/church_props/chalice_gold_02.cgf",
-    },
-
-    {
-        modelPath = "objects/props/misc/church_props/chalice_silver_01.cgf",
-    },
-
-    {
-        modelPath = "objects/props/misc/church_props/chalice_silver_02.cgf",
-    },
-
-
-    {
-        modelPath = "objects/props/wooden_benches/wood_bench_single.cgf",
-    },
-
-    {
-        modelPath = "objects/props/wooden_benches/wood_bench_composite.cgf",
-    },
-
-    {
-        modelPath = "objects/props/wooden_bins/baskets/basket_01_angular/basket_01_angular.cgf",
-    },
-
-
-    {
-        modelPath = "objects/props/wooden_bins/baskets/basket_02/basket_02.cgf",
-    },
-
-    {
-        modelPath = "objects/props/wooden_bins/baskets/basket_04/basket_04.cgf",
-    },
-    {
-        modelPath = "objects/props/wooden_bins/baskets/basket_05/basket_05.cgf",
-    },
-    {
-        modelPath = "objects/props/wooden_bins/bucket/bucket_water.cgf",
-    },
 
     {
         description = "A map drawn onto fabric.",
@@ -497,6 +272,17 @@ parameterizedConstructions = {
 
 
     -- furniture - seats, chairs and benches
+
+    {
+        description = " A simple bench made out of wood.",
+        modelPath = "objects/props/wooden_benches/wood_bench_single.cgf",
+        sitable = true
+    },
+    {
+        description = " A simple bench made out of wood.",
+        modelPath = "objects/props/wooden_benches/wood_bench_composite.cgf",
+        sitable = true
+    },
     {
         description = "A really fancy wooden chair for fancy people.",
         modelPath = "objects/props/furniture/chairs_benches/chair_fancy.cgf",
@@ -550,6 +336,12 @@ parameterizedConstructions = {
 
 
     -- furniture - tables
+
+    {
+        description = "A wooden table for eating or placing things on top of it.",
+        modelPath = "Objects/props/furniture/tables/table_castle/table_09_long.cgf",
+    },
+
     {
         description = "A wooden table for eating or placing things on top of it.",
         modelPath = "objects/props/furniture/tables/table_cottage/table_cottage160_01brigh.cgf",
@@ -594,12 +386,29 @@ parameterizedConstructions = {
         description = "A wooden table for eating or placing things on top of it.",
         modelPath = "Objects/props/furniture/tables/table_castle/table_10_square_dark.cgf",
     },
-
-
     {
         description = "A small table.",
         modelPath = "objects/props/furniture/tables/table_cooking/table_cooking.cgf"
     },
+
+
+    -- baskets
+    {
+        modelPath = "objects/props/wooden_bins/baskets/basket_01_angular/basket_01_angular.cgf",
+    },
+    {
+        modelPath = "objects/props/wooden_bins/baskets/basket_02/basket_02.cgf",
+    },
+    {
+        modelPath = "objects/props/wooden_bins/baskets/basket_04/basket_04.cgf",
+    },
+    {
+        modelPath = "objects/props/wooden_bins/baskets/basket_05/basket_05.cgf",
+    },
+    {
+        modelPath = "objects/props/wooden_bins/bucket/bucket_water.cgf",
+    },
+
 
     -- custom action entities - cooking spots, generators (use x to make y)
     {
@@ -1148,6 +957,17 @@ parameterizedConstructions = {
         modelPath = "Objects/structures/wall_wooden/wall_wooden_palisade_gate.cgf",
     },
 
+    -- re-introduce "older" models as some users requested this
+    { modelPath = "Objects/props/groups_of_stuff/group_wood_wall_a.cgf", },
+    { modelPath = "objects/props/groups_of_stuff/group_wood_wall_b.cgf", },
+    { modelPath = "objects/props/groups_of_stuff/group_wood_wall_c.cgf", },
+    { modelPath = "objects/props/groups_of_stuff/group_wood_wall_d.cgf", },
+    { modelPath = "objects/props/groups_of_stuff/group_wood_wall_e.cgf", },
+    { modelPath = "objects/props/groups_of_stuff/group_wood_wall_f.cgf", },
+    { modelPath = "objects/buildings/refugee_camp/wicker_fence.cgf", },
+    { modelPath = "objects/buildings/refugee_camp/wall_timber.cgf", },
+    { modelPath = "objects/buildings/refugee_camp/wood_pack.cgf", },
+
     -- walls - stone
     {
         modelPath = "objects/structures/stone_wall/stone_wall_low_mossy_b.cgf",
@@ -1303,10 +1123,6 @@ parameterizedConstructions = {
         modelPath = "objects/props/tools/carpenter_axe.cgf",
     },
     {
-        description = "An crubible.",
-        modelPath = "objects/props/tools/crubible.cgf",
-    },
-    {
         description = "An flail.",
         modelPath = "objects/props/tools/flail.cgf",
     },
@@ -1373,6 +1189,56 @@ parameterizedConstructions = {
         modelPath = "objects/props/misc/torches/torch_02.cgf",
     },
 
+
+    -- archery
+    {
+        description = "A table for making small things like arrows.",
+        modelPath = "Objects/props/engraving/engraving_table.cgf",
+        saveable = true,
+        generator = false, generatorOnUse = true,
+        generatorItem = "Ordinary Arrow",
+        generatorItemId = "4fd563e5-a44a-4a6e-958d-95bcb196814a",
+        generatorItemAmount = 1,
+        generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
+    },
+
+
+    {
+        description = "A barrel which contains some arrows.",
+        modelPath = "Objects/weapons/arrow/basket_arrow_half.cgf",
+        saveable = true,
+        generator = false, generatorOnUse = true,
+        generatorItem = "Ordinary Arrow",
+        generatorItemId = "4fd563e5-a44a-4a6e-958d-95bcb196814a",
+        generatorItemAmount = 1,
+        generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
+    },
+
+    {
+        description = "A barrel full of arrows",
+        modelPath = "Objects/weapons/arrow/basket_arrow_full.cgf",
+        saveable = true,
+        generator = false, generatorOnUse = true,
+        generatorItem = "Ordinary Arrow",
+        generatorItemId = "4fd563e5-a44a-4a6e-958d-95bcb196814a",
+        generatorItemAmount = 1,
+        generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
+    },
+
+    {
+        modelPath = "Objects/buildings/pribyslawitz/barrel_arrows.cgf",
+    },
+
+    {
+        modelPath = "objects/props/target/target.cgf",
+        description = "A target made out of different rings of straw.",
+        reactsToCollision = true
+    },
+
+    {
+        description = "A stand for targets made out of wood",
+        modelPath = "objects/props/target/target_stand.cgf",
+    },
 
     -- groups of properties
     {
@@ -1499,6 +1365,123 @@ parameterizedConstructions = {
 
     -- decorative
 
+
+    -- decoration
+    {
+        modelPath = "objects/props/blacksmith_tools/oil_container.cgf",
+    },
+    {
+        modelPath = "objects/props/ceramics/bowl_03.cgf",
+    },
+
+    {
+        modelPath = "objects/props/ceramics/bowl_05.cgf",
+    },
+
+    {
+        modelPath = "objects/props/ceramics/vase_01.cgf",
+    },
+
+    {
+        modelPath = "objects/props/ceramics/vase_03.cgf",
+    },
+
+    {
+        modelPath = "objects/props/ceramics/vase_05.cgf",
+    },
+    {
+        modelPath = "objects/props/ceramics/demijohn_01.cgf",
+    },
+    {
+        modelPath = "objects/props/ceramics/demijohn_02.cgf",
+    },
+    {
+        modelPath = "objects/props/ceramics/pot_01.cgf",
+    },
+    {
+        modelPath = "objects/props/ceramics/pot_02.cgf",
+    },
+    {
+        modelPath = "objects/props/ceramics/pan_01.cgf",
+    },
+    {
+        modelPath = "objects/props/ceramics/pan_02.cgf",
+    },
+    {
+        modelPath = "objects/props/ceramics/ceramics_set_basket_01.cgf",
+    },
+
+    {
+        modelPath = "objects/props/ceramics/ceramics_set_table_02.cgf",
+    },
+
+    {
+        modelPath = "objects/props/ceramics/ceramics_set_table_03.cgf",
+    },
+
+
+    {
+        modelPath = "objects/props/coal/coal_pile_c.cgf",
+    },
+
+
+    {
+        modelPath = "objects/props/clothes_line/clothes_line_01_a_deform.cgf",
+    },
+
+
+    {
+        modelPath = "objects/props/clothes_line/clothes_line_01_a_deform.cgf",
+    },
+
+
+    {
+        modelPath = "objects/props/clothes_line/clothes_line_02.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/lamp/lamp_01_wearable.cgf",
+    },
+    {
+        modelPath = "objects/props/misc/lamp/lamp_01.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/pillow/pillow.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/sack_leather/sack_leather.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/church_props/chalice_01.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/church_props/chalice_glass_01.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/church_props/chalice_glass_02.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/church_props/chalice_gold_01.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/church_props/chalice_gold_02.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/church_props/chalice_silver_01.cgf",
+    },
+
+    {
+        modelPath = "objects/props/misc/church_props/chalice_silver_02.cgf",
+    },
+
     -- props - things which are used in a tavern
     {
         description = "A barrel filled with delicious beer.",
@@ -1508,24 +1491,14 @@ parameterizedConstructions = {
         generatorItem = "beer", generatorItemAmount = 1, generatorCapacity = 20,
         generatorCooldown = 5, generatorItemCosts = { groschen = 10 },
     },
+
     { modelPath = "objects/props/tavern_things/bowl_clear.cgf", },
+
     { modelPath = "objects/props/tavern_things/wood_tankard.cgf", },
+
     { modelPath = "objects/props/tavern_things/wood_tankard_full.cgf", },
+
     { modelPath = "objects/props/tavern_things/wooden_stein.cgf", },
-
-
-    -- props - target for bow & arrow training
-    {
-        modelPath = "objects/props/target/target.cgf",
-        description = "A target made out of different rings of straw.",
-        reactsToCollision = true
-    },
-
-    {
-        description = "A stand for targets made out of wood",
-        modelPath = "objects/props/target/target_stand.cgf",
-    },
-
 
     -- decorative - candles
     {
@@ -1818,15 +1791,35 @@ parameterizedConstructions = {
     -- misc misc
 
     {
+        description = "A scarecrow to scare crows.",
+        modelPath = "objects/props/scarecrow/scarecrow.cgf",
+    },
+
+    {
         description = "A stream of water, great for building rivers.",
         modelPath = "objects/nature/stream_edge/stream_water_v4_a.cgf",
     },
 
-
+    -- paths
     {
-        description = "A scarecrow to scare crows.",
-        modelPath = "objects/props/scarecrow/scarecrow.cgf",
+        modelPath = "objects/nature/paths/soil_path_01.cgf",
     },
+    {
+        modelPath = "objects/nature/paths/soil_path_01_curve.cgf",
+    },
+    {
+        modelPath = "objects/nature/paths/soil_path_02.cgf",
+    },
+    {
+        modelPath = "objects/nature/paths/soil_path_02_curve.cgf",
+    },
+    {
+        modelPath = "objects/nature/paths/soil_path_03.cgf",
+    },
+    {
+        modelPath = "objects/nature/paths/soil_path_03_curve.cgf",
+    },
+
 
 }
 
@@ -1845,9 +1838,14 @@ function initializeBuildings()
 
         cur = parameterizedConstructions[index]
 
+        if (cur == nil) then
+            log("Found invalid construction at index: " .. tostring(index))
+            return
+        end
+
         -- remove the postfix ending ".cgf" from the name
         -- construction.name = parameterizedConstructions[index].modelPath
-        cur.name = string.gsub(parameterizedConstructions[index].modelPath, ".cgf", "")
+        cur.name = string.gsub(cur.modelPath, ".cgf", "")
 
         -- locate the index of the last /
         lastIndex = string.find(cur.name, "/[^/]*$")
