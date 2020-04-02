@@ -385,7 +385,8 @@ Use `#search("...")` to find all constructions which contain the search-param.
 <br>  
   
 <img class="img-fluid" src="assets/img/howto/006_search_and_Select.jpg">  
-Its also possible to wrap multiple method calls, like `#select(search("smithery")` which search and returns the first construction which contains "smithery" as a part of its name.
+Its also possible to wrap multiple method calls, like `#select(search("smithery")` which search and returns the first construction
+which contains "smithery" as a part of its name.
 
 <br>  
 
@@ -450,7 +451,8 @@ This list contains all changes happened during development - the versions should
 
 changelog 0.5.5a-test
 - preview-model physics are disabled now (the preview wont collide with the player anymore)
-- updated constructions (useable bathtubs (removes dirt), useable charcoal (adds dirt), reactive targets (simple arrow-hit detection), townbook (show overall stats of your town), added arrow-maker, added references (new constructions), ...)
+- updated constructions (useable bathtubs (removes dirt), useable charcoal (adds dirt), reactive targets (simple arrow-hit detection),
+  townbook (show overall stats of your town), added arrow-maker, added references (new constructions), ...)
 - updated github about-page and content, merged coding-guide into project and added sub-page, added constructions sub-page
 - upgraded codebase, removed and refactored (a lot of) code
 - added overview user-interface for available construction (scroll with page up and page down) 

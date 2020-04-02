@@ -47,7 +47,7 @@ System.ExecuteCommand("bind mwheel_down bIndexDec")
 System.ExecuteCommand("bind 'v' architect_spawn")
 System.ExecuteCommand("bind 'g' deleteRayCastEntityHit")
 System.ExecuteCommand("bind 'r' toggleRotationMode")
-System.ExecuteCommand("bind 'o' toggleEntityLock")
+System.ExecuteCommand("bind 'o' #toggleEntityLock()")
 System.ExecuteCommand("bind 'h' toggleModState")
 System.ExecuteCommand("bind f9 architect_recompile")
 
