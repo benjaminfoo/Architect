@@ -449,10 +449,15 @@ This list contains all changes happened during development - the versions should
 - Beta versions are more stable and in subject of smaller bugfixes - expect less bugs :).  
 
 changelog 0.5.5a-test
-- preview-model physics are disabled now (the preview dont collide with the player anymore)
-- updated availabe constructions (updated generators, added useable bathtubs, added reactive targets (use with bow and arrow), added new references, ...)
-- updated about-page, merged coding-guide into project
-- upgraded codebase, removed and refactored (alot of) code
+- preview-model physics are disabled now (the preview wont collide with the player anymore)
+- updated constructions (useable bathtubs (removes dirt), useable charcoal (adds dirt), reactive targets (simple arrow-hit detection), townbook (show overall stats of your town), added arrow-maker, added references (new constructions), ...)
+- updated github about-page and content, merged coding-guide into project and added sub-page, added constructions sub-page
+- upgraded codebase, removed and refactored (a lot of) code
+- added overview user-interface for available construction (scroll with page up and page down)
+- added persistent counter for target (count how many hits youve got)
+- fixed bug: preview didnt worked after loading a game
+- fixed bug: archery target used wrong model after startup
+- fixed bug: archery target was active rigidbody (moved on hit), is no inactive again
 
 changelog 0.5.4a-test
 - its now safe to enable / disable the mod
