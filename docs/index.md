@@ -537,4 +537,5 @@ Get the modification at the [nexus](https://www.nexusmods.com/kingdomcomedeliver
 ## Credits & Thanks
 Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game and the modding sdk!  
 Also thanks to [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) for creating the great videos on how to use and install the modification!  
-This page uses [bootstrap 4](https://getbootstrap.com/) and was generated with [jekyll](https://jekyllrb.com/docs/plugins/generators/).
+  
+This page uses [bootstrap 4](https://getbootstrap.com/) and was generated with [jekyll](https://jekyllrb.com/docs/plugins/generators/).  
