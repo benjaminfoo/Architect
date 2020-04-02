@@ -51,20 +51,27 @@ deleting it first, the entity stays in the game. Use **#deleteall()** within the
 ## Usage / Keys
 These keys can be used to interact with the mod - they're also shown ingame.
 
-Choose the next construction (from 0 to ~200)  
+<div class="preformat_code">
+Choose the next construction
 Button MouseWheel up  
 
-Choose the previous construction (from 0 to ~200)  
+Choose the previous construction
 Button MouseWheel down  
 
 Create a new construction  
 Key V
 
+Toggle rotation-mode for new construction
+Key R
+                
 Remove a construction  
 Key G
 
-Lock / unlock construction for deletion  
-Key O  
+Toggle deletion lock  
+Key O
+
+Enable / Disable the modification  
+Key H
 
 <br>
 
@@ -84,24 +91,6 @@ The following list contains regular console commands
 - architect_recompileAll - reload the source-code of the project
 
 <br>
-
-## Features
-This is an overview of all the implemented features this project contains.
-
-- Constructions - build your own home or town, or home-town, anywhere
-  - Persistence - the constructions are saved in savegame-files
-  - Choose from different categories of constructions like houses, interior, exterior, security, vegetation & foliage, etc. 
-- Town management 
-  - Manage your own town, get an overview of spend or generated resources
-  - Set and reuse a home position 
-  - Set a name for your town
-- Custom Crafting
-  - Procude resources or items from resources
-- Resource Management
-  - Manage the income- and outcome- of your spendings
-- ...
-
-
 
 ##### How-to: Change default key-bindings
 The `keybinds.cfg` file contains all keybindings used in the project - change it to a key or a controller button as you like.
