@@ -327,6 +327,16 @@ function SpawnBuildingInstance(line)
             spawnParams.properties.generatorItemCosts = construction.generatorItemCosts
         end
 
+        if (construction.generatorItemId ~= nil) then
+            spawnParams.class = "GeneratorEntity"
+            spawnParams.properties.generator = construction.generator
+            spawnParams.properties.generatorItemId = construction.generatorItemId
+            spawnParams.properties.generatorItemAmount = construction.generatorItemAmount
+            spawnParams.properties.generatorCooldown = construction.generatorCooldown
+            spawnParams.properties.generatorOnUse = construction.generatorOnUse
+            spawnParams.properties.generatorItemCosts = construction.generatorItemCosts
+        end
+
 
         -- finish any work _before_ the entity gets initialized and spawned
 

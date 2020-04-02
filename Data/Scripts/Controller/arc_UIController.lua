@@ -56,7 +56,7 @@ function UIController_OnUpdate()
         paddedIndex = bIndex + i
 
 
-        -- TODO: this wont work WITHIN the listview at the end of the construction-set
+        -- TODO: this wont work WITHIN the listview at the end of the construction-set 
         selectionIndicator = ""
         if (paddedIndex == bIndex) then
             selectionIndicator = "=> "

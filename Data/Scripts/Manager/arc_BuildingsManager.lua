@@ -81,6 +81,49 @@ parameterizedConstructions = {
     },
 
 
+    -- archery
+    {
+        description = "A table for creating small things.",
+        modelPath = "Objects/props/engraving/engraving_table.cgf",
+        saveable = true,
+        generator = false, generatorOnUse = true,
+        generatorItem = "Ordinary Arrow",
+        generatorItemId = "4fd563e5-a44a-4a6e-958d-95bcb196814a",
+        generatorItemAmount = 1,
+        generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
+    },
+
+    {
+        description = "A wooden table for eating or placing things on top of it.",
+        modelPath = "Objects/props/furniture/tables/table_castle/table_09_long.cgf",
+    },
+
+    {
+        description = "A barrel which contains some arrows.",
+        modelPath = "Objects/weapons/arrow/basket_arrow_half.cgf",
+        saveable = true,
+        generator = false, generatorOnUse = true,
+        generatorItem = "Ordinary Arrow",
+        generatorItemId = "4fd563e5-a44a-4a6e-958d-95bcb196814a",
+        generatorItemAmount = 1,
+        generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
+    },
+
+    {
+        description = "A barrel full of arrows",
+        modelPath = "Objects/weapons/arrow/basket_arrow_full.cgf",
+        saveable = true,
+        generator = false, generatorOnUse = true,
+        generatorItem = "Ordinary Arrow",
+        generatorItemId = "4fd563e5-a44a-4a6e-958d-95bcb196814a",
+        generatorItemAmount = 1,
+        generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
+    },
+
+    {
+        modelPath = "Objects/buildings/pribyslawitz/barrel_arrows.cgf",
+    },
+
     -- paths
     {
         modelPath = "objects/nature/paths/soil_path_01.cgf",
@@ -511,15 +554,52 @@ parameterizedConstructions = {
         description = "A wooden table for eating or placing things on top of it.",
         modelPath = "objects/props/furniture/tables/table_cottage/table_cottage160_01brigh.cgf",
     },
-    {
-        description = "A small table.",
-        modelPath = "objects/props/furniture/tables/table_cooking/table_cooking.cgf"
-    },
+
     {
         description = "A wooden table for eating or placing things on top of it.",
         modelPath = "objects/props/furniture/tables/table_cooking/table_cooking_02.cgf"
     },
 
+
+    {
+        description = "A wooden table for eating or placing things on top of it.",
+        modelPath = "Objects/props/furniture/tables/table_castle/table_09.cgf",
+    },
+    {
+        description = "A wooden table for eating or placing things on top of it.",
+        modelPath = "Objects/props/furniture/tables/table_castle/table_09_large.cgf",
+    },
+    {
+        description = "A wooden table for eating or placing things on top of it.",
+        modelPath = "Objects/props/furniture/tables/table_castle/table_09_long.cgf",
+    },
+    {
+        description = "A wooden table for eating or placing things on top of it.",
+        modelPath = "Objects/props/furniture/tables/table_castle/table_09_square.cgf",
+    },
+
+    {
+        description = "A wooden table for eating or placing things on top of it.",
+        modelPath = "Objects/props/furniture/tables/table_castle/table_10.cgf",
+    },
+    {
+        description = "A wooden table for eating or placing things on top of it.",
+        modelPath = "Objects/props/furniture/tables/table_castle/table_10_dark.cgf",
+    },
+    {
+        description = "A wooden table for eating or placing things on top of it.",
+        modelPath = "Objects/props/furniture/tables/table_castle/table_10_square.cgf",
+    },
+    {
+        description = "A wooden table for eating or placing things on top of it.",
+        modelPath = "Objects/props/furniture/tables/table_castle/table_10_square_dark.cgf",
+    },
+
+
+    {
+        description = "A small table.",
+        modelPath = "objects/props/furniture/tables/table_cooking/table_cooking.cgf"
+    },
 
     -- custom action entities - cooking spots, generators (use x to make y)
     {
@@ -559,7 +639,6 @@ parameterizedConstructions = {
         { modelPath = "objects/props/carpet/carpet_a.cgf",  },
         { modelPath = "objects/props/carpet/carpet_b.cgf",  },
         { modelPath = "objects/props/carpet/carpet_c.cgf",  },
-        { modelPath = "objects/props/.cgf",  },
     ]]
 
 

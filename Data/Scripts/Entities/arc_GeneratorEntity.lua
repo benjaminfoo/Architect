@@ -59,6 +59,9 @@ GeneratorEntity = {
         -- the name of the generated resource
         generatorItem = "none",
 
+        -- the name of the generated resource but as item from KCD
+        generatorItemId = nil,
+
         -- the amount of generated resources
         generatorItemAmount = -1,
 
@@ -280,6 +283,7 @@ function GeneratorEntity:OnLoad(table)
     Properties.object_Model = table.object_Model;
     Properties.generator = table.generator
     Properties.generatorItem = table.generatorItem
+    Properties.generatorItemId = table.generatorItemId
     Properties.generatorItemAmount = table.generatorItemAmount
     Properties.generatorCooldown = table.generatorCooldown
     Properties.generatorGeneratedAmount = table.generatorGeneratedAmount
@@ -314,6 +318,7 @@ function GeneratorEntity:OnSave(table)
 
     table.generator = self.Properties.generator
     table.generatorItem = self.Properties.generatorItem
+    table.generatorItemId = self.Properties.generatorItemId
     table.generatorItemAmount = self.Properties.generatorItemAmount
     table.generatorCooldown = self.Properties.generatorCooldown
     table.generatorGeneratedAmount = self.Properties.generatorGeneratedAmount
@@ -371,6 +376,7 @@ function GeneratorEntity:SetFromProperties()
     System.LogAlways("isGenerator: " .. tostring(self.Properties.generator))
     System.LogAlways("generatorOnUse: " .. tostring(self.Properties.generatorOnUse))
     System.LogAlways("genItem: " .. self.Properties.generatorItem)
+    System.LogAlways("genItemID: " .. self.Properties.generatorItemId)
     System.LogAlways("cooldown: " .. self.Properties.generatorCooldown)
     System.LogAlways("generatorItemCosts: " .. tostring(self.Properties.generatorItemCosts))
     System.LogAlways("generatorItemAmount: " .. self.Properties.generatorItemAmount)
@@ -483,33 +489,76 @@ function GeneratorEntity:GetActions(user, firstFast)
 
     output = {}
 
-    -- we'll provide a regular functionwhich gets executed when "using" the entity
+    -- TODO: remove this in the next version
+    -- do this if an generatorItemId is defined
+    if (self.Properties.generatorItemId ~= nil) then
 
-    if self.Properties.generator then
-        AddInteractorAction(output, firstFast, Action():hint("Check resources"):action("use"):func((
-                function()
-                    Game.SendInfoText(
-                            "Amount of " .. self.Properties.generatorItem .. ": " .. tostring(self.Properties.generatorGeneratedAmount
-                                    .. "\n"
-                                    .. "Producing " .. tostring(self.Properties.generatorItemAmount)
-                                    .. " amounts of " .. self.Properties.generatorItem
-                                    .. " takes " .. tostring(self.Properties.generatorCooldown) .. " seconds"
-                            ), true, nil, 3)
-                end
-        ))                                             :interaction(inr_chair):enabled(1))
+
+        -- TODO: update this!
+        -- we'll provide a regular functionwhich gets executed when "using" the entity
+        AddInteractorAction(output, firstFast, Action():hint("Make Arrow"):action("use"):func((function()
+            -- This is only a prototype
+            -- TODO: define needed resources for newly crafted items
+            -- TODO: define dynamic amounts for recipes and results
+
+            -- 5e9b4fa1-aafa-4352-b5d6-58df2c263caa : Nettle
+            local recipeName = "Bread"
+            local costAmount = 1
+
+            -- bread:  86e4ff24-88db-4024-abe6-46545fa0fbd1
+            local craftedAmount = 1
+
+            local playerTable = "player_item"
+
+            resultSuccess = Database.LoadTable(playerTable)
+
+            -- 3. Create new item instance, add to inventory
+            newItemInstance = ItemManager.CreateItem(self.Properties.generatorItemId, 100, craftedAmount)
+
+            player.inventory:AddItem(newItemInstance);
+
+            Game.SendInfoText(
+                    "Made " .. craftedAmount .. "x Ordinary Arrow" .. "\n",
+                    true, nil, 3)
+
+        end))                                          :interaction(inr_chair):enabled(1))
+
+
     end
 
-    if self.Properties.generatorOnUse then
-        AddInteractorAction(output, firstFast, Action():hint("Gather resources"):action("use"):func((
-                function()
-                    self.Properties.generatorGeneratedAmount = self.Properties.generatorGeneratedAmount + self.Properties.generatorItemAmount
-                    Game.SendInfoText(
-                            "Produced new " .. self.Properties.generatorItem .. " x" .. tostring(self.Properties.generatorItemAmount
-                                    .. "\n" ..
-                                    "Amount of " .. self.Properties.generatorItem .. ": " .. tostring(self.Properties.generatorGeneratedAmount)
-                            ), true, nil, 3)
-                end
-        ))                                             :hintType("Test"):hintClass("Test"):interaction(inr_chair):enabled(1))
+
+
+
+    -- TODO: remove this in the next version
+    -- do this if no generatorItemId is defined
+    if (self.Properties.generatorItemId == nil) then
+        -- we'll provide a regular function which gets executed when "using" the entity
+        if self.Properties.generator then
+            AddInteractorAction(output, firstFast, Action():hint("Check resources"):action("use"):func((
+                    function()
+                        Game.SendInfoText(
+                                "Amount of " .. self.Properties.generatorItem .. ": " .. tostring(self.Properties.generatorGeneratedAmount
+                                        .. "\n"
+                                        .. "Producing " .. tostring(self.Properties.generatorItemAmount)
+                                        .. " amounts of " .. self.Properties.generatorItem
+                                        .. " takes " .. tostring(self.Properties.generatorCooldown) .. " seconds"
+                                ), true, nil, 3)
+                    end
+            ))                                             :interaction(inr_chair):enabled(1))
+        end
+
+        if self.Properties.generatorOnUse then
+            AddInteractorAction(output, firstFast, Action():hint("Gather resources"):action("use"):func((
+                    function()
+                        self.Properties.generatorGeneratedAmount = self.Properties.generatorGeneratedAmount + self.Properties.generatorItemAmount
+                        Game.SendInfoText(
+                                "Produced new " .. self.Properties.generatorItem .. " x" .. tostring(self.Properties.generatorItemAmount
+                                        .. "\n" ..
+                                        "Amount of " .. self.Properties.generatorItem .. ": " .. tostring(self.Properties.generatorGeneratedAmount)
+                                ), true, nil, 3)
+                    end
+            ))                                             :hintType("Test"):hintClass("Test"):interaction(inr_chair):enabled(1))
+        end
     end
 
     return output

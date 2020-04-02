@@ -17,7 +17,7 @@ items = {
     drinking_water = "0cb47176-06c5-42a9-8d70-969e917eb999",
     Honey = "7beb4bdc-6478-455c-8746-afb92c604be8",
     Charcoal = "f879ac63-2ce2-4114-83a2-89643c1ed102",
-
+    OrdinaryArrow = "4fd563e5-a44a-4a6e-958d-95bcb196814a",
     -- not defined:
     -- - wood
     -- - stone

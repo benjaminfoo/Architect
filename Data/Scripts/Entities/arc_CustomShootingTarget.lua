@@ -46,12 +46,16 @@ end;
 --
 function CustomShootingTarget:OnSave(table)
     table.object_Model = self.Properties.object_Model;
+    table.shootCount = self.Properties.shootCount;
 end;
 
 
 --
 function CustomShootingTarget:OnLoad(table)
     self.object_Model = table.object_Model;
+    self.shootCount = table.shootCount;
+
+    self.Properties.shootCount = table.shootCount
 
     -- load the persisted model path from the save file
     self:LoadObject(0, table.object_Model)
@@ -179,7 +183,6 @@ end;
 function CustomShootingTarget:Event_Deactivated()
     System.LogAlways("Event_deacted - onbeginstate ")
 
-    self.ended = 1;
     self:GotoState("Deactivated");
     BroadcastEvent(self, "Deactivated")
 end;
