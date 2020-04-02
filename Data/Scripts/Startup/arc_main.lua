@@ -42,12 +42,15 @@ Script.ReloadScript("Scripts/Util/arc_CammelCaseSupport.lua")
 
 -- keybindings as fallback,
 -- these will be overwritten if keybinds.cfg is correctly set and loaded
-System.ExecuteCommand("bind mwheel_up bIndexInc")           -- select the next construction
-System.ExecuteCommand("bind mwheel_down bIndexDec")         -- select the previous construction
-System.ExecuteCommand("bind 'v' architect_spawn")           -- create the current construction
-System.ExecuteCommand("bind 'g' deleteRayCastEntityHit")    -- delete the currently facing entity (the thing you looking at)
-System.ExecuteCommand("bind 'o' toggleEntityLock")              -- debug: print information about currently facing entity
-System.ExecuteCommand("bind f9 architect_recompile")        -- debug: reload the mods sources
+System.ExecuteCommand("bind mwheel_up bIndexInc")
+System.ExecuteCommand("bind mwheel_down bIndexDec")
+System.ExecuteCommand("bind 'v' architect_spawn")
+System.ExecuteCommand("bind 'g' deleteRayCastEntityHit")
+System.ExecuteCommand("bind 'r' toggleRotationMode")
+System.ExecuteCommand("bind 'o' toggleEntityLock")
+System.ExecuteCommand("bind 'h' toggleModState")
+System.ExecuteCommand("bind f9 architect_recompile")
+
 
 -- load external key bindings
 -- these file must be stored under:

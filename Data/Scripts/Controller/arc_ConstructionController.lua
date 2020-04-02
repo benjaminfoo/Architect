@@ -283,11 +283,25 @@ function SpawnBuildingInstance(line)
             if (construction.useCategory == "addDirt") then
                 spawnParams.class = "BathEntity"
                 spawnParams.properties.useCategory = construction.useCategory
+
+                spawnParams.properties.generator = construction.generator
+                spawnParams.properties.generatorItemId = construction.generatorItemId
+                spawnParams.properties.generatorItemAmount = construction.generatorItemAmount
+                spawnParams.properties.generatorCooldown = construction.generatorCooldown
+                spawnParams.properties.generatorOnUse = construction.generatorOnUse
+                spawnParams.properties.generatorItemCosts = construction.generatorItemCosts
             end
 
             if (construction.useCategory == "wash") then
                 spawnParams.class = "BathEntity"
                 spawnParams.properties.useCategory = construction.useCategory
+
+                spawnParams.properties.generator = construction.generator
+                spawnParams.properties.generatorItemId = construction.generatorItemId
+                spawnParams.properties.generatorItemAmount = construction.generatorItemAmount
+                spawnParams.properties.generatorCooldown = construction.generatorCooldown
+                spawnParams.properties.generatorOnUse = construction.generatorOnUse
+                spawnParams.properties.generatorItemCosts = construction.generatorItemCosts
             end
 
             if (construction.useCategory == "showStats") then

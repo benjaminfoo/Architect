@@ -453,11 +453,13 @@ changelog 0.5.5a-test
 - updated constructions (useable bathtubs (removes dirt), useable charcoal (adds dirt), reactive targets (simple arrow-hit detection), townbook (show overall stats of your town), added arrow-maker, added references (new constructions), ...)
 - updated github about-page and content, merged coding-guide into project and added sub-page, added constructions sub-page
 - upgraded codebase, removed and refactored (a lot of) code
-- added overview user-interface for available construction (scroll with page up and page down)
+- added overview user-interface for available construction (scroll with page up and page down) 
 - added persistent counter for target (count how many hits youve got)
+
 - fixed bug: preview didnt worked after loading a game
 - fixed bug: archery target used wrong model after startup
 - fixed bug: archery target was active rigidbody (moved on hit), is no inactive again
+
 
 changelog 0.5.4a-test
 - its now safe to enable / disable the mod

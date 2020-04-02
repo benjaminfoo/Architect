@@ -68,6 +68,8 @@ BathEntity = {
         -- how much has this construction already created?
         generatorGeneratedAmount = 0,
 
+        useCategory = nil,
+
 
         -- serialize entity for persistence
         bSaved_by_game = 1,
@@ -132,6 +134,7 @@ function BathEntity:SetupModel()
 
     local Properties = self.Properties;
 
+
     System.LogAlways("SetupModel")
     System.LogAlways("self.Properties.object_model: " .. Properties.object_Model)
     -- System.LogAlways("self.Properties.object_model: " .. Properties.object_Model)
@@ -151,8 +154,15 @@ function BathEntity:OnLoad(table)
     -- reload persisted values
     local Properties = self.Properties;
     Properties.object_Model = table.object_Model;
+    Properties.generator = table.generator
+    Properties.generatorItem = table.generatorItem
+    Properties.generatorItemId = table.generatorItemId
+    Properties.generatorItemAmount = table.generatorItemAmount
+    Properties.generatorCooldown = table.generatorCooldown
+    Properties.generatorGeneratedAmount = table.generatorGeneratedAmount
+    Properties.generatorItemCosts = table.generatorItemCosts
     Properties.deletion_lock = table.deletion_lock
-
+    Properties.useCategory = table.useCategory
 
     -- the initial timer of this generator
     System.LogAlways("Loading")
@@ -172,6 +182,15 @@ end
 function BathEntity:OnSave(table)
     table.object_Model = self.Properties.object_Model;
     table.deletion_lock = self.Properties.deletion_lock
+
+    table.generator = self.Properties.generator
+    table.generatorItem = self.Properties.generatorItem
+    table.generatorItemId = self.Properties.generatorItemId
+    table.generatorItemAmount = self.Properties.generatorItemAmount
+    table.generatorCooldown = self.Properties.generatorCooldown
+    table.generatorGeneratedAmount = self.Properties.generatorGeneratedAmount
+    table.generatorItemCosts = self.Properties.generatorItemCosts
+    table.useCategory = self.Properties.useCategory
 
     System.LogAlways("Saving")
     System.LogAlways("Persisting Entity.object_model: " .. table.object_Model)
