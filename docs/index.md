@@ -2,6 +2,30 @@
 # index markdown file - main content
 layout: default
 ---
+
+<style>
+
+
+.no-padding{
+    padding-bottom: 1.5rem;
+}
+
+iframe{
+    border:none;
+}
+
+.player-section{
+    position:relative;
+}
+ 
+@media screen and (max-width:767px){
+
+}
+
+        
+</style>
+
+
 # Welcome!
 This project introduces new features and mechanics to [kingdom come deliverance](https://www.kingdomcomerpg.com/) like a construction-system,
 a resource-system, a basic crafting-system, town management, etc. 
@@ -25,14 +49,14 @@ There are no DLCs required to use this mod.
 ## News 
 - Version 0.5.5a-test has been [released!](https://www.nexusmods.com/kingdomcomedeliverance/mods/958)
 - Version 0.5.4a-test has been [released!](https://www.nexusmods.com/kingdomcomedeliverance/mods/958)
-- [Sexy Biscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) has released a new video which reviews the latest features of the architect on [YouTube](https://www.youtube.com/watch?v=f_x-3SbbOfc)
+- [Sexy Biscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) has released a new video which reviews the latest features of the architect on [YouTube](https://www.youtube.com/embed/f_x-3SbbOfc)
 - Version 0.5.4a has been [released!](https://www.nexusmods.com/kingdomcomedeliverance/mods/958)
 - Version 0.5.3b has been [released!](https://www.nexusmods.com/kingdomcomedeliverance/mods/958)
 - Version 0.5.3a has been [released!](https://www.nexusmods.com/kingdomcomedeliverance/mods/958)
-- [Sexy Biscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) has released a two hour stream about town building and using architect on [YouTube](https://www.youtube.com/watch?v=tZISnQW5ms4)
+- [Sexy Biscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) has released a two hour stream about town building and using architect on [YouTube](https://www.youtube.com/embed/tZISnQW5ms4)
 - Version 0.5.2b has been [released!](https://www.nexusmods.com/kingdomcomedeliverance/mods/958)
-- [Sexy Biscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) has released another great gameplay video using the architect modification on [YouTube](https://www.youtube.com/watch?v=ysLVzh89N_c)
-- [Sexy Biscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) has released an overview on how to install and use the architect modification on [YouTube](https://www.youtube.com/watch?v=0D_I73Jn3G8)
+- [Sexy Biscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) has released another great gameplay video using the architect modification on [YouTube](https://www.youtube.com/embed/ysLVzh89N_c)
+- [Sexy Biscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) has released an overview on how to install and use the architect modification on [YouTube](https://www.youtube.com/embed/0D_I73Jn3G8)
 - The german computer magazine [Gamestar](www.gamestar.de/) wrote an article about the [architect!](https://www.gamestar.de/artikel/mod-kingdom-come-eigenen-doerfer-burgen-bauen,3355483.html)
 - Version 0.51a has been [released!](https://www.nexusmods.com/kingdomcomedeliverance/mods/958)
 
@@ -40,29 +64,79 @@ There are no DLCs required to use this mod.
 
 
 ## Media 
-Take a look at the base building videos of [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) to get an idea and how to install and use the modification - p.s. the videos are great!  
+Take a look at the base building videos of [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) and other users to get an idea and how to install and use the modification - p.s. the videos are great!  
 
-<div id="media">
 
-<iframe class="p-1" width="48%" height="480" src="https://www.youtube.com/embed/f_x-3SbbOfc" frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div class="container-fluid">
 
-<iframe class="p-1" width="48%" height="480" src="https://www.youtube.com/embed/gDjDkfh75nU" frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<iframe class="p-1" alt="base building video by sexy biscuit" width="48%" height="480" src="https://www.youtube.com/embed/90tNln4SM5w" frameborder="0" allow="accelerometer; 
-autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<iframe class="p-1" alt="base building video by sexy biscuit" width="48%" height="480" src="https://www.youtube.com/embed/0D_I73Jn3G8" frameborder="0" allow="accelerometer;
- autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<iframe class="p-1" alt="base building video by sexy biscuit" width="48%" height="480" src="https://www.youtube.com/embed/tZISnQW5ms4" frameborder="0" allow="accelerometer; 
-autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<iframe class="p-1" alt="base building video by sexy biscuit" width="48%" height="480" src="https://www.youtube.com/embed/ysLVzh89N_c" frameborder="0" allow="accelerometer; 
-autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+  <div class="row player-section">
+  
+    <div class="col-sm-4 no-padding ">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="player" src="https://www.youtube.com/embed/0D_I73Jn3G8" allowfullscreen></iframe>
+      </div>
+    </div>   
+     
+     <div class="col-sm-4 no-padding">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="player" src="https://www.youtube.com/embed/ysLVzh89N_c" allowfullscreen></iframe>
+      </div>
+    </div> 
+        
+     <div class="col-sm-4 no-padding">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="player" src="https://www.youtube.com/embed/tZISnQW5ms4" allowfullscreen></iframe>
+      </div>
+    </div>
+    
+  </div>
+  
+  <div class="row player-section ">
+  
+    <div class="col-sm-4 no-padding">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="player" src="https://www.youtube.com/embed/f_x-3SbbOfc" allowfullscreen></iframe>
+      </div>
+    </div>   
+     
+     <div class="col-sm-4 no-padding">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="player" src="https://www.youtube.com/embed/gDjDkfh75nU" allowfullscreen></iframe>
+      </div>
+    </div> 
+        
+     <div class="col-sm-4 no-padding">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="player" src="https://www.youtube.com/embed/90tNln4SM5w" allowfullscreen></iframe>
+      </div>
+    </div>
+    
+  </div>  
+  
+  <div class="row player-section ">
+  
+    <div class="col-sm-4 no-padding">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="player" src="https://www.youtube.com/embed/tATGc_1RLwM" allowfullscreen></iframe>
+      </div>
+    </div>   
+     
+     <div class="col-sm-4 no-padding">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="player" src="https://www.youtube.com/embed/KMVlk_r3okc" allowfullscreen></iframe>
+      </div>
+    </div> 
+        
+     <div class="col-sm-4 no-padding">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="player" src="https://www.youtube.com/embed/4PziW6vvcSI" allowfullscreen></iframe>
+      </div>
+    </div>
+    
+  </div>
+  
 </div>
+
 
 <br>
 
