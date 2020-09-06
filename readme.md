@@ -2,22 +2,19 @@
 
 # KCD - Architect
  
-A modification for Kingdom Come Deliverance which introduces base-building mechanics and new features to the game.
+A modification for Kingdom Come Deliverance which introduces base-building mechanics and new features.
 
-This project allows the construction of entities within the games world - 
-this means that the player can spawn anything from simple props to flora & fauna, vegetation, houses, walls, towers,
-tents, chairs, benches, beds, etc. anywhere in the world.
+This project allows the construction of entities anywhere within the scene - 
+this means that the user  can spawn anything from simple props to structures,  furniture, flora & fauna & vegetation, houses, walls, towers,
+tents, chairs, benches, beds, etc. ).
 
 Make a backup of your saved games before doing anything else.  
 Constructions are saved across your savegames - there is no new save required.  
 
 There are _no DLCs required_ in order to use this mod.
 
-If you're having fun with this mod you're maybe interested in buying me a coffee :)
-
-Thanks to [Warhorse Studios](https://warhorsestudios.cz) for creating this gem!
-
-For changelogs, planned features or in-depth details see [https://benjaminfoo.github.io/Architect/](https://benjaminfoo.github.io/Architect/)
+For more information see [benjaminfoo.github.io/Architect/](https://benjaminfoo.github.io/Architect/) \
+Checkout nexusmods at [nexusmods.com/kingdomcomedeliverance/mods/958](https://www.nexusmods.com/kingdomcomedeliverance/mods/958)
 
 <br>
 
@@ -98,9 +95,6 @@ The `keybinds.cfg` file contains all keybindings used in the project - change it
 <br>
 
 ## Thanks / Credits
-Thanks to [Warhorse Studios](https://warhorsestudios.cz) for creating such a great game, with engine, assets & sdk -
-this fun project wouldnt be possible without you.
-
-Also big thanks to the modding community on nexus﻿.
-
-Thanks @sexybiscuit for creating the great video on how to use and install the modification!
+Thanks to [Warhorse Studios](https://warhorsestudios.cz) for creating Kingdom Come Deliverance.
+Cheers to the people within the kcd discord.
+Cheers to sexybiscuit for creating the videos on how to use and install the project.

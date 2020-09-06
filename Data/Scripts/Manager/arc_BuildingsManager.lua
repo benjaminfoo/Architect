@@ -82,6 +82,54 @@ parameterizedConstructions = {
         useable = true, useCategory = "showStats",
     },
 
+    -- chests
+    {
+        description = "A chest to manage your items.",
+        modelPath = "objects/props/wooden_bins/chests/chest_01/chest01.cga",
+        stash = true,
+        category = "Stash",
+    },
+
+    {
+        description = "A chest to manage your items.",
+        modelPath = "objects/props/wooden_bins/chests/chest_02/chest02.cga",
+        stash = true,
+        category = "Stash",
+    },
+    {
+        description = "A chest to manage your items.",
+        modelPath = "objects/props/wooden_bins/chests/chest_03/chest03.cga",
+        stash = true,
+        category = "Stash",
+    },
+
+    {
+        description = "A chest to manage your items.",
+        modelPath = "objects/props/wooden_bins/chests/chest_04/chest04.cga",
+        stash = true,
+        category = "Stash",
+    },
+    {
+        description = "A chest to manage your items.",
+        modelPath = "objects/props/wooden_bins/chests/chest_05/chest05.cga",
+        stash = true,
+        category = "Stash",
+    },
+
+    -- user added entities
+    -- blackhawkca -> https://www.nexusmods.com/kingdomcomedeliverance/users/72594468
+    {
+        description = "A barrel full of Better Piercing Arrow - by blackhawkca",
+        modelPath = "Objects/weapons/arrow/basket_arrow_full.cgf",
+        saveable = true,
+        generator = false, generatorOnUse = true,
+        generatorItem = "Better Piercing Arrow",
+        generatorItemId = "a5b31bbc-1e11-4831-835b-c06d5b13a7da",
+        generatorItemAmount = 1,
+        generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
+    },
+
+
 
     --[[
     -- these could be used to spawn rabbits or other animals or increase the rate of wildlife in the area, i dunno
@@ -1843,9 +1891,10 @@ function initializeBuildings()
             return
         end
 
-        -- remove the postfix ending ".cgf" from the name
+        -- remove the postfix ending ".cgf" and ".cga" from the name
         -- construction.name = parameterizedConstructions[index].modelPath
         cur.name = string.gsub(cur.modelPath, ".cgf", "")
+        cur.name = string.gsub(cur.modelPath, ".cga", "")
 
         -- locate the index of the last /
         lastIndex = string.find(cur.name, "/[^/]*$")
@@ -1929,6 +1978,7 @@ function initializeBuildings()
         end
 
         -- all entities should be persisted
+        -- is this still needed if anything is persistant?
         if cur.saveable == nil then
             cur.saveable = true
         end

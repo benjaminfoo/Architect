@@ -17,7 +17,6 @@ BasicBuildingEntity = {
         bTurnedOn = 1,
 
         bSaved_by_game = 1,
-        Saved_by_game = 1,
         bSerialize = 1,
         deletion_lock = false,
 

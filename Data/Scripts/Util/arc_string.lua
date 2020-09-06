@@ -1,0 +1,5 @@
+---
+--- Author:  Benjamin Foo
+---
+--- This class defines additional operations for strings
+---

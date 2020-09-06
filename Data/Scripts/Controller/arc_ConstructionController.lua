@@ -5,7 +5,7 @@
 ---
 
 -- the set of already created constructions
--- this set will be empty onload of a game, only is used during runtime
+-- this set will be empty onload of a game and is only used during runtime
 builtEntities = {}
 
 -- the current index of the building-selection
@@ -17,6 +17,7 @@ classesWhiteList = {
     "BathEntity",
     "BedEntity",
     "ChairEntity",
+    "ChestEntity",
     "CookingSpotEntity",
     "DynamicBuildingEntity",
     "ECSManager",
@@ -203,7 +204,6 @@ function spawnPreview()
 
 end
 
-
 -- spawn the currently selected entity with the current selection as modelpath
 function SpawnBuildingInstance(line)
 
@@ -231,6 +231,7 @@ function SpawnBuildingInstance(line)
         -- System.LogAlways("Hit entity: " .. tostring(entity))
 
         -- construct the entity and setup its parameters
+        -- creating an entity this way does not consider how it got persistet - take a look at the entity classes for more information.
         local spawnParams = {}
 
         -- use arc_BasicBuildingEntity.lua as type for static constructions
@@ -276,6 +277,17 @@ function SpawnBuildingInstance(line)
 
         if (construction.reactsToCollision) then
             spawnParams.class = "CustomShootingTarget"
+        end
+
+        if(construction.stash) then
+            spawnParams.class = "ChestEntity"
+
+            -- skip the check if the player is infront of the chest
+            spawnParams.properties.bSkipAngleCheck = 1
+            spawnParams.properties.fUseDistance = 2
+
+            spawnParams.properties.soclasses_SmartObjectHelpers = "Chest"
+            spawnParams.properties.sWH_AI_EntityCategory = "Chest"
         end
 
         if (construction.useable) then
@@ -364,13 +376,13 @@ function SpawnBuildingInstance(line)
         if construction.sleepable then
         end
 
-        if (construction.useable) then
+        if construction.useable then
         end
 
-        if (construction.cookingSpot) then
+        if construction.cookingSpot then
         end
 
-        if (construction.generator) then
+        if construction.generator then
         end
 
         -- setup the rotation of the spawned entity align the y-axis
@@ -403,6 +415,88 @@ function SpawnBuildingInstance(line)
     System.LogAlways("# SpawnBuildingInstance end")
 end
 
+function rayCastHitSimple()
+
+    -- if the mod is not enabled, dont do anything -- needs refactoring
+    if not config.modEnabled then
+        return
+    end
+
+    System.LogAlways("# rayCastHit start")
+
+    local from = player:GetPos();
+    from.z = from.z + 1.615;
+
+    local dir = System.GetViewCameraDir();
+    dir = vecScale(dir, 250);
+
+    -- if previewModelEntity == nil then
+    --     -- previewModelEntity = player -- wtf!
+    --     System.LogAlways("ERROR - hit == player !?")
+    --     return
+    -- end
+
+
+    local hitData = {};
+    local hits = Physics.RayWorldIntersection(from, dir, 10, ent_all, player.id, nil, hitData);
+
+    if hits > 0 then
+        dump(hitData[1])
+        return hitData[1];
+    end
+
+    System.LogAlways("# rayCastHit end")
+
+end
+
+function spawnmulti()
+	spawnSimple("Objects/buildings/houses/executioners_house/executioners_house_basefloor.cgf")
+	spawnSimple("Objects/buildings/houses/executioners_house/executioners_house_basefloor_int.cgf")
+	spawnSimple("Objects/buildings/houses/executioners_house/executioners_house_basewall.cgf	")
+	spawnSimple("Objects/buildings/houses/executioners_house/executioners_house_roof.cgf")
+end
+
+-- spawn the currently selected entity with the current selection as modelpath
+function spawnSimple(line)
+
+    System.LogAlways("# SpawnBuildingInstance start - spawning " .. line)
+    hitData = rayCastHitSimple()
+	if (hitData ~= nil) then
+		local entity = hitData
+		local spawnParams = {}
+		spawnParams.class = "BasicBuildingEntity"
+		spawnParams.position = entity.pos
+		spawnParams.orientation = { x = 0, y = 0, z = 1 }
+		spawnParams.properties = {}
+		spawnParams.properties.bSaved_by_game = 1
+		spawnParams.properties.bSerialize = 1
+		spawnParams.properties.object_Model = line
+
+		spawnParams.name = "spawn_multi_"
+		spawnParams.uuid = uuid()
+
+		local ent = System.SpawnEntity(spawnParams)
+		local up = player:GetAngles()
+
+		up = { up.x, up.y, up.z }
+		ent:SetAngles(up)
+
+		-- setup flags
+		-- See: https://forums.nexusmods.com/index.php?/topic/8540368-environment-effects-ignore-collision-like-rain-fog/
+		ent:SetFlags(ENTITY_FLAG_RAIN_OCCLUDER, 1)
+		ent:SetFlags(ENTITY_FLAG_CASTSHADOW, 1)
+
+		Game.SendInfoText(
+				"Constructing " .. tostring(ent:GetName())
+		, true, nil, 2)
+
+		-- undo / redo control, build history
+		table.insert(builtEntities, ent)
+
+	end
+
+    System.LogAlways("# SpawnBuildingInstance end")
+end
 
 -- locks every entity which is a member of a whitelist element
 function lockAll()
@@ -591,9 +685,8 @@ function deleteRayCastEntityHit()
         -- so we keep a whitelist of everything - if the hit entity is within the list, the entity will get deleted
         if (contains(classesWhiteList, result.class)) then
 
-            -- if there is something to delete, log its name to the player first
-
-            if (result.Properties.deletion_lock == false) then
+            -- if something hasnt got locked explicitly or it doesnt contain a deletion_lock
+            if (result.Properties.deletion_lock == false or result.Properties.deletion_lock == nil) then
 
                 visRes = "Removing construction: " .. tostring(result:GetName())
 

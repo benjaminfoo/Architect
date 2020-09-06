@@ -1,0 +1,4 @@
+<Entity
+        Name="ChestEntity"
+        Script="Scripts/Entities/arc_ChestEntity.lua"
+/>

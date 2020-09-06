@@ -438,7 +438,7 @@ TODO
 ### Using OnUpdate or deltaTime
 TODO
 
-#### Disable near distance fade-out
+### Disable near distance fade-out
 By default, entities, or subclasses of entities, are setup for near distance fade-outs, this means, 
 if you move away from the entity in a short distance, the entity gets hidden from the rendering system.
 
@@ -449,7 +449,7 @@ Use the following snippet for enabling unlimited view distance of an entity.
 self:SetViewDistUnlimited()
 ```  
 
-## Event processing 
+### Event processing 
 In order to execute logic at some specific point in the application execution (after the scene has been loaded, onExit, on...)
 ```
 function object:myActionListener(actionName, eventName, eventArgs)
@@ -465,6 +465,12 @@ end
 
 UIAction.RegisterActionListener(object, "", "", "myActionListener")
 ```
+
+### SmartObjects
+SmartObjects contain some kind of logic or interaction with the player.
+This objects are defined in KingdomComeDeliverance\Data\GameData.pak\prefabs\SmartObjects.xml
+
+
 
 ## Misc.
 Get the total income of pribyslawitz
@@ -612,4 +618,3 @@ System.AddCCommand('testEcho', 'testEcho()', "testEcho!")
 
 3.) Bind the key (page down) to method testEcho
 System.ExecuteCommand("bind 'pgdn' testEcho")
-

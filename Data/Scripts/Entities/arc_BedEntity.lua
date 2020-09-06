@@ -74,10 +74,6 @@ BedEntity = {
 }
 
 function BedEntity:OnSpawn()
-    if (self.Properties.MultiplayerOptions.bNetworked == 0) then
-        self:SetFlags(ENTITY_FLAG_CLIENT_ONLY, 0);
-    end
-
     self.bRigidBodyActive = 1;
 
     self:SetFromProperties();
@@ -86,54 +82,22 @@ end
 function BedEntity:SetFromProperties()
     local Properties = self.Properties;
 
-    if (Properties.object_Model == "") then
-        do
-            return
-        end ;
-    end
-
     self:SetupModel();
-    if (Properties.bAutoGenAIHidePts == 1) then
-        self:SetFlags(ENTITY_FLAG_AI_HIDEABLE, 0);
-    else
-        self:SetFlags(ENTITY_FLAG_AI_HIDEABLE, 2);
-    end
-
-    if (self.Properties.bCanTriggerAreas == 1) then
-        self:SetFlags(ENTITY_FLAG_TRIGGER_AREAS, 0);
-    else
-        self:SetFlags(ENTITY_FLAG_TRIGGER_AREAS, 2);
-    end
-
-    -- setup entity flags
     self:SetFlags(ENTITY_FLAG_RAIN_OCCLUDER, 1)
     self:SetFlags(ENTITY_FLAG_CASTSHADOW, 1)
-
 end
 
 function BedEntity:SetupModel()
-
     local Properties = self.Properties;
-
-    System.LogAlways("SetupModel")
-    System.LogAlways("self.Properties.object_model: " .. Properties.object_Model)
-    -- System.LogAlways("self.Properties.object_model: " .. Properties.object_Model)
-
     self:LoadObject(0, Properties.object_Model);
-
     self:PhysicalizeThis();
-
-    -- disable near fade-out by default
     self:SetViewDistUnlimited()
 end
 
 
 --
 function BedEntity:OnLoad(table)
-    self.object_Model = table.object_Model;
-
-    local Properties = self.Properties;
-    Properties.object_Model = table.object_Model;
+    self.Properties.object_Model = table.object_Model;
 
     -- load the persisted model path from the save file
     self:LoadObject(0, table.object_Model)
