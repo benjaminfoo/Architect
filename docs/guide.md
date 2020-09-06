@@ -337,10 +337,19 @@ The built-in functions like System.LogAlways, Script.ReloadScript(...), Script.U
 There is a documentation for all of them in <editor>/tools/luadoc.
 
 ## Entities
+An entity is an object within the scene (the player, a single plant, the horse - everything is an entity).
+
+The built-in entities are stored at:
+- KingdomComeDeliverance\Data\Scripts.pak\Entities\
+- KingdomComeDeliverance\Data\Scripts.pak\Scripts\Entities\
 
 ### Create a new entity
+Two define an entity two things are needed:
+- a *.ent file, which maps the entity name with a lua script
+- a *.lua file, which contains the executing logic of that entity
  
-Create *.ent file in Entities/TestEntity.lua
+ 
+Create *.ent file in KingdomComeDeliverance\Mods\<yourModFolder>\Entities\
 ```
 <Entity
     Name="TestEntity"
@@ -561,60 +570,55 @@ server_onInit -> onReset -> onInit -> onLoaded
 
 ## Misc.
 
--- Use inbuilt methods
-
--- Convert vector with n components to human readable string / pretty print
+-- Convert vector with 3 components to human readable string / pretty print \
 System.LogAlways("Located at: " .. Vec2Str(player:GetPos()}))
 
--- Make the player fall
+-- Make the player fall \
 player.actor:Fall({1,1,1})
 
--- Makes the actor grab on a ladder
+-- Makes the actor grab on a ladder \
 Human.GrabOnLadder(ScriptHandle ladderId);
 
--- Get current amount of money by player
+-- Get current amount of money by player \
 player.inventory:GetMoney()
 
--- Add or remove money to the players inventory, works with negative value and includes and ui
+-- Add or remove money to the players inventory, works with negative value and includes and ui \
 AddMoneyToInventory(player,amount)
 
--- Save the game
+-- Save the game \
 Game.SaveGameViaResting() 
 
--- Activate frost overlay
+-- Activate frost overlay \
 System.SetScreenFx("ScreenFrost_Amount", 1);
 
--- Show information about the player
-#dump(player)
-#dump(player.actor)
-#dump(player.soul)
-#dump(player == System.GetEntityByName("dude") => entity?)
+-- Show information about the player \
+dump(player) \
+dump(player.actor) \
+dump(player.soul) \
+dump(player == System.GetEntityByName("dude") => entity?) \
 
-look into this for player manipulation:
-file:///C:/dev/Steam/steamapps/common/KingdomComeDeliverance/Tools/luadoc/luadoc/C_ScriptBindSoul.html
+Take a look into the following files for player manipulation:
+- KingdomComeDeliverance/Tools/luadoc/luadoc/C_ScriptBindSoul.html
+- KingdomComeDeliverance/Tools/luadoc/luadoc/C_ScriptBindGameRules__AddMinimapEntity@IFunctionHandler__@ScriptHandle@int@float.html
+- KingdomComeDeliverance/Tools/luadoc/luadoc/C_ScriptBindGameRules__AddObjective@IFunctionHandler__@int@char__@int@ScriptHandle.html
 
-
-file:///C:/dev/Steam/steamapps/common/KingdomComeDeliverance/Tools/luadoc/luadoc/C_ScriptBindGameRules__AddMinimapEntity@IFunctionHandler__@ScriptHandle@int@float.html
-file:///C:/dev/Steam/steamapps/common/KingdomComeDeliverance/Tools/luadoc/luadoc/C_ScriptBindGameRules__AddObjective@IFunctionHandler__@int@char__@int@ScriptHandle.html
-
-
--- Enables the black bars used for movie sequences
+Enables the black bars used for movie sequences  \
 wh_ui_ShowRatioStrips = 0 / 1
 
+Enables / disables the hud \
 wh_ui_ShowHud = 0 / 1
 
+Toggles fullscreen-mode \
 r_Fullscreen = 0 / 1
 
 ### Key-Handling
 See the crytek documentation for [Setting up controls and action maps](https://docs.cryengine.com/display/CEPROG/Setting+Up+Controls+and+Action+Maps)
 
-1.) Create a function
-function testEcho()
-    System.LogAlways("Hello World!") 
-end
+1.) Create a function  \
+function testEcho() System.LogAlways("Hello World!") end
 
-2.) Add a command to the console 
+2.) Add a command to the console  \
 System.AddCCommand('testEcho', 'testEcho()', "testEcho!")
 
-3.) Bind the key (page down) to method testEcho
+3.) Bind the key (page down) to method testEcho  \
 System.ExecuteCommand("bind 'pgdn' testEcho")

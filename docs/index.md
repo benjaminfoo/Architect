@@ -27,22 +27,19 @@ iframe{
 
 
 # Welcome!
-This project introduces new features and mechanics to [kingdom come deliverance](https://www.kingdomcomerpg.com/) like a construction-system,
-a resource-system, a basic crafting-system, town management, etc. 
+This project introduces new features and mechanics to [kingdom come deliverance](https://www.kingdomcomerpg.com/) \
+If you enjoy this mod send me your [screenshots / videos](https://www.nexusmods.com/kingdomcomedeliverance/mods/958?tab=images) or maybe [buy me a cup of coffee](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PMULUFGTQFAJA&source=url) - thanks to all of you! \
+If you are interested in modding KC:D checkout the [guide](https://benjaminfoo.github.io/Architect/guide). 
 
-This means that the player can create and spawn constructions - this ranges from simple props to flora & fauna, 
-vegetation, houses, walls, towers, tents, chairs, benches, beds, etc. almost anywhere in the world. Its also possible to build 
-custom constructions like wood-, stone-, coal-, ... -generators which produce resources or items over time.
+## Features
 
-##### If you enjoy this mod send me your [screenshots / videos](https://www.nexusmods.com/kingdomcomedeliverance/mods/958?tab=images) or maybe [buy me a cup of coffee](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PMULUFGTQFAJA&source=url) - thanks to all of you! 
+- construction-system - spawn constructions anywhere in the scene - this includes vegetation, structures, furniture, etc.
+- resource-system - some constructions generate resources (generators), some constructions require resources to be build
+- crafting-system - craft arrows, cook all the things
+- base management - manage your base like a boss
+- chests - manage your items
+- ...
 
-<br>
-
-**Note**  
-Make a backup of your saved games - there is no new save required.  
-There are no DLCs required to use this mod.
-
-##### Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game and the modding sdk!
 
 <br>
 
@@ -609,7 +606,7 @@ Get the modification at the [nexus](https://www.nexusmods.com/kingdomcomedeliver
 <br>
 
 ## Credits & Thanks
-Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing and realizing this beautiful game and the modding sdk!  
-Also thanks to [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) for creating the great videos on how to use and install the modification!  
-  
+Thanks to [Warhorse Studios](https://warhorsestudios.cz) for developing KC:D \
+Thanks to [sexybiscuit](https://www.youtube.com/channel/UCvpxkCUky0wN5e0DNf_YZCQ) for creating the great videos on how to use and install the modification!  
+Thanks to the [Cheat Mod](https://www.nexusmods.com/kingdomcomedeliverance/mods/106) and [Sim's Camping Mod](https://www.nexusmods.com/kingdomcomedeliverance/mods/881) for being a great modders resources.
 This page uses [bootstrap 4](https://getbootstrap.com/) and was generated with [jekyll](https://jekyllrb.com/docs/plugins/generators/).  

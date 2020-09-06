@@ -2,9 +2,9 @@
 <kcd_mod>
   <info>
     <name>architect</name>
-    <description>Adds base-building elements to the game.</description>
+    <description>A modification which introduces base-building features and other mechanics to Kingdom Come Deliverance.</description>
     <author>Benjamin Foo</author>
-    <version>0.5.5a</version>
+    <version>0.5.6a</version>
     <created_on></created_on>
     <dependencies>
     </dependencies>
