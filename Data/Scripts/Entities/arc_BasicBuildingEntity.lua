@@ -88,9 +88,7 @@ function BasicBuildingEntity:SetupModel()
     -- System.LogAlways("self.Properties.object_model: " .. Properties.object_Model)
 
     self:LoadObject(0, Properties.object_Model);
-
     self:PhysicalizeThis();
-
     -- disable near fade-out by default
     self:SetViewDistUnlimited()
 end

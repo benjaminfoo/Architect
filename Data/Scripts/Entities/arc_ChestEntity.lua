@@ -46,7 +46,7 @@ ChestEntity =
 
         Physics = {
             bPhysicalize 		= 1,
-            bRigidBody 			= 1,
+            bRigidBody 			= 0,
             bPushableByPlayers 	= 0,
             Density 			= -1,
             Mass 				= -1,
@@ -101,6 +101,7 @@ function ChestEntity:OnLoad(table)
 
     self.Properties.object_Model = table.object_Model;
     self.Properties.deletion_lock = table.deletion_lock;
+    self:PhysicalizeThis();
     self:SetViewDistUnlimited()
 
     self.bLocked = table.bLocked;
@@ -185,6 +186,8 @@ function ChestEntity:OnSpawn()
 
     self.inventoryId = EntityModule.AcquireInventory(guid, self.id);
     self:Reset();
+
+    self:Physicalize(0,PE_STATIC,{mass = 0, density = 0});
 end
 
 function ChestEntity:OnDestroy()
@@ -230,7 +233,8 @@ end
 
 function ChestEntity:PhysicalizeThis()
     local Physics = self.Properties.Physics;
-    EntityCommon.PhysicalizeRigid( self, 0, Physics, 1 );
+    -- EntityCommon.PhysicalizeRigid( self, 0, Physics, 1 );
+    EntityCommon.PhysicalizeRigid(self, 0, Physics, self.bRigidBodyActive);
 end
 
 function ChestEntity:IsUsable(user)

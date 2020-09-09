@@ -82,6 +82,52 @@ parameterizedConstructions = {
         useable = true, useCategory = "showStats",
     },
 
+
+    {
+        description = "Grindstone\nA grindstone which can be used to sharpen your weapons",
+        modelPath = "objects/buildings/houses/smithery/grindstone.cdf",
+        grindstone = true,
+    },
+
+-- needs further init.
+--    {
+--        description = "Alchemist Table\nAn Alchemist Table which can be used to craft potions.",
+--        modelPath = "Objects/props/alchemy/alchemist_table.cgf",
+--        alchemist_table = true,
+--    },
+
+-- the problem with this is, it requires an npc to play against -> tbd -> spawn an npc, make it a gambler, play the game
+--    {
+--        description = "Backgammon Board.",
+--        modelPath = "objects/props/alchemy/book/alchemy_book.cgf",
+--        useable = true, useCategory = "showStats",
+--    },
+
+    -- ladders
+    {
+        description = "A ladder to climb up on things.",
+        modelPath = "objects/buildings/churches/church_pribyslawitz/pribyslawitz_ladder.cgf",
+        ladder = true,
+        ladder_height = 4,
+        category = "Ladder",
+    },
+
+    {
+        description = "A ladder to climb up on things.",
+        modelPath = "objects/props/poi/watchtower_ladder.cgf",
+        ladder = true,
+        ladder_height = 4,
+        category = "Ladder",
+    },
+    {
+        description = "A ladder to climb up on things.",
+        modelPath = "objects/structures/ladder/siege_ladder.cgf",
+        ladder = true,
+        ladder_height = 11,
+        category = "Ladder",
+    },
+
+
     -- chests
     {
         description = "A chest to manage your items.",
@@ -1893,8 +1939,13 @@ function initializeBuildings()
 
         -- remove the postfix ending ".cgf" and ".cga" from the name
         -- construction.name = parameterizedConstructions[index].modelPath
-        cur.name = string.gsub(cur.modelPath, ".cgf", "")
-        cur.name = string.gsub(cur.modelPath, ".cga", "")
+        -- cur.name = string.gsub(cur.modelPath, ".cgf", "")
+        cur.name = cur.modelPath
+
+        -- remove cgf, cdf and cga from the filenames
+        if string.find(cur.name, ".cgf") then cur.name = string.gsub(cur.modelPath, ".cgf", "") end
+        if string.find(cur.name, ".cdf") then cur.name = string.gsub(cur.modelPath, ".cdf", "") end
+        if string.find(cur.name, ".cga") then cur.name = string.gsub(cur.modelPath, ".cga", "") end
 
         -- locate the index of the last /
         lastIndex = string.find(cur.name, "/[^/]*$")

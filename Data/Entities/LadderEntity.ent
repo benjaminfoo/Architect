@@ -1,0 +1,4 @@
+<Entity
+     Name="LadderEntity"
+     Script="Scripts/Entities/arc_LadderEntity.lua"
+/>

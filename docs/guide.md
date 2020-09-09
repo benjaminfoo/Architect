@@ -622,3 +622,12 @@ System.AddCCommand('testEcho', 'testEcho()', "testEcho!")
 
 3.) Bind the key (page down) to method testEcho  \
 System.ExecuteCommand("bind 'pgdn' testEcho")
+
+### Play Sounds
+
+Utils.ExecuteAudioTrigger('a_l_poi_birdnest')
+Utils.ExecuteAudioTrigger('b_sheep_baa')
+Utils.ExecuteAudioTrigger('mon_alarm_bell')
+Utils.ExecuteAudioTrigger('q_cemetery_flowers_incanation')
+Utils.ExecuteAudioTrigger('special_indulgence')
+Utils.ExecuteAudioTrigger('lightning')

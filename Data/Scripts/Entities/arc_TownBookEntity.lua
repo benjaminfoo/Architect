@@ -143,12 +143,10 @@ function TownBookEntity:SetupModel()
 end
 
 function TownBookEntity:OnLoad(table)
-    self.object_Model = table.object_Model;
 
     -- reload persisted values
-    local Properties = self.Properties;
-    Properties.object_Model = table.object_Model;
-    Properties.deletion_lock = table.deletion_lock
+    self.object_Model = table.object_Model
+    self.deletion_lock = table.deletion_lock
 
 
     -- the initial timer of this generator

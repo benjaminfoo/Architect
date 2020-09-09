@@ -26,6 +26,7 @@ classesWhiteList = {
     "CustomShootingTarget",
     "TownBookEntity",
     "UIManager",
+    "LadderEntity"
 }
 
 -- TODO: this is just a placeholder variable
@@ -267,6 +268,10 @@ function SpawnBuildingInstance(line)
             spawnParams.class = "ChairEntity"
         end
 
+        if (construction.grindstone) then
+            spawnParams.class = "Grindstone"
+        end
+
         if (construction.sleepable) then
             spawnParams.class = "BedEntity"
         end
@@ -279,15 +284,13 @@ function SpawnBuildingInstance(line)
             spawnParams.class = "CustomShootingTarget"
         end
 
-        if(construction.stash) then
+        if construction.stash then
             spawnParams.class = "ChestEntity"
+        end
 
-            -- skip the check if the player is infront of the chest
-            spawnParams.properties.bSkipAngleCheck = 1
-            spawnParams.properties.fUseDistance = 2
-
-            spawnParams.properties.soclasses_SmartObjectHelpers = "Chest"
-            spawnParams.properties.sWH_AI_EntityCategory = "Chest"
+        if construction.ladder then
+            spawnParams.class = "LadderEntity"
+            spawnParams.properties.height = construction.ladder_height;
         end
 
         if (construction.useable) then
@@ -410,8 +413,10 @@ function SpawnBuildingInstance(line)
         -- undo / redo control, build history
         table.insert(builtEntities, ent)
 
-    end
+        -- play a nice little sound when the player build something
+        Utils.ExecuteAudioTrigger('ui_inv_trade_success')
 
+    end
     System.LogAlways("# SpawnBuildingInstance end")
 end
 
@@ -996,6 +1001,8 @@ function reloadall ()
     Script.ReloadScript("Scripts/Controller/arc_UIController.lua")
     Script.ReloadScript("Scripts/Manager/arc_BuildingsManager.lua")
     Script.ReloadScript("Scripts/Manager/arc_CCommandManager.lua")
+    Script.UnloadScript("Scripts/Controller/arc_ConstructionController.lua")
+
     Script.ReloadScript("Scripts/Util/arc_constants.lua")
     Script.ReloadScript("Scripts/Util/arc_utils.lua")
     Script.ReloadScript("Scripts/Util/arc_runtime.lua")

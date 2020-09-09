@@ -86,5 +86,10 @@ function getHome()
     GetHome()
 end
 function makeSunhine()
-    MakeSunhine()
+    EnvironmentModule.BlendTimeOfDay('cloudless_sunny', 1, 5)
+    EnvironmentModule.ForceImmediateWeatherUpdate()
+end
+function sun()
+    EnvironmentModule.BlendTimeOfDay('cloudless_sunny', 1, 5)
+    EnvironmentModule.ForceImmediateWeatherUpdate()
 end
