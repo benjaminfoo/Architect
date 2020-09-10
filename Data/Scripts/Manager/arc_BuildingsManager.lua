@@ -972,7 +972,7 @@ parameterizedConstructions = {
     {
         description = "A part of the butcher-building in ledecko. Generates dried meat on use.",
         modelPath = "objects/buildings/houses/ledecko/sazava_bakery01.cgf",
-	    saveable = true,
+	saveable = true,
         generator = false, generatorOnUse = true,
         generatorItem = "dried meat", 
      	generatorItemId = "45be379b-df05-4e13-9aa1-aaae649e8366",
@@ -983,10 +983,10 @@ parameterizedConstructions = {
     {
         description = "A part of the butcher-building in ledecko. Generates dried meat on use.",
         modelPath = "objects/buildings/houses/ledecko/sazava_bakery02.cgf",
-	    saveable = true,
+	saveable = true,
         generator = false, generatorOnUse = true,
         generatorItem = "dried meat", 
-	    generatorItemId = "45be379b-df05-4e13-9aa1-aaae649e8366",
+	generatorItemId = "45be379b-df05-4e13-9aa1-aaae649e8366",
         generatorItemAmount = 1, generatorCapacity = -1,
         generatorCooldown = 60, generatorItemCosts = { groschen = 1500 }
     },
@@ -1119,7 +1119,7 @@ parameterizedConstructions = {
     {
         description = "A small anville like your fathers. Do you still remember how to use it?",
         modelPath = "objects/buildings/houses/smithery/anvil_small.cgf",
-	    saveable = true,
+	saveable = true,
         generator = false, generatorOnUse = true,
         generatorItem = "ornamented dagger", 
     	generatorItemId = "67ef62fd-7d5a-4235-b68e-eede03cd9c99",
@@ -1396,58 +1396,58 @@ parameterizedConstructions = {
 
     -- group street props
      {
-	    description = "A bag of onions. Generates onions on use.",
-	    modelPath = "objects/props/misc/street_props/street_props_05.cgf",
-	    saveable = true,
-	    generator = false, generatorOnUse = true,
-	    generatorItem = "onion", 
-	    generatorItemId = "4a6fa310-067a-404d-9813-bd1761d1c70d",
-	    generatorItemAmount = 1, generatorCapacity = -1,
-	    generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
+	description = "A bag of onions. Generates onions on use.",
+	modelPath = "objects/props/misc/street_props/street_props_05.cgf",
+	saveable = true,
+	generator = false, generatorOnUse = true,
+	generatorItem = "onion", 
+	generatorItemId = "4a6fa310-067a-404d-9813-bd1761d1c70d",
+	generatorItemAmount = 1, generatorCapacity = -1,
+	generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
     },
 
     {
-	    description = "A bag of apples. Generates apples on use.",
+	description = "A bag of apples. Generates apples on use.",
     	modelPath = "objects/props/misc/street_props/street_props_05.cgf",
     	saveable = true,
     	generator = false, generatorOnUse = true,
-	    generatorItem = "apple", 
-	    generatorItemId = "2264f217-590e-4c0f-a4c6-f50c6532b9f6",
-	    generatorItemAmount = 1, generatorCapacity = -1,
-	    generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
+	generatorItem = "apple", 
+	generatorItemId = "2264f217-590e-4c0f-a4c6-f50c6532b9f6",
+	generatorItemAmount = 1, generatorCapacity = -1,
+	generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
     },
 
     {
-	    description = "A bag of carrots. Generates carrots on use.",
-	    modelPath = "objects/props/misc/street_props/street_props_05.cgf",
-	    saveable = true,
-	    generator = false, generatorOnUse = true,
-	    generatorItem = "carrot", 
-	    generatorItemId = "b7ee311c-736b-4f7c-987b-8431ce3b5600",
-	    generatorItemAmount = 1, generatorCapacity = -1,
-	    generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
+	description = "A bag of carrots. Generates carrots on use.",
+	modelPath = "objects/props/misc/street_props/street_props_05.cgf",
+	saveable = true,
+	generator = false, generatorOnUse = true,
+	generatorItem = "carrot", 
+	generatorItemId = "b7ee311c-736b-4f7c-987b-8431ce3b5600",
+	generatorItemAmount = 1, generatorCapacity = -1,
+	generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
     },
 
     {
-	    description = "A bag of pear. Generates pear on use.",
+	description = "A bag of pear. Generates pear on use.",
     	modelPath = "objects/props/misc/street_props/street_props_05.cgf",
     	saveable = true,
     	generator = false, generatorOnUse = true,
-	    generatorItem = "pear", 
-	    generatorItemId = "2eeb7bf7-f0ac-4c46-9468-97c2f76cb254",
-	    generatorItemAmount = 1, generatorCapacity = -1,
-	    generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
+	generatorItem = "pear", 
+	generatorItemId = "2eeb7bf7-f0ac-4c46-9468-97c2f76cb254",
+	generatorItemAmount = 1, generatorCapacity = -1,
+	generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
     },
 
     {
-	    description = "A bag of radish. Generates radish on use.",
-	    modelPath = "objects/props/misc/street_props/street_props_05.cgf",
-	    saveable = true,
-	    generator = false, generatorOnUse = true,
-	    generatorItem = "radish", 
-	    generatorItemId = "907a2cd5-2730-424e-bf11-ef1f2db8f7e1",
-	    generatorItemAmount = 1, generatorCapacity = -1,
-	    generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
+	description = "A bag of radish. Generates radish on use.",
+	modelPath = "objects/props/misc/street_props/street_props_05.cgf",
+	saveable = true,
+	generator = false, generatorOnUse = true,
+	generatorItem = "radish", 
+	generatorItemId = "907a2cd5-2730-424e-bf11-ef1f2db8f7e1",
+	generatorItemAmount = 1, generatorCapacity = -1,
+	generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
     },
     
     {
