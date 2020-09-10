@@ -178,20 +178,6 @@ parameterizedConstructions = {
         category = "Stash",
     },
 
-    -- user added entities
-    -- blackhawkca -> https://www.nexusmods.com/kingdomcomedeliverance/users/72594468
-    {
-        description = "A barrel full of Better Piercing Arrow - by blackhawkca",
-        modelPath = "Objects/weapons/arrow/basket_arrow_full.cgf",
-        saveable = true,
-        generator = false, generatorOnUse = true,
-        generatorItem = "Better Piercing Arrow",
-        generatorItemId = "a5b31bbc-1e11-4831-835b-c06d5b13a7da",
-        generatorItemAmount = 1,
-        generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
-    },
-
-
 
     --[[
     -- these could be used to spawn rabbits or other animals or increase the rate of wildlife in the area, i dunno
@@ -211,40 +197,50 @@ parameterizedConstructions = {
 
     -- generator entity
     {
-        description = "A hive for bees..",
+        description = "A hive for bees. Generates honey on use.",
         modelPath = "objects/props/hive/hive_a.cgf",
         saveable = true,
-        generator = true, generatorOnUse = false,
-        generatorItem = "honey", generatorItemAmount = 1, generatorCapacity = -1,
+        generator = true, generatorOnUse = true,
+        generatorItem = "honey", 
+    	generatorItemId = "7beb4bdc-6478-455c-8746-afb92c604be8",
+    	generatorItemAmount = 1, generatorCapacity = -1,
         generatorCooldown = 30, generatorItemCosts = { groschen = 750 },
         category = "Generator",
     },
+
     {
-        description = "A hive for bees..",
+        description = "A hive for bees. Generates honey on use.",
         modelPath = "objects/props/hive/bee_skep_1.cgf",
         saveable = true,
-        generator = true, generatorOnUse = false,
-        generatorItem = "honey", generatorItemAmount = 1, generatorCapacity = -1,
+        generator = true, generatorOnUse = true,
+        generatorItem = "honey", 
+    	generatorItemId = "7beb4bdc-6478-455c-8746-afb92c604be8",
+	    generatorItemAmount = 1, generatorCapacity = -1,
         generatorCooldown = 30, generatorItemCosts = { groschen = 750 },
+        category = "Generator",
     },
 
     -- wells
     {
-        description = "A well which provides water.",
+        description = "A well which provides water. Generates water on use.",
         modelPath = "objects/buildings/houses/neuhof/neuhof_well.cgf",
         saveable = true,
-        generator = true, generatorOnUse = false,
-        generatorItem = "water", generatorItemAmount = 1, generatorCapacity = -1,
+        generator = true, generatorOnUse = true,
+        generatorItem = "water", 
+	    generatorItemId = "0cb47176-06c5-42a9-8d70-969e917eb999",
+	    generatorItemAmount = 1, generatorCapacity = -1,
         generatorCooldown = 3, generatorItemCosts = { groschen = 1500 },
     },
 
     {
-        description = "A part of the butcher-building in ledecko",
+        description = "A well which provides water. Generates water on use.",
         modelPath = "objects/buildings/sazava_monastery/sm_garden_well.cgf",
         saveable = true,
-        generator = true, generatorOnUse = false,
-        generatorItem = "water", generatorItemAmount = 1, generatorCapacity = -1,
-        generatorCooldown = 3, generatorItemCosts = { groschen = 1500 }
+        generator = true, generatorOnUse = true,
+        generatorItem = "water", 
+	    generatorItemId = "0cb47176-06c5-42a9-8d70-969e917eb999",
+	    generatorItemAmount = 1, generatorCapacity = -1,
+        generatorCooldown = 3, generatorItemCosts = { groschen = 1500 },
     },
 
 
@@ -972,14 +968,29 @@ parameterizedConstructions = {
         description = "A part of the butcher-building in ledecko",
         modelPath = "objects/buildings/houses/ledecko/ledecko_stairs.cgf",
     },
+    
     {
-        description = "A part of the butcher-building in ledecko",
+        description = "A part of the butcher-building in ledecko. Generates dried meat on use.",
         modelPath = "objects/buildings/houses/ledecko/sazava_bakery01.cgf",
+	    saveable = true,
+        generator = false, generatorOnUse = true,
+        generatorItem = "dried meat", 
+     	generatorItemId = "45be379b-df05-4e13-9aa1-aaae649e8366",
+        generatorItemAmount = 1, generatorCapacity = -1,
+        generatorCooldown = 60, generatorItemCosts = { groschen = 1500 }
     },
+
     {
-        description = "A part of the butcher-building in ledecko",
+        description = "A part of the butcher-building in ledecko. Generates dried meat on use.",
         modelPath = "objects/buildings/houses/ledecko/sazava_bakery02.cgf",
+	    saveable = true,
+        generator = false, generatorOnUse = true,
+        generatorItem = "dried meat", 
+	    generatorItemId = "45be379b-df05-4e13-9aa1-aaae649e8366",
+        generatorItemAmount = 1, generatorCapacity = -1,
+        generatorCooldown = 60, generatorItemCosts = { groschen = 1500 }
     },
+    
     {
         description = "A shed made out of wood and stone. ",
         modelPath = "objects/buildings/houses/shed/shed_01.cgf",
@@ -1104,10 +1115,18 @@ parameterizedConstructions = {
         description = "The basic structure of a smithery.",
         modelPath = "objects/buildings/houses/smithery/smithery.cgf",
     },
+    
     {
-        description = "A small anville.",
+        description = "A small anville like your fathers. Do you still remember how to use it?",
         modelPath = "objects/buildings/houses/smithery/anvil_small.cgf",
+	    saveable = true,
+        generator = false, generatorOnUse = true,
+        generatorItem = "ornamented dagger", 
+    	generatorItemId = "67ef62fd-7d5a-4235-b68e-eede03cd9c99",
+        generatorItemAmount = 1, generatorCapacity = 10,
+        generatorCooldown = 60, generatorItemCosts = { groschen = 1500 }
     },
+    
     {
         description = "A shelf often used in a smithery.",
         modelPath = "objects/buildings/houses/smithery/shelf_smithery.cgf",
@@ -1336,6 +1355,17 @@ parameterizedConstructions = {
     },
 
     {
+        description = "A barrel full of Better Piercing Arrow",
+        modelPath = "Objects/weapons/arrow/basket_arrow_full.cgf",
+        saveable = true,
+        generator = false, generatorOnUse = true,
+        generatorItem = "Better Piercing Arrow",
+        generatorItemId = "a5b31bbc-1e11-4831-835b-c06d5b13a7da",
+        generatorItemAmount = 1,
+        generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
+    },
+
+    {
         modelPath = "Objects/buildings/pribyslawitz/barrel_arrows.cgf",
     },
 
@@ -1365,6 +1395,61 @@ parameterizedConstructions = {
     },
 
     -- group street props
+     {
+	    description = "A bag of onions. Generates onions on use.",
+	    modelPath = "objects/props/misc/street_props/street_props_05.cgf",
+	    saveable = true,
+	    generator = false, generatorOnUse = true,
+	    generatorItem = "onion", 
+	    generatorItemId = "4a6fa310-067a-404d-9813-bd1761d1c70d",
+	    generatorItemAmount = 1, generatorCapacity = -1,
+	    generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
+    },
+
+    {
+	    description = "A bag of apples. Generates apples on use.",
+    	modelPath = "objects/props/misc/street_props/street_props_05.cgf",
+    	saveable = true,
+    	generator = false, generatorOnUse = true,
+	    generatorItem = "apple", 
+	    generatorItemId = "2264f217-590e-4c0f-a4c6-f50c6532b9f6",
+	    generatorItemAmount = 1, generatorCapacity = -1,
+	    generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
+    },
+
+    {
+	    description = "A bag of carrots. Generates carrots on use.",
+	    modelPath = "objects/props/misc/street_props/street_props_05.cgf",
+	    saveable = true,
+	    generator = false, generatorOnUse = true,
+	    generatorItem = "carrot", 
+	    generatorItemId = "b7ee311c-736b-4f7c-987b-8431ce3b5600",
+	    generatorItemAmount = 1, generatorCapacity = -1,
+	    generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
+    },
+
+    {
+	    description = "A bag of pear. Generates pear on use.",
+    	modelPath = "objects/props/misc/street_props/street_props_05.cgf",
+    	saveable = true,
+    	generator = false, generatorOnUse = true,
+	    generatorItem = "pear", 
+	    generatorItemId = "2eeb7bf7-f0ac-4c46-9468-97c2f76cb254",
+	    generatorItemAmount = 1, generatorCapacity = -1,
+	    generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
+    },
+
+    {
+	    description = "A bag of radish. Generates radish on use.",
+	    modelPath = "objects/props/misc/street_props/street_props_05.cgf",
+	    saveable = true,
+	    generator = false, generatorOnUse = true,
+	    generatorItem = "radish", 
+	    generatorItemId = "907a2cd5-2730-424e-bf11-ef1f2db8f7e1",
+	    generatorItemAmount = 1, generatorCapacity = -1,
+	    generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
+    },
+    
     {
         modelPath = "objects/props/misc/street_props/street_props_01.cgf",
     },
