@@ -264,6 +264,13 @@ function SpawnBuildingInstance(line)
 
         -- this is a mapping of boolean or other values to kcd classes
         -- these classes could be merged with the arc_BuildingsManager however.
+
+--        if (construction.NewTestEntity) then
+--            spawnParams.class = "Torch"
+--        end
+
+
+
         if (construction.sitable) then
             spawnParams.class = "ChairEntity"
         end
@@ -420,6 +427,7 @@ function SpawnBuildingInstance(line)
     System.LogAlways("# SpawnBuildingInstance end")
 end
 
+-- this method can be used to fire raycasts within the world without the existence of a previewModel
 function rayCastHitSimple()
 
     -- if the mod is not enabled, dont do anything -- needs refactoring
@@ -434,13 +442,6 @@ function rayCastHitSimple()
 
     local dir = System.GetViewCameraDir();
     dir = vecScale(dir, 250);
-
-    -- if previewModelEntity == nil then
-    --     -- previewModelEntity = player -- wtf!
-    --     System.LogAlways("ERROR - hit == player !?")
-    --     return
-    -- end
-
 
     local hitData = {};
     local hits = Physics.RayWorldIntersection(from, dir, 10, ent_all, player.id, nil, hitData);

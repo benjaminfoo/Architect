@@ -10,6 +10,11 @@ function architect_clear()
     System.ClearConsole();
 end
 
+
+function clear()
+    System.ClearConsole();
+end
+
 -- Gamble against the random number generator for n groschen
 function architect_gamble()
     System.LogAlways("Gambling started ..");

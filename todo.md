@@ -8,3 +8,4 @@ Things that should be done:
 - simplify source, remove copy-paste methods
 - make the settings of your town persistent (like position, name, etc.)
 - ...
+- add usable doors, torches, 

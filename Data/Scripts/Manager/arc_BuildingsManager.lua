@@ -76,6 +76,13 @@ parameterizedConstructions = {
 
     -- constructions which are under active development are the first in this list
     -- dev misc
+--    {
+--        description = "New Entity",
+--        modelPath = "objects/props/alchemy/book/alchemy_book.cgf",
+--        NewTestEntity = true
+--    },
+
+
     {
         description = "Town Book \nA book which contains informations and notes about the current town.",
         modelPath = "objects/props/alchemy/book/alchemy_book.cgf",
@@ -88,6 +95,7 @@ parameterizedConstructions = {
         modelPath = "objects/buildings/houses/smithery/grindstone.cdf",
         grindstone = true,
     },
+
 
 -- needs further init.
 --    {
@@ -129,6 +137,14 @@ parameterizedConstructions = {
 
 
     -- chests
+-- this could be used to provide weapon and armor stands, the items wont get showed yet
+--    {
+--        description = "A rack to manage your swords.",
+--        modelPath = "Objects/props/weaponsmith/swords_rack.cgf",
+--        stash = true,
+--        category = "Stash",
+--    },
+
     {
         description = "A chest to manage your items.",
         modelPath = "objects/props/wooden_bins/chests/chest_01/chest01.cga",

@@ -631,3 +631,11 @@ Utils.ExecuteAudioTrigger('mon_alarm_bell')
 Utils.ExecuteAudioTrigger('q_cemetery_flowers_incanation')
 Utils.ExecuteAudioTrigger('special_indulgence')
 Utils.ExecuteAudioTrigger('lightning')
+
+### Debug
+These functionality is only available in debug mode, using the debug exe from the editor
+
+#System.ShowDebugger() - opens the debugger, this can be used to do step by step debugging 
+
+Show a debug string 
+wh_dbg_DrawString Teleport the player around the map
