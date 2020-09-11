@@ -77,6 +77,9 @@ GeneratorEntity = {
         -- how much has this construction already created?
         generatorGeneratedAmount = 0,
 
+        -- the message which got displayed when an item is generated and the user uses the entity
+        generatorMessage = nil,
+
 
         -- serialize entity for persistence
         bSaved_by_game = 1,
@@ -526,9 +529,12 @@ function GeneratorEntity:GetActions(user, firstFast)
 
             player.inventory:AddItem(newItemInstance);
 
-            Game.SendInfoText(
-                    "Made " .. craftedAmount .. "x Ordinary Arrow" .. "\n",
-                    true, nil, 3)
+            if(self.Properties.generatorMessage == nil) then
+                Game.SendInfoText(
+                "Got " .. craftedAmount .. "x " .. self.Properties.generatorItem .. "\n",
+                true, nil, 3)
+            end
+
 
         end))                                          :interaction(inr_chair):enabled(1))
 
