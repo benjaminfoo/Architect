@@ -1321,11 +1321,11 @@ parameterizedConstructions = {
 
     -- archery
     {
-        description = "A table for making small things like arrows.",
+        description = "A table for making small things like arrows. Generates ordinary arrows on use.",
         modelPath = "Objects/props/engraving/engraving_table.cgf",
         saveable = true,
         generator = false, generatorOnUse = true,
-        generatorItem = "Ordinary Arrow",
+        generatorItem = "ordinary arrow",
         generatorItemId = "4fd563e5-a44a-4a6e-958d-95bcb196814a",
         generatorItemAmount = 1,
         generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
@@ -1333,33 +1333,33 @@ parameterizedConstructions = {
 
 
     {
-        description = "A barrel which contains some arrows.",
+        description = "A barrel which contains some arrows. Generates ordinary arrows on use.",
         modelPath = "Objects/weapons/arrow/basket_arrow_half.cgf",
         saveable = true,
         generator = false, generatorOnUse = true,
-        generatorItem = "Ordinary Arrow",
+        generatorItem = "ordinary arrow",
         generatorItemId = "4fd563e5-a44a-4a6e-958d-95bcb196814a",
         generatorItemAmount = 1,
         generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
     },
 
     {
-        description = "A barrel full of arrows",
+        description = "A barrel full of arrows. Generates ordinary arrows on use.",
         modelPath = "Objects/weapons/arrow/basket_arrow_full.cgf",
         saveable = true,
         generator = false, generatorOnUse = true,
-        generatorItem = "Ordinary Arrow",
+        generatorItem = "ordinary arrow",
         generatorItemId = "4fd563e5-a44a-4a6e-958d-95bcb196814a",
         generatorItemAmount = 1,
         generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
     },
 
     {
-        description = "A barrel full of Better Piercing Arrow",
+        description = "A barrel full of better piercing arrows.  Generates ordinary better piercing arrows on use.",
         modelPath = "Objects/weapons/arrow/basket_arrow_full.cgf",
         saveable = true,
         generator = false, generatorOnUse = true,
-        generatorItem = "Better Piercing Arrow",
+        generatorItem = "better piercing arrow",
         generatorItemId = "a5b31bbc-1e11-4831-835b-c06d5b13a7da",
         generatorItemAmount = 1,
         generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
@@ -1680,7 +1680,7 @@ parameterizedConstructions = {
 
     -- props - things which are used in a tavern
     {
-        description = "A barrel filled with delicious beer.",
+        description = "A barrel filled with delicious beer. Generates delicious beer on use.",
         modelPath = "objects/props/tavern_things/beer_barrel.cgf",
         saveable = true,
         generator = false, generatorOnUse = true,
