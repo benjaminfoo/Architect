@@ -73,7 +73,6 @@ DEFAULT_PRICE_FLOWER_ADVANCED = 250
 parameterizedConstructions = {
 
     -- TODO: Add bags as model for generator entities or something like: spend 500 groschen for 10 resources of x!
-    -- Christian is working on it :)
 
     -- constructions which are under active development are the first in this list
     -- dev misc
@@ -89,14 +88,6 @@ parameterizedConstructions = {
         modelPath = "objects/props/alchemy/book/alchemy_book.cgf",
         useable = true, useCategory = "showStats",
     },
-
-
-    {
-        description = "Grindstone\nA grindstone which can be used to sharpen your weapons",
-        modelPath = "objects/buildings/houses/smithery/grindstone.cdf",
-        grindstone = true,
-    },
-
 
 -- needs further init.
 --    {
@@ -1112,6 +1103,12 @@ parameterizedConstructions = {
 
     -- smithery
     {
+        description = "Grindstone\nA grindstone which can be used to sharpen your weapons",
+        modelPath = "objects/buildings/houses/smithery/grindstone.cdf",
+        grindstone = true,
+    },
+	
+    {
         description = "The basic structure of a smithery.",
         modelPath = "objects/buildings/houses/smithery/smithery.cgf",
     },
@@ -1390,9 +1387,61 @@ parameterizedConstructions = {
 
     -- group street props
     -- take a look at the model at objects/props/interiors/sacks/sack_02 - there are also sacks for grain, flour, corn, and stuff :)
-    -- Christian have tested all the sacks and added new one
+    -- Christian have tested all the sacks/baskets and added more of them
 
-     {
+    -- baskets generators
+    {
+        description = "A basket of radish. Generates radish on use.",
+        modelPath = "objects/nature/vegetable/basket_of_radish.cgf",
+	generatorOnUse = true,
+        generatorItem = "radish",
+        generatorItemId = "907a2cd5-2730-424e-bf11-ef1f2db8f7e1",
+        generatorItemAmount = 1, 
+	generatorItemCosts = { groschen = 500 }
+    },
+
+    {
+        description = "A basket of carrots. Generates carrots on use.",
+        modelPath = "objects/nature/vegetable/basket_of_carrot.cgf",
+	generatorOnUse = true,
+        generatorItem = "carrot",
+        generatorItemId = "b7ee311c-736b-4f7c-987b-8431ce3b5600",
+        generatorItemAmount = 1, 
+	generatorItemCosts = { groschen = 500 }
+    },
+
+    {
+        description = "A basket of cabbage. Generates cabbage on use.",
+        modelPath = "objects/nature/vegetable/basket_of_cabbage.cgf",
+	generatorOnUse = true,
+        generatorItem = "cabbage",
+        generatorItemId = "8d6964b1-b645-4aa1-adcc-db22646f3722",
+        generatorItemAmount = 1, 
+	generatorItemCosts = { groschen = 500 }
+    },
+
+    {
+        description = "A basket of watermelon. Generates watermelon on use.",
+        modelPath = "objects/nature/vegetable/basket_of_watermelon.cgf",
+	generatorOnUse = true,
+        generatorItem = "watermelon",
+        generatorItemId = "1c2da556-488b-4a86-b22a-c42acb299938",
+        generatorItemAmount = 1, 
+	generatorItemCosts = { groschen = 500 }
+    },
+
+    -- bags generators
+    {
+        description = "A bag of pear. Generates pear on use.",
+        modelPath = "objects/props/misc/street_props/street_props_05.cgf",
+	generatorOnUse = true,
+        generatorItem = "pear",
+        generatorItemId = "2eeb7bf7-f0ac-4c46-9468-97c2f76cb254",
+        generatorItemAmount = 1, 
+	generatorItemCosts = { groschen = 500 }
+    },
+
+    {
         description = "A bag of onions. Generates onions on use.",
         modelPath = "objects/props/interiors/sacks/sack_02/sack_02_onion.cgf",
 	generatorOnUse = true,
@@ -1408,36 +1457,6 @@ parameterizedConstructions = {
 	generatorOnUse = true,
         generatorItem = "apple",
         generatorItemId = "2264f217-590e-4c0f-a4c6-f50c6532b9f6",
-        generatorItemAmount = 1, 
-	generatorItemCosts = { groschen = 500 }
-    },
-
-    {
-        description = "A bag of carrots. Generates carrots on use.",
-        modelPath = "objects/nature/vegetable/basket_of_carrot.cgf",
-	generatorOnUse = true,
-        generatorItem = "carrot",
-        generatorItemId = "b7ee311c-736b-4f7c-987b-8431ce3b5600",
-        generatorItemAmount = 1, 
-	generatorItemCosts = { groschen = 500 }
-    },
-
-    {
-        description = "A bag of pear. Generates pear on use.",
-        modelPath = "objects/props/misc/street_props/street_props_05.cgf",
-	generatorOnUse = true,
-        generatorItem = "pear",
-        generatorItemId = "2eeb7bf7-f0ac-4c46-9468-97c2f76cb254",
-        generatorItemAmount = 1, 
-	generatorItemCosts = { groschen = 500 }
-    },
-
-    {
-        description = "A basket of radish. Generates radish on use.",
-        modelPath = "objects/nature/vegetable/basket_of_radish.cgf",
-	generatorOnUse = true,
-        generatorItem = "radish",
-        generatorItemId = "907a2cd5-2730-424e-bf11-ef1f2db8f7e1",
         generatorItemAmount = 1, 
 	generatorItemCosts = { groschen = 500 }
     },
@@ -1462,6 +1481,7 @@ parameterizedConstructions = {
 	generatorItemCosts = { groschen = 500 }
     },
 
+    -- bags with content
     {
         description = "A bag of grain.",
         modelPath = "objects/props/interiors/sacks/sack_02/sack_02_grain.cgf",
