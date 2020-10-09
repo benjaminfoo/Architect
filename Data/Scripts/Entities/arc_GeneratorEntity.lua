@@ -508,7 +508,8 @@ function GeneratorEntity:GetActions(user, firstFast)
 
         -- TODO: update this!
         -- we'll provide a regular functionwhich gets executed when "using" the entity
-        AddInteractorAction(output, firstFast, Action():hint("Make Arrow"):action("use"):func((function()
+        AddInteractorAction(output, firstFast, Action():hint("Make 1x " .. self.Properties.generatorItem .. "\n",
+                true, nil, 3):action("use"):func((function()
             -- This is only a prototype
             -- TODO: define needed resources for newly crafted items
             -- TODO: define dynamic amounts for recipes and results

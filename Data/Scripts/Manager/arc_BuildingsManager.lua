@@ -89,14 +89,6 @@ parameterizedConstructions = {
         useable = true, useCategory = "showStats",
     },
 
-
-    {
-        description = "Grindstone\nA grindstone which can be used to sharpen your weapons",
-        modelPath = "objects/buildings/houses/smithery/grindstone.cdf",
-        grindstone = true,
-    },
-
-
 -- needs further init.
 --    {
 --        description = "Alchemist Table\nAn Alchemist Table which can be used to craft potions.",
@@ -214,8 +206,8 @@ parameterizedConstructions = {
         saveable = true,
         generator = true, generatorOnUse = true,
         generatorItem = "honey", 
-    	generatorItemId = "7beb4bdc-6478-455c-8746-afb92c604be8",
-	    generatorItemAmount = 1, generatorCapacity = -1,
+    	generatorItemId = "7beb4bdc-6478-455c-8746-afb92c604be8",	
+	generatorItemAmount = 1, generatorCapacity = -1,
         generatorCooldown = 30, generatorItemCosts = { groschen = 750 },
         category = "Generator",
     },
@@ -226,9 +218,9 @@ parameterizedConstructions = {
         modelPath = "objects/buildings/houses/neuhof/neuhof_well.cgf",
         saveable = true,
         generator = true, generatorOnUse = true,
-        generatorItem = "water", 
-	    generatorItemId = "0cb47176-06c5-42a9-8d70-969e917eb999",
-	    generatorItemAmount = 1, generatorCapacity = -1,
+        generatorItem = "water", 	
+	generatorItemId = "0cb47176-06c5-42a9-8d70-969e917eb999",	
+	generatorItemAmount = 1, generatorCapacity = -1,
         generatorCooldown = 3, generatorItemCosts = { groschen = 1500 },
     },
 
@@ -238,8 +230,8 @@ parameterizedConstructions = {
         saveable = true,
         generator = true, generatorOnUse = true,
         generatorItem = "water", 
-	    generatorItemId = "0cb47176-06c5-42a9-8d70-969e917eb999",
-	    generatorItemAmount = 1, generatorCapacity = -1,
+	generatorItemId = "0cb47176-06c5-42a9-8d70-969e917eb999",	
+	generatorItemAmount = 1, generatorCapacity = -1,
         generatorCooldown = 3, generatorItemCosts = { groschen = 1500 },
     },
 
@@ -651,8 +643,9 @@ parameterizedConstructions = {
         description = "A piece of coal to add dust and dirt to your appearance.",
         modelPath = "objects/props/alchemy/special/coal.cgf",
         useable = true, useCategory = "addDirt"
-    }, {
+    }, 
 
+    {
         description = "A wooden water tub to wash yourself and clean your items.",
         modelPath = "objects/props/wooden_bins/water_tub/water_tub_wide_water.cgf",
         useable = true, useCategory = "wash", useCosts = { groschen = 25 }
@@ -972,23 +965,21 @@ parameterizedConstructions = {
     {
         description = "A part of the butcher-building in ledecko. Generates dried meat on use.",
         modelPath = "objects/buildings/houses/ledecko/sazava_bakery01.cgf",
-	    saveable = true,
-        generator = false, generatorOnUse = true,
-        generatorItem = "dried meat", 
-     	generatorItemId = "45be379b-df05-4e13-9aa1-aaae649e8366",
-        generatorItemAmount = 1, generatorCapacity = -1,
-        generatorCooldown = 60, generatorItemCosts = { groschen = 1500 }
+  	generatorOnUse = true,
+        generatorItem = "dried meat", 	
+	generatorItemId = "45be379b-df05-4e13-9aa1-aaae649e8366",
+        generatorItemAmount = 1, 
+	generatorItemCosts = { groschen = 1500 }
     },
 
     {
         description = "A part of the butcher-building in ledecko. Generates dried meat on use.",
         modelPath = "objects/buildings/houses/ledecko/sazava_bakery02.cgf",
-	    saveable = true,
-        generator = false, generatorOnUse = true,
-        generatorItem = "dried meat", 
-	    generatorItemId = "45be379b-df05-4e13-9aa1-aaae649e8366",
-        generatorItemAmount = 1, generatorCapacity = -1,
-        generatorCooldown = 60, generatorItemCosts = { groschen = 1500 }
+  	generatorOnUse = true,
+        generatorItem = "dried meat", 	
+	generatorItemId = "45be379b-df05-4e13-9aa1-aaae649e8366",
+        generatorItemAmount = 1, 
+	generatorItemCosts = { groschen = 1500 }
     },
     
     {
@@ -1112,19 +1103,24 @@ parameterizedConstructions = {
 
     -- smithery
     {
+        description = "Grindstone\nA grindstone which can be used to sharpen your weapons",
+        modelPath = "objects/buildings/houses/smithery/grindstone.cdf",
+        grindstone = true,
+    },
+	
+    {
         description = "The basic structure of a smithery.",
         modelPath = "objects/buildings/houses/smithery/smithery.cgf",
     },
     
     {
         description = "A small anville like your fathers. Do you still remember how to use it?",
-        modelPath = "objects/buildings/houses/smithery/anvil_small.cgf",
-	    saveable = true,
-        generator = false, generatorOnUse = true,
+        modelPath = "objects/buildings/houses/smithery/anvil_small.cgf",	
+	generatorOnUse = true,
         generatorItem = "ornamented dagger", 
     	generatorItemId = "67ef62fd-7d5a-4235-b68e-eede03cd9c99",
-        generatorItemAmount = 1, generatorCapacity = 10,
-        generatorCooldown = 60, generatorItemCosts = { groschen = 1500 }
+        generatorItemAmount = 1, 	
+	generatorItemCosts = { groschen = 1500 }
     },
     
     {
@@ -1321,48 +1317,43 @@ parameterizedConstructions = {
 
     -- archery
     {
-        description = "A table for making small things like arrows.",
+        description = "A table for making small things like arrows. Generates ordinary arrows on use.",
         modelPath = "Objects/props/engraving/engraving_table.cgf",
-        saveable = true,
-        generator = false, generatorOnUse = true,
-        generatorItem = "Ordinary Arrow",
+	generatorOnUse = true,
+        generatorItem = "ordinary arrow",
         generatorItemId = "4fd563e5-a44a-4a6e-958d-95bcb196814a",
         generatorItemAmount = 1,
-        generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
+	generatorItemCosts = { groschen = 15 }
     },
 
-
     {
-        description = "A barrel which contains some arrows.",
+        description = "A barrel which contains some arrows. Generates ordinary arrows on use.",
         modelPath = "Objects/weapons/arrow/basket_arrow_half.cgf",
-        saveable = true,
-        generator = false, generatorOnUse = true,
-        generatorItem = "Ordinary Arrow",
+	generatorOnUse = true,
+        generatorItem = "ordinary arrow",
         generatorItemId = "4fd563e5-a44a-4a6e-958d-95bcb196814a",
         generatorItemAmount = 1,
-        generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
+	generatorItemCosts = { groschen = 15 }
     },
 
     {
-        description = "A barrel full of arrows",
+        description = "A barrel full of arrows. Generates ordinary arrows on use.",
         modelPath = "Objects/weapons/arrow/basket_arrow_full.cgf",
-        saveable = true,
-        generator = false, generatorOnUse = true,
-        generatorItem = "Ordinary Arrow",
+	generatorOnUse = true,
+        generatorItem = "ordinary arrow",
         generatorItemId = "4fd563e5-a44a-4a6e-958d-95bcb196814a",
         generatorItemAmount = 1,
-        generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
+	generatorItemCosts = { groschen = 15 }
     },
 
     {
-        description = "A barrel full of Better Piercing Arrow",
+        description = "A barrel full of better piercing arrow. Generates better piercing arrows on use.",
         modelPath = "Objects/weapons/arrow/basket_arrow_full.cgf",
-        saveable = true,
-        generator = false, generatorOnUse = true,
-        generatorItem = "Better Piercing Arrow",
+	generatorOnUse = true,
+        generatorItem = "better piercing arrow",
         generatorItemId = "a5b31bbc-1e11-4831-835b-c06d5b13a7da",
         generatorItemAmount = 1,
-        generatorCooldown = 15, generatorItemCosts = { groschen = 15 }
+	generatorItemCosts = { groschen = 15 }
     },
 
     {
@@ -1396,59 +1387,119 @@ parameterizedConstructions = {
 
     -- group street props
     -- take a look at the model at objects/props/interiors/sacks/sack_02 - there are also sacks for grain, flour, corn, and stuff :)
-     {
+    -- Christian have tested all the sacks/baskets and added more of them
+
+    -- baskets generators
+    {
+        description = "A basket of radish. Generates radish on use.",
+        modelPath = "objects/nature/vegetable/basket_of_radish.cgf",
+	generatorOnUse = true,
+        generatorItem = "radish",
+        generatorItemId = "907a2cd5-2730-424e-bf11-ef1f2db8f7e1",
+        generatorItemAmount = 1, 
+	generatorItemCosts = { groschen = 500 }
+    },
+
+    {
+        description = "A basket of carrots. Generates carrots on use.",
+        modelPath = "objects/nature/vegetable/basket_of_carrot.cgf",
+	generatorOnUse = true,
+        generatorItem = "carrot",
+        generatorItemId = "b7ee311c-736b-4f7c-987b-8431ce3b5600",
+        generatorItemAmount = 1, 
+	generatorItemCosts = { groschen = 500 }
+    },
+
+    {
+        description = "A basket of cabbage. Generates cabbage on use.",
+        modelPath = "objects/nature/vegetable/basket_of_cabbage.cgf",
+	generatorOnUse = true,
+        generatorItem = "cabbage",
+        generatorItemId = "8d6964b1-b645-4aa1-adcc-db22646f3722",
+        generatorItemAmount = 1, 
+	generatorItemCosts = { groschen = 500 }
+    },
+
+    {
+        description = "A basket of watermelon. Generates watermelon on use.",
+        modelPath = "objects/nature/vegetable/basket_of_watermelon.cgf",
+	generatorOnUse = true,
+        generatorItem = "watermelon",
+        generatorItemId = "1c2da556-488b-4a86-b22a-c42acb299938",
+        generatorItemAmount = 1, 
+	generatorItemCosts = { groschen = 500 }
+    },
+
+    -- bags generators
+    {
+        description = "A bag of pear. Generates pear on use.",
+        modelPath = "objects/props/misc/street_props/street_props_05.cgf",
+	generatorOnUse = true,
+        generatorItem = "pear",
+        generatorItemId = "2eeb7bf7-f0ac-4c46-9468-97c2f76cb254",
+        generatorItemAmount = 1, 
+	generatorItemCosts = { groschen = 500 }
+    },
+
+    {
         description = "A bag of onions. Generates onions on use.",
         modelPath = "objects/props/interiors/sacks/sack_02/sack_02_onion.cgf",
-        saveable = true,
-        generator = false, generatorOnUse = true,
+	generatorOnUse = true,
         generatorItem = "onion",
         generatorItemId = "4a6fa310-067a-404d-9813-bd1761d1c70d",
-        generatorItemAmount = 1, generatorCapacity = -1,
-        generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
+        generatorItemAmount = 1, 
+	generatorItemCosts = { groschen = 500 }
     },
 
     {
         description = "A bag of apples. Generates apples on use.",
         modelPath = "objects/props/interiors/sacks/sack_02/sack_02_apples.cgf",
-        saveable = true,
-        generator = false, generatorOnUse = true,
+	generatorOnUse = true,
         generatorItem = "apple",
         generatorItemId = "2264f217-590e-4c0f-a4c6-f50c6532b9f6",
-        generatorItemAmount = 1, generatorCapacity = -1,
-        generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
+        generatorItemAmount = 1, 
+	generatorItemCosts = { groschen = 500 }
     },
 
     {
-        description = "A bag of carrots. Generates carrots on use.",
-        modelPath = "objects/nature/vegetable/basket_of_carrot.cgf",
-        saveable = true,
-        generator = false, generatorOnUse = true,
-        generatorItem = "carrot",
-        generatorItemId = "b7ee311c-736b-4f7c-987b-8431ce3b5600",
-        generatorItemAmount = 1, generatorCapacity = -1,
-        generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
+        description = "A bag of fish. Generates fish on use.",
+        modelPath = "objects/props/interiors/sacks/sack_02/sack_02_fishs1.cgf",
+	generatorOnUse = true,
+        generatorItem = "fish",
+        generatorItemId = "f2e16499-8a27-4acc-a4af-f29e00300507",
+        generatorItemAmount = 1, 
+	generatorItemCosts = { groschen = 500 }
     },
 
     {
-        description = "A bag of pear. Generates pear on use.",
-        modelPath = "objects/props/misc/street_props/street_props_05.cgf",
-        saveable = true,
-        generator = false, generatorOnUse = true,
-        generatorItem = "pear",
-        generatorItemId = "2eeb7bf7-f0ac-4c46-9468-97c2f76cb254",
-        generatorItemAmount = 1, generatorCapacity = -1,
-        generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
+        description = "A bag of salt. Generates salt on use.",
+        modelPath = "objects/props/interiors/sacks/sack_02/sack_02_salt.cgf",
+	generatorOnUse = true,
+        generatorItem = "salt",
+        generatorItemId = "b9ed56a7-7965-48e3-ab35-78aec6733f3d",
+        generatorItemAmount = 1,  
+	generatorItemCosts = { groschen = 500 }
+    },
+
+    -- bags with content
+    {
+        description = "A bag of grain.",
+        modelPath = "objects/props/interiors/sacks/sack_02/sack_02_grain.cgf",
     },
 
     {
-        description = "A basket of radish. Generates radish on use.",
-        modelPath = "objects/nature/vegetable/basket_of_radish.cgf",
-        saveable = true,
-        generator = false, generatorOnUse = true,
-        generatorItem = "radish",
-        generatorItemId = "907a2cd5-2730-424e-bf11-ef1f2db8f7e1",
-        generatorItemAmount = 1, generatorCapacity = -1,
-        generatorCooldown = 60, generatorItemCosts = { groschen = 500 }
+        description = "A bag of corn.",
+        modelPath = "objects/props/interiors/sacks/sack_02/sack_02_corn.cgf",
+    },
+
+    {
+        description = "A bag of flour.",
+        modelPath = "objects/props/interiors/sacks/sack_02/sack_02_flour.cgf",
+    },
+
+    {
+        description = "A bag of coal.",
+        modelPath = "objects/props/interiors/sacks/sack_02/sack_02_coal.cgf",
     },
     
     {
@@ -1680,12 +1731,23 @@ parameterizedConstructions = {
 
     -- props - things which are used in a tavern
     {
-        description = "A barrel filled with delicious beer.",
+        description = "A barrel filled with delicious beer. Generates beer on use.",
         modelPath = "objects/props/tavern_things/beer_barrel.cgf",
-        saveable = true,
-        generator = false, generatorOnUse = true,
-        generatorItem = "beer", generatorItemAmount = 1, generatorCapacity = 20,
-        generatorCooldown = 5, generatorItemCosts = { groschen = 10 },
+	generatorOnUse = true,
+        generatorItem = "beer", 
+	generatorItemId = "52afd6fa-9377-457c-83a2-b5b39321a4dc",
+	generatorItemAmount = 1,  
+	generatorItemCosts = { groschen = 10 },
+    },
+
+    {
+        description = "A barrel filled with delicious wine. Generates wine on use.",
+        modelPath = "objects/props/tavern_things/beer_barrel.cgf",
+	generatorOnUse = true,
+        generatorItem = "wine", 
+	generatorItemId = "7c5126cd-b010-4484-8465-22a3d69fa0df",
+	generatorItemAmount = 1,  
+	generatorItemCosts = { groschen = 10 },
     },
 
     { modelPath = "objects/props/tavern_things/bowl_clear.cgf", },
